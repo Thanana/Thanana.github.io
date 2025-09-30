@@ -46,6 +46,68 @@
 	<table class="imgtable"><tr><td>
 <img src="AKE_Optimize1.jpg" alt="" width="685 px" height="252 px" />&nbsp;</td>
 <td align="left"><p>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380">
+  <style>
+    .box{fill:#ffffff;stroke:#000;stroke-width:2}
+    .title{font: bold 18px Arial, Helvetica, sans-serif}
+    .label{font: 14px Arial, Helvetica, sans-serif}
+    .italic{font: italic 13px Arial, Helvetica, sans-serif}
+    .math{font: 16px 'Times New Roman', serif}
+    .arrow{marker-end: url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#000"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="30" class="title">Motivation: Data‑Driven Control Loop</text>
+
+  <!-- Boxes -->
+  <rect x="80" y="90" width="220" height="80" rx="8" class="box"/>
+  <text x="190" y="135" text-anchor="middle" class="label">Reference w</text>
+  <text x="190" y="155" text-anchor="middle" class="italic">(task / target)</text>
+
+  <rect x="360" y="90" width="240" height="80" rx="8" class="box"/>
+  <text x="480" y="125" text-anchor="middle" class="label">Physical System / Robot</text>
+  <text x="480" y="145" text-anchor="middle" class="italic">x, y, sensors</text>
+
+  <rect x="360" y="220" width="240" height="80" rx="8" class="box"/>
+  <text x="480" y="255" text-anchor="middle" class="label">Cost / Reward J(w)</text>
+  <text x="480" y="275" text-anchor="middle" class="italic">tracking error, energy, safety</text>
+
+  <rect x="700" y="150" width="240" height="80" rx="8" class="box"/>
+  <text x="820" y="185" text-anchor="middle" class="label">Learning‑Enabled Controller</text>
+
+  <!-- Arrows -->
+  <line x1="300" y1="130" x2="360" y2="130" class="arrow" stroke="#000" stroke-width="2"/>
+  <text x="330" y="120" class="math">u = K_θ(x)</text>
+
+  <line x1="600" y1="130" x2="700" y2="190" class="arrow" stroke="#000" stroke-width="2"/>
+  <text x="640" y="115" class="label">state, y</text>
+
+  <line x1="820" y1="150" x2="820" y2="120" class="arrow" stroke="#000" stroke-width="0"/>
+  <line x1="820" y1="150" x2="600" y2="130" class="arrow" stroke="#000" stroke-width="2"/>
+  <text x="730" y="120" class="label">control u</text>
+
+  <line x1="480" y1="170" x2="480" y2="220" class="arrow" stroke="#000" stroke-width="2"/>
+  <text x="490" y="200" class="label">loss</text>
+
+  <line x1="600" y1="260" x2="700" y2="190" class="arrow" stroke="#000" stroke-width="2"/>
+  <text x="640" y="250" class="label">∂J/∂θ</text>
+
+  <!-- Right plot: schematic gradient -->
+  <path d="M720,320 Q820,160 920,80" fill="none" stroke="#000" stroke-width="2"/>
+  <circle cx="880" cy="120" r="6" fill="red"/>
+  <text x="885" y="105" class="label">θ</text>
+  <text x="915" y="90" class="label">min J</text>
+  <text x="730" y="340" class="label">Gradient descent on θ</text>
+</svg>
+
+
+	
 	
 </td></tr></table>
 	<table class="imgtable"><tr><td> 
