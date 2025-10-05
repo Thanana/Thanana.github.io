@@ -42,83 +42,70 @@
 <h1>Reinforcement Learning</h1>
 
 <div style="text-align:center; margin: 20px 0;">
-  <svg width="900" height="380" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+  <svg width="800" height="320" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+
     <defs>
       <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
         <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
       </marker>
     </defs>
 
-    <!-- ============ Agent (Robot + NN + labels) ============ -->
-    <g transform="translate(120,180)">
+    <!-- ========== Robot Agent (left) ========== -->
+    <g transform="translate(120,160)">
       <!-- Body -->
-      <rect x="-35" y="-45" width="70" height="90" rx="10" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
-      <text x="0" y="70" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#0b2740">Agent</text>
-
+      <rect x="-25" y="-35" width="50" height="70" rx="10" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
       <!-- Head -->
-      <rect x="-15" y="-70" width="30" height="20" rx="4" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
-      <circle cx="-7" cy="-60" r="3" fill="#ffffff"/>
-      <circle cx="7" cy="-60" r="3" fill="#ffffff"/>
-
+      <rect x="-15" y="-55" width="30" height="20" rx="4" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+      <circle cx="-7" cy="-45" r="3" fill="#ffffff"/>
+      <circle cx="7" cy="-45" r="3" fill="#ffffff"/>
       <!-- Wheels -->
-      <circle cx="-15" cy="52" r="5.5" fill="#0b2740"/>
-      <circle cx="15" cy="52" r="5.5" fill="#0b2740"/>
-
-      <!-- Tiny NN -->
-      <circle cx="-18" cy="-20" r="3" fill="#f1f5f9" stroke="#0b2740"/>
-      <circle cx="-18" cy="-7" r="3" fill="#f1f5f9" stroke="#0b2740"/>
-      <circle cx="-18" cy="6" r="3" fill="#f1f5f9" stroke="#0b2740"/>
-      <circle cx="0" cy="-10" r="3" fill="#f1f5f9" stroke="#0b2740"/>
-      <circle cx="0" cy="5" r="3" fill="#f1f5f9" stroke="#0b2740"/>
-      <circle cx="18" cy="-3" r="3" fill="#f1f5f9" stroke="#0b2740"/>
-      <line x1="-15" y1="-20" x2="-2" y2="-10" stroke="#0b2740" stroke-width="0.8"/>
-      <line x1="-15" y1="-20" x2="-2" y2="5" stroke="#0b2740" stroke-width="0.8"/>
-      <line x1="-15" y1="-7" x2="-2" y2="-10" stroke="#0b2740" stroke-width="0.8"/>
-      <line x1="-15" y1="-7" x2="-2" y2="5" stroke="#0b2740" stroke-width="0.8"/>
-      <line x1="-15" y1="6" x2="-2" y2="-10" stroke="#0b2740" stroke-width="0.8"/>
-      <line x1="-15" y1="6" x2="-2" y2="5" stroke="#0b2740" stroke-width="0.8"/>
-      <line x1="2" y1="-10" x2="15" y2="-3" stroke="#0b2740" stroke-width="0.8"/>
-      <line x1="2" y1="5" x2="15" y2="-3" stroke="#0b2740" stroke-width="0.8"/>
-
-      <!-- Policy & Value labels -->
-      <text x="0" y="15" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#f0f9ff">policy π</text>
-      <text x="0" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#f0f9ff">+ value</text>
+      <circle cx="-15" cy="40" r="5" fill="#0b2740"/>
+      <circle cx="15" cy="40" r="5" fill="#0b2740"/>
+      <text x="0" y="70" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">Robot (Agent)</text>
     </g>
 
-    <!-- ============ World Model box ============ -->
-    <rect x="300" y="110" width="180" height="140" rx="12" fill="#dbeafe" stroke="#0b2740" stroke-width="2"/>
-    <text x="390" y="175" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#1e3a8a">World Model</text>
-    <text x="390" y="193" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#1e3a8a">(learned dynamics p̂)</text>
-    <text x="390" y="215" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#1e3a8a">planning / imagination</text>
+    <!-- ========== Environment / World (right) ========== -->
+    <!-- Cloud-like background -->
+    <path d="M600 140 
+             q20 -50 60 -30 
+             q40 -30 80 10 
+             q40 0 40 50 
+             q0 40 -40 50 
+             q-20 40 -80 20 
+             q-50 20 -60 -30 
+             q-40 -10 -40 -50 
+             q0 -30 40 -20 Z"
+          fill="#f1f5f9" stroke="#0b2740" stroke-width="2"/>
 
-    <!-- ============ Environment box ============ -->
-    <rect x="600" y="110" width="220" height="140" rx="12" fill="#e5e7eb" stroke="#0b2740" stroke-width="2"/>
-    <text x="710" y="180" font-family="sans-serif" font-size="15" text-anchor="middle" fill="#1f2937">Environment</text>
+    <!-- Objects inside environment -->
+    <!-- Goal -->
+    <circle cx="675" cy="165" r="10" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
+    <text x="675" y="195" text-anchor="middle" font-size="11" fill="#14532d" font-family="sans-serif">goal</text>
 
-    <!-- Arrows -->
-    <!-- Agent -> World Model -->
-    <line x1="190" y1="140" x2="300" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="245" y="125" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">action</text>
+    <!-- Obstacle -->
+    <rect x="720" y="150" width="25" height="25" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
 
-    <!-- World Model -> Environment -->
-    <line x1="480" y1="140" x2="600" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="540" y="125" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">executed action</text>
+    <!-- Question mark for uncertainty -->
+    <text x="755" y="140" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#0b2740" font-weight="bold">?</text>
 
-    <!-- Environment -> Agent (aligned) -->
-    <line x1="600" y1="200" x2="190" y2="200" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="395" y="190" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">state, reward</text>
+    <text x="700" y="250" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1f2937">Environment / World</text>
 
-    <!-- Planning loop (aligned) -->
-    <line x1="300" y1="230" x2="190" y2="230" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4 3"/>
-    <text x="245" y="246" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#0b2740">imagined rollouts</text>
+    <!-- ========== Arrows ========== -->
+    <!-- Action -->
+    <line x1="200" y1="140" x2="580" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="390" y="125" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">action</text>
+
+    <!-- Observation / Reward -->
+    <line x1="580" y1="190" x2="200" y2="190" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="390" y="205" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">observation, reward</text>
 
     <!-- Timeline -->
-    <text x="450" y="340" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
+    <text x="400" y="290" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
       t → t+1 → t+2 → ...
     </text>
+
   </svg>
 </div>
-
 
 
 
