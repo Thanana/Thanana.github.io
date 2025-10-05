@@ -41,14 +41,46 @@
 
 <h1>Reinforcement Learning</h1>
 
-<div style="text-align:center; margin: 15px 0;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Reinforcement_learning_diagram.svg" 
-       alt="Reinforcement Learning Concept Diagram" 
-       style="max-width:90%; height:auto; border:1px solid #ddd; border-radius:8px; padding:4px;">
+<div style="text-align:center; margin: 20px 0;">
+  <svg width="600" height="280" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+    <!-- Agent box -->
+    <rect x="80" y="80" width="150" height="100" rx="10" ry="10" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+    <text x="155" y="135" font-size="16" text-anchor="middle" fill="white" font-family="sans-serif">Agent</text>
+
+    <!-- Environment box -->
+    <rect x="370" y="80" width="150" height="100" rx="10" ry="10" fill="#6b7280" stroke="#0b2740" stroke-width="2"/>
+    <text x="445" y="135" font-size="16" text-anchor="middle" fill="white" font-family="sans-serif">Environment</text>
+
+    <!-- Action arrow -->
+    <line x1="230" y1="130" x2="370" y2="130" stroke="#0b2740" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="300" y="115" font-size="14" text-anchor="middle" font-family="sans-serif">action</text>
+
+    <!-- State & reward arrow -->
+    <line x1="370" y1="150" x2="230" y2="150" stroke="#0b2740" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="300" y="170" font-size="14" text-anchor="middle" font-family="sans-serif">state, reward</text>
+
+    <!-- Arrowhead marker -->
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+              refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
+      </marker>
+    </defs>
+
+    <!-- Episode / time step labels -->
+    <text x="155" y="70" font-size="13" text-anchor="middle" fill="#333" font-family="sans-serif">Policy π(a|s)</text>
+    <text x="445" y="70" font-size="13" text-anchor="middle" fill="#333" font-family="sans-serif">Next state s′, reward r</text>
+
+    <!-- Time step notation -->
+    <text x="300" y="210" font-size="12" text-anchor="middle" fill="#666" font-family="monospace">
+      t → t+1 → t+2 → ...
+    </text>
+  </svg>
+
   <p style="font-size:0.9em; color:#555; margin-top:6px;">
+    Figure: Agent–Environment interaction loop in Reinforcement Learning.
   </p>
 </div>
-
 
 	
 
