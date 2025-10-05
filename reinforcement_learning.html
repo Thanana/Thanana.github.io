@@ -42,7 +42,7 @@
 <h1>Reinforcement Learning</h1>
 
 <div style="text-align:center; margin: 20px 0;">
-  <svg width="640" height="280" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+  <svg width="700" height="300" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
     <defs>
       <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
         <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
@@ -50,11 +50,32 @@
     </defs>
 
     <!-- Agent box -->
-    <rect x="60" y="90" width="160" height="100" rx="12" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
-    <text x="140" y="150" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#ffffff">Agent (Robot)</text>
+    <rect x="60" y="90" width="180" height="120" rx="12" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+    <text x="150" y="110" font-family="sans-serif" font-size="15" text-anchor="middle" fill="#ffffff">Agent (Robot + NN)</text>
 
-    <!-- Simple robot icon inside -->
-    <g transform="translate(90,115)">
+    <!-- Tiny neural network inside agent -->
+    <!-- Input layer -->
+    <circle cx="100" cy="150" r="6" fill="#f1f5f9" stroke="#0b2740"/>
+    <circle cx="100" cy="170" r="6" fill="#f1f5f9" stroke="#0b2740"/>
+    <circle cx="100" cy="190" r="6" fill="#f1f5f9" stroke="#0b2740"/>
+    <!-- Hidden layer -->
+    <circle cx="140" cy="160" r="6" fill="#f1f5f9" stroke="#0b2740"/>
+    <circle cx="140" cy="180" r="6" fill="#f1f5f9" stroke="#0b2740"/>
+    <!-- Output layer -->
+    <circle cx="180" cy="170" r="6" fill="#f1f5f9" stroke="#0b2740"/>
+
+    <!-- Connections -->
+    <line x1="106" y1="150" x2="134" y2="160" stroke="#0b2740" stroke-width="1"/>
+    <line x1="106" y1="150" x2="134" y2="180" stroke="#0b2740" stroke-width="1"/>
+    <line x1="106" y1="170" x2="134" y2="160" stroke="#0b2740" stroke-width="1"/>
+    <line x1="106" y1="170" x2="134" y2="180" stroke="#0b2740" stroke-width="1"/>
+    <line x1="106" y1="190" x2="134" y2="160" stroke="#0b2740" stroke-width="1"/>
+    <line x1="106" y1="190" x2="134" y2="180" stroke="#0b2740" stroke-width="1"/>
+    <line x1="146" y1="160" x2="174" y2="170" stroke="#0b2740" stroke-width="1"/>
+    <line x1="146" y1="180" x2="174" y2="170" stroke="#0b2740" stroke-width="1"/>
+
+    <!-- Simple robot icon (top left inside agent) -->
+    <g transform="translate(75,120) scale(0.9)">
       <rect x="0" y="35" width="20" height="10" fill="#0b2740"/>
       <circle cx="10" cy="30" r="6" fill="#0b2740"/>
       <rect x="8" y="10" width="4" height="20" fill="#0b2740"/>
@@ -62,26 +83,27 @@
     </g>
 
     <!-- Environment box -->
-    <rect x="420" y="90" width="160" height="100" rx="12" fill="#e5e7eb" stroke="#0b2740" stroke-width="2"/>
-    <text x="500" y="115" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#1f2937">Environment</text>
+    <rect x="460" y="90" width="180" height="120" rx="12" fill="#e5e7eb" stroke="#0b2740" stroke-width="2"/>
+    <text x="550" y="110" font-family="sans-serif" font-size="15" text-anchor="middle" fill="#1f2937">Environment</text>
 
     <!-- Table and object inside -->
-    <rect x="450" y="170" width="100" height="10" rx="2" fill="#94a3b8"/>
-    <rect x="485" y="145" width="30" height="25" rx="4" fill="#f59e0b" stroke="#0b2740"/>
+    <rect x="495" y="180" width="100" height="10" rx="2" fill="#94a3b8"/>
+    <rect x="530" y="155" width="30" height="25" rx="4" fill="#f59e0b" stroke="#0b2740"/>
 
     <!-- Arrows -->
-    <line x1="220" y1="140" x2="420" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="320" y="130" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#0b2740">action</text>
+    <line x1="240" y1="150" x2="460" y2="150" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="350" y="138" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#0b2740">action</text>
 
-    <line x1="420" y1="160" x2="220" y2="160" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="320" y="180" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#0b2740">observation, reward</text>
+    <line x1="460" y1="170" x2="240" y2="170" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="350" y="190" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#0b2740">observation, reward</text>
 
     <!-- Episode timeline -->
-    <text x="320" y="240" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
+    <text x="350" y="260" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
       t → t+1 → t+2 → ...
     </text>
   </svg>
 </div>
+
 
 
 	
