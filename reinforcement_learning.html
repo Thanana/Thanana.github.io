@@ -64,7 +64,7 @@
       <circle cx="-15" cy="52" r="5.5" fill="#0b2740"/>
       <circle cx="15" cy="52" r="5.5" fill="#0b2740"/>
 
-      <!-- Tiny NN inside -->
+      <!-- Tiny NN -->
       <circle cx="-18" cy="-20" r="3" fill="#f1f5f9" stroke="#0b2740"/>
       <circle cx="-18" cy="-7" r="3" fill="#f1f5f9" stroke="#0b2740"/>
       <circle cx="-18" cy="6" r="3" fill="#f1f5f9" stroke="#0b2740"/>
@@ -89,8 +89,6 @@
     <rect x="300" y="110" width="180" height="140" rx="12" fill="#dbeafe" stroke="#0b2740" stroke-width="2"/>
     <text x="390" y="175" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#1e3a8a">World Model</text>
     <text x="390" y="193" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#1e3a8a">(learned dynamics p̂)</text>
-
-    <!-- Model internal label -->
     <text x="390" y="215" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#1e3a8a">planning / imagination</text>
 
     <!-- ============ Environment box ============ -->
@@ -106,13 +104,13 @@
     <line x1="480" y1="140" x2="600" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
     <text x="540" y="125" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">executed action</text>
 
-    <!-- Environment -> Agent -->
-    <line x1="600" y1="205" x2="190" y2="205" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="390" y="220" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">state, reward</text>
+    <!-- Environment -> Agent (aligned) -->
+    <line x1="600" y1="200" x2="190" y2="200" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="395" y="190" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">state, reward</text>
 
-    <!-- Planning loop (World Model -> Agent) -->
-    <line x1="300" y1="205" x2="190" y2="205" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4 3"/>
-    <text x="245" y="235" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#0b2740">imagined rollouts</text>
+    <!-- Planning loop (aligned) -->
+    <line x1="300" y1="230" x2="190" y2="230" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4 3"/>
+    <text x="245" y="246" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#0b2740">imagined rollouts</text>
 
     <!-- Timeline -->
     <text x="450" y="340" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
@@ -120,6 +118,7 @@
     </text>
   </svg>
 </div>
+
 
 
 
