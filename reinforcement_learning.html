@@ -43,13 +43,65 @@
 
 
 
+<div style="text-align:center; margin: 20px 0;">
+  <svg width="800" height="320" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
 
-<div style="text-align:center; margin: 1em 0;">
-  <!-- Begin Drone POMDP Figure -->
-  <svg width="900" height="300" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
-    … (the full SVG code here) …
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
+      </marker>
+    </defs>
+
+    <!-- ========== Robot Agent (left) ========== -->
+    <g transform="translate(120,160)">
+      <!-- Body -->
+      <rect x="-25" y="-35" width="50" height="70" rx="10" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+      <!-- Head -->
+      <rect x="-15" y="-55" width="30" height="20" rx="4" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+      <circle cx="-7" cy="-45" r="3" fill="#ffffff"/>
+      <circle cx="7" cy="-45" r="3" fill="#ffffff"/>
+      <!-- Wheels -->
+      <circle cx="-15" cy="40" r="5" fill="#0b2740"/>
+      <circle cx="15" cy="40" r="5" fill="#0b2740"/>
+      <text x="0" y="70" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">Robot (Agent)</text>
+    </g>
+
+    <!-- ========== Environment / World (right) ========== -->
+    <path d="M600 140 
+             q20 -50 60 -30 
+             q40 -30 80 10 
+             q40 0 40 50 
+             q0 40 -40 50 
+             q-20 40 -80 20 
+             q-50 20 -60 -30 
+             q-40 -10 -40 -50 
+             q0 -30 40 -20 Z"
+          fill="#f1f5f9" stroke="#0b2740" stroke-width="2"/>
+
+    <!-- Goal -->
+    <circle cx="675" cy="165" r="10" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
+    <text x="675" y="195" text-anchor="middle" font-size="11" fill="#14532d" font-family="sans-serif">goal</text>
+
+    <!-- Obstacle -->
+    <rect x="720" y="150" width="25" height="25" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
+
+    <!-- Uncertainty -->
+    <text x="755" y="140" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#0b2740" font-weight="bold">?</text>
+
+    <text x="700" y="250" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1f2937">Environment / World</text>
+
+    <!-- Arrows -->
+    <line x1="200" y1="140" x2="580" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="390" y="125" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">action</text>
+
+    <line x1="580" y1="190" x2="200" y2="190" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="390" y="205" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">observation, reward</text>
+
+    <text x="400" y="290" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
+      t → t+1 → t+2 → ...
+    </text>
+
   </svg>
-  <!-- End Drone POMDP Figure -->
 </div>
 
 	
