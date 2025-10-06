@@ -42,73 +42,97 @@
 <h1>Reinforcement Learning</h1>
 
 <div style="text-align:center; margin: 20px 0;">
-  <svg width="800" height="320" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+  <svg width="850" height="500" viewBox="0 0 850 500" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
 
     <defs>
       <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
         <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
       </marker>
+      <linearGradient id="coneGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#fff3c4" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#fff3c4" stop-opacity="0.05"/>
+      </linearGradient>
     </defs>
 
-    <!-- ========== Drone Agent (left) ========== -->
-    <g transform="translate(120,160)">
-      <!-- Drone body -->
+    <!-- ========== Drones (4 agents stacked) ========== -->
+    <!-- We'll vertically stack at y=100, 200, 300, 400 -->
+    <!-- Drone drawing as a reusable group -->
+    <g id="drone">
       <rect x="-18" y="-10" width="36" height="20" rx="6" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
-      <!-- Head / camera -->
       <rect x="-10" y="-22" width="20" height="12" rx="3" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
       <circle cx="-4" cy="-16" r="2.7" fill="white"/>
       <circle cx="4" cy="-16" r="2.7" fill="white"/>
-      <!-- Arms -->
       <line x1="-26" y1="-10" x2="26" y2="-10" stroke="#0b2740" stroke-width="2"/>
-      <!-- Rotors -->
       <line x1="-34" y1="-16" x2="-18" y2="-16" stroke="#0b2740" stroke-width="3"/>
       <line x1="18" y1="-16" x2="34" y2="-16" stroke="#0b2740" stroke-width="3"/>
-      <!-- Landing legs -->
       <line x1="-12" y1="10" x2="-12" y2="16" stroke="#0b2740" stroke-width="2"/>
       <line x1="12" y1="10" x2="12" y2="16" stroke="#0b2740" stroke-width="2"/>
       <line x1="-14" y1="16" x2="14" y2="16" stroke="#0b2740" stroke-width="2"/>
-      <text x="0" y="40" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">Drone (Agent)</text>
     </g>
 
+    <!-- Place drones + cones -->
+    <g transform="translate(120,100)">
+      <use href="#drone"/>
+      <polygon points="0,0 280,20 280,-20" fill="url(#coneGrad)" stroke="#fbbf24" stroke-width="1.5" opacity="0.9"/>
+    </g>
+    <g transform="translate(120,200)">
+      <use href="#drone"/>
+      <polygon points="0,0 280,20 280,-20" fill="url(#coneGrad)" stroke="#fbbf24" stroke-width="1.5" opacity="0.9"/>
+    </g>
+    <g transform="translate(120,300)">
+      <use href="#drone"/>
+      <polygon points="0,0 280,20 280,-20" fill="url(#coneGrad)" stroke="#fbbf24" stroke-width="1.5" opacity="0.9"/>
+    </g>
+    <g transform="translate(120,400)">
+      <use href="#drone"/>
+      <polygon points="0,0 280,20 280,-20" fill="url(#coneGrad)" stroke="#fbbf24" stroke-width="1.5" opacity="0.9"/>
+    </g>
+
+    <!-- Labels -->
+    <text x="120" y="460" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">Multiple Drone Agents</text>
+
     <!-- ========== Environment / World (right) ========== -->
-    <path d="M600 140 
-             q20 -50 60 -30 
+    <path d="M600 250 
+             q20 -80 60 -50 
              q40 -30 80 10 
-             q40 0 40 50 
-             q0 40 -40 50 
-             q-20 40 -80 20 
-             q-50 20 -60 -30 
-             q-40 -10 -40 -50 
-             q0 -30 40 -20 Z"
+             q40 0 40 80 
+             q0 60 -40 70 
+             q-20 50 -80 30 
+             q-50 20 -60 -40 
+             q-40 -20 -40 -70 
+             q0 -40 40 -30 Z"
           fill="#f1f5f9" stroke="#0b2740" stroke-width="2"/>
 
     <!-- Goal -->
-    <circle cx="675" cy="165" r="10" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
-    <text x="675" y="195" text-anchor="middle" font-size="11" fill="#14532d" font-family="sans-serif">goal</text>
+    <circle cx="675" cy="270" r="12" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
+    <text x="675" y="300" text-anchor="middle" font-size="11" fill="#14532d" font-family="sans-serif">goal</text>
 
     <!-- Obstacle -->
-    <rect x="720" y="150" width="25" height="25" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
+    <rect x="720" y="250" width="30" height="30" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
 
     <!-- Uncertainty -->
-    <text x="755" y="140" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#0b2740" font-weight="bold">?</text>
+    <text x="760" y="220" text-anchor="middle" font-family="sans-serif" font-size="32" fill="#0b2740" font-weight="bold">?</text>
 
-    <text x="700" y="250" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1f2937">Environment / World</text>
+    <text x="700" y="420" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1f2937">Environment / World</text>
 
-    <!-- Arrows -->
-    <line x1="200" y1="140" x2="580" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="390" y="125" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">action</text>
+    <!-- Arrows (actions from each drone) -->
+    <line x1="200" y1="100" x2="580" y2="250" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="200" y1="200" x2="580" y2="250" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="200" y1="300" x2="580" y2="250" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="200" y1="400" x2="580" y2="250" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="370" y="80" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">actions</text>
 
-    <line x1="580" y1="190" x2="200" y2="190" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="390" y="205" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">observation, reward</text>
+    <!-- Shared observation/reward back -->
+    <line x1="580" y1="300" x2="200" y2="300" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="390" y="320" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">observations, rewards</text>
 
     <!-- Timeline -->
-    <text x="400" y="290" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
+    <text x="420" y="480" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
       t → t+1 → t+2 → ...
     </text>
 
   </svg>
 </div>
-
 	
 
 
