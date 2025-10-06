@@ -41,70 +41,84 @@
 
 <h1>Reinforcement Learning</h1>
 
-<div style="text-align:center; margin: 20px 0;">
-  <svg width="800" height="320" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+<!-- Save as: figs/drone_pomdp_example.svg -->
 
-    <defs>
-      <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-        <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
-      </marker>
-    </defs>
 
-    <!-- ========== Robot Agent (left) ========== -->
-    <g transform="translate(120,160)">
-      <!-- Body -->
-      <rect x="-25" y="-35" width="50" height="70" rx="10" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
-      <!-- Head -->
-      <rect x="-15" y="-55" width="30" height="20" rx="4" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
-      <circle cx="-7" cy="-45" r="3" fill="#ffffff"/>
-      <circle cx="7" cy="-45" r="3" fill="#ffffff"/>
-      <!-- Wheels -->
-      <circle cx="-15" cy="40" r="5" fill="#0b2740"/>
-      <circle cx="15" cy="40" r="5" fill="#0b2740"/>
-      <text x="0" y="70" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">Robot (Agent)</text>
-    </g>
+<div 
+	
+	<svg width="900" height="300" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- light yellow cone -->
+    <linearGradient id="coneGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fff3c4" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#fff3c4" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
 
-    <!-- ========== Environment / World (right) ========== -->
-    <!-- Cloud-like background -->
-    <path d="M600 140 
-             q20 -50 60 -30 
-             q40 -30 80 10 
-             q40 0 40 50 
-             q0 40 -40 50 
-             q-20 40 -80 20 
-             q-50 20 -60 -30 
-             q-40 -10 -40 -50 
-             q0 -30 40 -20 Z"
-          fill="#f1f5f9" stroke="#0b2740" stroke-width="2"/>
+  <!-- Title (optional) -->
+  <!-- <text x="450" y="26" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#0b2740">Drone navigation as a POMDP</text> -->
 
-    <!-- Objects inside environment -->
-    <!-- Goal -->
-    <circle cx="675" cy="165" r="10" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
-    <text x="675" y="195" text-anchor="middle" font-size="11" fill="#14532d" font-family="sans-serif">goal</text>
+  <!-- Ground baseline -->
+  <line x1="40" y1="240" x2="860" y2="240" stroke="#cbd5e1" stroke-width="2"/>
 
-    <!-- Obstacle -->
-    <rect x="720" y="150" width="25" height="25" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
+  <!-- ============ Drone (cartoon) ============ -->
+  <g transform="translate(120,140)">
+    <!-- Body -->
+    <rect x="-20" y="-10" width="40" height="20" rx="6" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+    <!-- Head/camera -->
+    <rect x="-10" y="-22" width="20" height="12" rx="3" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+    <circle cx="-4" cy="-16" r="2.7" fill="white"/>
+    <circle cx="4" cy="-16" r="2.7" fill="white"/>
+    <!-- Arms -->
+    <line x1="-28" y1="-10" x2="28" y2="-10" stroke="#0b2740" stroke-width="2"/>
+    <!-- Rotors -->
+    <line x1="-36" y1="-16" x2="-20" y2="-16" stroke="#0b2740" stroke-width="3"/>
+    <line x1="20" y1="-16" x2="36" y2="-16" stroke="#0b2740" stroke-width="3"/>
+    <!-- Feet -->
+    <line x1="-14" y1="10" x2="-14" y2="16" stroke="#0b2740" stroke-width="2"/>
+    <line x1="14" y1="10" x2="14" y2="16" stroke="#0b2740" stroke-width="2"/>
+    <line x1="-18" y1="16" x2="18" y2="16" stroke="#0b2740" stroke-width="2"/>
+  </g>
 
-    <!-- Question mark for uncertainty -->
-    <text x="755" y="140" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#0b2740" font-weight="bold">?</text>
+  <!-- ============ Narrow Observation Cone ============ -->
+  <!-- Apex near drone nose (x~140,y~118); narrow cone forward -->
+  <polygon points="140,118 420,135 420,101" fill="url(#coneGrad)" stroke="#fbbf24" stroke-width="1.5" opacity="0.9"/>
 
-    <text x="700" y="250" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#1f2937">Environment / World</text>
+  <!-- ============ Obstacles (simple rectangles) ============ -->
+  <rect x="470" y="195" width="40" height="45" fill="#94a3b8" stroke="#0b2740" stroke-width="2"/>
+  <rect x="540" y="180" width="30" height="60" fill="#94a3b8" stroke="#0b2740" stroke-width="2"/>
+  <rect x="610" y="200" width="35" height="40" fill="#94a3b8" stroke="#0b2740" stroke-width="2"/>
 
-    <!-- ========== Arrows ========== -->
-    <!-- Action -->
-    <line x1="200" y1="140" x2="580" y2="140" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="390" y="125" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">action</text>
+  <!-- ============ Goal flag ============ -->
+  <g transform="translate(800,240)">
+    <line x1="0" y1="0" x2="0" y2="-60" stroke="#0b2740" stroke-width="3"/>
+    <path d="M0,-60 L28,-50 L0,-40 Z" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
+    <text x="-6" y="18" font-family="sans-serif" font-size="12" fill="#14532d">goal</text>
+  </g>
 
-    <!-- Observation / Reward -->
-    <line x1="580" y1="190" x2="200" y2="190" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="390" y="205" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#0b2740">observation, reward</text>
+  <!-- ============ Unobserved uncertainty (question marks) ============ -->
+  <text x="500" y="110" font-family="sans-serif" font-weight="bold" font-size="28" fill="#0b2740">?</text>
+  <text x="565" y="95" font-family="sans-serif" font-weight="bold" font-size="28" fill="#0b2740">?</text>
+  <text x="635" y="120" font-family="sans-serif" font-weight="bold" font-size="28" fill="#0b2740">?</text>
 
-    <!-- Timeline -->
-    <text x="400" y="290" font-family="monospace" font-size="13" text-anchor="middle" fill="#666">
-      t → t+1 → t+2 → ...
-    </text>
+  <!-- ============ Labels ============ -->
+  <text x="120" y="265" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">Drone (agent)</text>
+  <text x="770" y="265" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">Environment with uncertainty</text>
 
-  </svg>
+  <!-- ============ Action / Observation arrows ============ -->
+  <!-- Action (right) -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
+    </marker>
+  </defs>
+  <line x1="200" y1="130" x2="440" y2="130" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="118" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">action</text>
+
+  <!-- Observation + reward (left) -->
+  <line x1="720" y1="170" x2="220" y2="170" stroke="#0b2740" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="470" y="185" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#0b2740">observation, reward</text>
+</svg>
 </div>
 
 
