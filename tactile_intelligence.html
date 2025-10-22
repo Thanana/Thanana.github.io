@@ -18,6 +18,18 @@ MathJax.Hub.Config({
 </script>
 <!-- End MathJax -->
 
+<style>
+  /* Inline style for light TU Delft visual harmony */
+  body { background-color: #fafafa; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  h1 { color: #003366; letter-spacing: 0.5px; }
+  h2 { color: #003366; margin-top: 30px; }
+  p { text-align: justify; line-height: 1.6; }
+  ul { line-height: 1.6; }
+  img { display: block; margin: 20px auto; border-radius: 6px; box-shadow: 0px 0px 8px rgba(0,0,0,0.1); }
+  #quote { color: #00A6D6; font-style: italic; text-align: center; font-weight: normal; margin-top: 10px; }
+  #footer { margin-top: 40px; }
+</style>
+
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
@@ -27,7 +39,7 @@ MathJax.Hub.Config({
     <div class="menu-category">Thanana</div>
     <div class="menu-item"><a href="index.html">Home</a></div>
     <div class="menu-item"><a href="Biography.html">Biography</a></div>
-    <div class="menu-item"><a href="Publication.html">Publication</a></div> 
+    <div class="menu-item"><a href="Publication.html">Publication</a></div>
 
     <div class="menu-category">Research</div>
     <div class="menu-item"><a href="tactile_intelligence.html" class="current">Tactile&nbsp;Intelligence</a></div>
@@ -44,57 +56,58 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
   </td>
 
-
-
-  
   <!-- Main content -->
   <td id="layout-content">
     <div id="toptitle">
-    <h1>Tactile Intelligence Loop</h1>
-       <h2 style="color:#00A6D6; font-style:italic; text-align:center; font-weight:normal; margin-top:10px;">
-    “To touch is to understand — robots that learn as they feel.”
-  </h2>
-       </div>
-   
-    <p>Modern robots struggle with contact-rich tasks because friction, slip, and occlusion create uncertainty at the interface.
+      <h1>Tactile Intelligence Loop</h1>
+      <h2 id="quote">“To touch is to understand — robots that learn as they feel.”</h2>
+    </div>
+
+    <p>
+      Modern robots struggle with contact-rich tasks because friction, slip, and occlusion create uncertainty at the interface.
+      The <strong>Tactile Intelligence Loop</strong> envisions a unified tactile-feedback architecture 
+      where sensing, inference, and control form a continuous cycle of understanding through touch.
     </p>
 
-    <img src="tactile_intelligence_loop.png" width="480" alt="Tactile Intelligence Loop diagram" />
+    <img src="tactile_intelligence_loop.png" width="600" alt="Tactile Intelligence Loop diagram" />
     <p style="font-size:0.9em; color:#666; text-align:center;">
-</p>
+      <em>Figure — Closed tactile feedback loop bridging tactile sensing, latent state inference, and uncertainty-aware RL–MPC control.</em>
+    </p>
 
-<h2>Motivation</h2>
-<p>
-I am deeply motivated by the challenge of endowing robots with the ability to <strong>feel, adapt, and decide</strong> through tactile interaction. 
-My long-term vision is to bridge <em>tactile sensing</em> with <em>policy optimization and model-based control</em>—so that robots can interact with the physical world as gracefully as humans do. 
+    <h2>Motivation</h2>
+    <p>
+      I am deeply motivated by the challenge of endowing robots with the ability to <strong>feel, adapt, and decide</strong> through tactile interaction. 
+      My long-term vision is to bridge <em>tactile sensing</em> with <em>policy optimization and model-based control</em>—
+      enabling robots to interact with the physical world as gracefully as humans do.
+    </p>
 
-</p>
+    <p>
+      Building upon my prior research in <strong>robust, adaptive, and Bayesian model predictive control</strong> integrated with reinforcement learning,
+      I aim to transform compliance from a mechanical property into an <strong>intelligent principle of adaptation</strong>. 
+      I aspire to advance this concept into a <em>closed tactile intelligence loop</em>—linking tactile perception, stochastic state inference,
+      and uncertainty-aware control—to enable dexterous, human-compatible manipulation.
+    </p>
 
-<p>
-Building upon my prior research in <strong>robust, adaptive, and Bayesian model predictive control</strong> integrated with reinforcement learning, 
-I aim to transform compliance from a mechanical property into an <strong>intelligent principle of adaptation</strong>. 
-I aspire to advance this concept into a <em>closed tactile intelligence loop</em>—linking tactile perception, stochastic state inference, 
-and uncertainty-aware control—to enable dexterous, human-compatible manipulation.
-</p>
-
-<p>
-This pursuit reflects my broader philosophy of <em>“compliant intelligence”</em>: the idea that robots should not resist uncertainty, but yield and learn from it. 
-By merging the physics of touch with the mathematics of control and learning--- mission toward safe, intelligent, 
-and interactive robotic systems.
-</p>
-
+    <p>
+      This pursuit reflects my broader philosophy of <em>compliant intelligence</em>—the idea that robots should not resist uncertainty,
+      but yield and learn from it. By merging the physics of touch with the mathematics of control and learning,
+      we move toward safe, intelligent, and interactive robotic systems.
+    </p>
 
     <h2>Core Ideas</h2>
     <ul>
-      <li><b>Latent tactile state</b>: deep stochastic state-space models capturing uncertainty and temporal correlation.</li>
-      <li><b>Policy optimization</b>: reinforcement learning for long-term adaptation, MPC for constraint satisfaction.</li>
-      <li><b>Bidirectional touch</b>: surface haptics to actively modulate fingertip friction as both sensing and communication.</li>
+      <li><strong>Latent tactile state:</strong> deep stochastic state-space models capturing uncertainty and temporal correlation.</li>
+      <li><strong>Policy optimization:</strong> reinforcement learning for long-term adaptation, MPC for constraint satisfaction.</li>
+      <li><strong>Bidirectional touch:</strong> surface haptics to actively modulate fingertip friction as both sensing and communication.</li>
     </ul>
 
     <h2>Objective</h2>
-    <p>Develop robots that “yield to uncertainty” while maintaining stability, safety, and dexterity—advancing tactile robotics for human-compatible manipulation.</p>
+    <p>
+      Develop robots that <em>yield to uncertainty</em> while maintaining stability, safety, and dexterity—advancing tactile robotics 
+      for human-compatible manipulation.
+    </p>
 
-    <p><a href="index.html">&larr; Back to Home</a></p>
+    <p style="text-align:center;"><a href="index.html" style="color:#003366;">&larr; Back to Home</a></p>
 
     <div id="footer">
       <div id="footer-text">
