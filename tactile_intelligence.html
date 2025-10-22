@@ -15,13 +15,14 @@ MathJax.Hub.Config({
 });
 </script>
 
-<!-- TU Delft–style aesthetic -->
+<!-- TU Delft–style + integrated background -->
 <style>
 /* -------------------------------
    TU Delft–style visual harmony
 --------------------------------*/
 body {
-  background: linear-gradient(180deg, #ffffff 0%, #f6f9fb 100%);
+  position: relative;
+  background: #ffffff;
   color: #1a1a1a;
   font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.75;
@@ -29,6 +30,20 @@ body {
   padding: 0 10%;
   font-size: 16px;
   animation: fadeIn 0.8s ease-in;
+  overflow-x: hidden;
+}
+
+/* background watermark overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('tactile_intelligence_loop.png') center center / cover no-repeat;
+  opacity: 0.12; /* adjust visibility 0.1–0.25 */
+  z-index: -1;
 }
 
 @keyframes fadeIn {
@@ -78,7 +93,7 @@ ul li strong {
   color: #004c8c;
 }
 
-/* Image styling */
+/* Image styling (optional small diagrams) */
 img {
   display: block;
   margin: 40px auto 20px auto;
@@ -142,9 +157,8 @@ a[href="index.html"]:hover {
   form a continuous cycle — allowing robots to learn and reason through the act of touch itself.
 </p>
 
-<img src="tactile_intelligence_loop.png" width="400" alt="Tactile Intelligence Loop diagram" />
 <p style="font-size:0.9em; color:#666; text-align:center;">
-  <em>Figure — Closed tactile feedback loop integrating tactile sensing, latent state inference, and uncertainty-aware RL–MPC control.</em>
+  <em>Background watermark — Closed tactile feedback loop integrating tactile sensing, latent state inference, and uncertainty-aware RL–MPC control.</em>
 </p>
 
 <h2>Motivation</h2>
