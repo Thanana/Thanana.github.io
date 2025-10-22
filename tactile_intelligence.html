@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -6,52 +5,74 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Motivation</title>
+<title>Tactile Intelligence Loop</title>
+
 <!-- MathJax -->
-	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-	</script>
-	<script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-	  TeX: { equationNumbers: { autoNumber: "AMS" } }
-	});
-	</script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
 <!-- End MathJax -->
+
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
 <tr valign="top">
-<td id="layout-menu">
-<div class="menu-category">Thanana</div>
-<div class="menu-item"><a href="index.html">Home</a></div>
-<div class="menu-item"><a href="Biography.html">Biography</a></div>
-<div class="menu-item"><a href="Publication.html">Publication</a></div> 
-<div class="menu-category">Research</div>
-  <div class="menu-item"><a href="tactile_intelligence.html">tactile&nbsp;intelligence</a></div>
-<div class="menu-item"><a href="nonlinear.html">Unstable&nbsp;systems</a></div>
-<div class="menu-item"><a href="nonholonomic.html">Holonomic</a></div>
-<div class="menu-item"><a href="Cyber.html">Data-driven control</a></div>
-<div class="menu-item"><a href="large-scale.html">Large-scale system</a></div>
-<div class="menu-category">Teaching</div>
-	<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement Learning</a></div>
-<div class="menu-category">Software</div>
-<div class="menu-item"><a href="robotics.html">Robotics</a></div>
-<div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
-<div id="layout-content">
-<h1>Tactile Intelligence Loop</h1>
-<p><em>Uncertainty-aware tactile perception + Bayesian/Deep MPC for dexterous manipulation</em></p>
+  <!-- Left navigation menu -->
+  <td id="layout-menu">
+    <div class="menu-category">Thanana</div>
+    <div class="menu-item"><a href="index.html">Home</a></div>
+    <div class="menu-item"><a href="Biography.html">Biography</a></div>
+    <div class="menu-item"><a href="Publication.html">Publication</a></div> 
 
-<p>Modern robots struggle with contact-rich tasks because friction, slip, and occlusion create uncertainty at the interface.</p>
-<p><strong>Tactile Intelligence Loop</strong> is my research vision: closing the loop from tactile sensing → latent stochastic modeling → uncertainty-aware control.</p>
+    <div class="menu-category">Research</div>
+    <div class="menu-item"><a href="tactile_intelligence.html" class="current">Tactile&nbsp;Intelligence</a></div>
+    <div class="menu-item"><a href="nonlinear.html">Unstable&nbsp;Systems</a></div>
+    <div class="menu-item"><a href="nonholonomic.html">Holonomic</a></div>
+    <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+    <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
 
-<img src="img/tactile_intelligence_loop.png" width="780">
+    <div class="menu-category">Teaching</div>
+    <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
 
-<div id="footer">
-<div id="footer-text">
-Page generated 2022-06-05 05:16:31 GMT, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.  
-</div>
-</div>
-</td>
+    <div class="menu-category">Software</div>
+    <div class="menu-item"><a href="robotics.html">Robotics</a></div>
+    <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+  </td>
+
+  <!-- Main content -->
+  <td id="layout-content">
+    <h1>Tactile Intelligence Loop</h1>
+    <p><em>Uncertainty-aware tactile perception + Bayesian/Deep MPC for dexterous manipulation</em></p>
+
+    <p>Modern robots struggle with contact-rich tasks because friction, slip, and occlusion create uncertainty at the interface.
+    <strong>Tactile Intelligence Loop</strong> is my research vision: closing the loop from <em>tactile sensing</em> → 
+    <em>latent stochastic modeling</em> → <em>uncertainty-aware control</em>.</p>
+
+    <img src="img/tactile_intelligence_loop.png" width="780" alt="Tactile Intelligence Loop diagram" />
+
+    <h3>Core Ideas</h3>
+    <ul>
+      <li><b>Latent tactile state</b>: deep stochastic state-space models capturing uncertainty and temporal correlation.</li>
+      <li><b>Policy optimization</b>: reinforcement learning for long-term adaptation, MPC for constraint satisfaction.</li>
+      <li><b>Bidirectional touch</b>: surface haptics to actively modulate fingertip friction as both sensing and communication.</li>
+    </ul>
+
+    <h3>Objective</h3>
+    <p>Develop robots that “yield to uncertainty” while maintaining stability, safety, and dexterity—advancing tactile robotics for human-compatible manipulation.</p>
+
+    <p><a href="index.html">&larr; Back to Home</a></p>
+
+    <div id="footer">
+      <div id="footer-text">
+        Page generated by <a href="https://github.com/wsshin/jemdoc_mathjax" target="_blank">jemdoc+MathJax</a>.
+      </div>
+    </div>
+  </td>
 </tr>
 </table>
 </body>
