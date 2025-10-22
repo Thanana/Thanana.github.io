@@ -21,23 +21,15 @@ MathJax.Hub.Config({
    TU Delft–style visual harmony
 --------------------------------*/
 body {
-  /* Make the tactile diagram background fill the page */
-  background-image: url('tactile_intelligence_loop.png');  /* your file name */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;     /* ensures full-page coverage */
-  background-position: center;
-  
-  /* Keep your text style */
-  color: #222;
-  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.7;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9fb 100%);
+  color: #1a1a1a;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.75;
   margin: 0;
-  padding: 0;
+  padding: 0 10%;
+  font-size: 16px;
+  animation: fadeIn 0.8s ease-in;
 }
-
-
-
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -150,11 +142,10 @@ a[href="index.html"]:hover {
   form a continuous cycle — allowing robots to learn and reason through the act of touch itself.
 </p>
 
-
-
-  
-<!-- Remove this, since it’s now the background -->
-<!-- <img src="tactile_intelligence_loop.png" width="400" alt="Tactile Intelligence Loop diagram" /> -->
+<img src="tactile_intelligence_loop.png" width="400" alt="Tactile Intelligence Loop diagram" />
+<p style="font-size:0.9em; color:#666; text-align:center;">
+  <em>Figure — Closed tactile feedback loop integrating tactile sensing, latent state inference, and uncertainty-aware RL–MPC control.</em>
+</p>
 
 <h2>Motivation</h2>
 <p>
