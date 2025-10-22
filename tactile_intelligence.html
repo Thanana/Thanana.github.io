@@ -1,223 +1,59 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Tactile Intelligence Loop</title>
+<div id="toptitle">
+  <h1>Tactile Intelligence Loop</h1>
+</div>
+<h2 id="quote">“To touch is to understand — robots that learn as they feel.”</h2>
 
-<!-- MathJax -->
-<script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<p>
+  Despite remarkable advances in perception and planning, modern robots still struggle with <em>contact-rich interactions</em>. 
+  Friction, slip, and occlusion introduce uncertainty at the very interface between robot and world. 
+  The <strong>Tactile Intelligence Loop</strong> envisions a unified architecture where <em>sensing, inference, and control</em> 
+  form a continuous cycle — allowing robots to learn and reason through the act of touch itself.
+</p>
 
-<!-- TU Delft white background style -->
-<style>
-body {
-  background-color: #ffffff;           /* pure white background */
-  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #222;
-  line-height: 1.7;
-  margin: 0;
-  padding: 0;
-}
+<img src="tactile_intelligence_loop.png" width="400" alt="Tactile Intelligence Loop diagram" />
+<p style="font-size:0.9em; color:#666; text-align:center;">
+  <em>Figure — Closed tactile feedback loop integrating tactile sensing, latent state inference, and uncertainty-aware RL–MPC control.</em>
+</p>
 
-/* Sidebar */
-#layout-menu {
-  background-color: #ffffff;           /* match main background */
-  border-right: 1px solid #e6e6e6;
-}
-.menu-category {
-  color: #003366;
-  font-weight: 600;
-  margin-top: 12px;
-  margin-bottom: 4px;
-}
-.menu-item a {
-  color: #00407a;
-  text-decoration: none;
-  display: block;
-  padding: 4px 0;
-}
-.menu-item a:hover {
-  color: #00A6D6;
-  background-color: #f2f8fc;
-  border-radius: 4px;
-}
+<h2>Motivation</h2>
+<p>
+  I am driven by the vision of robots that can <strong>feel, adapt, and decide</strong> through tactile experience.  
+  My long-term goal is to bridge <em>tactile sensing</em> with <em>policy learning and model-based control</em>, 
+  enabling robots to interact with their environments as fluidly and intuitively as humans do.
+</p>
 
-/* Main title */
-h1 {
-  color: #003366;
-  border-left: 4px solid #00A6D6;
-  padding-left: 8px;
-  margin-bottom: 0.2em;
-}
+<p>
+  Building upon my research in <strong>robust, adaptive, and Bayesian model predictive control</strong>—augmented by reinforcement learning— 
+  I aim to transform compliance from a passive mechanical property into an <strong>active principle of intelligence</strong>. 
+  This idea evolves into a <em>closed tactile intelligence loop</em>: coupling tactile perception, stochastic state inference, 
+  and uncertainty-aware control to achieve dexterous, human-compatible manipulation.
+</p>
 
-/* Quote line */
-#quote {
-  color: #00A6D6;
-  font-style: italic;
-  text-align: center;
-  font-weight: 400;
-  background-color: #ffffff;  /* ensure white strip */
-  border-top: 1px solid #00A6D6;
-  border-bottom: 1px solid #00A6D6;
-  padding: 6px 0;
-  margin-top: 8px;
-  margin-bottom: 25px;
-}
+<p>
+  This pursuit embodies my broader philosophy of <em>compliant intelligence</em>—that robots should not resist uncertainty, 
+  but rather yield, interpret, and learn from it. By merging the physics of touch with the mathematics of control and learning, 
+  we move closer to robots that are safe, adaptable, and profoundly aware.
+</p>
 
-/* Section headings */
-h2 {
-  color: #003366;
-  margin-top: 30px;
-  border-left: 4px solid #00A6D6;
-  padding-left: 10px;
-}
+<h2>Core Ideas</h2>
+<ul>
+  <li><strong>Latent tactile state:</strong> deep stochastic state-space models capturing uncertainty and temporal structure.</li>
+  <li><strong>Policy optimization:</strong> reinforcement learning for long-term adaptation; MPC for constraint-aware decision-making.</li>
+  <li><strong>Bidirectional touch:</strong> surface haptics to actively modulate fingertip friction—blurring the line between sensing and communication.</li>
+</ul>
 
-/* Paragraphs */
-p {
-  text-align: justify;
-  margin: 10px 0;
-}
+<h2>Objective</h2>
+<p>
+  To develop robots that <em>yield to uncertainty</em> yet remain stable, safe, and dexterous — 
+  advancing tactile robotics toward truly human-compatible interaction.
+</p>
 
-/* Lists */
-ul {
-  line-height: 1.6;
-  margin-left: 25px;
-}
-ul li strong {
-  color: #00407a;
-}
+<p style="text-align:center;">
+  <a href="index.html" style="color:#003366;">&larr; Back to Home</a>
+</p>
 
-/* Images */
-img {
-  display: block;
-  margin: 25px auto;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
-
-/* Figure caption */
-p[style*="font-size:0.9em"] {
-  color: #555 !important;
-  font-style: italic;
-  font-size: 0.9em;
-  text-align: center;
-}
-
-/* Footer */
-#footer {
-  margin-top: 40px;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 10px;
-}
-#footer-text {
-  text-align: center;
-  font-size: 0.85em;
-  color: #888;
-}
-#footer a {
-  color: #00A6D6;
-  text-decoration: none;
-}
-#footer a:hover {
-  text-decoration: underline;
-}
-</style>
-</head>
-
-<body>
-<table summary="Table for page layout." id="tlayout">
-<tr valign="top">
-  <!-- Left navigation -->
-  <td id="layout-menu">
-    <div class="menu-category">Thanana</div>
-    <div class="menu-item"><a href="index.html">Home</a></div>
-    <div class="menu-item"><a href="Biography.html">Biography</a></div>
-    <div class="menu-item"><a href="Publication.html">Publication</a></div>
-
-    <div class="menu-category">Research</div>
-    <div class="menu-item"><a href="tactile_intelligence.html" class="current">Tactile&nbsp;Intelligence</a></div>
-    <div class="menu-item"><a href="nonlinear.html">Unstable&nbsp;Systems</a></div>
-    <div class="menu-item"><a href="nonholonomic.html">Holonomic</a></div>
-    <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
-    <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
-
-    <div class="menu-category">Teaching</div>
-    <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
-
-    <div class="menu-category">Software</div>
-    <div class="menu-item"><a href="robotics.html">Robotics</a></div>
-    <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
-  </td>
-
-  <!-- Main content -->
-  <td id="layout-content">
-    <div id="toptitle">
-      <h1>Tactile Intelligence Loop</h1>
-    </div>
-    <h2 id="quote">“To touch is to understand — robots that learn as they feel.”</h2>
-
-    <p>
-      Modern robots struggle with contact-rich tasks because friction, slip, and occlusion create uncertainty at the interface.
-      The <strong>Tactile Intelligence Loop</strong> envisions a unified tactile-feedback architecture where sensing, inference, and control
-      form a continuous cycle of understanding through touch.
-    </p>
-
-    <img src="tactile_intelligence_loop.png" width="400" alt="Tactile Intelligence Loop diagram" />
-    <p style="font-size:0.9em; color:#666; text-align:center;">
-      <em>Figure — Closed tactile feedback loop bridging tactile sensing, latent state inference, and uncertainty-aware RL–MPC control.</em>
-    </p>
-
-    <h2>Motivation</h2>
-    <p>
-      I am deeply motivated by the challenge of endowing robots with the ability to <strong>feel, adapt, and decide</strong> through tactile interaction.
-      My long-term vision is to bridge <em>tactile sensing</em> with <em>policy optimization and model-based control</em>—
-      enabling robots to interact with the physical world as gracefully as humans do.
-    </p>
-
-    <p>
-      Building upon my prior research in <strong>robust, adaptive, and Bayesian model predictive control</strong> integrated with reinforcement learning,
-      I aim to transform compliance from a mechanical property into an <strong>intelligent principle of adaptation</strong>.
-      I aspire to advance this concept into a <em>closed tactile intelligence loop</em>—linking tactile perception, stochastic state inference,
-      and uncertainty-aware control—to enable dexterous, human-compatible manipulation.
-    </p>
-
-    <p>
-      This pursuit reflects my broader philosophy of <em>compliant intelligence</em>—the idea that robots should not resist uncertainty,
-      but yield and learn from it. By merging the physics of touch with the mathematics of control and learning,
-      we move toward safe, intelligent, and interactive robotic systems.
-    </p>
-
-    <h2>Core Ideas</h2>
-    <ul>
-      <li><strong>Latent tactile state:</strong> deep stochastic state-space models capturing uncertainty and temporal correlation.</li>
-      <li><strong>Policy optimization:</strong> reinforcement learning for long-term adaptation, MPC for constraint satisfaction.</li>
-      <li><strong>Bidirectional touch:</strong> surface haptics to actively modulate fingertip friction as both sensing and communication.</li>
-    </ul>
-
-    <h2>Objective</h2>
-    <p>
-      Develop robots that <em>yield to uncertainty</em> while maintaining stability, safety, and dexterity—advancing tactile robotics
-      for human-compatible manipulation.
-    </p>
-
-    <p style="text-align:center;"><a href="index.html">&larr; Back to Home</a></p>
-
-    <div id="footer">
-      <div id="footer-text">
-        Page generated by <a href="https://github.com/wsshin/jemdoc_mathjax" target="_blank">jemdoc+MathJax</a>.
-      </div>
-    </div>
-  </td>
-</tr>
-</table>
-</body>
-</html>
+<div id="footer">
+  <div id="footer-text">
+    Page generated by <a href="https://github.com/wsshin/jemdoc_mathjax" target="_blank">jemdoc+MathJax</a>.
+  </div>
+</div>
