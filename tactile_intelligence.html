@@ -17,10 +17,10 @@ MathJax.Hub.Config({
 });
 </script>
 
-<!-- Refined TU Delft visual style -->
+<!-- TU Delft white background style -->
 <style>
 body {
-  background-color: #f6f9fb;           /* softer blue-gray background */
+  background-color: #ffffff;           /* pure white background */
   font-family: 'Inter', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #222;
   line-height: 1.7;
@@ -28,11 +28,10 @@ body {
   padding: 0;
 }
 
-/* Sidebar layout */
+/* Sidebar */
 #layout-menu {
-  background-color: #ffffff;
-  border-right: 1px solid #dde7ee;
-  box-shadow: 2px 0 4px rgba(0,0,0,0.04);
+  background-color: #ffffff;           /* match main background */
+  border-right: 1px solid #e6e6e6;
 }
 .menu-category {
   color: #003366;
@@ -48,20 +47,33 @@ body {
 }
 .menu-item a:hover {
   color: #00A6D6;
-  background-color: #eef6fb;
+  background-color: #f2f8fc;
   border-radius: 4px;
 }
 
 /* Main title */
 h1 {
   color: #003366;
-  letter-spacing: 0.5px;
-  border-bottom: 2px solid #00A6D6;
-  padding-bottom: 4px;
-  margin-bottom: 8px;
+  border-left: 4px solid #00A6D6;
+  padding-left: 8px;
+  margin-bottom: 0.2em;
 }
 
-/* Section headers */
+/* Quote line */
+#quote {
+  color: #00A6D6;
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  background-color: #ffffff;  /* ensure white strip */
+  border-top: 1px solid #00A6D6;
+  border-bottom: 1px solid #00A6D6;
+  padding: 6px 0;
+  margin-top: 8px;
+  margin-bottom: 25px;
+}
+
+/* Section headings */
 h2 {
   color: #003366;
   margin-top: 30px;
@@ -69,20 +81,10 @@ h2 {
   padding-left: 10px;
 }
 
-/* Quotes and paragraphs */
-#quote {
-  color: #00A6D6;
-  font-style: italic;
-  text-align: center;
-  font-weight: 400;
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
+/* Paragraphs */
 p {
   text-align: justify;
-  line-height: 1.65;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin: 10px 0;
 }
 
 /* Lists */
@@ -94,37 +96,32 @@ ul li strong {
   color: #00407a;
 }
 
-/* Images (figures) */
+/* Images */
 img {
   display: block;
   margin: 25px auto;
   border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 /* Figure caption */
 p[style*="font-size:0.9em"] {
-  font-size: 0.9em !important;
   color: #555 !important;
+  font-style: italic;
+  font-size: 0.9em;
   text-align: center;
-  margin-top: -10px;
 }
 
 /* Footer */
 #footer {
   margin-top: 40px;
-  border-top: 1px solid #dde7ee;
+  border-top: 1px solid #e0e0e0;
   padding-top: 10px;
 }
 #footer-text {
-  font-size: 0.85em;
-  color: #777;
   text-align: center;
+  font-size: 0.85em;
+  color: #888;
 }
 #footer a {
   color: #00A6D6;
@@ -133,24 +130,13 @@ p[style*="font-size:0.9em"] {
 #footer a:hover {
   text-decoration: underline;
 }
-
-/* Back to home link */
-a[href="index.html"] {
-  color: #003366;
-  text-decoration: none;
-  font-weight: 500;
-}
-a[href="index.html"]:hover {
-  color: #00A6D6;
-  text-decoration: underline;
-}
 </style>
 </head>
 
 <body>
 <table summary="Table for page layout." id="tlayout">
 <tr valign="top">
-  <!-- Left navigation menu -->
+  <!-- Left navigation -->
   <td id="layout-menu">
     <div class="menu-category">Thanana</div>
     <div class="menu-item"><a href="index.html">Home</a></div>
@@ -181,8 +167,8 @@ a[href="index.html"]:hover {
 
     <p>
       Modern robots struggle with contact-rich tasks because friction, slip, and occlusion create uncertainty at the interface.
-      The <strong>Tactile Intelligence Loop</strong> envisions a unified tactile-feedback architecture
-      where sensing, inference, and control form a continuous cycle of understanding through touch.
+      The <strong>Tactile Intelligence Loop</strong> envisions a unified tactile-feedback architecture where sensing, inference, and control
+      form a continuous cycle of understanding through touch.
     </p>
 
     <img src="tactile_intelligence_loop.png" width="400" alt="Tactile Intelligence Loop diagram" />
