@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tactile Intelligence Loop</title>
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+</head>
+<body>
+<div id="layout-content">
+<h1>Tactile Intelligence Loop</h1>
+<p><em>Uncertainty-aware tactile perception + Bayesian/Deep MPC for dexterous manipulation</em></p>
+
+<p>Modern robots struggle with contact-rich tasks because friction, slip, and occlusion create uncertainty at the interface.</p>
+<p><strong>Tactile Intelligence Loop</strong> is my research vision: closing the loop from tactile sensing → latent stochastic modeling → uncertainty-aware control.</p>
+
+<img src="img/tactile_intelligence_loop.png" width="780">
+
+<p><a href="index.html">← Back to Home</a></p>
+</div>
+</body>
+</html>
