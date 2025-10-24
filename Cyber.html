@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Tactile Intelligence Loop</title>
+<title>SBL-Based Adaptive Impedance Control</title>
 
 <!-- MathJax -->
 <script type="text/javascript" async
@@ -22,18 +22,19 @@ MathJax.Hub.Config({
 <body>
 <table summary="Table for page layout." id="tlayout">
 <tr valign="top">
-  <!-- Left navigation menu -->
+
+  <!-- Left navigation -->
   <td id="layout-menu">
     <div class="menu-category">Thanana</div>
     <div class="menu-item"><a href="index.html">Home</a></div>
     <div class="menu-item"><a href="Biography.html">Biography</a></div>
-    <div class="menu-item"><a href="Publication.html">Publication</a></div> 
+    <div class="menu-item"><a href="Publication.html">Publication</a></div>
 
     <div class="menu-category">Research</div>
-    <div class="menu-item"><a href="tactile_intelligence.html" class="current">Tactile&nbsp;Intelligence</a></div>
-    <div class="menu-item"><a href="nonlinear.html">Unstable&nbsp;Systems</a></div>
-    <div class="menu-item"><a href="nonholonomic.html">Holonomic</a></div>
-    <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+    <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+    <div class="menu-item"><a href="seeing_beyond_vision.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+    <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+    <div class="menu-item"><a href="Cyber.html" class="current">Data-driven&nbsp;Control</a></div>
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
 
     <div class="menu-category">Teaching</div>
@@ -42,124 +43,126 @@ MathJax.Hub.Config({
     <div class="menu-category">Software</div>
     <div class="menu-item"><a href="robotics.html">Robotics</a></div>
     <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
-</td>
-<td id="layout-content">
-<div id="toptitle">
-<h1>Data-driven control</h1>
-</div>
+  </td>
 
-	
-<h1>Sparse Bayesian Learning-based Adaptive Impedance Control</h1>
-<p style="font-size:1.05em; color:#555; margin-top:-10px;">
-  <i>(Physical Human–Robot Interaction)</i>
-</p>
-
-<div style="text-align:center; margin:20px auto; max-width:700px; line-height:1.5;">
-  <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-bottom:6px;">
-    “Adaptive compliance through learning — robots that move in harmony with humans.”
+  <!-- Main content -->
+  <td id="layout-content">
+  <div id="toptitle">
+  <h1>Sparse Bayesian Learning-based Adaptive Impedance Control</h1>
+  </div>
+  <p style="font-size:1.05em; color:#555; margin-top:-10px;">
+    <i>(Physical Human–Robot Interaction)</i>
   </p>
-  <p style="color:#003366; font-size:0.95em; font-style:italic; margin-top:0;">
-    <b>Challenge</b> physical effort and delay in human–robot collaboration,  
-    <b>Change</b> impedance dynamically through intention prediction,  
-    and create <b>Impact</b> in safe, responsive human–robot interaction.
+
+  <!-- Motto block -->
+  <div style="text-align:center; margin:20px auto; max-width:700px; line-height:1.5;">
+    <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-bottom:6px;">
+      “Adaptive compliance through learning — robots that move in harmony with humans.”
+    </p>
+    <p style="color:#003366; font-size:0.95em; font-style:italic; margin-top:0;">
+      <b>Challenge</b> physical effort and delay in human–robot collaboration,&nbsp;
+      <b>Change</b> impedance dynamically through intention prediction,&nbsp;
+      and create <b>Impact</b> in safe, responsive human–robot interaction.
+    </p>
+  </div>
+
+  <hr style="border:0; border-top:1px solid #ccc; width:50%; margin:16px auto;">
+
+  <h2>Motivation</h2>
+  <p>
+    In physical human–robot interaction (pHRI), the robot must not only follow commands
+    but also <em>understand and adapt</em> to the human partner’s intentions.
+    Excessive operating force or delayed responses increase fatigue and reduce safety.
+    To minimize human effort in both <strong>force</strong> and <strong>time</strong>,
+    the robot should continuously adjust its impedance parameters — stiffness and damping —
+    based on the partner’s motion intention.
   </p>
-</div>
 
-<hr style="border:0; border-top:1px solid #ccc; width:50%; margin:16px auto;">
+  <h2>Framework Overview</h2>
+  <p>
+    This research introduces a <strong>data-driven adaptive impedance control (AIC) framework</strong>
+    that integrates two learning-based modules:
+  </p>
+  <ul>
+    <li><b>Sparse Bayesian Learning-based Human Intention Predictor (SBL-HIP)</b> —
+      predicts the human partner’s intended motion from time-series data of position, velocity, and force.</li>
+    <li><b>Variable Impedance Controller (VIC)</b> —
+      dynamically modulates the robot’s impedance parameters using the predicted intention,
+      enabling compliant, coordinated behavior.</li>
+  </ul>
 
-<h2>Motivation</h2>
-<p>
-  In physical human–robot interaction (pHRI), the robot must not only follow commands
-  but also <em>understand and adapt</em> to the human partner’s intentions. 
-  Excessive operating force or delayed responses can increase fatigue and reduce safety. 
-  To minimize the human partner’s effort in both <strong>force</strong> and <strong>time</strong>,
-  it is essential for the robot to continuously adjust its impedance parameters 
-  — stiffness and damping — based on the partner’s motion intention.
-</p>
+  <p>
+    The <em>SBL-HIP</em> captures the human’s next action using a sparse probabilistic model,
+    ensuring efficiency and robustness to noise. The predicted intention is then
+    passed to the <em>VIC</em>, which tunes the robot’s stiffness and damping in real time.
+    As a result, the robot can <strong>anticipate</strong> human motion and respond
+    <strong>proactively</strong> — achieving smooth and natural collaboration.
+  </p>
 
-<h2>Framework Overview</h2>
-<p>
-  This research proposes a <strong>data-driven adaptive impedance control (AIC) framework</strong> 
-  that integrates two learning-based modules:
-</p>
-<ul>
-  <li><b>Sparse Bayesian Learning-based Human Intention Predictor (SBL-HIP)</b> —  
-  predicts the human partner’s next intended motion using time-series data of position,
-  velocity, and interaction force.</li>
-  <li><b>Variable Impedance Controller (VIC)</b> —  
-  dynamically modulates the robot’s impedance parameters based on the predicted intention,
-  enabling compliant and coordinated behavior.</li>
-</ul>
+  <h2>Application: Compliant Control</h2>
+  <table class="imgtable">
+    <tr>
+      <td>
+        <img src="compliant_control_diagram.jpg" alt="Compliant control framework" width="420" />
+      </td>
+      <td align="left">
+        <ul>
+          <li>Robot manipulator equipped with a force sensor and compliant end-effector.</li>
+          <li>Human operator interacts through contact force \( f_h \).</li>
+          <li>Impedance parameters \( (K, B) \) adapt online based on predicted intention.</li>
+          <li>Improves cooperation smoothness, safety, and energy efficiency.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 
-<p>
-  The overall control scheme operates as follows:
-  The <em>HIP</em> predicts the future human action using minimal yet informative data,
-  leveraging sparsity to ensure fast online computation.
-  The predicted intention is then passed to the <em>VIC</em>, which adjusts the robot’s
-  impedance parameters in real time. 
-  This allows the robot to <strong>anticipate</strong> human motion and respond
-  <strong>proactively</strong> rather than reactively.
-</p>
+  <h2>Validation</h2>
+  <p>
+    The proposed SBL-AIC scheme was validated through simulation and experiments:
+  </p>
+  <ul>
+    <li><b>2-DOF planar robot simulation</b> — demonstrates adaptive impedance response under varying motion patterns.</li>
+    <li><b>6-DOF manipulator experiment</b> — confirms compliant motion and reduced operator effort in physical collaboration.</li>
+  </ul>
 
-<h2>Application: Compliant Control</h2>
-<table class="imgtable">
-  <tr>
-    <td>
-      <img src="compliant_control_diagram.jpg" alt="Compliant control framework" width="420">
-    </td>
-    <td align="left">
-      <ul>
-        <li>Robot manipulator equipped with a force sensor and compliant end-effector.</li>
-        <li>Human operator interacts physically through contact forces \( f_h \).</li>
-        <li>Impedance parameters (\( K, B \)) adapt online based on predicted intention.</li>
-        <li>Enhances cooperation smoothness, safety, and energy efficiency in shared tasks.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+  <p>
+    Results demonstrate that the SBL-AIC framework allows robots to adjust their dynamic behavior in real time,
+    achieving <strong>safe, compliant, and human-centered interaction</strong>.
+  </p>
 
-<h2>Validation</h2>
-<p>
-  The proposed SBL-AIC scheme was evaluated through both simulation and experiment:
-</p>
-<ul>
-  <li><b>2-DOF planar robot simulation</b> — demonstrates adaptive impedance response under variable motion patterns.</li>
-  <li><b>6-DOF manipulator experiment</b> — confirms compliant motion and reduced operator effort during physical collaboration.</li>
-</ul>
+  <p style="font-size:0.85em; color:#777; text-align:center;">
+    <i>This research bridges probabilistic learning and adaptive control —
+    teaching robots to feel, anticipate, and act in synchrony with human partners.</i>
+  </p>
 
-<p>
-  The results show that the proposed data-driven scheme enables robots to modify
-  their dynamic behavior in real time, achieving natural and safe cooperation with humans.
-</p>
+  <h2>Illustrations</h2>
+  <table class="imgtable">
+    <tr>
+      <td><img src="SBL2.pdf" alt="Application diagram" width="505" height="252" /></td>
+      <td align="left"></td>
+    </tr>
+  </table>
 
-<p style="font-size:0.85em; color:#777; text-align:center;">
-  <i>This research bridges probabilistic learning and adaptive control — teaching robots to feel,
-  anticipate, and act in synchrony with human partners.</i>
-</p>
+  <table class="imgtable">
+    <tr>
+      <td>
+        <img src="SBL1.pdf" alt="System diagram" width="512" height="232" />
+        &nbsp;
+        <img src="SBL3.pdf" alt="Parameter estimation results" width="512" height="232" />
+      </td>
+    </tr>
+  </table>
 
+  <!-- Footer -->
+  <div id="footer">
+    <div id="footer-text" style="font-size:0.85em; color:#777;">
+      © 2025 Thanana Nuchkrua | Control & Robotics Research Group
+    </div>
+  </div>
 
-	
-</p><h2>Application: compliant control</h2>
-	<table class="imgtable"><tr><td>
-<img src="SBL2.pdf" alt="" width="505 px" height="252 px" />&nbsp;</td>
-<td align="left"><p>
-	
-</td></tr></table>
-	<table class="imgtable"><tr><td> 
-<img src="SBL1.pdf" alt="" width="512 px" height="232 px" />&nbsp; <img src="SBL3.pdf" alt="" width="512 px" height="232 px" /></td>
-<td align="left"><p>
-	
-</td></tr></table>
-	
-	</p>
-	
-<div id="footer">
-<div id="footer-text">
-Page generated 2019-07-24 18:56:59 CST, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
-</div>
-</div>
-</td>
+  </td>
 </tr>
 </table>
 </body>
 </html>
+
