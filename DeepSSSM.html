@@ -49,7 +49,9 @@ MathJax.Hub.Config({
   <td id="layout-content">
   <div id="toptitle">
     <h1>Seeing Beyond Vision</h1>
-    <p style="font-size:1.05em; color:#555; margin-top:-10px;"><i>(Deep Stochastic State-Space Models)</i></p>
+    <p style="font-size:1.05em; color:#555; margin-top:-10px;">
+      <i>(Deep Stochastic State-Space Models)</i>
+    </p>
   </div>
 
   <!-- Motto block -->
@@ -66,66 +68,57 @@ MathJax.Hub.Config({
 
   <hr style="border:0; border-top:1px solid #ccc; width:50%; margin:16px auto;">
 
-<h2>Deep Stochastic State-Space Models (Deep SSSM)</h2>
+  <h2>Deep Stochastic State-Space Models (Deep SSSM)</h2>
 
-<!-- Main figure -->
-<div style="text-align:center; margin-top:10px; margin-bottom:5px;">
-  <img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="420" 
-       style="margin-bottom:10px; border-radius:4px;">
-</div>
+  <!-- Main figure -->
+  <div style="text-align:center; margin-top:10px; margin-bottom:5px;">
+    <img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="420"
+         style="margin-bottom:10px; border-radius:4px;">
+  </div>
 
-<!-- Pipeline below figure -->
-<div style="text-align:center; margin-top:4px; margin-bottom:20px;">
-  <p style="color:#003366; font-style:italic; font-size:0.9em;">
-    Deep SSSM pipeline: <b>Observation</b> → <b>Latent State Inference</b> → 
-    <b>Stochastic Prediction</b> → <b>Control &amp; Planning</b> → <b>Feedback</b>
+  <!-- Pipeline below figure -->
+  <div style="text-align:center; margin-top:4px; margin-bottom:20px;">
+    <p style="color:#003366; font-style:italic; font-size:0.9em;">
+      Deep SSSM pipeline: <b>Observation</b> → <b>Latent State Inference</b> → 
+      <b>Stochastic Prediction</b> → <b>Control &amp; Planning</b> → <b>Feedback</b>
+    </p>
+  </div>
+
+  <!-- Optional light blue loop banner -->
+  <div style="text-align:center; background-color:#f8f9fb; border-radius:10px; padding:12px 10px; margin:10px auto 25px auto; max-width:720px; box-shadow:0 0 3px rgba(0,0,0,0.08);">
+    <p style="margin:0; font-size:0.95em; color:#003366;">
+      <span style="color:#00A6D6;"><b>Perception</b></span> → 
+      <span style="color:#006699;"><b>Inference</b></span> → 
+      <span style="color:#0099CC;"><b>Prediction</b></span> → 
+      <span style="color:#00A6D6;"><b>Planning</b></span> → 
+      <span style="color:#003366;"><b>Action</b></span>
+    </p>
+    <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+      (Robots learn to act beyond direct observation through stochastic world modeling)
+    </p>
+  </div>
+
+  <!-- Explanatory text -->
+  <p>
+    Deep SSSMs are <strong>probabilistic world models</strong> that combine 
+    <em>stochastic latent dynamics</em> with <em>control-theoretic planning</em>. 
+    They enable robots to reason about hidden or occluded states, predict the 
+    evolution of the environment, and plan actions under uncertainty.
   </p>
-</div>
-
-<!-- Optional light blue loop banner -->
-<div style="text-align:center; background-color:#f8f9fb; border-radius:10px; padding:12px 10px; margin:10px auto 25px auto; max-width:720px; box-shadow:0 0 3px rgba(0,0,0,0.08);">
-  <p style="margin:0; font-size:0.95em; color:#003366;">
-    <span style="color:#00A6D6;"><b>Perception</b></span> → 
-    <span style="color:#006699;"><b>Inference</b></span> → 
-    <span style="color:#0099CC;"><b>Prediction</b></span> → 
-    <span style="color:#00A6D6;"><b>Planning</b></span> → 
-    <span style="color:#003366;"><b>Action</b></span>
-  </p>
-  <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    (Robots learn to act beyond direct observation through stochastic world modeling)
-  </p>
-</div>
-
-<!-- Now continue with your text -->
-<p>
-  Deep SSSMs are <strong>probabilistic world models</strong> that combine 
-  <em>stochastic latent dynamics</em> with <em>control-theoretic planning</em>. 
-  They enable robots to reason about hidden or occluded states, predict the 
-  evolution of the environment, and plan actions under uncertainty.
-</p>
-
-    
-
-      
-      
-      <td align="left">
-        <p>
-          Deep SSSMs are <strong>probabilistic world models</strong> that combine 
-          <em>stochastic latent dynamics</em> with <em>control-theoretic planning</em>.
-          They enable robots to reason about hidden or occluded states, predict the 
-          evolution of the environment, and plan actions under uncertainty.
-        </p>
-      </td>
-    </tr>
-  </table>
 
   <h2>What Is Deep SSSM?</h2>
   <p>
     A Deep Stochastic State-Space Model learns to represent complex, partially observable
     systems as <strong>latent state variables</strong> governed by probabilistic transitions:
+  </p>
+
+  <p style="text-align:center;">
     \[
     s_{t+1} \sim p(s_{t+1}\mid s_t, a_t), \quad o_t \sim p(o_t \mid s_t)
     \]
+  </p>
+
+  <p>
     This latent formulation allows the model to predict how the system evolves while
     maintaining uncertainty over unobserved variables.
   </p>
