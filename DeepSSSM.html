@@ -5,9 +5,9 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>SBL-Based Adaptive Impedance Control</title>
+<title>Seeing Beyond Vision | Deep SSSM</title>
 
-<!-- MathJax -->   
+<!-- MathJax -->
 <script type="text/javascript" async
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -32,7 +32,7 @@ MathJax.Hub.Config({
 
     <div class="menu-category">Research</div>
     <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
-    <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+    <div class="menu-item"><a href="DeepSSSM.html" class="current">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
     <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
     <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
@@ -45,97 +45,96 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
   </td>
 
-<td id="layout-content">
-<div id="toptitle">
+  <!-- Main content -->
+  <td id="layout-content">
+  <div id="toptitle">
+    <h1>Seeing Beyond Vision</h1>
+    <p style="font-size:1.05em; color:#555; margin-top:-10px;"><i>(Deep Stochastic State-Space Models)</i></p>
+  </div>
 
+  <!-- Motto block -->
+  <div style="text-align:center; margin:20px auto; max-width:700px; line-height:1.5;">
+    <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-bottom:6px;">
+      “To see beyond vision — robots that imagine what they cannot see.”
+    </p>
+    <p style="color:#003366; font-size:0.95em; font-style:italic; margin-top:0;">
+      <b>Challenge</b> uncertainty,&nbsp;
+      <b>Change</b> perception through latent dynamics,&nbsp;
+      and drive <b>Impact</b> toward uncertainty-aware embodied intelligence.
+    </p>
+  </div>
 
+  <hr style="border:0; border-top:1px solid #ccc; width:50%; margin:16px auto;">
 
+  <h2>Deep Stochastic State-Space Models (Deep SSSM)</h2>
+  <table class="imgtable">
+    <tr>
+      <td><img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="400" style="margin-right:20px; margin-bottom:10px;" /></td>
+      <td align="left">
+        <p>
+          Deep SSSMs are <strong>probabilistic world models</strong> that combine 
+          <em>stochastic latent dynamics</em> with <em>control-theoretic planning</em>.
+          They enable robots to reason about hidden or occluded states, predict the 
+          evolution of the environment, and plan actions under uncertainty.
+        </p>
+      </td>
+    </tr>
+  </table>
 
-
-
-
-
-
-<h1>Seeing Beyond Vision</h1>
-<p style="font-size:1.1em; color:#555; margin-top:-10px;">
-  
-	<p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-bottom:6px;">
-    “To see beyond vision — robots that imagine what they cannot see.”
+  <h2>What Is Deep SSSM?</h2>
+  <p>
+    A Deep Stochastic State-Space Model learns to represent complex, partially observable
+    systems as <strong>latent state variables</strong> governed by probabilistic transitions:
+    \[
+    s_{t+1} \sim p(s_{t+1}\mid s_t, a_t), \quad o_t \sim p(o_t \mid s_t)
+    \]
+    This latent formulation allows the model to predict how the system evolves while
+    maintaining uncertainty over unobserved variables.
   </p>
 
+  <h2>Key Challenges</h2>
+  <p>
+    Real-world robotic environments are often <em>occluded, noisy, or incomplete</em>.
+    Conventional deterministic world models fail in these conditions, producing 
+    overconfident predictions that degrade control performance.
+    The challenge is to represent <strong>uncertainty explicitly</strong> while retaining
+    computational tractability for real-time decision-making.
+  </p>
 
+  <h2>How Deep SSSM Addresses This</h2>
+  <p>
+    Deep SSSM learns a <strong>stochastic latent representation</strong> that encodes both 
+    dynamics and uncertainty. Instead of predicting single trajectories, it models
+    <em>distributions over future states</em>. This probabilistic approach enables
+    uncertainty-aware control policies that remain stable even under occlusion or 
+    unseen disturbances.
+  </p>
 
+  <h2>Impact and Applications</h2>
+  <p>
+    Deep SSSM provides a foundation for <strong>occlusion-robust visual control</strong> and 
+    <strong>uncertainty-aware decision-making</strong> in robotics. 
+    It has broad implications for:
+  </p>
+  <ul>
+    <li>Vision-based manipulation under partial observability</li>
+    <li>Human–robot collaboration and shared autonomy</li>
+    <li>Predictive control under dynamic, uncertain conditions</li>
+  </ul>
 
-	
-</p>
+  <p style="font-size:0.85em; color:#777; text-align:center;">
+    <i>Toward robots that reason in uncertainty — perceiving, predicting, and acting beyond what is seen.</i>
+  </p>
 
-<h3>Deep Stochastic State-Space Models (Deep SSSM)</h3>
+  <!-- Footer -->
+  <div id="footer">
+    <div id="footer-text" style="font-size:0.85em; color:#777;">
+      © 2025 Thanana Nuchkrua | Control & Robotics Research Group
+    </div>
+  </div>
 
-
-
-<img src="DeepSSSM1.pdf" width="400" align="left"
-     style="margin-right:20px; margin-bottom:10px;">
-
-	
-
-<div style="margin-top:-10px; margin-bottom:4px;">
-
-	<hr style="border:0; border-top:1px solid #ddd; margin:10px 0 14px 0;">
-
-	
-
-
-<hr style="border:0; border-top:1px solid #ddd; margin:16px 0 20px 0;">
-
-<h2 style="margin-bottom:6px;">Understanding Deep SSSM</h2>
-
-<p>
-  <b>What is Deep SSSM?</b><br>
-  Deep Stochastic State-Space Models (Deep SSSM) are a new class of
-  uncertainty-aware world models that combine <em>probabilistic latent dynamics</em>
-  with <em>control-theoretic planning</em>.
-  They allow robots to reason about hidden states — what cannot be directly seen —
-  and to predict how actions influence the environment under uncertainty.
-</p>
-
-<p>
-  <b>What is the key challenge?</b><br>
-  In real robotic environments, visual observations are often <em>occluded,
-  noisy, or incomplete</em>. Traditional deterministic world models collapse
-  under these conditions because they overfit to single “best guesses” of the
-  state. The key challenge is to maintain calibrated uncertainty and still
-  make reliable control decisions when the world is only partially visible.
-</p>
-
-<p>
-  <b>How does Deep SSSM address this?</b><br>
-  By learning a <em>stochastic latent state</em> that represents uncertainty
-  explicitly. The model predicts distributions over future trajectories rather
-  than single outcomes. This allows the control layer to plan and adapt based
-  on uncertainty, yielding more stable and robust policies during occlusion or
-  unseen perturbations.
-</p>
-
-<p>
-  <b>What is the impact?</b><br>
-  Deep SSSM enables <em>occlusion-robust visual control</em> — a step toward
-  perception-driven robots that can act safely even when visual data is
-  incomplete. The approach provides a foundation for uncertainty-aware
-  decision-making in robotic manipulation, visual servoing, and human–robot
-  collaboration.
-</p>
-
-
-<!-- after your final paragraph or tagline -->
-
-<p style="color:#003366; font-size:0.95em; font-style:italic;">
-  <b>Challenge</b> uncertainty,
-  <b>Change</b> perception through latent dynamics,
-  and drive an <b>Impact</b> toward uncertainty-aware embodied intelligence.
-</p>
-
-<div style="text-align:center; margin:20px auto; max-width:700px; line-height:1.5;">
-  <!-- Seeing Beyond Vision -->
-  
-</div>
-
+  </td>
+</tr>
+</table>
+</body>
+</html>
