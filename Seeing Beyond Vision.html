@@ -1,14 +1,48 @@
-== Deep Stochastic State-Space Models (Deep SSSM)
-
-~~~
-<table style="margin:6px 0 8px 0;">
-  <tr>
-    <td style="padding-right:12px;"><img src="icons_latent.svg" width="80" alt="Latent dynamics"></td>
-    <td style="padding-right:12px;"><img src="icons_bayesian.svg" width="80" alt="Bayesian uncertainty"></td>
-    <td><img src="DeepSSSM.pdf" width="80" alt="Occlusion-aware control"></td>
-  </tr>
-</table>
-<p style="font-size:0.9em; color:#666; margin-top:-2px;">
-Core elements: latent stochastic dynamics, Bayesian uncertainty calibration, and occlusion-aware control for robust long-horizon prediction.
+<h2>Seeing Beyond Vision</h2>
+<p style="font-size:1.1em; color:#555; margin-top:-10px;">
+  <i>Deep Stochastic State-Space Models for Occlusion-Robust Control</i>
 </p>
-~~~
+
+<h3>Deep Stochastic State-Space Models (Deep SSSM)</h3>
+
+<div style="display:flex; align-items:center; margin-bottom:10px;">
+  <img src="DeepSSSM.pdf" width="80" style="margin-right:15px;">
+  <img src="DeepSSSM.pdf" width="80" style="margin-right:15px;">
+  <img src="DeepSSSM.pdf" width="80">
+</div>
+
+<p style="font-size:0.9em; color:#666; text-align:left; margin-top:-5px;">
+  Core elements of the Deep-SSSM framework: latent stochastic dynamics,
+  Bayesian uncertainty calibration, and occlusion-aware control for robust
+  long-horizon prediction.
+</p>
+
+<p>
+  <b>Concept.</b> Deep Stochastic State-Space Models (Deep SSSM)
+  integrate control-theoretic reasoning with latent variable learning to
+  achieve uncertainty-aware perception and prediction under partial
+  observability. Unlike deterministic world models, Deep SSSM explicitly
+  maintains probabilistic beliefs over hidden states, enabling robust control
+  even when sensory input is occluded or corrupted.
+</p>
+
+<p>
+  <b>Framework.</b> The framework learns a compact latent dynamics model
+  from raw image sequences using a variational inference objective.
+  It jointly optimizes a transition model, an observation model,
+  and a stochastic latent encoder–decoder pair. During planning or model-predictive
+  control, the learned dynamics act as a predictive simulator,
+  providing uncertainty-calibrated forecasts of future states and rewards.
+</p>
+
+<p>
+  <b>Applications.</b> Deep SSSM has been applied to occlusion-robust robotic
+  manipulation, adaptive visual tracking, and model-based reinforcement
+  learning. By combining Bayesian uncertainty with control-oriented rollouts,
+  it bridges deep representation learning with robust adaptive control.
+</p>
+
+<p style="font-size:0.9em; color:#666; text-align:center; margin-top:15px;">
+  <i>Deep SSSM enables predictive control through latent stochastic dynamics,
+  forming the computational core of the Occlusion-Robust Manipulation project.</i>
+</p>
