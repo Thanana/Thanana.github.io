@@ -45,134 +45,173 @@ MathJax.Hub.Config({
 </td>
 <td id="layout-content">
 <div id="toptitle">
-<h1>Holonomic constraints</h1>
-</div>
+<h1>Holonomic Constraints and Contouring Control</h1>
 
-	
 <h2>Motivation</h2>
-<p>	In manufacturing systems (i.e. automation 
-	and machining), <i>fast response</i> and <i>high precision</i> motion control is an indispensable method
-	such that contouring control, which has been successful for such multi-axis motion control, is addressed.</p>
-<p>It is important to point out a constraint, however, most of the existing contouring control approaches have only referred to the designs of 
-	controller for the un-constraint motion control systems. Nevertheless, the mechanism of multi-axis machines (e.g., dual-arm robot manipulators) commonly 
-	exists the constraint motion systems, especially, contouring control in machining system (e.g., the end-effector of robot 
-	have to hold the workpiece to follow a desired path for cutting tool). As a result, joint coordinates of the dual-arm robot manipulators need to satisfy the 
-	holonomic constraints, which is formed by algebraic equations [1].  </p>
-	
-	
-	<h3>The dual-arm Robot Manipulators</h3>
-<table class="imgtable"><tr><td>
-<img src="hardware333.jpg" alt="" width="295 px" height="198 px" />&nbsp;</td>
-<td align="left"><p> <ul>
-                        <li><p> Integration of machine tool and robot: Integration the functions of machining and automation  </p>
-                        </li>
-                        <li><p>Integration of serial and parallel robots: With better stiffness and keep the flexibility  </p>
-		        </li>
-	<li><p> Require the motion to follow the <b>specific path</b> </p>
-			</li>
-	<li><p> Require the motion to follow the <b>specific surface</b> </p>
-                        </li>
-         
-                    </ul></p> <br /></p>
-</td></tr></table>
-	
-	
-	<h3>Dynamics of the robot with Holonomic constraints</h3>
-	<table class="imgtable"><tr><td>
-<img src="constraints1.pdf" alt="" width="295 px" height="198 px" />&nbsp;</td>
-<td align="left"><p> <ul>
-                        <li><p>Dynamics of system: \(\ddot{\mathbf{q}}=f(\dot{\mathbf{q}},\mathbf{q})+g(\dot{\mathbf{q}},\mathbf{q})u\)  </p>
-                        </li>
-                        <li><p>Holonomic constraints: \(\phi(\mathbf{q})=0\)  </p>
-                        </li>
-                        <li><p>\(n+m\) generized coordinates: \(\mathbf{q}\in\mathbb{R}^{n+m}\)</p>
-                        </li>
-                        <li><p>\(n\) actuating inputs: \(u\in\mathbb{R}^n\)</p>
-                        </li>
-                        <li><p>\(m\) constraint functions: \(\phi(\mathbf{q}): \mathbb{R}^{n+m}\to\mathbb{R}^{m}\)</p>
-                        </li>
-                        <li><p>Desired path: \(\mathcal{P}_w(\mathbf{q})=0; \mathbb{R}^{n+m}\to\mathbb{R}^{n-1}\)</p>
-                        </li>
-                    </ul>
-	</td></tr></table>
-	
-Contouring control problem is to seek a control law, \(u\), so that the output \(\mathbf{q}\) 
-follow the desired path \(\mathcal{P}_w\).
-The main purpose: design such the control law as if there were no constraints using method of \(\textbf{equivalent errors (EQs)}\)
-	
-	
-	<h3>Coordinate transformation framework</h3>
-<table class="imgtable"><tr><td>
-<img src="EQ1.jpg" alt="" width="265 px" height="132 px" />&nbsp;</td>
-<td align="left"><p>A crucial problem of Path-contouring/following Control is to minimize the contour error defined as the shortest distance 
-between the actual displacement \(q(t)\in\mathbb{R}^n\) and the desired path \(\mathcal{P}_w\); 
-\(\epsilon_c(t)=\mathsf{dist}(q,\mathcal{P}_w(q_d))\equiv \displaystyle \|q-q_d\|_{\infty},&nbsp;\forall{q_d}\in\mathcal{P}_w\).
-To aim at the new coordinate framework of dynamic model, EQs is addressed by utilizing the \(n−1\) equivalent 
-contour errors determining the desired path in terms of algebraic equation. It becomes the problem of stabilization 
-of Path-contouring Control. <br /></p>
-<p style="text-align:center">
-\[ 
- \begin{bmatrix}\epsilon \\e\end{bmatrix}= \begin{bmatrix}\mathcal{P}_w(q) \\\dot{q}_d^T(q-q_d)\end{bmatrix}
-  \]
-</p></td></tr></table>
-<p>The existing control techniques can be considered to deal with such the problem 
-of stabilization. It is more practical to develop controller to deal with minimizing contour error with EQ approach 
-than conventional control framework, e.g., a time-dependent tracking control with point-stabilization.</p>
-<p><b>For conventional contouring control:</b> <br /></p>
-<p style="text-align:center">
-\[{\epsilon_c(t)\to0 \iff q(t)\to q_d(t), t \to\infty}\]
-</p><p><b>For contouring control based EQ:</b> <br /></p>
-<p style="text-align:center">
-\[{\epsilon_c(t)\to0 \iff \epsilon(t) \to 0, t \to \infty}\]
+<p>
+  In manufacturing systems such as automation and machining, 
+  <em>fast response</em> and <em>high-precision motion control</em> are indispensable. 
+  Contouring control has long been recognized as a powerful framework for 
+  coordinating multi-axis motion systems.
 </p>
-	
-	<h3>The new Control objective of contouring Control [2]</h3> 
-Dynamics of errors
-	<p style="text-align:center">
-\[ 
-\begin{bmatrix}\ddot{\epsilon} \\ \ddot{e}\end{bmatrix}= \Omega(\mathbf{q},\dot{\mathbf{q}},t)+\Gamma(\mathbf{q},\dot{\mathbf{q}},t)\tau
-  \]
-</p>
-	
-<p style="text-align:left">
-\[ 	
-{\Omega\in\mathbb{R}^{5\times{1}}}= \left[ \begin{array}{ccc}
-\mathbf{\mathcal{A}}(\mathbf{q})f(\mathbf{q},\dot{\mathbf{q}})+\mathbf{\mathcal{B}}(\mathbf{q},\dot{\mathbf{q}}) \\    
-    \ddot{\mathbf{q}}_d^T(\mathbf{q}-\mathbf{q}_{d})+\ddot{\mathbf{q}}_{d}^T(\dot{\mathbf{q}}-\dot{\mathbf{q}}_{d})+\dot{\mathbf{q}}_{d}^Tf(\mathbf{q},\dot{\mathbf{q}})
-\end{array} \right]
-	\]
-	</p>
-	
-<p style="text-align:left">
-\[ 	
-	{\Gamma\in\mathbb{R}^{5\times{5}}}=\left[ \begin{array}{ccc}
-{\mathbf{\mathcal{A}}}(\mathbf{q}) \\
- \dot{\mathbf{q}}_d^T
-\end{array} \right]G(\mathbf{q},\dot{\mathbf{q}})
-\]
-	</p>
-	
-	\(\mathcal{A}(\mathbf{q})=[\nabla\mathcal{P}_w(\mathbf{q}_L)\quad0]\) for left-arm </p>
-	\(\mathcal{A}(\mathbf{q})=[0\quad\nabla\mathcal{P}_w(\mathbf{q}_R)]\) for right-arm </p>
- 
- To aim \(\epsilon \to 0\), asymptotically, consider \(\mathbf{{\tau}}\) as feedback <u><i>linearization</i></u>
-<p style="text-align:left">
-\[
-	\mathbf{u}=\mathbf{{\tau}}\in\mathbb{R}^{5\times1}={\Gamma}^{-1}(-{\Omega}+v)
-	\]
-	</p>
-<p>with control law \(v\) to <u><i>stabilize</i></u> the equivalent errors. </p>
 
-<h4>Reference</h4>
-<p><small>
-		[1] T. Nuchkrua, S. Chang and S. Chen, \(''\)Contouring Control of 5-DOF Manipulator Robot Arm based on Equivalent 
-		Errors,\(''\) <i>2015 International Automatic Control Conference (CACS)</i>, Taiwan, 2015.
-		 
-		</small></p>   
-<p><small> [2] Y. Dong, T. Nuchkrua and T. Shen, \(''\)Asymptotical Stability Contouring Control of Dual-arm robot with Holonomic Constraints: 
-		Modified Distributed Control Framework,\(''\) <i>IET Control Theory \(\&\) Applications</i>, vol. 13, no. 17, pp. 2877-2885, 2019.  
-	</small></p>
-                        
+<p>
+  However, most conventional contouring control approaches are designed for 
+  unconstrained systems. In practice, mechanisms such as dual-arm robotic manipulators 
+  inherently involve <strong>holonomic constraints</strong> — algebraic relationships 
+  that restrict allowable motion. For example, during cooperative machining, the 
+  end-effectors of two arms must maintain a precise relative position while following a 
+  desired tool path. Hence, joint coordinates must satisfy 
+  <span style="font-style:italic;">holonomic constraint equations</span> 
+  <code>&phi;(q) = 0</code>.
+</p>
+
+<h3>The Dual-Arm Robotic Manipulator</h3>
+<table class="imgtable">
+  <tr>
+    <td><img src="hardware333.jpg" alt="Dual-arm robot" width="295" height="198" /></td>
+    <td align="left">
+      <ul>
+        <li>Integration of machining and automation functions.</li>
+        <li>Hybrid architecture combining serial and parallel structures for stiffness and flexibility.</li>
+        <li>Motion constrained to follow a <strong>specific path</strong>.</li>
+        <li>Capability to track a <strong>specific surface</strong>.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<h3>Dynamics with Holonomic Constraints</h3>
+<table class="imgtable">
+  <tr>
+    <td><img src="constraints1.pdf" alt="Constraint equations" width="295" height="198" /></td>
+    <td align="left">
+      <ul>
+        <li>System dynamics: \( \ddot{q} = f(\dot{q}, q) + g(\dot{q}, q)u \)</li>
+        <li>Holonomic constraints: \( \phi(q) = 0 \)</li>
+        <li>Generalized coordinates: \( q \in \mathbb{R}^{n+m} \)</li>
+        <li>Actuating inputs: \( u \in \mathbb{R}^n \)</li>
+        <li>Constraint functions: \( \phi(q): \mathbb{R}^{n+m} \to \mathbb{R}^m \)</li>
+        <li>Desired path: \( \mathcal{P}_w(q) = 0;~ \mathbb{R}^{n+m} \to \mathbb{R}^{n-1} \)</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<p>
+  The contouring-control problem seeks a control input \(u\) such that 
+  the system output \(q\) follows the desired path \(\mathcal{P}_w\).
+  The goal is to design a control law as if the system were unconstrained, 
+  by using the <strong>Equivalent Errors (EQ)</strong> method.
+</p>
+
+<h3>Coordinate-Transformation Framework</h3>
+<table class="imgtable">
+  <tr>
+    <td><img src="EQ1.jpg" alt="Equivalent error framework" width="265" height="132" /></td>
+    <td align="left">
+      <p>
+        A crucial challenge in contour-following control is minimizing the 
+        <em>contour error</em> — the shortest distance between the actual position 
+        \( q(t) \) and the desired path \( \mathcal{P}_w(q_d) \):
+      </p>
+      <p style="text-align:center;">
+        \[
+        \epsilon_c(t) = \mathsf{dist}(q, \mathcal{P}_w(q_d))
+        = \| q - q_d \|_\infty, \quad \forall q_d \in \mathcal{P}_w
+        \]
+      </p>
+      <p>
+        The EQ framework introduces a coordinate transformation that expresses
+        the system dynamics in terms of equivalent contour errors, converting 
+        the contouring task into a stabilization problem:
+      </p>
+      <p style="text-align:center;">
+        \[
+        \begin{bmatrix} \epsilon \\ e \end{bmatrix} =
+        \begin{bmatrix} \mathcal{P}_w(q) \\ \dot{q}_d^T (q - q_d) \end{bmatrix}
+        \]
+      </p>
+    </td>
+  </tr>
+</table>
+
+<p>
+  Compared to conventional time-based tracking, the EQ-based framework 
+  emphasizes spatial accuracy and is more suitable for multi-axis coordination 
+  and constraint satisfaction.
+</p>
+
+<p><strong>Conventional Contouring Control:</strong></p>
+<p style="text-align:center;">
+  \[
+  \epsilon_c(t) \to 0 \iff q(t) \to q_d(t), \quad t \to \infty
+  \]
+</p>
+
+<p><strong>EQ-Based Contouring Control:</strong></p>
+<p style="text-align:center;">
+  \[
+  \epsilon_c(t) \to 0 \iff \epsilon(t) \to 0, \quad t \to \infty
+  \]
+</p>
+
+<h3>New Control Objective for Contouring Control [2]</h3>
+<p>
+  The dynamics of the equivalent-error system are expressed as:
+</p>
+<p style="text-align:center;">
+  \[
+  \begin{bmatrix}\ddot{\epsilon} \\ \ddot{e}\end{bmatrix}
+  = \Omega(q,\dot{q},t) + \Gamma(q,\dot{q},t)\tau
+  \]
+</p>
+
+<p>
+  where \( \Omega \) and \( \Gamma \) capture the nonlinear coupling effects:
+</p>
+
+<p style="text-align:left;">
+  \[
+  \Omega =
+  \begin{bmatrix}
+  \mathcal{A}(q)f(q,\dot{q}) + \mathcal{B}(q,\dot{q}) \\
+  \ddot{q}_d^T(q - q_d) + \ddot{q}_d^T(\dot{q} - \dot{q}_d)
+  + \dot{q}_d^T f(q,\dot{q})
+  \end{bmatrix}, \quad
+  \Gamma =
+  \begin{bmatrix}
+  \mathcal{A}(q) \\ \dot{q}_d^T
+  \end{bmatrix}
+  G(q,\dot{q})
+  \]
+</p>
+
+<p>
+  with \(\mathcal{A}(q) = [\nabla \mathcal{P}_w(q_L)\; 0]\) for the left arm and 
+  \(\mathcal{A}(q) = [0\; \nabla \mathcal{P}_w(q_R)]\) for the right arm.
+</p>
+
+<p>
+  To achieve \(\epsilon \to 0\) asymptotically, consider a feedback-linearizing input:
+</p>
+<p style="text-align:center;">
+  \[
+  u = \tau = \Gamma^{-1}(-\Omega + v)
+  \]
+</p>
+<p>
+  where the auxiliary control \(v\) is designed to stabilize the equivalent-error dynamics.
+</p>
+
+<h4>References</h4>
+<p style="font-size:0.9em;">
+  [1] T. Nuchkrua, S. Chang, and S. Chen, “Contouring Control of 5-DOF Manipulator Robot Arm based on Equivalent Errors,” 
+  <em>Proc. Int. Automatic Control Conf. (CACS)</em>, Taiwan, 2015.<br>
+  [2] Y. Dong, T. Nuchkrua, and T. Shen, “Asymptotical Stability Contouring Control of Dual-Arm Robot with Holonomic Constraints: 
+  Modified Distributed Control Framework,” <em>IET Control Theory &amp; Applications</em>, 13(17), pp. 2877-2885, 2019.
+</p>
+
 		
 
 	
