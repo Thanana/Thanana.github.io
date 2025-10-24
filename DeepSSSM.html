@@ -66,23 +66,24 @@ MathJax.Hub.Config({
 
   <hr style="border:0; border-top:1px solid #ccc; width:50%; margin:16px auto;">
 
-  <h2>Deep Stochastic State-Space Models (Deep SSSM)</h2>
-  <table class="imgtable">
-    <tr>
-      <td><img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="400" style="margin-right:20px; margin-bottom:10px;" /></td>
+<h2>Deep Stochastic State-Space Models (Deep SSSM)</h2>
 
+<!-- Main figure -->
+<div style="text-align:center; margin-top:10px; margin-bottom:5px;">
+  <img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="420" 
+       style="margin-bottom:10px; border-radius:4px;">
+</div>
 
-
-<!-- Deep SSSM pipeline caption -->
-<div style="text-align:center; margin-top:10px; margin-bottom:20px;">
+<!-- Pipeline below figure -->
+<div style="text-align:center; margin-top:4px; margin-bottom:20px;">
   <p style="color:#003366; font-style:italic; font-size:0.9em;">
     Deep SSSM pipeline: <b>Observation</b> → <b>Latent State Inference</b> → 
-    <b>Stochastic Prediction</b> → <b>Control & Planning</b> → <b>Feedback</b>
+    <b>Stochastic Prediction</b> → <b>Control &amp; Planning</b> → <b>Feedback</b>
   </p>
 </div>
 
-<!-- Optional loop-style visual banner -->
-<div style="text-align:center; background-color:#f8f9fb; border-radius:10px; padding:15px 10px; margin:20px auto; max-width:720px; box-shadow:0 0 4px rgba(0,0,0,0.1);">
+<!-- Optional light blue loop banner -->
+<div style="text-align:center; background-color:#f8f9fb; border-radius:10px; padding:12px 10px; margin:10px auto 25px auto; max-width:720px; box-shadow:0 0 3px rgba(0,0,0,0.08);">
   <p style="margin:0; font-size:0.95em; color:#003366;">
     <span style="color:#00A6D6;"><b>Perception</b></span> → 
     <span style="color:#006699;"><b>Inference</b></span> → 
@@ -94,6 +95,16 @@ MathJax.Hub.Config({
     (Robots learn to act beyond direct observation through stochastic world modeling)
   </p>
 </div>
+
+<!-- Now continue with your text -->
+<p>
+  Deep SSSMs are <strong>probabilistic world models</strong> that combine 
+  <em>stochastic latent dynamics</em> with <em>control-theoretic planning</em>. 
+  They enable robots to reason about hidden or occluded states, predict the 
+  evolution of the environment, and plan actions under uncertainty.
+</p>
+
+    
 
       
       
