@@ -78,30 +78,51 @@ MathJax.Hub.Config({
 	
 
 
+<hr style="border:0; border-top:1px solid #ddd; margin:16px 0 20px 0;">
+
+<h3 style="margin-bottom:6px;">Understanding Deep SSSM</h3>
+
 <p>
-  <b>Concept.</b> Deep Stochastic State-Space Models (Deep SSSM)
-  integrate control-theoretic reasoning with latent variable learning to
-  achieve uncertainty-aware perception and prediction under partial
-  observability. Unlike deterministic world models, Deep SSSM explicitly
-  maintains probabilistic beliefs over hidden states, enabling robust control
-  even when sensory input is occluded or corrupted.
+  <b>What is Deep SSSM?</b><br>
+  Deep Stochastic State-Space Models (Deep SSSM) are a new class of
+  uncertainty-aware world models that combine <em>probabilistic latent dynamics</em>
+  with <em>control-theoretic planning</em>.
+  They allow robots to reason about hidden states — what cannot be directly seen —
+  and to predict how actions influence the environment under uncertainty.
 </p>
 
 <p>
-  <b>Framework.</b> The framework learns a compact latent dynamics model
-  from raw image sequences using a variational inference objective.
-  It jointly optimizes a transition model, an observation model,
-  and a stochastic latent encoder–decoder pair. During planning or model-predictive
-  control, the learned dynamics act as a predictive simulator,
-  providing uncertainty-calibrated forecasts of future states and rewards.
+  <b>What is the key challenge?</b><br>
+  In real robotic environments, visual observations are often <em>occluded,
+  noisy, or incomplete</em>. Traditional deterministic world models collapse
+  under these conditions because they overfit to single “best guesses” of the
+  state. The key challenge is to maintain calibrated uncertainty and still
+  make reliable control decisions when the world is only partially visible.
 </p>
 
 <p>
-  <b>Applications.</b> Deep SSSM has been applied to occlusion-robust robotic
-  manipulation, adaptive visual tracking, and model-based reinforcement
-  learning. By combining Bayesian uncertainty with control-oriented rollouts,
-  it bridges deep representation learning with robust adaptive control.
+  <b>How does Deep SSSM address this?</b><br>
+  By learning a <em>stochastic latent state</em> that represents uncertainty
+  explicitly. The model predicts distributions over future trajectories rather
+  than single outcomes. This allows the control layer to plan and adapt based
+  on uncertainty, yielding more stable and robust policies during occlusion or
+  unseen perturbations.
 </p>
+
+<p>
+  <b>What is the impact?</b><br>
+  Deep SSSM enables <em>occlusion-robust visual control</em> — a step toward
+  perception-driven robots that can act safely even when visual data is
+  incomplete. The approach provides a foundation for uncertainty-aware
+  decision-making in robotic manipulation, visual servoing, and human–robot
+  collaboration.
+</p>
+
+<p style="font-size:0.85em; color:#777; text-align:center;">
+  <i>In short: Deep SSSM teaches robots to “see beyond vision” — reasoning about
+  what’s hidden, uncertain, and dynamic.</i>
+</p>
+
 
 <p style="font-size:0.85em; color:#777; text-align:center;">
   <i>Deep SSSM enables predictive control through latent stochastic dynamics,
