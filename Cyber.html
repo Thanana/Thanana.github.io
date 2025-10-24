@@ -49,41 +49,94 @@ MathJax.Hub.Config({
 </div>
 
 	
-</p><h2>Motivation</h2>
-	
-	<table class="imgtable"><tr><td>
-<img src="AKE_Optimize1.jpg" alt="" width="685 px" height="252 px" />&nbsp;</td>
-<td align="left"><p>
+<h1>Sparse Bayesian Learning-based Adaptive Impedance Control</h1>
+<p style="font-size:1.05em; color:#555; margin-top:-10px;">
+  <i>(Physical Human–Robot Interaction)</i>
+</p>
 
+<div style="text-align:center; margin:20px auto; max-width:700px; line-height:1.5;">
+  <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-bottom:6px;">
+    “Adaptive compliance through learning — robots that move in harmony with humans.”
+  </p>
+  <p style="color:#003366; font-size:0.95em; font-style:italic; margin-top:0;">
+    <b>Challenge</b> physical effort and delay in human–robot collaboration,  
+    <b>Change</b> impedance dynamically through intention prediction,  
+    and create <b>Impact</b> in safe, responsive human–robot interaction.
+  </p>
+</div>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380">
-  <style>
-    .box{fill:#ffffff;stroke:#000;stroke-width:2}
-    .title{font: bold 18px Arial, Helvetica, sans-serif}
-    .label{font: 14px Arial, Helvetica, sans-serif}
-    .italic{font: italic 13px Arial, Helvetica, sans-serif}
-    .math{font: 16px 'Times New Roman', serif}
-    .arrow{marker-end: url(#arrow)}
-  </style>
-  <defs>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M0,0 L12,6 L0,12 z" fill="#000"/>
-    </marker>
-  </defs>
+<hr style="border:0; border-top:1px solid #ccc; width:50%; margin:16px auto;">
 
- 
+<h2>Motivation</h2>
+<p>
+  In physical human–robot interaction (pHRI), the robot must not only follow commands
+  but also <em>understand and adapt</em> to the human partner’s intentions. 
+  Excessive operating force or delayed responses can increase fatigue and reduce safety. 
+  To minimize the human partner’s effort in both <strong>force</strong> and <strong>time</strong>,
+  it is essential for the robot to continuously adjust its impedance parameters 
+  — stiffness and damping — based on the partner’s motion intention.
+</p>
 
+<h2>Framework Overview</h2>
+<p>
+  This research proposes a <strong>data-driven adaptive impedance control (AIC) framework</strong> 
+  that integrates two learning-based modules:
+</p>
+<ul>
+  <li><b>Sparse Bayesian Learning-based Human Intention Predictor (SBL-HIP)</b> —  
+  predicts the human partner’s next intended motion using time-series data of position,
+  velocity, and interaction force.</li>
+  <li><b>Variable Impedance Controller (VIC)</b> —  
+  dynamically modulates the robot’s impedance parameters based on the predicted intention,
+  enabling compliant and coordinated behavior.</li>
+</ul>
 
+<p>
+  The overall control scheme operates as follows:
+  The <em>HIP</em> predicts the future human action using minimal yet informative data,
+  leveraging sparsity to ensure fast online computation.
+  The predicted intention is then passed to the <em>VIC</em>, which adjusts the robot’s
+  impedance parameters in real time. 
+  This allows the robot to <strong>anticipate</strong> human motion and respond
+  <strong>proactively</strong> rather than reactively.
+</p>
 
+<h2>Application: Compliant Control</h2>
+<table class="imgtable">
+  <tr>
+    <td>
+      <img src="compliant_control_diagram.jpg" alt="Compliant control framework" width="420">
+    </td>
+    <td align="left">
+      <ul>
+        <li>Robot manipulator equipped with a force sensor and compliant end-effector.</li>
+        <li>Human operator interacts physically through contact forces \( f_h \).</li>
+        <li>Impedance parameters (\( K, B \)) adapt online based on predicted intention.</li>
+        <li>Enhances cooperation smoothness, safety, and energy efficiency in shared tasks.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
+<h2>Validation</h2>
+<p>
+  The proposed SBL-AIC scheme was evaluated through both simulation and experiment:
+</p>
+<ul>
+  <li><b>2-DOF planar robot simulation</b> — demonstrates adaptive impedance response under variable motion patterns.</li>
+  <li><b>6-DOF manipulator experiment</b> — confirms compliant motion and reduced operator effort during physical collaboration.</li>
+</ul>
 
+<p>
+  The results show that the proposed data-driven scheme enables robots to modify
+  their dynamic behavior in real time, achieving natural and safe cooperation with humans.
+</p>
 
-	
-	
-	
-</td></tr></table>
-	<table class="imgtable"><tr><td> 
-<img src="AKE_AI1.jpg" alt="" width="455 px" height="252 px" />&nbsp;</td>
+<p style="font-size:0.85em; color:#777; text-align:center;">
+  <i>This research bridges probabilistic learning and adaptive control — teaching robots to feel,
+  anticipate, and act in synchrony with human partners.</i>
+</p>
+
 <td align="left"><p>
 	
 </td></tr></table>
