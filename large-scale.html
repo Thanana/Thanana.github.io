@@ -1,5 +1,3 @@
-	   
-			   
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -7,9 +5,9 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>SBL-Based Adaptive Impedance Control</title>
+<title>Bio-inspired Large-Scale System</title>
 
-<!-- MathJax -->   
+<!-- MathJax -->
 <script type="text/javascript" async
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -36,8 +34,8 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
     <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
     <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
-    <div class="menu-item"><a href="Cyber.html" class="current">Data-driven&nbsp;Control</a></div>
-    <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+    <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+    <div class="menu-item"><a href="large-scale.html" class="current">Large-scale&nbsp;System</a></div>
 
     <div class="menu-category">Teaching</div>
     <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
@@ -47,39 +45,96 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
   </td>
 
-<td id="layout-content">
-<div id="toptitle">
-<h1>Large-scale system</h1>
-</div>
-	
-</p><h2>Bio-inspired</h2>
-	<img src="PAM.pdf" alt="" width="536 px" height="296 px" />
-	<img src="largescale_characteristic_sim.jpg" alt="" width="536 px" height="296 px" />&nbsp;
-	 <table class="imgtable"><tr><td> 
-<img src="stifness_1.jpg" alt="" width="255 px" height="182 px" />&nbsp;
-	
-	</td>
-<td align="left"><p>
-	One of my interested research goal is definitely to aim the soft robots inspired by biology system dealt with 
-designing/fabricating, modeling, and controlling. For example, especially, smart soft robots is challenging to 
-integrate a sensor, communication, and controller together.
-Fortunately, according to my PhD work, pneumatic artificial muscle(PAM) is one of the soft actuator, which is 
-considered compliant actuator and modeled as non-linear actuation system.
-However, feedback thermodynamic control of MH is more complex than most of the acadamic control theory tasks. 
-	In terms of control problem, due to high 
-complicated non-linear system, the classical control + fuzzy control is employed to be control approach based 
-on <b>model-free control and information based</b>. As a result, improving feedback control framework for thermodynamics control
-	will impact in other complex systems.
-</td></tr></table>
-	</p>
-<div id="footer">
-<div id="footer-text">
-Page generated 2017-06-18 21:56:49 CST, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
-</div>
-</div>
-</td>
+  <!-- Main content -->
+  <td id="layout-content">
+  <div id="toptitle">
+  <h1>Bio-inspired Large-Scale Systems</h1>
+  </div>
+
+  <!-- Motto block -->
+  <div style="text-align:center; margin:20px auto; max-width:700px; line-height:1.5;">
+    <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-bottom:6px;">
+      “From muscle to machine — learning adaptability from nature.”
+    </p>
+    <p style="color:#003366; font-size:0.95em; font-style:italic; margin-top:0;">
+      <b>Challenge</b> complex, nonlinear, and thermodynamic dynamics,&nbsp;
+      <b>Change</b> control paradigms toward bio-inspired intelligence,&nbsp;
+      and drive <b>Impact</b> in scalable, compliant robotic systems.
+    </p>
+  </div>
+
+  <hr style="border:0; border-top:1px solid #ccc; width:50%; margin:16px auto;">
+
+  <h2>Bio-inspired Motivation</h2>
+  <p>
+    One of my long-term research goals is to design <strong>soft robotic systems inspired by biological mechanisms</strong>,
+    emphasizing integration across sensing, actuation, and control.  
+    Bio-inspired systems offer a unique balance of <em>compliance, adaptability, and energy efficiency</em> —
+    qualities that conventional rigid robots often lack.
+  </p>
+
+  <p>
+    During my Ph.D. research, I investigated <strong>pneumatic artificial muscles (PAMs)</strong> — a class of soft actuators
+    that mimic biological muscle behavior. PAMs exhibit strong nonlinearity and compliance,
+    making them ideal for bio-inspired robots, but also challenging to control.
+  </p>
+
+  <h2>System Characteristics and Control Challenges</h2>
+  <table class="imgtable">
+    <tr>
+      <td>
+        <img src="PAM.pdf" alt="Pneumatic artificial muscle system" width="536" height="296" /><br />
+        <img src="largescale_characteristic_sim.jpg" alt="Large-scale simulation characteristics" width="536" height="296" />
+      </td>
+      <td align="left">
+        <p>
+          The PAM system combines thermodynamic and mechanical dynamics, making feedback control particularly difficult.
+          The nonlinear coupling among pressure, temperature, and deformation leads to
+          <strong>high-dimensional and time-varying system behavior</strong>.
+        </p>
+        <p>
+          These challenges motivate the exploration of <strong>model-free and information-based control approaches</strong>,
+          such as fuzzy control and adaptive feedback schemes.
+          Such approaches are essential to handle systems that lack accurate analytical models,
+          particularly in thermodynamic environments.
+        </p>
+      </td>
+    </tr>
+  </table>
+
+  <h2>Thermodynamic Feedback Control</h2>
+  <table class="imgtable">
+    <tr>
+      <td><img src="stifness_1.jpg" alt="Stiffness adaptation experiment" width="255" height="182" /></td>
+      <td align="left">
+        <p>
+          In contrast to conventional mechanical control, thermodynamic feedback introduces
+          <em>energy transfer and state uncertainty</em> into the control loop.
+          My work has focused on extending classical control frameworks with fuzzy logic and adaptive inference
+          to achieve <strong>real-time feedback under uncertain conditions</strong>.
+        </p>
+        <p>
+          These insights form the foundation for future <strong>multi-physics control systems</strong> —
+          integrating thermodynamic, mechanical, and informational feedback for robust operation in large-scale systems.
+        </p>
+      </td>
+    </tr>
+  </table>
+
+  <p style="font-size:0.85em; color:#777; text-align:center;">
+    <i>Advancing from soft muscle-inspired actuators to large-scale intelligent systems —
+    bridging thermodynamics, nonlinear control, and bio-inspired design.</i>
+  </p>
+
+  <!-- Footer -->
+  <div id="footer">
+    <div id="footer-text" style="font-size:0.85em; color:#777;">
+      © 2025 Thanana Nuchkrua | Control & Robotics Research Group
+    </div>
+  </div>
+
+  </td>
 </tr>
 </table>
 </body>
 </html>
-	
