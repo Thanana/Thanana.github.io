@@ -104,40 +104,60 @@ MathJax.Hub.Config({
     evolution of the environment, and plan actions under uncertainty.
   </p>
 
-  <h2>What Is Deep SSSM?</h2>
-  <p>
-    A Deep Stochastic State-Space Model learns to represent complex, partially observable
-    systems as <strong>latent state variables</strong> governed by probabilistic transitions:
-  </p>
 
-  <p style="text-align:center;">
-    \[
-    s_{t+1} \sim p(s_{t+1}\mid s_t, a_t), \quad o_t \sim p(o_t \mid s_t)
-    \]
-  </p>
 
-  <p>
-    This latent formulation allows the model to predict how the system evolves while
-    maintaining uncertainty over unobserved variables.
-  </p>
 
-  <h2>Key Challenges</h2>
-  <p>
-    Real-world robotic environments are often <em>occluded, noisy, or incomplete</em>.
-    Conventional deterministic world models fail in these conditions, producing 
-    overconfident predictions that degrade control performance.
-    The challenge is to represent <strong>uncertainty explicitly</strong> while retaining
-    computational tractability for real-time decision-making.
-  </p>
+    <h2 style="color:#00A6D6;">What Is Deep SSSM?</h2>
+<p>
+A <b>Deep Stochastic State-Space Model (Deep SSSM)</b> is a neural framework that learns to represent
+complex, partially observable systems through <i>latent states</i> that evolve probabilistically:
+</p>
 
-  <h2>How Deep SSSM Addresses This</h2>
-  <p>
-    Deep SSSM learns a <strong>stochastic latent representation</strong> that encodes both 
-    dynamics and uncertainty. Instead of predicting single trajectories, it models
-    <em>distributions over future states</em>. This probabilistic approach enables
-    uncertainty-aware control policies that remain stable even under occlusion or 
-    unseen disturbances.
-  </p>
+<p style="text-align:center; font-family: 'Courier New', monospace; font-size:0.95em; color:#333;">
+s<sub>t+1</sub> ∼ p(s<sub>t+1</sub>|s<sub>t</sub>,a<sub>t</sub>), 
+o<sub>t</sub> ∼ p(o<sub>t</sub>|s<sub>t</sub>)
+</p>
+
+<p>
+Rather than relying solely on visible signals, Deep SSSM discovers an <i>internal probabilistic world</i> —
+a compact, uncertainty-aware abstraction that captures how the system truly evolves beneath noisy or occluded observations.
+</p>
+
+<hr />
+
+<h3 style="color:#00A6D6;">⚙️ Why It Matters</h3>
+<p>
+Real-world robotic systems operate under <b>occlusion</b>, <b>sensor noise</b>, and <b>partial visibility</b>.
+Conventional deterministic models assume full observability and collapse uncertainty into a single best guess,
+leading to <i>overconfident and brittle predictions</i>.
+The challenge is to represent uncertainty <b>explicitly</b> while remaining computationally efficient for real-time control.
+</p>
+
+<hr />
+
+<h3 style="color:#00A6D6;">🌌 How Deep SSSM Addresses This</h3>
+<ul>
+  <li><b>Stochastic latent transition:</b> captures multi-modal futures and propagates uncertainty forward.</li>
+  <li><b>Probabilistic encoder:</b> filters occluded observations into calibrated latent beliefs.</li>
+  <li><b>Variational inference:</b> jointly optimizes prediction and uncertainty calibration.</li>
+</ul>
+
+<p>
+Instead of predicting a single trajectory, Deep SSSM models <b>distributions</b> over possible futures.
+This enables <i>uncertainty-aware planning and control</i> that remains stable even under occlusion, drift, or unseen disturbances.
+</p>
+
+<hr />
+
+<h3 style="color:#00A6D6;">🤖 Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6; padding:0.6em 1em;">
+Deep SSSM turns perception + control into a single probabilistic reasoning process —
+where uncertainty is not a nuisance to be removed,
+but a signal to be learned, modeled, and exploited.
+</p>
+
+
+    
 
   <h2>Impact and Applications</h2>
   <p>
