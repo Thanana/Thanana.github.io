@@ -83,12 +83,13 @@ MathJax.Hub.Config({
 <div class="infoblock">
   <div class="blockcontent">
     <p>
-      Hydrogen metal hydride (MH) systems offer high volumetric density and reversible storage for sustainable energy applications. 
-      Classical MH models, however, rely on empirical Arrhenius parameters that neglect quantum phenomena such as tunneling, zero-point motion, and lattice interactions, leading to large prediction errors at low temperatures. 
-      This paper proposes a unified multiscale framework that embeds quantum-informed hydrogen–lattice transport mechanisms into macroscopic diffusion and control models. 
-      The approach employs weighted–robust regression for parameter estimation, quantifies uncertainty via bootstrap analysis, and integrates the resulting quantum-corrected dynamics into a predictive control formulation. 
-      Numerical experiments demonstrate that tunneling-enhanced diffusion improves low-temperature response and reduces steady-state error and control effort by 35–50% compared with classical models. 
-      The framework thus bridges microscopic quantum transport and macroscopic control, advancing physics-consistent and data-driven control design for next-generation hydrogen energy systems.
+      Classical macroscopic models of metal–hydride (MH) hydrogen storage rely on empirical Arrhenius laws that neglect quantum phenomena such as tunneling, zero-point motion, and hydrogen–lattice interactions.  
+	As a result, their predictive and control performance degrade across wide temperature ranges, particularly in cryogenic regimes where quantum transport remains active.  
+	This paper presents a unified \emph{quantum-informed diffusion and control framework} that bridges microscopic hydrogen–lattice physics with macroscopic predictive control.  
+	A temperature-dependent quantum correction operator is incorporated into the classical diffusion law, yielding an analytically tractable yet physically enriched model.  
+	Parameters are identified through weighted robust regression with bootstrap-based uncertainty quantification and integrated into a model predictive control (MPC) scheme that adapts to temperature-dependent dynamics.  
+	Simulation results show that tunneling-enhanced diffusion improves low-temperature response and reduces steady-state error and control effort by up to 50\% compared with classical Arrhenius-based control.  
+	While the present study focuses on numerical validation, the proposed architecture establishes a transferable foundation for \emph{digital-twin development}—linking microscopic quantum transport and system-level predictive control for next-generation hydrogen storage technologies.
     </p>
   </div>
 </div>
