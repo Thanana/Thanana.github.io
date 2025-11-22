@@ -52,8 +52,7 @@ MathJax.Hub.Config({
 
     
 
-<h2>Quantum-Informed Metal-Hydride Hydrogen Storage: 
-		Physics-Consistent Multiscale Modeling, Predictive Control, and Digital Twin Framework</h2>
+<h2>QBehavioral Learning for Data-Driven PID Tuning</h2>
 
 <p><i>Prepare for submission</i>.  </p>
 
@@ -83,13 +82,25 @@ MathJax.Hub.Config({
 <div class="infoblock">
   <div class="blockcontent">
     <p>
-      Classical macroscopic models of metal–hydride (MH) hydrogen storage rely on empirical Arrhenius laws that neglect quantum phenomena such as tunneling, zero-point motion, and hydrogen–lattice interactions.  
-	As a result, their predictive and control performance degrade across wide temperature ranges, particularly in cryogenic regimes where quantum transport remains active.  
-	This paper presents a unified \emph{quantum-informed diffusion and control framework} that bridges microscopic hydrogen–lattice physics with macroscopic predictive control.  
-	A temperature-dependent quantum correction operator is incorporated into the classical diffusion law, yielding an analytically tractable yet physically enriched model.  
-	Parameters are identified through weighted robust regression with bootstrap-based uncertainty quantification and integrated into a model predictive control (MPC) scheme that adapts to temperature-dependent dynamics.  
-	Simulation results show that tunneling-enhanced diffusion improves low-temperature response and reduces steady-state error and control effort by up to 50\% compared with classical Arrhenius-based control.  
-	While the present study focuses on numerical validation, the proposed architecture establishes a transferable foundation for \emph{digital-twin development}—linking microscopic quantum transport and system-level predictive control for next-generation hydrogen storage technologies.
+      This paper presents a \emph{behavioral learning framework} for tuning
+			proportional–integral–derivative (PID) controllers using only closed-loop
+			measurements, without identification, surrogate modeling, or frequency–response
+			analysis.  
+			The method evaluates the closed-loop behavior induced by a candidate set of PID
+			gains through an empirical cost functional capturing steady-state accuracy,
+			overshoot, oscillation magnitude, and control effort.  
+			At each iteration, the controller is updated toward the gain vector that
+			minimizes the measured behavioral cost within a stability-certified candidate
+			set, guaranteeing \emph{monotonic performance improvement} and bounded adaptive
+			updates.  
+			The update rule admits an implicit gradient interpretation and constitutes a
+			model-free generalization of classical adaptive tuning principles.  
+			Six benchmark studies—covering first-order, second-order, dead-time, nonlinear,
+			saturating, disturbance-driven, and time-varying plants—demonstrate rapid
+			convergence, robustness, and superior closed-loop behavior compared with
+			classical PID tunings.  
+			The proposed approach offers a practical and interpretable alternative to
+			model-based or heuristic PID tuning for uncertain and nonlinear systems.
     </p>
   </div>
 </div>
