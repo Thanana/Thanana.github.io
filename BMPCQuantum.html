@@ -83,13 +83,12 @@ MathJax.Hub.Config({
 <div class="infoblock">
   <div class="blockcontent">
     <p>
-      Classical macroscopic models of metal–hydride (MH) hydrogen storage rely on empirical Arrhenius laws that neglect quantum phenomena such as tunneling, zero-point motion, and hydrogen–lattice interactions.  
-	As a result, their predictive and control performance degrade across wide temperature ranges, particularly in cryogenic regimes where quantum transport remains active.  
-	This paper presents a unified \emph{quantum-informed diffusion and control framework} that bridges microscopic hydrogen–lattice physics with macroscopic predictive control.  
-	A temperature-dependent quantum correction operator is incorporated into the classical diffusion law, yielding an analytically tractable yet physically enriched model.  
-	Parameters are identified through weighted robust regression with bootstrap-based uncertainty quantification and integrated into a model predictive control (MPC) scheme that adapts to temperature-dependent dynamics.  
-	Simulation results show that tunneling-enhanced diffusion improves low-temperature response and reduces steady-state error and control effort by up to 50\% compared with classical Arrhenius-based control.  
-	While the present study focuses on numerical validation, the proposed architecture establishes a transferable foundation for \emph{digital-twin development}—linking microscopic quantum transport and system-level predictive control for next-generation hydrogen storage technologies.
+      We propose a Bayesian model predictive control (MPC) framework for uncertainty-aware quantum control. The method embeds Bayesian inference directly into 
+		the receding-horizon control loop, enabling online identification of uncertain Hamiltonian parameters and the optimization of feedback policies under realistic noise 
+		and actuation constraints. Numerical experiments on single-qubit state-transfer tasks show that Bayesian MPC attains faster convergence and higher terminal 
+		fidelities than both nominal MPC and open-loop GRAPE under parameter mismatch, while preserving robustness to decoherence and readout noise. Importantly, 
+		the approach remains computationally efficient for short prediction horizons, enabling real-time deployment on near-term quantum hardware. These results establish 
+		Bayesian MPC as a principled and practical strategy for adaptive, feedback-based quantum control under uncertainty.
     </p>
   </div>
 </div>
