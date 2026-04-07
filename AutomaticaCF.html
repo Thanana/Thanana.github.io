@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Seeing Beyond Vision | Deep SSSM</title> 
+<title>Cognitive Flexibility | Automatica</title>
 
 <!-- MathJax -->
 <script type="text/javascript" async
@@ -32,10 +32,12 @@ MathJax.Hub.Config({
 
     <div class="menu-category">Research</div>
     <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
-    <div class="menu-item"><a href="DeepSSSM.html" class="current">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+    <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
     <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
     <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+    <div class="menu-item"><a href="LCSS.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
+    <div class="menu-item"><a href="Automatica.html" class="current">CF&nbsp;Structural&nbsp;Operator</a></div>
 
     <div class="menu-category">Teaching</div>
     <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
@@ -48,76 +50,290 @@ MathJax.Hub.Config({
   <!-- Main content -->
   <td id="layout-content">
   <div id="toptitle">
- 
 
-    
+<!-- ============================= -->
+<!-- Header                        -->
+<!-- ============================= -->
 
-<h2>Behavioral Learning for Data-Driven PID Tuning</h2>
-
-<p><i>Prepare for submission</i>.  </p>
-
-<ul>
-<li><p><a>Paper</a></p>
-</li>
-</ul>
-
-<ul>
-<li><p><b>Highlight</b></p>
-  <div style="text-align:center; margin-top:10px; margin-bottom:10px;">
-    <img src="behavioral-learning1.pdf" alt="behavioral-learning Framework" width="750" 
-         style="margin:10px auto; border-radius:0px; box-shadow:0 0 0px rgba(0,0,0,0.08);">
-    <p style="font-style:italic; color:#555; font-size:90%;">
-    </p>
-  </div>
-</li>
-
-<li><p><b>Code:</b> powered by Julia 
-  <img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
-       style="vertical-align:middle; margin-left:6px;">
-</p></li>
-</ul>
-
-
-
-<div class="infoblock">
-  <div class="blockcontent">
-    <p>
-      This paper presents a \emph{behavioral learning framework} for tuning
-			proportional–integral–derivative (PID) controllers using only closed-loop
-			measurements, without identification, surrogate modeling, or frequency–response
-			analysis.  
-			The method evaluates the closed-loop behavior induced by a candidate set of PID
-			gains through an empirical cost functional capturing steady-state accuracy,
-			overshoot, oscillation magnitude, and control effort.  
-			At each iteration, the controller is updated toward the gain vector that
-			minimizes the measured behavioral cost within a stability-certified candidate
-			set, guaranteeing \emph{monotonic performance improvement} and bounded adaptive
-			updates.  
-			The update rule admits an implicit gradient interpretation and constitutes a
-			model-free generalization of classical adaptive tuning principles.  
-			Six benchmark studies—covering first-order, second-order, dead-time, nonlinear,
-			saturating, disturbance-driven, and time-varying plants—demonstrate rapid
-			convergence, robustness, and superior closed-loop behavior compared with
-			classical PID tunings.  
-			The proposed approach offers a practical and interpretable alternative to
-			model-based or heuristic PID tuning for uncertain and nonlinear systems.
-    </p>
-  </div>
+<div style="text-align:center; margin-top:35px;">
+  <h1 style="color:#003366; font-weight:700; letter-spacing:0.4px;">
+    Cognitive Flexibility as a Latent Structural Operator
+  </h1>
+  <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-top:6px;">
+    When the model itself is wrong &mdash; adapt the representation, not just the parameters.
+  </p>
 </div>
 
-<!-- Footer Section -->
-<!-- ============================= -->
-<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0; background-color:#f9f9f9; border-top:1px solid #ddd;">
+<!-- Motto Block -->
+<div style="text-align:center; margin:22px auto; max-width:700px; line-height:1.55;">
+  <p style="color:#003366; font-size:0.95em; font-style:italic; margin-bottom:6px;">
+    <b>Detect</b> structural mismatch,&nbsp;
+    <b>Select</b> the most predictively consistent representation,&nbsp;
+    and <b>Preserve</b> Bayesian well-posedness &mdash; always.
+  </p>
+</div>
+
+<hr style="border:0; border-top:1px solid #ccc; width:55%; margin:18px auto;">
+
+<!-- Section Header -->
+<h2 style="color:#003366; text-align:center; margin-top:30px;">
+  Cognitive Flexibility for Bayesian State Estimation
+</h2>
+
+<!-- Pipeline Banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+            padding:14px 12px; margin:0 auto 30px auto; max-width:720px;
+            box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+  <p style="margin:0; font-size:0.95em; color:#003366;">
+    <span style="color:#00A6D6;"><b>Belief</b></span> &rarr;
+    <span style="color:#0077AA;"><b>Innovation Score</b></span> &rarr;
+    <span style="color:#0099CC;"><b>CF Rule</b></span> &rarr;
+    <span style="color:#00A6D6;"><b>Structure Selection</b></span> &rarr;
+    <span style="color:#003366;"><b>Bayesian Update</b></span>
+  </p>
+  <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+    CF acts solely at the representation level &mdash;
+    the Bayesian filtering recursion remains structurally unchanged.
+  </p>
+</div>
+
+<!-- Concept -->
+<p>
+  <b>Cognitive Flexibility (CF)</b> is a belief-level mechanism for
+  online latent-structure selection in Bayesian filtering under
+  structural mismatch. Rather than adapting parameters within a fixed
+  model class, CF selects at each step the latent structure that
+  minimises an innovation-based predictive score, leaving the
+  underlying Bayesian recursion intact.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h3 style="color:#003366;">What Is Structural Mismatch?</h3>
+<p>
+In Bayesian filtering, the posterior belief \(\mathfrak{B}_t\)
+evolves under a parameterised model class. When the true dynamics
+lie <i>outside</i> this class, parameter adaptation alone cannot
+restore predictive consistency &mdash; the belief remains well-posed
+but becomes systematically misaligned with the true data-generating
+process. This is <b>structural mismatch</b>: an intrinsic failure
+mode that cannot be eliminated by tuning \(\theta\).
+</p>
+<p>
+Formally, \(s\in\mathcal{S}\) is structurally mismatched if
+\(\exists\,\varepsilon&gt;0\) such that for every parameter sequence
+\(\{\theta_t\}\),
+\[
+\liminf_{t\to\infty}
+D_{\mathrm{KL}}\!\bigl(
+\mathbb{P}^\star(\cdot\mid y_{1:t},u_{1:t-1})
+\,\|\,\mathfrak{B}_t^{\theta_t,s}
+\bigr)\geq\varepsilon.
+\]
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">&#9881; How CF Addresses This</h3>
+<p>
+CF introduces a <b>structural selection operator</b>
+\(\mathcal{T}_{\mathrm{CF}}:\mathcal{P}(\mathcal{Z})\times\mathcal{S}
+\to\mathcal{S}\) that updates the active latent structure online:
+</p>
+
+<p style="text-align:center;">
+\[
+s_{t+1} = \mathcal{T}_{\mathrm{CF}}(\mathfrak{B}_t, s_t)
+\in \arg\min_{s\in\mathcal{S}}\,\Phi(\mathfrak{B}_t, s),
+\qquad
+\mathfrak{B}_{t+1} = \mathcal{F}_{\theta,s_{t+1}}
+(\mathfrak{B}_t, u_t, y_{t+1}),
+\]
+</p>
+
+<p>
+where \(\Phi(\mathfrak{B}_t,s):=-\log\ell_{\theta,s}(y_{t+1}\mid\mathfrak{B}_t,u_t)\)
+is the innovation score. The belief update remains fully Bayesian;
+CF acts only through the structural update.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">&#128208; Three-Layer Theoretical Analysis</h3>
+<ul>
+  <li>
+    <b>Layer 1 &mdash; Well-posedness:</b>
+    The coupled belief&ndash;structure recursion is well posed and
+    forward invariant on \(\mathcal{P}(\mathcal{Z})\times\mathcal{S}\).
+    Structural mismatch is irreducible: no parameter adaptation can
+    eliminate it (Theorems 10&ndash;12).
+  </li>
+  <li>
+    <b>Layer 2 &mdash; Mechanism:</b>
+    CF satisfies a one-step structural descent property
+    \(\Phi(\mathfrak{B}_t,s_{t+1})\leq\Phi(\mathfrak{B}_t,s_t)\),
+    switches finitely under persistent score separation, and defines
+    a hybrid dynamical system on
+    \(\mathcal{P}(\mathcal{Z})\times\mathcal{S}\) (Lemmas 18&ndash;19,
+    Theorem 21).
+  </li>
+  <li>
+    <b>Layer 3 &mdash; Consequences:</b>
+    CF reduces to standard Bayesian filtering once the optimal
+    structure is identified, and is non-intrusive when the model is
+    correctly specified (Corollaries 22, 24).
+  </li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">&#129302; Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+          padding:0.8em 1.2em; border-radius:6px;">
+CF enlarges the set of admissible belief trajectories from
+\(\mathcal{R}_s\) (fixed structure) to
+\(\mathcal{R}_{\mathrm{CF}}=\bigcup_{s\in\mathcal{S}}\mathcal{R}_s\),
+strictly expanding representational capacity beyond any fixed model
+class &mdash; and beyond what IMM filtering achieves through
+probabilistic mixing.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366; margin-top:36px;">Numerical Experiments</h2>
+<p>
+Four experiments evaluate CF across complementary mismatch scenarios,
+all using the canonical nonlinear stochastic growth model with
+\(N_p=2500\) particles and \(M=50\) Monte Carlo runs (\(T=400\)).
+</p>
+
+<h3 style="color:#003366;">Results Summary (Table 1)</h3>
+
+<div style="overflow-x:auto; margin:0 auto; max-width:720px;">
+<table style="border-collapse:collapse; width:100%; font-size:0.9em; text-align:center;">
+  <thead>
+    <tr style="background-color:#003366; color:white;">
+      <th style="padding:8px 10px;">Exp.</th>
+      <th style="padding:8px 10px;">Method</th>
+      <th style="padding:8px 10px;">RMSE &darr;</th>
+      <th style="padding:8px 10px;">\(\bar{\Phi}\) &darr;</th>
+      <th style="padding:8px 10px;">\(\rho_{\mathrm{sw}}\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color:#f5f8fa;">
+      <td rowspan="4" style="padding:7px 10px;">4.1</td>
+      <td>Fixed LIN</td><td>13.463</td><td>7.947</td><td>&mdash;</td>
+    </tr>
+    <tr style="background-color:#f5f8fa;">
+      <td>Fixed NL</td><td>10.273</td><td>4.192</td><td>&mdash;</td>
+    </tr>
+    <tr style="background-color:#f5f8fa;">
+      <td>IMM</td><td>10.534</td><td>&mdash;</td><td>&mdash;</td>
+    </tr>
+    <tr style="background-color:#e8f4fb; font-weight:bold;">
+      <td>CF (ours)</td><td>10.688</td><td>4.168</td><td>0.011</td>
+    </tr>
+    <tr>
+      <td rowspan="3" style="padding:7px 10px;">4.2</td>
+      <td>Fixed-QUAD</td><td>8.415</td><td>&mdash;</td><td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>Fixed-SAT</td><td>8.291</td><td>&mdash;</td><td>&mdash;</td>
+    </tr>
+    <tr style="background-color:#e8f4fb; font-weight:bold;">
+      <td>CF (ours)</td><td>7.408</td><td>2.071</td><td>0.003</td>
+    </tr>
+    <tr style="background-color:#f5f8fa;">
+      <td rowspan="3" style="padding:7px 10px;">4.3</td>
+      <td>Fixed-QUAD</td><td>4.412</td><td>&mdash;</td><td>&mdash;</td>
+    </tr>
+    <tr style="background-color:#f5f8fa;">
+      <td>Fixed-SAT</td><td>7.230</td><td>&mdash;</td><td>&mdash;</td>
+    </tr>
+    <tr style="background-color:#e8f4fb; font-weight:bold;">
+      <td>CF (ours)</td><td>4.413</td><td>2.599</td><td>0.000</td>
+    </tr>
+    <tr>
+      <td rowspan="3" style="padding:7px 10px;">4.4</td>
+      <td>Fixed LIN</td><td>18.665</td><td>22.479</td><td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>Fixed NL</td><td>7.105</td><td>5.702</td><td>&mdash;</td>
+    </tr>
+    <tr style="background-color:#e8f4fb; font-weight:bold;">
+      <td>CF (ours)</td><td>7.157</td><td>5.763</td><td>0.005</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p style="font-size:0.85em; color:#777; text-align:center; margin-top:6px;">
+  CF adapts only when required, switches finitely, and is
+  non-intrusive under correct specification. &#10003;
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366; margin-top:36px;">Impact and Applications</h2>
+<p>
+CF establishes a principled belief-level framework for
+representation adaptation in Bayesian state estimation.
+Its implications span:
+</p>
+<ul>
+  <li>Adaptive filtering under latent-dynamics and observation-model shifts</li>
+  <li>Learning-based control where the latent structure may become restrictive</li>
+  <li>Deep state-space models under distribution shift</li>
+  <li>Model predictive control under structural mismatch</li>
+</ul>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366;">Reproducibility</h2>
+<p>
+All Julia code for numerical experiments is available at
+<a href="https://thanana.github.io" target="blank">thanana.github.io</a>.
+</p>
+<ul>
+  <li><code>exp1_cf_benchmark_corrected.jl</code> &mdash; Experiment 4.1</li>
+  <li><code>exp2_cf_benchmark_corrected.jl</code> &mdash; Experiment 4.2</li>
+  <li><code>exp3_cf_benchmark_corrected.jl</code> &mdash; Experiment 4.3</li>
+  <li><code>automatica_exp44.jl</code> &mdash; Experiment 4.4 (2D)</li>
+</ul>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366;">Publication</h2>
+
+<dl>
+<dt>
+  <a href="#" target="blank">
+    Cognitive Flexibility as a Latent Structural Operator
+    for Bayesian State Estimation
+  </a>
+</dt>
+<dd>
+  <p>
+    T. Nuchkrua, S. Boonto, and X. Liu,
+    <i>Automatica</i>, 2026.
+    <br/>
+    <span style="color:#555; font-size:0.9em;">
+      Under review &middot; arXiv preprint available
+    </span>
+  </p>
+</dd>
+</dl>
+
+<p style="font-size:0.85em; color:#777; text-align:center;">
+  <i>When the model is wrong, change the representation &mdash;
+  not just the parameters.</i>
+</p>
+
+<!-- Footer -->
+<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
+     background-color:#f9f9f9; border-top:1px solid #ddd;">
   <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
-    © 2025 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
+    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
   </div>
 </footer>
 
 </td>
 </tr>
-</table>
-</body>
-</html>
 </table>
 </body>
 </html>
