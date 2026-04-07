@@ -60,7 +60,8 @@ MathJax.Hub.Config({
     Cognitive Flexibility as a Latent Structural Operator
   </h1>
   <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-top:6px;">
-    When the model itself is wrong &mdash; adapt the representation, not just the parameters.
+    When the model itself is wrong &mdash; adapt the representation,
+    not just the parameters.
   </p>
 </div>
 
@@ -101,9 +102,9 @@ MathJax.Hub.Config({
 <p>
   <b>Cognitive Flexibility (CF)</b> is a belief-level mechanism for
   online latent-structure selection in Bayesian filtering under
-  structural mismatch. Rather than adapting parameters within a fixed
-  model class, CF selects at each step the latent structure that
-  minimises an innovation-based predictive score, leaving the
+  structural mismatch. Rather than adapting parameters within a
+  fixed model class, CF selects at each step the latent structure
+  that minimises an innovation-based predictive score, leaving the
   underlying Bayesian recursion intact.
 </p>
 
@@ -119,41 +120,42 @@ but becomes systematically misaligned with the true data-generating
 process. This is <b>structural mismatch</b>: an intrinsic failure
 mode that cannot be eliminated by tuning \(\theta\).
 </p>
-<p>
-Formally, \(s\in\mathcal{S}\) is structurally mismatched if
-\(\exists\,\varepsilon&gt;0\) such that for every parameter sequence
-\(\{\theta_t\}\),
-\[
-\liminf_{t\to\infty}
-D_{\mathrm{KL}}\!\bigl(
-\mathbb{P}^\star(\cdot\mid y_{1:t},u_{1:t-1})
-\,\|\,\mathfrak{B}_t^{\theta_t,s}
-\bigr)\geq\varepsilon.
-\]
-</p>
 
-<h3 style="color:#003366; margin-top:28px;">&#9881; How CF Addresses This</h3>
-<p>
-CF introduces a <b>structural selection operator</b>
-\(\mathcal{T}_{\mathrm{CF}}:\mathcal{P}(\mathcal{Z})\times\mathcal{S}
-\to\mathcal{S}\) that updates the active latent structure online:
-</p>
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-<p style="text-align:center;">
-\[
-s_{t+1} = \mathcal{T}_{\mathrm{CF}}(\mathfrak{B}_t, s_t)
-\in \arg\min_{s\in\mathcal{S}}\,\Phi(\mathfrak{B}_t, s),
-\qquad
-\mathfrak{B}_{t+1} = \mathcal{F}_{\theta,s_{t+1}}
-(\mathfrak{B}_t, u_t, y_{t+1}),
-\]
-</p>
+<!-- ============================= -->
+<!-- Pipeline Diagram              -->
+<!-- ============================= -->
+<h3 style="color:#003366;">&#9881; The CF Pipeline</h3>
+
+<div style="text-align:center; margin:20px auto 10px auto;">
+  <img src="cf_pipeline.png" alt="CF pipeline diagram"
+       width="540"
+       style="border-radius:6px;
+              box-shadow:0 1px 6px rgba(0,0,0,0.10);">
+</div>
+<div style="text-align:center; margin-bottom:24px;">
+  <p style="font-style:italic; color:#555; font-size:0.88em;">
+    Fig. 1. The CF pipeline as a latent structural operator.
+    Dashed regions correspond to the three analytical layers:
+    <b>well-posedness</b> (Layer 1),
+    <b>mechanism</b> (Layer 2), and
+    <b>consequences</b> (Layer 3).
+  </p>
+</div>
 
 <p>
-where \(\Phi(\mathfrak{B}_t,s):=-\log\ell_{\theta,s}(y_{t+1}\mid\mathfrak{B}_t,u_t)\)
-is the innovation score. The belief update remains fully Bayesian;
-CF acts only through the structural update.
+At each time step, the innovation scores
+\(\{\Phi(\mathfrak{B}_t,s)\}_{s\in\mathcal{S}}\) are evaluated
+against the current belief \(\mathfrak{B}_t\) and passed to the
+CF rule, which selects \(s_{t+1}\) and parameterises the Bayesian
+update \(\mathfrak{B}_{t+1}=
+\mathcal{F}_{\theta,s_{t+1}}(\mathfrak{B}_t,u_t,y_{t+1})\).
+The belief update remains fully Bayesian; CF acts only through the
+structural update.
 </p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <h3 style="color:#003366; margin-top:28px;">&#128208; Three-Layer Theoretical Analysis</h3>
 <ul>
@@ -161,28 +163,27 @@ CF acts only through the structural update.
     <b>Layer 1 &mdash; Well-posedness:</b>
     The coupled belief&ndash;structure recursion is well posed and
     forward invariant on \(\mathcal{P}(\mathcal{Z})\times\mathcal{S}\).
-    Structural mismatch is irreducible: no parameter adaptation can
-    eliminate it (Theorems 10&ndash;12).
+    Structural mismatch is irreducible: no parameter adaptation
+    can eliminate it.
   </li>
   <li>
     <b>Layer 2 &mdash; Mechanism:</b>
-    CF satisfies a one-step structural descent property
-    \(\Phi(\mathfrak{B}_t,s_{t+1})\leq\Phi(\mathfrak{B}_t,s_t)\),
-    switches finitely under persistent score separation, and defines
-    a hybrid dynamical system on
-    \(\mathcal{P}(\mathcal{Z})\times\mathcal{S}\) (Lemmas 18&ndash;19,
-    Theorem 21).
+    CF satisfies a one-step structural descent property, switches
+    finitely under persistent score separation, and defines a hybrid
+    dynamical system on
+    \(\mathcal{P}(\mathcal{Z})\times\mathcal{S}\).
   </li>
   <li>
     <b>Layer 3 &mdash; Consequences:</b>
     CF reduces to standard Bayesian filtering once the optimal
-    structure is identified, and is non-intrusive when the model is
-    correctly specified (Corollaries 22, 24).
+    structure is identified, and is non-intrusive when the model
+    is correctly specified.
   </li>
 </ul>
 
 <h3 style="color:#003366; margin-top:28px;">&#129302; Core Insight</h3>
-<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+<p style="font-style:italic; background:#f5f9fb;
+          border-left:4px solid #00A6D6;
           padding:0.8em 1.2em; border-radius:6px;">
 CF enlarges the set of admissible belief trajectories from
 \(\mathcal{R}_s\) (fixed structure) to
@@ -194,86 +195,10 @@ probabilistic mixing.
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-<h2 style="color:#003366; margin-top:36px;">Numerical Experiments</h2>
-<p>
-Four experiments evaluate CF across complementary mismatch scenarios,
-all using the canonical nonlinear stochastic growth model with
-\(N_p=2500\) particles and \(M=50\) Monte Carlo runs (\(T=400\)).
-</p>
-
-<h3 style="color:#003366;">Results Summary (Table 1)</h3>
-
-<div style="overflow-x:auto; margin:0 auto; max-width:720px;">
-<table style="border-collapse:collapse; width:100%; font-size:0.9em; text-align:center;">
-  <thead>
-    <tr style="background-color:#003366; color:white;">
-      <th style="padding:8px 10px;">Exp.</th>
-      <th style="padding:8px 10px;">Method</th>
-      <th style="padding:8px 10px;">RMSE &darr;</th>
-      <th style="padding:8px 10px;">\(\bar{\Phi}\) &darr;</th>
-      <th style="padding:8px 10px;">\(\rho_{\mathrm{sw}}\)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color:#f5f8fa;">
-      <td rowspan="4" style="padding:7px 10px;">4.1</td>
-      <td>Fixed LIN</td><td>13.463</td><td>7.947</td><td>&mdash;</td>
-    </tr>
-    <tr style="background-color:#f5f8fa;">
-      <td>Fixed NL</td><td>10.273</td><td>4.192</td><td>&mdash;</td>
-    </tr>
-    <tr style="background-color:#f5f8fa;">
-      <td>IMM</td><td>10.534</td><td>&mdash;</td><td>&mdash;</td>
-    </tr>
-    <tr style="background-color:#e8f4fb; font-weight:bold;">
-      <td>CF (ours)</td><td>10.688</td><td>4.168</td><td>0.011</td>
-    </tr>
-    <tr>
-      <td rowspan="3" style="padding:7px 10px;">4.2</td>
-      <td>Fixed-QUAD</td><td>8.415</td><td>&mdash;</td><td>&mdash;</td>
-    </tr>
-    <tr>
-      <td>Fixed-SAT</td><td>8.291</td><td>&mdash;</td><td>&mdash;</td>
-    </tr>
-    <tr style="background-color:#e8f4fb; font-weight:bold;">
-      <td>CF (ours)</td><td>7.408</td><td>2.071</td><td>0.003</td>
-    </tr>
-    <tr style="background-color:#f5f8fa;">
-      <td rowspan="3" style="padding:7px 10px;">4.3</td>
-      <td>Fixed-QUAD</td><td>4.412</td><td>&mdash;</td><td>&mdash;</td>
-    </tr>
-    <tr style="background-color:#f5f8fa;">
-      <td>Fixed-SAT</td><td>7.230</td><td>&mdash;</td><td>&mdash;</td>
-    </tr>
-    <tr style="background-color:#e8f4fb; font-weight:bold;">
-      <td>CF (ours)</td><td>4.413</td><td>2.599</td><td>0.000</td>
-    </tr>
-    <tr>
-      <td rowspan="3" style="padding:7px 10px;">4.4</td>
-      <td>Fixed LIN</td><td>18.665</td><td>22.479</td><td>&mdash;</td>
-    </tr>
-    <tr>
-      <td>Fixed NL</td><td>7.105</td><td>5.702</td><td>&mdash;</td>
-    </tr>
-    <tr style="background-color:#e8f4fb; font-weight:bold;">
-      <td>CF (ours)</td><td>7.157</td><td>5.763</td><td>0.005</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<p style="font-size:0.85em; color:#777; text-align:center; margin-top:6px;">
-  CF adapts only when required, switches finitely, and is
-  non-intrusive under correct specification. &#10003;
-</p>
-
-<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
 <h2 style="color:#003366; margin-top:36px;">Impact and Applications</h2>
 <p>
-CF establishes a principled belief-level framework for
-representation adaptation in Bayesian state estimation.
-Its implications span:
+CF establishes a principled belief-level framework for representation
+adaptation in Bayesian state estimation. Its implications span:
 </p>
 <ul>
   <li>Adaptive filtering under latent-dynamics and observation-model shifts</li>
@@ -290,10 +215,14 @@ All Julia code for numerical experiments is available at
 <a href="https://thanana.github.io" target="blank">thanana.github.io</a>.
 </p>
 <ul>
-  <li><code>exp1_cf_benchmark_corrected.jl</code> &mdash; Experiment 4.1</li>
-  <li><code>exp2_cf_benchmark_corrected.jl</code> &mdash; Experiment 4.2</li>
-  <li><code>exp3_cf_benchmark_corrected.jl</code> &mdash; Experiment 4.3</li>
-  <li><code>automatica_exp44.jl</code> &mdash; Experiment 4.4 (2D)</li>
+  <li><code>exp1_cf_benchmark_corrected.jl</code>
+      &mdash; Experiment 4.1 (dynamics mismatch)</li>
+  <li><code>exp2_cf_benchmark_corrected.jl</code>
+      &mdash; Experiment 4.2 (observation shift)</li>
+  <li><code>exp3_cf_benchmark_corrected.jl</code>
+      &mdash; Experiment 4.3 (negative control)</li>
+  <li><code>automatica_exp44.jl</code>
+      &mdash; Experiment 4.4 (2D latent state)</li>
 </ul>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
@@ -307,7 +236,16 @@ All Julia code for numerical experiments is available at
     for Bayesian State Estimation
   </a>
 </dt>
-
+<dd>
+  <p>
+    T. Nuchkrua, S. Boonto, and X. Liu,
+    <i>Automatica</i>, 2026.
+    <br/>
+    <span style="color:#555; font-size:0.9em;">
+      Under review &middot; arXiv preprint available
+    </span>
+  </p>
+</dd>
 </dl>
 
 <p style="font-size:0.85em; color:#777; text-align:center;">
@@ -316,10 +254,13 @@ All Julia code for numerical experiments is available at
 </p>
 
 <!-- Footer -->
-<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
-     background-color:#f9f9f9; border-top:1px solid #ddd;">
-  <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
-    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
+<footer id="footer" style="text-align:center; margin-top:40px;
+     padding:14px 0; background-color:#f9f9f9;
+     border-top:1px solid #ddd;">
+  <div id="footer-text"
+       style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+    &copy; 2026 <b>Thanana Nuchkrua</b>
+    &nbsp;|&nbsp; Control &amp; Robotics Research Group
   </div>
 </footer>
 
