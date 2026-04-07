@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Seeing Beyond Vision | Deep SSSM</title>
+
+<!-- MathJax -->
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+
+  <!-- Left navigation -->
+  <td id="layout-menu">
+    <div class="menu-category">Thanana</div>
+    <div class="menu-item"><a href="index.html">Home</a></div>
+    <div class="menu-item"><a href="Biography.html">Biography</a></div>
+    <div class="menu-item"><a href="Publication.html">Publication</a></div>
+
+    <div class="menu-category">Research</div>
+    <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+    <div class="menu-item"><a href="DeepSSSM.html" class="current">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+    <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+    <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+    <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+
+    <div class="menu-category">Teaching</div>
+    <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+
+    <div class="menu-category">Software</div>
+    <div class="menu-item"><a href="robotics.html">Robotics</a></div>
+    <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+  </td>
+
+  <!-- Main content -->
+  <td id="layout-content">
+  <div id="toptitle">
+ 
+
+    
+
+<!-- ============================= -->
+<!-- Header + Motto for Deep SSSM  -->
+<!-- ============================= -->
+
+<div style="text-align:center; margin-top:35px;">
+  <h1 style="color:#003366; font-weight:700; letter-spacing:0.4px;">
+    Seeing Beyond Vision
+  </h1>
+  <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-top:6px;">
+    From pixels to latent imagination — robots that see beyond the image.
+  </p>
+</div>
+
+<!-- Motto Block -->
+<div style="text-align:center; margin:22px auto; max-width:700px; line-height:1.55;">
+  <p style="color:#003366; font-size:0.95em; font-style:italic; margin-bottom:6px;">
+    <b>Challenge</b> uncertainty,&nbsp;
+    <b>Change</b> perception through latent dynamics,&nbsp;
+    and drive <b>Impact</b> toward uncertainty-aware embodied intelligence.
+  </p>
+</div>
+
+<hr style="border:0; border-top:1px solid #ccc; width:55%; margin:18px auto;">
+
+
+
+
+    
+
+<!-- Section Header -->
+<h2 style="color:#003366; text-align:center; margin-top:30px;">Deep Stochastic State-Space Models (Deep SSSM)</h2>
+
+ <!-- Main figure -->
+  <div style="text-align:center; margin-top:10px; margin-bottom:5px;">
+    <img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="420"
+         style="margin-bottom:10px; border-radius:4px;">
+  </div>
+
+  <!-- Pipeline below figure -->
+  <div style="text-align:center; margin-top:4px; margin-bottom:20px;">
+    <p style="color:#003366; font-style:italic; font-size:0.9em;">
+      Deep SSSM pipeline: <b>Observation</b> → <b>Latent State Inference</b> → 
+      <b>Stochastic Prediction</b> → <b>Control &amp; Planning</b> → <b>Feedback</b>
+    </p>
+  </div>
+
+<!-- Loop Banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+            padding:14px 12px; margin:0 auto 30px auto; max-width:720px;
+            box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+  <p style="margin:0; font-size:0.95em; color:#003366;">
+    <span style="color:#00A6D6;"><b>Perception</b></span> → 
+    <span style="color:#0077AA;"><b>Inference</b></span> → 
+    <span style="color:#0099CC;"><b>Prediction</b></span> → 
+    <span style="color:#00A6D6;"><b>Planning</b></span> → 
+    <span style="color:#003366;"><b>Action</b></span>
+  </p>
+  <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+    Robots learn to act beyond direct observation through stochastic world modeling.
+  </p>
+</div>
+
+<!-- Concept -->
+<p>
+  <b>Deep SSSMs</b> are <i>probabilistic world models</i> that fuse 
+  <b>stochastic latent dynamics</b> with <b>control-theoretic planning</b>.
+  They enable robots to reason about hidden or occluded states, predict environment evolution,
+  and plan actions under uncertainty.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h3 style="color:#003366;">What Is Deep SSSM?</h3>
+<p>
+A <b>Deep Stochastic State-Space Model</b> learns to represent
+complex, partially observable systems via <i>latent states</i> that evolve probabilistically:
+</p>
+
+<p style="text-align:center; font-family:'Courier New', monospace; font-size:0.95em; color:#333;">
+s<sub>t+1</sub> ∼ p(s<sub>t+1</sub>|s<sub>t</sub>, a<sub>t</sub>), 
+o<sub>t</sub> ∼ p(o<sub>t</sub>|s<sub>t</sub>)
+</p>
+
+<p>
+Instead of relying only on visible cues, Deep SSSM constructs an <i>internal probabilistic world</i> —
+a compact, uncertainty-aware abstraction of how the system truly evolves beneath noisy or occluded observations.
+</p>
+
+<h3 style="color:#003366; margin-top:30px;">⚙️ Why It Matters</h3>
+<p>
+Robotic systems often face <b>occlusion</b>, <b>sensor noise</b>, and <b>partial visibility</b>.
+Deterministic models assume full observability and collapse uncertainty into one estimate,
+yielding <i>overconfident and brittle predictions</i>.
+The key challenge is to represent uncertainty <b>explicitly</b> while remaining computationally efficient for real-time control.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">🌌 How Deep SSSM Addresses This</h3>
+<ul>
+  <li><b>Stochastic latent transition:</b> captures multi-modal futures and propagates uncertainty forward.</li>
+  <li><b>Probabilistic encoder:</b> filters occluded observations into calibrated latent beliefs.</li>
+  <li><b>Variational inference:</b> jointly optimizes prediction and uncertainty calibration.</li>
+</ul>
+
+<p>
+Rather than predicting a single trajectory, Deep SSSM models <b>distributions</b> over future states,
+enabling <i>uncertainty-aware planning and control</i> that stay stable under occlusion, drift, or unseen disturbances.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">🤖 Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+          padding:0.8em 1.2em; border-radius:6px;">
+Deep SSSM turns perception + control into a single probabilistic reasoning process — 
+where uncertainty is not a nuisance to remove, but a signal to learn, model, and exploit.
+</p>
+
+<h2 style="color:#003366; margin-top:36px;">Impact and Applications</h2>
+<p>
+Deep SSSM establishes a foundation for <b>occlusion-robust visual control</b> and
+<b>uncertainty-aware decision-making</b> in robotics. Its implications span:
+</p>
+<ul>
+  <li>Vision-based manipulation under partial observability</li>
+  <li>Human–robot collaboration and shared autonomy</li>
+  <li>Predictive control under dynamic, uncertain environments</li>
+</ul>
+
+<h2>Publication</h2>
+
+    
+<dl>
+<dt><a href="https://thanana.github.io/DeepSSSMpaper.html" target=&ldquo;blank&rdquo;>Deep Stochastic State-Space Modeling for Occlusion-Robust Robotic Manipulation</a>.</dt>
+<dd><p></p></dd>
+
+    
+  <p style="font-size:0.85em; color:#777; text-align:center;">
+    <i>Toward robots that reason in uncertainty — perceiving, predicting, and acting beyond what is seen.</i>
+  </p>
+
+ <!-- ============================= -->
+<!-- Footer Section -->
+<!-- ============================= -->
+<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0; background-color:#f9f9f9; border-top:1px solid #ddd;">
+  <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+    © 2025 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
+  </div>
+</footer>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
