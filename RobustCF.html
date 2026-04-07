@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Seeing Beyond Vision | Deep SSSM</title>
+<title>Robust CF Filtering | IEEE L-CSS</title>
 
 <!-- MathJax -->
 <script type="text/javascript" async
@@ -32,10 +32,11 @@ MathJax.Hub.Config({
 
     <div class="menu-category">Research</div>
     <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
-    <div class="menu-item"><a href="DeepSSSM.html" class="current">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+    <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
     <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
     <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+    <div class="menu-item"><a href="LCSS.html" class="current">Robust&nbsp;CF&nbsp;Filtering</a></div>
 
     <div class="menu-category">Teaching</div>
     <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
@@ -48,154 +49,243 @@ MathJax.Hub.Config({
   <!-- Main content -->
   <td id="layout-content">
   <div id="toptitle">
- 
- 
-    
 
 <!-- ============================= -->
-<!-- Header + Motto for Deep SSSM  -->
+<!-- Header                        -->
 <!-- ============================= -->
 
 <div style="text-align:center; margin-top:35px;">
   <h1 style="color:#003366; font-weight:700; letter-spacing:0.4px;">
-    Seeing Beyond Vision
+    Robust Cognitive&ndash;Flexible Filtering
   </h1>
   <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-top:6px;">
-    From pixels to latent imagination — robots that see beyond the image.
+    Structure selection that stays reliable &mdash; even when the scores are noisy.
   </p>
 </div>
 
 <!-- Motto Block -->
 <div style="text-align:center; margin:22px auto; max-width:700px; line-height:1.55;">
   <p style="color:#003366; font-size:0.95em; font-style:italic; margin-bottom:6px;">
-    <b>Challenge</b> uncertainty,&nbsp;
-    <b>Change</b> perception through latent dynamics,&nbsp;
-    and drive <b>Impact</b> toward uncertainty-aware embodied intelligence.
+    <b>Detect</b> structural mismatch,&nbsp;
+    <b>Switch</b> only when evidence is clear,&nbsp;
+    and <b>Stabilise</b> under noise &mdash; guaranteed.
   </p>
 </div>
 
 <hr style="border:0; border-top:1px solid #ccc; width:55%; margin:18px auto;">
 
-
-
-
-    
-
 <!-- Section Header -->
-<h2 style="color:#003366; text-align:center; margin-top:30px;">Deep Stochastic State-Space Models (Deep SSSM)</h2>
-
- <!-- Main figure -->
-  <div style="text-align:center; margin-top:10px; margin-bottom:5px;">
-    <img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="420"
-         style="margin-bottom:10px; border-radius:4px;">
-  </div>
-
-  <!-- Pipeline below figure -->
-  <div style="text-align:center; margin-top:4px; margin-bottom:20px;">
-    <p style="color:#003366; font-style:italic; font-size:0.9em;">
-      Deep SSSM pipeline: <b>Observation</b> → <b>Latent State Inference</b> → 
-      <b>Stochastic Prediction</b> → <b>Control &amp; Planning</b> → <b>Feedback</b>
-    </p>
-  </div>
+<h2 style="color:#003366; text-align:center; margin-top:30px;">
+  Robust CF under Noisy Innovation Scores
+</h2>
 
 <!-- Loop Banner -->
 <div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
             padding:14px 12px; margin:0 auto 30px auto; max-width:720px;
             box-shadow:0 1px 4px rgba(0,0,0,0.06);">
   <p style="margin:0; font-size:0.95em; color:#003366;">
-    <span style="color:#00A6D6;"><b>Perception</b></span> → 
-    <span style="color:#0077AA;"><b>Inference</b></span> → 
-    <span style="color:#0099CC;"><b>Prediction</b></span> → 
-    <span style="color:#00A6D6;"><b>Planning</b></span> → 
-    <span style="color:#003366;"><b>Action</b></span>
+    <span style="color:#00A6D6;"><b>Noisy Score</b></span> &rarr;
+    <span style="color:#0077AA;"><b>Margin-based Rule</b></span> &rarr;
+    <span style="color:#0099CC;"><b>Structure Selection</b></span> &rarr;
+    <span style="color:#00A6D6;"><b>Belief Update</b></span> &rarr;
+    <span style="color:#003366;"><b>Stable Estimation</b></span>
   </p>
   <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    Robots learn to act beyond direct observation through stochastic world modeling.
+    A hysteresis-based switching rule that provably suppresses
+    spurious transitions under bounded score noise.
   </p>
 </div>
 
 <!-- Concept -->
 <p>
-  <b>Deep SSSMs</b> are <i>probabilistic world models</i> that fuse 
-  <b>stochastic latent dynamics</b> with <b>control-theoretic planning</b>.
-  They enable robots to reason about hidden or occluded states, predict environment evolution,
-  and plan actions under uncertainty.
+  <b>Cognitive Flexibility (CF)</b> enables online latent-structure
+  selection in Bayesian filtering under structural mismatch.
+  In practice, innovation-based scores are estimated from finite
+  data and inevitably carry noise. This work establishes that CF
+  remains robust and analytically tractable under such perturbations,
+  provided the switching margin exceeds twice the noise bound.
 </p>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-<h3 style="color:#003366;">What Is Deep SSSM?</h3>
+<h3 style="color:#003366;">What Is the Problem?</h3>
 <p>
-A <b>Deep Stochastic State-Space Model</b> learns to represent
-complex, partially observable systems via <i>latent states</i> that evolve probabilistically:
+Classical CF selects the latent structure \(s_{t+1}\) that minimises
+an innovation-based predictive score \(\Phi_t(s)\). Under exact scores,
+three guarantees hold: <i>descent in expectation</i>, <i>finite switching</i>,
+and <i>non-chattering</i>.
+</p>
+<p>
+In practice, however, scores are estimated from a particle filter and
+carry additive perturbations \(\epsilon_t(s)\) satisfying
+\(\mathbb{E}[\epsilon_t(s)\mid\mathcal{I}_t]=0\) and
+\(|\epsilon_t(s)|\leq\bar{\varepsilon}\) a.s.
+When score differences are of the same order as \(\bar{\varepsilon}\),
+direct score minimisation induces <b>spurious switching</b> &mdash; transitions
+triggered by noise rather than genuine structural mismatch.
 </p>
 
-<p style="text-align:center; font-family:'Courier New', monospace; font-size:0.95em; color:#333;">
-s<sub>t+1</sub> ∼ p(s<sub>t+1</sub>|s<sub>t</sub>, a<sub>t</sub>), 
-o<sub>t</sub> ∼ p(o<sub>t</sub>|s<sub>t</sub>)
+<h3 style="color:#003366; margin-top:28px;">&#9881; The Margin-Based Solution</h3>
+<p>
+We introduce a <b>margin-based switching rule</b>:
+</p>
+
+<p style="text-align:center;">
+\[
+s_{t+1} = \begin{cases}
+\hat{s}_t, &amp; \hat{\Phi}_t(s_t) - \hat{\Phi}_t(\hat{s}_t) &gt; \delta, \\
+s_t,       &amp; \text{otherwise,}
+\end{cases}
+\]
 </p>
 
 <p>
-Instead of relying only on visible cues, Deep SSSM constructs an <i>internal probabilistic world</i> —
-a compact, uncertainty-aware abstraction of how the system truly evolves beneath noisy or occluded observations.
+with threshold \(\delta &gt; 2\bar{\varepsilon}\). This single design
+choice &mdash; calibrating the margin against the noise level &mdash; is sufficient
+to restore all three stability properties of the noiseless theory.
+The design is inspired by <b>hysteresis switching</b> from supervisory
+control, extended to the stochastic belief-update setting.
 </p>
 
-<h3 style="color:#003366; margin-top:30px;">⚙️ Why It Matters</h3>
-<p>
-Robotic systems often face <b>occlusion</b>, <b>sensor noise</b>, and <b>partial visibility</b>.
-Deterministic models assume full observability and collapse uncertainty into one estimate,
-yielding <i>overconfident and brittle predictions</i>.
-The key challenge is to represent uncertainty <b>explicitly</b> while remaining computationally efficient for real-time control.
-</p>
-
-<h3 style="color:#003366; margin-top:28px;">🌌 How Deep SSSM Addresses This</h3>
+<h3 style="color:#003366; margin-top:28px;">&#128208; Main Theoretical Guarantees</h3>
 <ul>
-  <li><b>Stochastic latent transition:</b> captures multi-modal futures and propagates uncertainty forward.</li>
-  <li><b>Probabilistic encoder:</b> filters occluded observations into calibrated latent beliefs.</li>
-  <li><b>Variational inference:</b> jointly optimizes prediction and uncertainty calibration.</li>
+  <li>
+    <b>Theorem 1 (Descent in Expectation):</b>
+    \(\mathbb{E}[\Phi_t(s_{t+1})\mid\mathcal{I}_t]\leq\Phi_t(s_t)\)
+    &mdash; the expected predictive score never increases after a switch.
+  </li>
+  <li>
+    <b>Theorem 2 (Finite Expected Switching):</b>
+    \(\mathbb{E}[N_T]\leq\frac{1}{\delta-2\bar{\varepsilon}}
+    \sum_{t=0}^{T-1}\mathbb{E}[\Phi_t(s_t)-\min_s\Phi_t(s)]\)
+    &mdash; total switches scale as \((\delta-2\bar{\varepsilon})^{-1}\).
+  </li>
+  <li>
+    <b>Theorem 3 (Non-Chattering):</b>
+    Once the active structure becomes asymptotically score-optimal,
+    no further switching is triggered a.s. &mdash; CF stabilises after
+    finitely many transitions.
+  </li>
 </ul>
 
-<p>
-Rather than predicting a single trajectory, Deep SSSM models <b>distributions</b> over future states,
-enabling <i>uncertainty-aware planning and control</i> that stay stable under occlusion, drift, or unseen disturbances.
-</p>
-
-<h3 style="color:#003366; margin-top:28px;">🤖 Core Insight</h3>
+<h3 style="color:#003366; margin-top:28px;">&#129302; Core Insight</h3>
 <p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
           padding:0.8em 1.2em; border-radius:6px;">
-Deep SSSM turns perception + control into a single probabilistic reasoning process — 
-where uncertainty is not a nuisance to remove, but a signal to learn, model, and exploit.
+Setting \(\delta = \alpha\bar{\varepsilon}\) with \(\alpha\in(2,4]\)
+provides a practical operating range: \(\alpha\) close to 2 maximises
+responsiveness to genuine structural change, while larger \(\alpha\)
+provides greater noise immunity. The experiments use \(\alpha=2.5\).
 </p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366; margin-top:36px;">Numerical Experiments</h2>
+<p>
+All experiments use the canonical nonlinear stochastic growth model
+[Gordon 1993, Arulampalam 2002] with \(N_p=500\) particles and
+\(M=100\) Monte Carlo runs over horizon \(T=200\).
+Score perturbations \(\epsilon_t(s)\sim\mathrm{Uniform}(-\bar{\varepsilon},\bar{\varepsilon})\)
+are injected independently per structure and time step.
+</p>
+
+<h3 style="color:#003366;">Results Summary (Table I)</h3>
+
+<div style="overflow-x:auto; margin:0 auto; max-width:680px;">
+<table style="border-collapse:collapse; width:100%; font-size:0.9em; text-align:center;">
+  <thead>
+    <tr style="background-color:#003366; color:white;">
+      <th style="padding:8px 12px;">Method</th>
+      <th style="padding:8px 12px;">\(\mathbb{E}[N_T]\) (\(\bar{\varepsilon}=0.5\))</th>
+      <th style="padding:8px 12px;">\(\mathbb{E}[N_T]\) (\(\bar{\varepsilon}=1.5\))</th>
+      <th style="padding:8px 12px;">\(\mathbb{E}[N_T]\) (\(\bar{\varepsilon}=3.0\))</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color:#f5f8fa;">
+      <td style="padding:7px 12px;">Exact CF (oracle)</td>
+      <td>0.3</td><td>0.3</td><td>0.3</td>
+    </tr>
+    <tr>
+      <td style="padding:7px 12px;">CF without margin (\(\delta=0\))</td>
+      <td>83.7</td><td>81.1</td><td>79.2</td>
+    </tr>
+    <tr style="background-color:#e8f4fb; font-weight:bold;">
+      <td style="padding:7px 12px;">Robust CF (proposed)</td>
+      <td>0.3</td><td>1.3</td><td>7.9</td>
+    </tr>
+    <tr style="background-color:#f5f8fa; color:#555; font-style:italic;">
+      <td style="padding:7px 12px;">Thm. 2 bound</td>
+      <td>8.2</td><td>11.4</td><td>17.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p style="font-size:0.85em; color:#777; text-align:center; margin-top:6px;">
+  Lower \(\mathbb{E}[N_T]\) and \(\bar{\Phi}_T\) indicate better performance.
+  Robust CF empirical count stays well below Theorem 2 bound. &#10003;
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <h2 style="color:#003366; margin-top:36px;">Impact and Applications</h2>
 <p>
-Deep SSSM establishes a foundation for <b>occlusion-robust visual control</b> and
-<b>uncertainty-aware decision-making</b> in robotics. Its implications span:
+The margin-based CF mechanism provides a principled solution to
+robust structure selection in Bayesian filtering. Its implications span:
 </p>
 <ul>
-  <li>Vision-based manipulation under partial observability</li>
-  <li>Human–robot collaboration and shared autonomy</li>
-  <li>Predictive control under dynamic, uncertain environments</li>
+  <li>Adaptive state estimation under sensor noise and model uncertainty</li>
+  <li>Particle filter-based systems where score approximation errors are unavoidable</li>
+  <li>Deep state-space models where learned scores carry approximation errors</li>
+  <li>Supervisory control with noisy performance metrics</li>
 </ul>
 
-<h2>Publication</h2>
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-    
+<h2 style="color:#003366;">Reproducibility</h2>
+<p>
+All Julia code for numerical experiments is available at
+<a href="https://thanana.github.io" target="blank">thanana.github.io</a>.
+</p>
+<ul>
+  <li><code>lcss_experiments.jl</code> &mdash; Figures 2 &amp; 3, Table I
+      (Theorems 1&ndash;3)</li>
+  <li><code>fig3_scaling.jl</code> &mdash; Figure 4, scaling validation
+      (Theorem 2)</li>
+</ul>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366;">Publication</h2>
+
 <dl>
-<dt><a href="https://thanana.github.io/DeepSSSMpaper.html" target=&ldquo;blank&rdquo;>Deep Stochastic State-Space Modeling for Occlusion-Robust Robotic Manipulation</a>.</dt>
-<dd><p></p></dd>
-
-    
-  <p style="font-size:0.85em; color:#777; text-align:center;">
-    <i>Toward robots that reason in uncertainty — perceiving, predicting, and acting beyond what is seen.</i>
+<dt>
+  <a href="#" target="blank">
+    Robust Cognitive&ndash;Flexible Filtering under Noisy Innovation Scores
+  </a>
+</dt>
+<dd>
+  <p>
+    T. Nuchkrua and S. Boonto,
+    <i>IEEE Control Systems Letters (L-CSS)</i>, 2026.
+    <br/>
+    <span style="color:#555; font-size:0.9em;">
+      Submitted &middot; arXiv preprint available
+    </span>
   </p>
+</dd>
+</dl>
 
- <!-- ============================= -->
-<!-- Footer Section -->
-<!-- ============================= -->
-<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0; background-color:#f9f9f9; border-top:1px solid #ddd;">
+<p style="font-size:0.85em; color:#777; text-align:center;">
+  <i>Robust structure selection &mdash; switching only when the evidence is clear,
+  stabilising when it is not.</i>
+</p>
+
+<!-- Footer -->
+<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
+     background-color:#f9f9f9; border-top:1px solid #ddd;">
   <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
-    © 2025 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
+    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
   </div>
 </footer>
 
