@@ -39,7 +39,7 @@ Julia 1.9+ with the following packages:
 
 ```julia
 julia lcss_experiments_documented.jl   # Figs 2–3, Table I
-julia fig3_scaling.jl                  # Fig 4
+julia fig_scaling_documented.jl                  # Fig 4
 ```
 
 Figures are saved to `figures/` automatically.
