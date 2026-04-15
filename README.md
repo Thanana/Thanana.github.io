@@ -39,7 +39,7 @@ Julia 1.9+ with the following packages:
 
 ```julia
 julia lcss_experiments_documented.jl   # Figs 2–3, Table I
-julia fig_scaling_documented.jl                  # Fig 4
+julia fig_scaling_documented.jl        # Fig 4
 ```
 
 Figures are saved to `figures/` automatically.
@@ -48,24 +48,24 @@ Figures are saved to `figures/` automatically.
 
 ## Parameters
 
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| `Np` | 500 | Number of particles |
-| `M` | 100 | Monte Carlo runs |
-| `T` | 200 | Horizon length |
-| `α` | 2.5 | Margin multiplier (δ = α·ε̄) |
-| `ε̄` | 0.5, 1.5, 3.0 | Score noise bounds (Table I) |
+| Parameter | Value         | Description                  |
+|-----------|---------------|------------------------------|
+| `Np`      | 500           | Number of particles          |
+| `M`       | 100           | Monte Carlo runs             |
+| `T`       | 200           | Horizon length               |
+| `α`       | 2.5           | Margin multiplier (δ = α·ε̄)  |
+| `ε̄`       | 0.5, 1.5, 3.0 | Score noise bounds (Table I) |
 
 ---
 
 ## Key Result
 
-| Method | E[N_T] (ε̄=0.5) | E[N_T] (ε̄=1.5) | E[N_T] (ε̄=3.0) |
-|--------|----------------|----------------|----------------|
-| Exact CF (oracle) | 0.3 | 0.3 | 0.3 |
-| CF without margin (δ=0) | 83.7 | 81.1 | 79.2 |
-| **Robust CF (proposed)** | **0.3** | **1.3** | **7.9** |
-| Thm. 2 bound | 8.2 | 11.4 | 17.6 |
+| Method                    | E[N_T] (ε̄=0.5) | E[N_T] (ε̄=1.5) | E[N_T] (ε̄=3.0) |
+|---------------------------|----------------|----------------|----------------|
+| Exact CF (oracle)         | 0.3            | 0.3            | 0.3            |
+| CF without margin (δ=0)   | 83.7           | 81.1           | 79.2           |
+| **Robust CF (proposed)**  | **0.3**        | **1.3**        | **7.9**        |
+| Thm. 2 bound              | 8.2            | 11.4           | 17.6           |
 
 Robust CF empirical count stays well below Theorem 2 bound ✓
 
