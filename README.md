@@ -28,9 +28,9 @@ Julia 1.9+ with the following packages:
 
 ## Files
 
-| File                             | Description                         |
-|----------------------------------|-------------------------------------|
-| `lcss_experiments_documented.jl` | Figures 2–3, Table I (Theorems 1–3) |
+| File                             | Description                              |
+|----------------------------------|------------------------------------------|
+| `lcss_experiments_documented.jl` | Figures 2–3, Table I (Theorems 1–3)      |
 | `fig3_scaling_documented.jl`     | Figure 4, scaling validation (Theorem 2) |
 
 ---
