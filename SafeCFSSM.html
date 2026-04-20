@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Robust CF Filtering | IEEE L-CSS</title>
+<title>SafeCF-SSM | IEEE L-CSS</title>
 
 <!-- MathJax -->
 <script type="text/javascript" async
@@ -36,7 +36,8 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
     <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
-    <div class="menu-item"><a href="LCSS.html" class="current">Robust&nbsp;CF&nbsp;Filtering</a></div>
+    <div class="menu-item"><a href="LCSS.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
+    <div class="menu-item"><a href="SafeCF-SSM.html" class="current">SafeCF-SSM</a></div>
 
     <div class="menu-category">Teaching</div>
     <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
@@ -50,152 +51,186 @@ MathJax.Hub.Config({
   <td id="layout-content">
   <div id="toptitle">
 
-<!-- ============================= -->
-<!-- Header                        -->
-<!-- ============================= -->
-
-
-
-
 <hr style="border:0; border-top:1px solid #ccc; width:55%; margin:18px auto;">
 
 <!-- Section Header -->
 <h1 style="color:#003366; text-align:center; margin-top:30px;">
-  SafeCF-SSM: Cognitive-Flexible Control with Explicit Physical 
-	Safety Guarantees for Latent-Space MPC
+  SafeCF-SSM: Cognitive-Flexible Control with Explicit Physical
+  Safety Guarantees for Latent-Space MPC
 </h1>
+<p style="text-align:center; color:#555; font-size:0.95em;">
+  Thanana Nuchkrua &amp; Suchin Boonto &nbsp;&mdash;&nbsp; <i>IEEE L-CSS, 2026</i>
+</p>
 
 <!-- Loop Banner -->
 <div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
             padding:14px 12px; margin:0 auto 30px auto; max-width:720px;
             box-shadow:0 1px 4px rgba(0,0,0,0.06);">
   <p style="margin:0; font-size:0.95em; color:#003366;">
-    <span style="color:#00A6D6;"><b>Noisy Score</b></span> &rarr;
-    <span style="color:#0077AA;"><b>Margin-based Rule</b></span> &rarr;
-    <span style="color:#0099CC;"><b>Structure Selection</b></span> &rarr;
-    <span style="color:#00A6D6;"><b>Belief Update</b></span> &rarr;
-    <span style="color:#003366;"><b>Stable Estimation</b></span>
+    <span style="color:#00A6D6;"><b>Latent Belief \((z_t,\Sigma_t)\)</b></span> &rarr;
+    <span style="color:#0077AA;"><b>Surprise \(\mathcal{S}_t\)</b></span> &rarr;
+    <span style="color:#0099CC;"><b>Adaptive Margin \(\beta_{i,t}\)</b></span> &rarr;
+    <span style="color:#00A6D6;"><b>BMPC \(u_t\)</b></span> &rarr;
+    <span style="color:#003366;"><b>Physical Safety \(\mathbb{P}(\cdot)\geq1-\delta\)</b></span>
   </p>
   <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    A hysteresis-based switching rule that provably suppresses
-    spurious transitions under bounded score noise.
+    A single surprise signal \(\mathcal{S}_t\) simultaneously tightens safety constraints
+    and regulates encoder reorganization &mdash; closing the physical-latent gap.
   </p>
 </div>
 
 <!-- Concept -->
 <p>
-  <b>Cognitive Flexibility (CF)</b> enables online latent-structure
-  selection in Bayesian filtering under structural mismatch.
-  In practice, innovation-based scores are estimated from finite
-  data and inevitably carry noise. This work establishes that CF
-  remains robust and analytically tractable under such perturbations,
-  provided the switching margin exceeds twice the noise bound.
+  <b>SafeCF-SSM</b> is a cognitive-flexible control framework for latent-space MPC
+  under distributional shift. It addresses two open problems: unregulated representation
+  adaptation and the physical-latent safety gap &mdash; through surprise-driven bounded
+  latent adaptation, adaptive constraint tightening, and an explicit decoder-aware
+  physical safety certificate.
 </p>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <h3 style="color:#003366;">What Is the Problem?</h3>
 <p>
-Classical CF selects the latent structure \(s_{t+1}\) that minimises
-an innovation-based predictive score \(\Phi_t(s)\). Under exact scores,
-three guarantees hold: <i>descent in expectation</i>, <i>finite switching</i>,
-and <i>non-chattering</i>.
+Latent-space MPC approaches adapt to distributional shift but provide safety guarantees
+in latent space only. When the decoder has approximation error
+\(\varepsilon_{\mathrm{dec}}\geq 0\), a plan safe in \(z_t\) may be unsafe in \(x_t\)
+&mdash; the <b>physical-latent gap</b>.
 </p>
 <p>
-In practice, however, scores are estimated from a particle filter and
-carry additive perturbations \(\epsilon_t(s)\) satisfying
-\(\mathbb{E}[\epsilon_t(s)\mid\mathcal{I}_t]=0\) and
-\(|\epsilon_t(s)|\leq\bar{\varepsilon}\) a.s.
-When score differences are of the same order as \(\bar{\varepsilon}\),
-direct score minimisation induces <b>spurious switching</b> &mdash; transitions
-triggered by noise rather than genuine structural mismatch.
+Matters worsen under distributional shift: as the encoder \(\phi_{\theta_t}\) adapts
+online, this gap can grow without bound if representation reorganization is left
+unregulated. Existing approaches implicitly assume \(\varepsilon_{\mathrm{dec}}=0\)
+and provide no bound on the rate of encoder change during adaptation.
 </p>
 
-
+<h3 style="color:#003366; margin-top:28px;">Three Coupled Mechanisms</h3>
 <p>
-with threshold \(\delta &gt; 2\bar{\varepsilon}\). This single design
-choice &mdash; calibrating the margin against the noise level &mdash; is sufficient
-to restore all three stability properties of the noiseless theory.
-The design is inspired by <b>hysteresis switching</b> from supervisory
-control, extended to the stochastic belief-update setting.
+SafeCF-SSM addresses the problem through three dedicated components, each satisfying
+one requirement of the problem statement:
+</p>
+<ul>
+  <li>
+    <b>SSM Latent Model:</b> provides latent state \(z_t\) and predictive uncertainty
+    \(\Sigma_t\) via EKF encoder \(q_{\phi_{\theta_t}}(z_t|\mathcal{H}_t)\),
+    enabling uncertainty-aware BMPC planning.
+  </li>
+  <li>
+    <b>BMPC with Adaptive Tightening:</b> enforces physical safety via
+    \(\beta_{i,t}=\max(c_i\mathcal{S}_t,\,L_{g,i}\sigma_t)\), implementing the
+    probabilistic constraint \(\mathbb{P}(\mathcal{G}_i(z_{t+k},u_{t+k})\leq0)\geq1-\delta_i\).
+    Unlike Nominal MPC (\(\beta\equiv0\)) and Robust MPC (fixed \(\beta_{\max}\)),
+    \(\beta_{i,t}\) responds online to both model uncertainty \(\Sigma_t\) and
+    distributional shift \(\mathcal{S}_t\).
+  </li>
+  <li>
+    <b>Surprise-driven CF Adaptation:</b> bounds encoder reorganization
+    \(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|\leq L_\phi\eta_{\max}L_\Delta=:\varepsilon_{\mathrm{cf}}\),
+    satisfying the CF constraint and lifting latent safety to physical space
+    (Proposition 1).
+  </li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">The Dual Role of \(\mathcal{S}_t\)</h3>
+<p>
+The predictive surprise \(\mathcal{S}_t:=-\log p_{\theta_t}(o_{t+1}|z_t,u_t)\)
+is large when the model is mismatched and small when consistent with observations.
+The same signal \(\mathcal{S}_t\) that tightens \(\beta_{i,t}\) in the BMPC layer
+also moderates \(\eta_t=\eta_{\max}/(1+\mathcal{S}_t)\), bounding
+\(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|\) and reducing the physical-latent gap.
 </p>
 
 <h3 style="color:#003366; margin-top:28px;">&#128208; Main Theoretical Guarantees</h3>
 <ul>
   <li>
-    <b>Theorem 1 (Descent in Expectation):</b>
-    \(\mathbb{E}[\Phi_t(s_{t+1})\mid\mathcal{I}_t]\leq\Phi_t(s_t)\)
-    &mdash; the expected predictive score never increases after a switch.
+    <b>Theorem 1 (Bounded Representation Drift &mdash; G1):</b>
+    \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) for all \(t\), where
+    \(\mathrm{CFI}_t:=\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|/\varepsilon_{\mathrm{cf}}\).
+    Unlike prior adaptive MPC methods that bound parameter drift
+    \(\|\theta_{t+1}-\theta_t\|\) alone, SafeCF-SSM bounds
+    <i>encoder reorganization</i> directly.
   </li>
   <li>
-    <b>Theorem 2 (Finite Expected Switching):</b>
-    \(\mathbb{E}[N_T]\leq\frac{1}{\delta-2\bar{\varepsilon}}
-    \sum_{t=0}^{T-1}\mathbb{E}[\Phi_t(s_t)-\min_s\Phi_t(s)]\)
-    &mdash; total switches scale as \((\delta-2\bar{\varepsilon})^{-1}\).
+    <b>Theorems 2&ndash;3 (Recursive Feasibility &amp; ISS &mdash; G2):</b>
+    The BMPC remains feasible for all \(t'\geq t\) and the closed-loop belief
+    is input-to-state stable:
+    \(\|z_t\|\leq\beta(\|z_0\|,t)+\gamma(\bar{d})\).
   </li>
   <li>
-    <b>Theorem 3 (Non-Chattering):</b>
-    Once the active structure becomes asymptotically score-optimal,
-    no further switching is triggered a.s. &mdash; CF stabilises after
-    finitely many transitions.
+    <b>Proposition 1 + Corollary 1 (Physical Safety Certificate &mdash; G3):</b>
+    \[
+      \mathbb{P}\bigl((x_t,u_t)\in\mathcal{S}\bigr)
+      \geq 1-\delta - L_{g,i}L_d\varepsilon_{\mathrm{dec}},
+      \quad\forall t\geq0,
+    \]
+    with \(\delta=\max_i\delta_i\). The residual vanishes when
+    \(\varepsilon_{\mathrm{dec}}=0\). <i>This is the first verifiable physical
+    safety guarantee for latent-space MPC.</i>
   </li>
 </ul>
 
 <h3 style="color:#003366; margin-top:28px;">&#129302; Core Insight</h3>
 <p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
           padding:0.8em 1.2em; border-radius:6px;">
-Setting \(\delta = \alpha\bar{\varepsilon}\) with \(\alpha\in(2,4]\)
-provides a practical operating range: \(\alpha\) close to 2 maximises
-responsiveness to genuine structural change, while larger \(\alpha\)
-provides greater noise immunity. The experiments use \(\alpha=2.5\).
+Unlike prior latent-MPC works that establish (G1)&ndash;(G2) in latent space only,
+SafeCF-SSM provides an explicit physical safety certificate that accounts for
+decoder approximation error and bounds encoder reorganization simultaneously
+&mdash; closing the physical-latent gap identified as the central open problem.
 </p>
-
-
-
-
-
-
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-<h2 style="color:#003366; margin-top:36px;">Impact and Applications</h2>
+<h2 style="color:#003366; margin-top:36px;">Simulation Studies</h2>
 <p>
-The margin-based CF mechanism provides a principled solution to
-robust structure selection in Bayesian filtering. Its implications span:
+Validated on the Van der Pol oscillator (\(M=50\) Monte Carlo, \(T=80\,\text{s}\))
+across three distributional-shift scenarios:
 </p>
 <ul>
-  <li>Adaptive state estimation under sensor noise and model uncertainty</li>
-  <li>Particle filter-based systems where score approximation errors are unavoidable</li>
-  <li>Deep state-space models where learned scores carry approximation errors</li>
-  <li>Supervisory control with noisy performance metrics</li>
+  <li>
+    <b>Scenario A (Abrupt shift):</b> \(\mu_1=0.5\to\mu_2=1.5\) at \(t_s\).
+    Validates tracking recovery and safety under sudden dynamics change.
+    SafeCF-SSM uniquely achieves both tracking AND physical safety simultaneously.
+  </li>
+  <li>
+    <b>Scenario B (Observation drift):</b> Progressive sensor bias after \(t_s\).
+    Validates that safety and tracking are decoupled &mdash; SafeCF-SSM preserves
+    100% safety even when tracking degrades due to sensing corruption.
+  </li>
+  <li>
+    <b>Scenario C (Gradual drift):</b> Exponential \(\mu_t\) transition (\(\tau_a=6\,\text{s}\)).
+    Validates continuous adaptation and the advantage of adaptive over fixed tightening
+    (Lemma 1). \(\hat\mu_t\) and \(\mathcal{S}_t\) exhibit similar trends to Scenario A
+    and are omitted for brevity.
+  </li>
 </ul>
+<p>
+All scenarios confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and 100% safety
+(Corollary 1). Robust MPC achieves RMSE \(1.0\)&ndash;\(1.04\) across all scenarios,
+confirming that fixed-margin tightening forfeits control authority unnecessarily.
+</p>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
 
 <h2 style="color:#003366;">Reproducibility</h2>
 <p>
-All Julia source code for numerical experiments is
-publicly available on GitHub:
+Extended validation on a 3D quadrotor (\(n=12\), motor failure \(\eta:1.0\to0.6\))
+and all Julia source code are publicly available:
 </p>
 <ul>
   <li>
-   <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/lcss_experiments_documented.jl"
-   download="lcss_experiments_documented.jl">
-<code>lcss_experiments_documented.jl</code></a>
-    &mdash; Figures 2 &amp; 3, Table I (Theorems 1&ndash;3)
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6_1.jl"
+       download="cf_deepsssm_vdp_v6_1.jl">
+      <code>cf_deepsssm_vdp_v6_1.jl</code></a>
+    &mdash; Van der Pol benchmark, Scenarios A&ndash;C (Figs. 2&ndash;4, Table I)
   </li>
   <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/fig_scaling_documented.jl"
-       download="fig_scaling_documented.jl">
-<code>fig_scaling_documented.jl</code></a>
-    &mdash; Figure 4, scaling validation (Theorem 2)
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_2.jl"
+       download="safecf_ssm_quad3d_2.jl">
+      <code>safecf_ssm_quad3d_2.jl</code></a>
+    &mdash; 3D quadrotor extended validation (\(n=12\) states, motor failure)
   </li>
 </ul>
-<p>
-  <a href="https://thanana.github.io/README.md"
-     target="_blank">&#x1F4E6; Full repository</a>
-</p>
+
 <!-- Footer -->
 <footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
      background-color:#f9f9f9; border-top:1px solid #ddd;">
@@ -209,4 +244,3 @@ publicly available on GitHub:
 </table>
 </body>
 </html>
-
