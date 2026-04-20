@@ -1,1 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Robust CF Filtering | IEEE L-CSS</title>
+
+<!-- MathJax -->
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+
+  <!-- Left navigation -->
+  <td id="layout-menu">
+    <div class="menu-category">Thanana</div>
+    <div class="menu-item"><a href="index.html">Home</a></div>
+    <div class="menu-item"><a href="Biography.html">Biography</a></div>
+    <div class="menu-item"><a href="Publication.html">Publication</a></div>
+
+    <div class="menu-category">Research</div>
+    <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+    <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+    <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+    <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+    <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+    <div class="menu-item"><a href="LCSS.html" class="current">Robust&nbsp;CF&nbsp;Filtering</a></div>
+
+    <div class="menu-category">Teaching</div>
+    <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+
+    <div class="menu-category">Software</div>
+    <div class="menu-item"><a href="robotics.html">Robotics</a></div>
+    <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+  </td>
+
+  <!-- Main content -->
+  <td id="layout-content">
+  <div id="toptitle">
+
+<!-- ============================= -->
+<!-- Header                        -->
+<!-- ============================= -->
+
+<div style="text-align:center; margin-top:35px;">
+  <h1 style="color:#003366; font-weight:700; letter-spacing:0.4px;">
+    Robust Cognitive&ndash;Flexible Filtering
+  </h1>
+  <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-top:6px;">
+    Structure selection that stays reliable &mdash; even when the scores are noisy.
+  </p>
+</div>
+
+<!-- Motto Block -->
+<div style="text-align:center; margin:22px auto; max-width:700px; line-height:1.55;">
+  <p style="color:#003366; font-size:0.95em; font-style:italic; margin-bottom:6px;">
+    <b>Detect</b> structural mismatch,&nbsp;
+    <b>Switch</b> only when evidence is clear,&nbsp;
+    and <b>Stabilise</b> under noise &mdash; guaranteed.
+  </p>
+</div>
+
+<hr style="border:0; border-top:1px solid #ccc; width:55%; margin:18px auto;">
+
+<!-- Section Header -->
+<h2 style="color:#003366; text-align:center; margin-top:30px;">
+  Robust CF under Noisy Innovation Scores
+</h2>
+
+<!-- Loop Banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+            padding:14px 12px; margin:0 auto 30px auto; max-width:720px;
+            box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+  <p style="margin:0; font-size:0.95em; color:#003366;">
+    <span style="color:#00A6D6;"><b>Noisy Score</b></span> &rarr;
+    <span style="color:#0077AA;"><b>Margin-based Rule</b></span> &rarr;
+    <span style="color:#0099CC;"><b>Structure Selection</b></span> &rarr;
+    <span style="color:#00A6D6;"><b>Belief Update</b></span> &rarr;
+    <span style="color:#003366;"><b>Stable Estimation</b></span>
+  </p>
+  <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+    A hysteresis-based switching rule that provably suppresses
+    spurious transitions under bounded score noise.
+  </p>
+</div>
+
+<!-- Concept -->
+<p>
+  <b>Cognitive Flexibility (CF)</b> enables online latent-structure
+  selection in Bayesian filtering under structural mismatch.
+  In practice, innovation-based scores are estimated from finite
+  data and inevitably carry noise. This work establishes that CF
+  remains robust and analytically tractable under such perturbations,
+  provided the switching margin exceeds twice the noise bound.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h3 style="color:#003366;">What Is the Problem?</h3>
+<p>
+Classical CF selects the latent structure \(s_{t+1}\) that minimises
+an innovation-based predictive score \(\Phi_t(s)\). Under exact scores,
+three guarantees hold: <i>descent in expectation</i>, <i>finite switching</i>,
+and <i>non-chattering</i>.
+</p>
+<p>
+In practice, however, scores are estimated from a particle filter and
+carry additive perturbations \(\epsilon_t(s)\) satisfying
+\(\mathbb{E}[\epsilon_t(s)\mid\mathcal{I}_t]=0\) and
+\(|\epsilon_t(s)|\leq\bar{\varepsilon}\) a.s.
+When score differences are of the same order as \(\bar{\varepsilon}\),
+direct score minimisation induces <b>spurious switching</b> &mdash; transitions
+triggered by noise rather than genuine structural mismatch.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">&#9881; The Margin-Based Solution</h3>
+<p>
+We introduce a <b>margin-based switching rule</b>:
+</p>
+
+<p style="text-align:center;">
+\[
+s_{t+1} = \begin{cases}
+\hat{s}_t, &amp; \hat{\Phi}_t(s_t) - \hat{\Phi}_t(\hat{s}_t) &gt; \delta, \\
+s_t,       &amp; \text{otherwise,}
+\end{cases}
+\]
+</p>
+
+<p>
+with threshold \(\delta &gt; 2\bar{\varepsilon}\). This single design
+choice &mdash; calibrating the margin against the noise level &mdash; is sufficient
+to restore all three stability properties of the noiseless theory.
+The design is inspired by <b>hysteresis switching</b> from supervisory
+control, extended to the stochastic belief-update setting.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">&#128208; Main Theoretical Guarantees</h3>
+<ul>
+  <li>
+    <b>Theorem 1 (Descent in Expectation):</b>
+    \(\mathbb{E}[\Phi_t(s_{t+1})\mid\mathcal{I}_t]\leq\Phi_t(s_t)\)
+    &mdash; the expected predictive score never increases after a switch.
+  </li>
+  <li>
+    <b>Theorem 2 (Finite Expected Switching):</b>
+    \(\mathbb{E}[N_T]\leq\frac{1}{\delta-2\bar{\varepsilon}}
+    \sum_{t=0}^{T-1}\mathbb{E}[\Phi_t(s_t)-\min_s\Phi_t(s)]\)
+    &mdash; total switches scale as \((\delta-2\bar{\varepsilon})^{-1}\).
+  </li>
+  <li>
+    <b>Theorem 3 (Non-Chattering):</b>
+    Once the active structure becomes asymptotically score-optimal,
+    no further switching is triggered a.s. &mdash; CF stabilises after
+    finitely many transitions.
+  </li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">&#129302; Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+          padding:0.8em 1.2em; border-radius:6px;">
+Setting \(\delta = \alpha\bar{\varepsilon}\) with \(\alpha\in(2,4]\)
+provides a practical operating range: \(\alpha\) close to 2 maximises
+responsiveness to genuine structural change, while larger \(\alpha\)
+provides greater noise immunity. The experiments use \(\alpha=2.5\).
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366; margin-top:36px;">Numerical Experiments</h2>
+<p>
+All experiments use the canonical nonlinear stochastic growth model
+[Gordon 1993, Arulampalam 2002] with \(N_p=500\) particles and
+\(M=100\) Monte Carlo runs over horizon \(T=200\).
+Score perturbations \(\epsilon_t(s)\sim\mathrm{Uniform}(-\bar{\varepsilon},\bar{\varepsilon})\)
+are injected independently per structure and time step.
+</p>
+
+<h3 style="color:#003366;">Results Summary (Table I)</h3>
+
+<div style="overflow-x:auto; margin:0 auto; max-width:680px;">
+<table style="border-collapse:collapse; width:100%; font-size:0.9em; text-align:center;">
+  <thead>
+    <tr style="background-color:#003366; color:white;">
+      <th style="padding:8px 12px;">Method</th>
+      <th style="padding:8px 12px;">\(\mathbb{E}[N_T]\) (\(\bar{\varepsilon}=0.5\))</th>
+      <th style="padding:8px 12px;">\(\mathbb{E}[N_T]\) (\(\bar{\varepsilon}=1.5\))</th>
+      <th style="padding:8px 12px;">\(\mathbb{E}[N_T]\) (\(\bar{\varepsilon}=3.0\))</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color:#f5f8fa;">
+      <td style="padding:7px 12px;">Exact CF (oracle)</td>
+      <td>0.3</td><td>0.3</td><td>0.3</td>
+    </tr>
+    <tr>
+      <td style="padding:7px 12px;">CF without margin (\(\delta=0\))</td>
+      <td>83.7</td><td>81.1</td><td>79.2</td>
+    </tr>
+    <tr style="background-color:#e8f4fb; font-weight:bold;">
+      <td style="padding:7px 12px;">Robust CF (proposed)</td>
+      <td>0.3</td><td>1.3</td><td>7.9</td>
+    </tr>
+    <tr style="background-color:#f5f8fa; color:#555; font-style:italic;">
+      <td style="padding:7px 12px;">Thm. 2 bound</td>
+      <td>8.2</td><td>11.4</td><td>17.6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p style="font-size:0.85em; color:#777; text-align:center; margin-top:6px;">
+  Lower \(\mathbb{E}[N_T]\) and \(\bar{\Phi}_T\) indicate better performance.
+  Robust CF empirical count stays well below Theorem 2 bound. &#10003;
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h2 style="color:#003366; margin-top:36px;">Impact and Applications</h2>
+<p>
+The margin-based CF mechanism provides a principled solution to
+robust structure selection in Bayesian filtering. Its implications span:
+</p>
+<ul>
+  <li>Adaptive state estimation under sensor noise and model uncertainty</li>
+  <li>Particle filter-based systems where score approximation errors are unavoidable</li>
+  <li>Deep state-space models where learned scores carry approximation errors</li>
+  <li>Supervisory control with noisy performance metrics</li>
+</ul>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+
+<h2 style="color:#003366;">Reproducibility</h2>
+<p>
+All Julia source code for numerical experiments is
+publicly available on GitHub:
+</p>
+<ul>
+  <li>
+   <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/lcss_experiments_documented.jl"
+   download="lcss_experiments_documented.jl">
+<code>lcss_experiments_documented.jl</code></a>
+    &mdash; Figures 2 &amp; 3, Table I (Theorems 1&ndash;3)
+  </li>
+  <li>
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/fig_scaling_documented.jl"
+       download="fig_scaling_documented.jl">
+<code>fig_scaling_documented.jl</code></a>
+    &mdash; Figure 4, scaling validation (Theorem 2)
+  </li>
+</ul>
+<p>
+  <a href="https://thanana.github.io/README.md"
+     target="_blank">&#x1F4E6; Full repository</a>
+</p>
+<!-- Footer -->
+<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
+     background-color:#f9f9f9; border-top:1px solid #ddd;">
+  <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
+  </div>
+</footer>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
 
