@@ -245,20 +245,36 @@ and all Julia source code are publicly available:
     
 
     
-<h3 style="color:#003366; margin-top:36px;">Example: 3D Quadrotor Benchmark</h3>
+<h3 style="color:#003366; margin-top:36px;">Extended Validation: 3D Quadrotor under Motor Failure</h3>
+
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+          padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
+Can SafeCF-SSM maintain safety and tracking when a rotor partially fails mid-flight?
+</p>
+
 <p>
-Extended validation on a 3D quadrotor (\(n=12\) states, \(m=4\) inputs)
-under rotor-1 failure \(\eta_t: 1.0\to0.6\) at \(t_s=20\,\text{s}\)
-(\(M=30\) Monte Carlo, \(T=60\,\text{s}\)):
+A 3D quadrotor (\(n=12,\,m=4\)) undergoes rotor-1 efficiency loss
+\(\eta_t: 1.0\to0.6\) at \(t_s=20\,\text{s}\), inducing yaw-torque
+asymmetry and coupled attitude&ndash;altitude instability.
+The dynamics are:
+\[
+\dot{v} = \tfrac{1}{M}R(\phi,\theta,\psi)
+\begin{bmatrix}0\\0\\T_t\end{bmatrix}\!-ge_3,
+\qquad
+\dot{\omega} = J^{-1}(\tau - \omega\times J\omega),
+\]
+where \(T_t=\eta_t T_1+T_2+T_3+T_4\) and
+\(\tau=[\ell(T_2-T_4),\,\ell(T_3-\eta_t T_1),\,
+\kappa(\eta_t T_1-T_2+T_3-T_4)]^\top\).
+SafeCF-SSM adapts \(\hat\eta_t\) online via~\eqref{eq:param_update},
+with safety enforced via \(\beta_{i,t}\)~\eqref{eq:tightening_update}.
 </p>
 
 <table border="1" cellpadding="8" cellspacing="0"
        style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
   <tr style="background:#003366; color:#fff;">
-    <th>Parameter</th>
-    <th>Value</th>
-    <th>Parameter</th>
-    <th>Value</th>
+    <th>Parameter</th><th>Value</th>
+    <th>Parameter</th><th>Value</th>
   </tr>
   <tr>
     <td>\(M\)</td><td>\(1.0\,\text{kg}\)</td>
@@ -283,13 +299,13 @@ under rotor-1 failure \(\eta_t: 1.0\to0.6\) at \(t_s=20\,\text{s}\)
 </table>
 
 <p>
-SafeCF-SSM adapts \(\hat\eta_t\) online via surprise-driven updates,
-maintaining altitude and attitude safety throughout motor failure,
-while Nominal MPC diverges and Robust MPC is overly conservative.
-All Monte Carlo runs confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\)
-(Theorem 1) and 100% safety (Corollary 1).
+\(M=30\) Monte Carlo runs confirm: SafeCF-SSM maintains altitude
+and attitude safety throughout failure, while Nominal MPC diverges
+and Robust MPC sacrifices tracking for conservatism.
+\(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and 100% safety
+(Corollary 1) hold across all runs &mdash; consistent with the
+VdP validation above.
 </p>
-
 
 
 
