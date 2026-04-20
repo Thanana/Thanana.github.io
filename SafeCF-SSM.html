@@ -266,8 +266,13 @@ The dynamics are:
 where \(T_t=\eta_t T_1+T_2+T_3+T_4\) and
 \(\tau=[\ell(T_2-T_4),\,\ell(T_3-\eta_t T_1),\,
 \kappa(\eta_t T_1-T_2+T_3-T_4)]^\top\).
-SafeCF-SSM adapts \(\hat\eta_t\) online via~\eqref{eq:param_update},
-with safety enforced via \(\beta_{i,t}\)~\eqref{eq:tightening_update}.
+SafeCF-SSM adapts \(\hat\eta_t\) online via:
+\[
+\hat\eta_{t+1} = \hat\eta_t + \eta_t\,\nabla_{\hat\eta}
+\log p_{\theta_t}(o_{t+1}\mid z_t,u_t),
+\]
+with safety enforced via adaptive margin
+\(\beta_{i,t} = \max(c_i\mathcal{S}_t,\,L_{g,i}\sigma_t)\).
 </p>
 
 <table border="1" cellpadding="8" cellspacing="0"
