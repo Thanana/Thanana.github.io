@@ -125,19 +125,6 @@ direct score minimisation induces <b>spurious switching</b> &mdash; transitions
 triggered by noise rather than genuine structural mismatch.
 </p>
 
-<h3 style="color:#003366; margin-top:28px;">&#9881; The Margin-Based Solution</h3>
-<p>
-We introduce a <b>margin-based switching rule</b>:
-</p>
-
-<p style="text-align:center;">
-\[
-s_{t+1} = \begin{cases}
-\hat{s}_t, &amp; \hat{\Phi}_t(s_t) - \hat{\Phi}_t(\hat{s}_t) &gt; \delta, \\
-s_t,       &amp; \text{otherwise,}
-\end{cases}
-\]
-</p>
 
 <p>
 with threshold \(\delta &gt; 2\bar{\varepsilon}\). This single design
