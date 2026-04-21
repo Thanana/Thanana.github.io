@@ -221,6 +221,91 @@ All scenarios confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and 100% s
 confirming that fixed-margin tightening forfeits control authority unnecessarily.
 </p>
 
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+
+<h3 style="color:#003366;">Interactive: Van der Pol Phase Plane</h3>
+<p>
+Adjust \(\mu\) to see how distributional shift changes the
+oscillator's phase portrait. SafeCF-SSM adapts online when
+\(\mu\) switches from \(\mu_1\) to \(\mu_2\).
+</p>
+
+<div style="margin:0.5rem 0 0.5rem 0;">
+  <label style="font-size:0.95em; color:#003366;">
+    <b>\(\mu\) = </b>
+    <input type="range" id="muSlider" min="0.1" max="3.0"
+           step="0.1" value="0.5"
+           style="width:200px; vertical-align:middle;">
+    <span id="muVal" style="color:#c8973a; font-weight:bold;">0.5</span>
+  </label>
+  &nbsp;&nbsp;
+  <label style="font-size:0.9em; color:#555;">
+    <input type="checkbox" id="showBound" checked>
+    Show safety boundary \(|x_1|\leq2.5\)
+  </label>
+</div>
+
+<div id="phasePlot" style="width:100%; height:380px;"></div>
+
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script>
+function vdpPhase(mu) {
+  const dt = 0.01, T = 2000;
+  var x1 = [0.5], x2 = [0.1];
+  for (var i = 0; i < T; i++) {
+    var a = x1[i], b = x2[i];
+    var dx1 = b;
+    var dx2 = mu*(1 - a*a)*b - a;
+    x1.push(a + dt*dx1);
+    x2.push(b + dt*dx2);
+  }
+  return {x1, x2};
+}
+
+function drawPlot() {
+  var mu = parseFloat(document.getElementById('muSlider').value);
+  document.getElementById('muVal').innerText = mu.toFixed(1);
+  var showBound = document.getElementById('showBound').checked;
+  var d = vdpPhase(mu);
+
+  var traces = [{
+    x: d.x1, y: d.x2,
+    mode: 'lines',
+    line: {color: '#0077cc', width: 1.5},
+    name: 'Phase trajectory'
+  }];
+
+  if (showBound) {
+    traces.push({
+      x: [2.5, 2.5, -2.5, -2.5, 2.5],
+      y: [-4, 4, 4, -4, -4],
+      mode: 'lines',
+      line: {color: 'rgba(200,0,0,0.3)', width: 2, dash: 'dot'},
+      name: '|x₁| ≤ 2.5',
+      fill: 'none'
+    });
+  }
+
+  Plotly.react('phasePlot', traces, {
+    xaxis: {title: 'x₁', range: [-3.5, 3.5],
+            zeroline: true, zerolinecolor: '#ccc'},
+    yaxis: {title: 'x₂', range: [-4, 4],
+            zeroline: true, zerolinecolor: '#ccc'},
+    margin: {t: 20, b: 50, l: 50, r: 20},
+    paper_bgcolor: '#fff',
+    plot_bgcolor: '#fafafa',
+    legend: {x: 0.7, y: 0.95}
+  });
+}
+
+document.getElementById('muSlider').addEventListener('input', drawPlot);
+document.getElementById('showBound').addEventListener('change', drawPlot);
+drawPlot();
+</script>
+
+
+    
 <h2 style="color:#003366;">Reproducibility</h2>
 <p>
 Extended validation on a 3D quadrotor (\(n=12\), motor failure \(\eta:1.0\to0.6\))
