@@ -244,16 +244,21 @@ and all Julia source code are publicly available:
   </li>
 </ul>
 
-    
-    
+
+
+   
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-<h3 style="color:#003366;">Interactive: Van der Pol Phase Plane</h3>
+<h3 style="color:#003366;">Motivation: Van der Pol Phase Plane</h3>
 <p>
-Adjust \(\mu\) to see how distributional shift changes the
-oscillator's phase portrait. SafeCF-SSM adapts online when
-\(\mu\) switches from \(\mu_1\) to \(\mu_2\).
+The Van der Pol oscillator exhibits significantly different
+limit cycles under different damping parameters \(\mu\),
+motivating the need for online adaptation.
+Adjust \(\mu\) below to observe how the phase portrait
+changes &mdash; this distributional shift is precisely what
+SafeCF-SSM detects via \(\mathcal{S}_t\) and compensates
+for online, as validated in Scenario A (Fig. 2).
 </p>
 
 <div style="margin:0.5rem 0 0.5rem 0;">
