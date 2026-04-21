@@ -182,72 +182,10 @@ decoder approximation error and bounds encoder reorganization simultaneously
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <h2 style="color:#003366; margin-top:36px;">Simulation Studies: Van der Pol (VdP) Benchmark</h2>
-<p>
-Validated on the VdP oscillator (\(M=50\) Monte Carlo, \(T=80\,\text{s}\))
-across three distributional-shift scenarios:
-</p>
-
-<table border="1" cellpadding="8" cellspacing="0"
-       style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
-  <tr style="background:#003366; color:#fff;">
-    <th>Scenario</th>
-    <th>Shift Type</th>
-    <th>Validates</th>
-    <th>Key Result</th>
-  </tr>
-  <tr>
-    <td><b>A &mdash; Abrupt</b></td>
-    <td>\(\mu_1=0.5\to\mu_2=1.5\) at \(t_s\)</td>
-    <td>Tracking + safety under sudden dynamics change</td>
-    <td>Tracking AND safety &#10003;</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td><b>B &mdash; Obs. Drift</b></td>
-    <td>Progressive sensor bias after \(t_s\)</td>
-    <td>Safety when tracking degrades (decoupled)</td>
-    <td>Safety without tracking &#10003;</td>
-  </tr>
-  <tr>
-    <td><b>C &mdash; Gradual</b></td>
-    <td>Exponential \(\mu_t\) transition (\(\tau_a=6\,\text{s}\))</td>
-    <td>Adaptive tightening advantage (Lemma 1)</td>
-    <td>Adaptive &gt; fixed tightening &#10003;</td>
-  </tr>
-</table>
-
-<p>
-All scenarios confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and 100% safety
-(Corollary 1). Robust MPC achieves RMSE \(1.0\)&ndash;\(1.04\) across all scenarios,
-confirming that fixed-margin tightening forfeits control authority unnecessarily.
-</p>
 
 
 
-<h2 style="color:#003366;">Reproducibility</h2>
-<p>
-Extended validation on a 3D quadrotor (\(n=12\), motor failure \(\eta:1.0\to0.6\))
-and all Julia source code are publicly available:
-</p>
     
-<ul>
-  <li>                                                                           
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6[180426].jl"
-       download="cf_deepsssm_vdp_v6[180426].jl">
-      <code>cf_deepsssm_vdp_v6_1.jl</code></a>
-    &mdash; Van der Pol benchmark, Scenarios A&ndash;C (Figs. 2&ndash;4, Table I)
-  </li>
-  <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_2.jl"
-       download="safecf_ssm_quad3d_2.jl">
-      <code>safecf_ssm_quad3d_2.jl</code></a>
-    &mdash; 3D quadrotor extended validation (\(n=12\) states, motor failure)
-  </li>
-</ul>
-
-
-
-   
-
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <h3 style="color:#003366;">Motivation: Van der Pol Phase Plane</h3>
@@ -333,6 +271,77 @@ document.getElementById('muSlider').addEventListener('input', drawPlot);
 document.getElementById('showBound').addEventListener('change', drawPlot);
 drawPlot();
 </script>
+
+
+    
+    
+<p>
+Validated on the VdP oscillator (\(M=50\) Monte Carlo, \(T=80\,\text{s}\))
+across three distributional-shift scenarios:
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0"
+       style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
+  <tr style="background:#003366; color:#fff;">
+    <th>Scenario</th>
+    <th>Shift Type</th>
+    <th>Validates</th>
+    <th>Key Result</th>
+  </tr>
+  <tr>
+    <td><b>A &mdash; Abrupt</b></td>
+    <td>\(\mu_1=0.5\to\mu_2=1.5\) at \(t_s\)</td>
+    <td>Tracking + safety under sudden dynamics change</td>
+    <td>Tracking AND safety &#10003;</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td><b>B &mdash; Obs. Drift</b></td>
+    <td>Progressive sensor bias after \(t_s\)</td>
+    <td>Safety when tracking degrades (decoupled)</td>
+    <td>Safety without tracking &#10003;</td>
+  </tr>
+  <tr>
+    <td><b>C &mdash; Gradual</b></td>
+    <td>Exponential \(\mu_t\) transition (\(\tau_a=6\,\text{s}\))</td>
+    <td>Adaptive tightening advantage (Lemma 1)</td>
+    <td>Adaptive &gt; fixed tightening &#10003;</td>
+  </tr>
+</table>
+
+<p>
+All scenarios confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and 100% safety
+(Corollary 1). Robust MPC achieves RMSE \(1.0\)&ndash;\(1.04\) across all scenarios,
+confirming that fixed-margin tightening forfeits control authority unnecessarily.
+</p>
+
+
+
+<h2 style="color:#003366;">Reproducibility</h2>
+<p>
+Extended validation on a 3D quadrotor (\(n=12\), motor failure \(\eta:1.0\to0.6\))
+and all Julia source code are publicly available:
+</p>
+    
+<ul>
+  <li>                                                                           
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6[180426].jl"
+       download="cf_deepsssm_vdp_v6[180426].jl">
+      <code>cf_deepsssm_vdp_v6_1.jl</code></a>
+    &mdash; Van der Pol benchmark, Scenarios A&ndash;C (Figs. 2&ndash;4, Table I)
+  </li>
+  <li>
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_2.jl"
+       download="safecf_ssm_quad3d_2.jl">
+      <code>safecf_ssm_quad3d_2.jl</code></a>
+    &mdash; 3D quadrotor extended validation (\(n=12\) states, motor failure)
+  </li>
+</ul>
+
+
+
+   
+
+
 
 
     
