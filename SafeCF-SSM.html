@@ -222,6 +222,31 @@ confirming that fixed-margin tightening forfeits control authority unnecessarily
 </p>
 
 
+
+<h2 style="color:#003366;">Reproducibility</h2>
+<p>
+Extended validation on a 3D quadrotor (\(n=12\), motor failure \(\eta:1.0\to0.6\))
+and all Julia source code are publicly available:
+</p>
+    
+<ul>
+  <li>                                                                           
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6[180426].jl"
+       download="cf_deepsssm_vdp_v6[180426].jl">
+      <code>cf_deepsssm_vdp_v6_1.jl</code></a>
+    &mdash; Van der Pol benchmark, Scenarios A&ndash;C (Figs. 2&ndash;4, Table I)
+  </li>
+  <li>
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_2.jl"
+       download="safecf_ssm_quad3d_2.jl">
+      <code>safecf_ssm_quad3d_2.jl</code></a>
+    &mdash; 3D quadrotor extended validation (\(n=12\) states, motor failure)
+  </li>
+</ul>
+
+    
+    
+
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <h3 style="color:#003366;">Interactive: Van der Pol Phase Plane</h3>
@@ -306,26 +331,6 @@ drawPlot();
 
 
     
-<h2 style="color:#003366;">Reproducibility</h2>
-<p>
-Extended validation on a 3D quadrotor (\(n=12\), motor failure \(\eta:1.0\to0.6\))
-and all Julia source code are publicly available:
-</p>
-    
-<ul>
-  <li>                                                                           
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6[180426].jl"
-       download="cf_deepsssm_vdp_v6[180426].jl">
-      <code>cf_deepsssm_vdp_v6_1.jl</code></a>
-    &mdash; Van der Pol benchmark, Scenarios A&ndash;C (Figs. 2&ndash;4, Table I)
-  </li>
-  <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_2.jl"
-       download="safecf_ssm_quad3d_2.jl">
-      <code>safecf_ssm_quad3d_2.jl</code></a>
-    &mdash; 3D quadrotor extended validation (\(n=12\) states, motor failure)
-  </li>
-</ul>
 
 
     
