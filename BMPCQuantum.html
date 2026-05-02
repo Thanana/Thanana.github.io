@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Seeing Beyond Vision | Deep SSSM</title> 
+<title>Bayesian MPC for Quantum Control | Thanana Nuchkrua</title>
 
 <!-- MathJax -->
 <script type="text/javascript" async
@@ -48,64 +48,153 @@ MathJax.Hub.Config({
   <!-- Main content -->
   <td id="layout-content">
   <div id="toptitle">
- 
 
-    
+    <h2>Bayesian Model Predictive Control for Quantum State Regulation
+        under Decoherence</h2>
 
-<h2>Bayesian Model Predictive Control for Bilinear Open Quantum Systems 
-	Application to Robust Qubit State Transfer under Decoherence</h2>
-
-<p><i>To present at IFAC 2026</i>.  </p>
-
-<ul>
-<li><p><a>Paper</a></p>
-</li>
-</ul>
-
-<ul>
-<li><p><b>Highlight</b></p>
-  <div style="text-align:center; margin-top:10px; margin-bottom:10px;">
-    <img src="BMPCQuantum1.pdf" alt="Quantum-Informed MH Framework" width="550" 
-         style="margin:10px auto; border-radius:0px; box-shadow:0 0 0px rgba(0,0,0,0.08);">
-    <p style="font-style:italic; color:#555; font-size:90%;">
-    </p>
-  </div>
-</li>
-
-<li><p><b>Code:</b> powered by Julia 
-  <img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
-       style="vertical-align:middle; margin-left:6px;">
-</p></li>
-</ul>
-
-
-
-<div class="infoblock">
-  <div class="blockcontent">
     <p>
-      We propose a Bayesian model predictive control (MPC) framework for uncertainty-aware quantum control. The method embeds Bayesian inference directly into 
-		the receding-horizon control loop, enabling online identification of uncertain Hamiltonian parameters and the optimization of feedback policies under realistic noise 
-		and actuation constraints. Numerical experiments on single-qubit state-transfer tasks show that Bayesian MPC attains faster convergence and higher terminal 
-		fidelities than both nominal MPC and open-loop GRAPE under parameter mismatch, while preserving robustness to decoherence and readout noise. Importantly, 
-		the approach remains computationally efficient for short prediction horizons, enabling real-time deployment on near-term quantum hardware. These results establish 
-		Bayesian MPC as a principled and practical strategy for adaptive, feedback-based quantum control under uncertainty.
+      <b>Thanana Nuchkrua</b>, Sudchai Boonto, and Xiaoqi Liu<br/>
+      <i>To be presented at IFAC World Congress 2026, Busan, Korea,
+         August 24&ndash;28, 2026.</i>
     </p>
-  </div>
-</div>
 
-<!-- Footer Section -->
-<!-- ============================= -->
-<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0; background-color:#f9f9f9; border-top:1px solid #ddd;">
-  <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
-    © 2025 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
+    <ul>
+      <li><p><a href="#">Paper (PDF)</a> &nbsp;|&nbsp;
+              <a href="#">Code (Julia)</a></p></li>
+    </ul>
+
+    <!-- ── Highlight figure ── -->
+    <ul>
+      <li>
+        <p><b>Highlights</b></p>
+        <div style="text-align:center; margin-top:10px; margin-bottom:10px;">
+          <img src="BMPCQuantum1.pdf"
+               alt="BMPC Quantum Pipeline"
+               width="580"
+               style="margin:10px auto; border-radius:4px;
+                      box-shadow:0 2px 8px rgba(0,0,0,0.10);">
+          <p style="font-style:italic; color:#555; font-size:90%;">
+            Bayesian MPC closed-loop pipeline: posterior updating,
+            stochastic receding-horizon optimization, and constrained
+            control applied to Lindblad quantum dynamics.
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <p><b>Code:</b> Implemented in Julia &nbsp;
+          <img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
+               style="vertical-align:middle; margin-left:6px;">
+          &nbsp; using RK4 integration, adjoint-gradient MPC,
+          and Bayesian EKF for online parameter learning.
+        </p>
+      </li>
+    </ul>
+
+    <!-- ── Abstract ── -->
+    <div class="infoblock">
+      <div class="blockcontent">
+        <p><b>Abstract.</b>
+          We develop a Bayesian Model Predictive Control (BMPC) framework
+          for adaptive quantum state regulation under model uncertainty.
+          The method embeds Bayesian parameter inference directly into the
+          receding-horizon optimization, enabling the controller to update
+          uncertain Hamiltonian parameters online while computing
+          constrained control inputs in real time.
+          We formulate the BMPC architecture for Lindblad open-system
+          dynamics and establish theoretical guarantees showing that
+          posterior contraction drives the BMPC law toward the nominal
+          MPC law, recovering its stability properties.
+          Numerical experiments on single-qubit state-transfer tasks
+          demonstrate that BMPC preserves high fidelity under parameter
+          drift, decoherence, and measurement noise, and that short
+          prediction horizons are sufficient for real-time feasibility
+          &mdash; making BMPC a principled and practical strategy for
+          quantum feedback control under uncertainty.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Key results ── -->
+    <h3>Key Results</h3>
+    <ul>
+      <li><p>
+        <b>Closed-system drift:</b> BMPC achieves terminal fidelity
+        \(\mathcal{F}\approx1.0\) under 10% Hamiltonian drift mismatch,
+        outperforming both open-loop GRAPE and nominal MPC.
+      </p></li>
+      <li><p>
+        <b>Decoherence robustness:</b> Under amplitude-damping at rates
+        \(\gamma\in\{0.05,0.1,0.2\}\), BMPC consistently maintains
+        higher fidelity and approaches the theoretical bound
+        \(\mathcal{F}_{\mathrm{ref}}=\exp(-\gamma\tau_\pi/2)\).
+      </p></li>
+      <li><p>
+        <b>Measurement noise:</b> Over 50 Monte Carlo trials with readout
+        error \(p_{\mathrm{meas}}\in[0,0.2]\), BMPC degrades
+        significantly more slowly than GRAPE and nominal MPC, owing to
+        Bayesian filtering of measurement uncertainty.
+      </p></li>
+      <li><p>
+        <b>Real-time feasibility:</b> Terminal fidelity plateaus beyond
+        \(N_p\approx16\) while runtime grows linearly &mdash; confirming
+        that short horizons are sufficient for near-term quantum hardware.
+      </p></li>
+    </ul>
+
+    <!-- ── Theoretical contributions ── -->
+    <h3>Theoretical Contributions</h3>
+    <ul>
+      <li><p>
+        <b>Lemma (Posterior contraction):</b>
+        \(\mathbb{E}[\|\Phi(\rho,u;\theta)-\Phi(\rho,u;\theta^\star)\|_F]
+        \leq L_\theta\,\varepsilon_t \to 0\)
+        as the posterior concentrates at \(\theta^\star\).
+      </p></li>
+      <li><p>
+        <b>Theorem (Nominal limit):</b>
+        \(\|u_t^{\mathrm{BMPC}}-u_t^{\mathrm{NMPC}}\|_2
+        \leq \sqrt{2K_\theta/\sigma_{\min}}\,\varepsilon_t^{1/2} \to 0\).
+        BMPC asymptotically inherits the stability of nominal MPC.
+      </p></li>
+      <li><p>
+        <b>Proposition (ISS under decoherence):</b>
+        \(1-\mathcal{F}(\rho_t,\rho_\star)
+        \leq \mu^t e_0 + (L_f/\alpha_3)\|\mathcal{D}_\theta\|_\infty\).
+        Practical fidelity stability with explicit decoherence bound.
+      </p></li>
+    </ul>
+
+    <!-- ── BibTeX ── -->
+    <h3>BibTeX</h3>
+    <div style="background:#f5f5f5; border-left:3px solid #aaa;
+                padding:10px 14px; font-family:monospace; font-size:88%;
+                white-space:pre-wrap;">
+@inproceedings{nuchkrua2026bmpc,
+  title     = {Bayesian Model Predictive Control for Quantum State
+               Regulation under Decoherence},
+  author    = {Nuchkrua, Thanana and Boonto, Sudchai and Liu, Xiaoqi},
+  booktitle = {Proceedings of the 22nd IFAC World Congress},
+  year      = {2026},
+  address   = {Busan, Korea}
+}
+    </div>
+
+  </div><!-- toptitle -->
+  </td>
+</tr>
+</table>
+
+<!-- Footer -->
+<footer id="footer" style="text-align:center; margin-top:40px;
+       padding:14px 0; background-color:#f9f9f9;
+       border-top:1px solid #ddd;">
+  <div id="footer-text"
+       style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp;
+    Control &amp; Robotics Research Group, KMUTT
   </div>
 </footer>
 
-</td>
-</tr>
-</table>
-</body>
-</html>
-</table>
 </body>
 </html>
