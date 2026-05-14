@@ -6,8 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
 <title>SafeCF-SSM | IEEE L-CSS</title>
-
-<!-- MathJax -->
 <script type="text/javascript" async
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -16,8 +14,6 @@ MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
-<!-- End MathJax -->
-
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
@@ -29,7 +25,6 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="index.html">Home</a></div>
     <div class="menu-item"><a href="Biography.html">Biography</a></div>
     <div class="menu-item"><a href="Publication.html">Publication</a></div>
-
     <div class="menu-category">Research</div>
     <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
     <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
@@ -38,10 +33,8 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
     <div class="menu-item"><a href="LCSS.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
     <div class="menu-item"><a href="SafeCF-SSM.html" class="current">SafeCF-SSM</a></div>
-
     <div class="menu-category">Teaching</div>
     <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
-
     <div class="menu-category">Software</div>
     <div class="menu-item"><a href="robotics.html">Robotics</a></div>
     <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
@@ -51,9 +44,6 @@ MathJax.Hub.Config({
   <td id="layout-content">
   <div id="toptitle">
 
-<!-- <hr style="border:0; border-top:1px solid #ccc; width:55%; margin:18px auto;"> -->
-
-<!-- Section Header -->
 <h1 style="color:#003366; text-align:center; margin-top:30px;">
   SafeCF-SSM: Cognitive-Flexible Control with Explicit Physical
   Safety Guarantees for Latent-Space MPC
@@ -71,15 +61,16 @@ MathJax.Hub.Config({
     <span style="color:#0077AA;"><b>Surprise \(\mathcal{S}_t\)</b></span> &rarr;
     <span style="color:#0099CC;"><b>Adaptive Margin \(\beta_{i,t}\)</b></span> &rarr;
     <span style="color:#00A6D6;"><b>BMPC \(u_t\)</b></span> &rarr;
-    <span style="color:#003366;"><b>Physical Safety \(\mathbb{P}(\cdot)\geq1-\delta\)</b></span>
+    <span style="color:#003366;"><b>Physical Safety
+    \(\mathbb{P}(\cdot)\geq1-\delta-f(\varepsilon_{\mathrm{dec}})\)</b></span>
   </p>
   <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    A single surprise signal \(\mathcal{S}_t\) simultaneously tightens safety constraints
-    and regulates encoder reorganization &mdash; closing the physical-latent gap.
+    A single surprise signal \(\mathcal{S}_t\) simultaneously tightens safety
+    constraints and regulates encoder reorganization &mdash; closing the
+    physical-latent gap.
   </p>
 </div>
 
-<!-- Concept -->
 <p>
   <b>SafeCF-SSM</b> is a cognitive-flexible control framework for latent-space MPC
   under distributional shift. It addresses two open problems: unregulated representation
@@ -116,32 +107,40 @@ one requirement of the problem statement:
     enabling uncertainty-aware BMPC planning.
   </li>
   <li>
-    <b>BMPC with Adaptive Tightening:</b> enforces physical safety via
-    \(\beta_{i,t}=\max(c_i\mathcal{S}_t,\,L_{g,i}\sigma_t)\), implementing the
-    probabilistic constraint \(\mathbb{P}(\mathcal{G}_i(z_{t+k},u_{t+k})\leq0)\geq1-\delta_i\).
+    <b>BMPC with Adaptive Tightening:</b> enforces physical safety via the
+    unified margin
+    \(\beta_{i,t}=\max(c_i\mathcal{S}_t,\,L_{g,i}L_d\,r_{\delta_i,t})\),
+    where \(r_{\delta_i,t}=c_{\delta_i}\sqrt{\lambda_{\max}(\Sigma_t)}\)
+    is a calibrated confidence radius (Assumption 3).
+    The probabilistic constraint
+    \(\mathbb{P}(\tilde{\mathcal{G}}_i(z_{t+k},u_{t+k})\leq0)\geq1-\delta_i\)
+    is implemented as deterministic tightening (Lemma 1).
     Unlike Nominal MPC (\(\beta\equiv0\)) and Robust MPC (fixed \(\beta_{\max}\)),
     \(\beta_{i,t}\) responds online to both model uncertainty \(\Sigma_t\) and
     distributional shift \(\mathcal{S}_t\).
   </li>
   <li>
     <b>Surprise-driven CF Adaptation:</b> bounds encoder reorganization
-    \(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|\leq L_\phi\eta_{\max}L_\Delta=:\varepsilon_{\mathrm{cf}}\),
+    \(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|
+    \leq L_\phi\eta_{\max}L_\Delta=:\varepsilon_{\mathrm{cf}}\),
     satisfying the CF constraint and lifting latent safety to physical space
-    (Proposition 1).
+    via Proposition 1.
   </li>
 </ul>
 
 <h3 style="color:#003366; margin-top:28px;">The Dual Role of \(\mathcal{S}_t\)</h3>
 <p>
-The predictive surprise \(\mathcal{S}_t:=-\log p_{\theta_t}(o_{t+1}|z_t,u_t)\)
+The predictive surprise
+\(\mathcal{S}_t:=-\log p_{\theta_t}(o_{t+1}|z_t,u_t)\)
 is large when the model is mismatched and small when consistent with observations.
 The same signal \(\mathcal{S}_t\) that tightens \(\beta_{i,t}\) in the BMPC layer
-also moderates \(\eta_t=\eta_{\max}/(1+\mathcal{S}_t)\), bounding
-\(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|\) and reducing the physical-latent gap.
+also moderates
+\(\eta_t=\eta_{\max}/(1+\sqrt{\mathcal{S}_t})\),
+bounding \(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|\)
+and reducing the physical-latent gap.
 </p>
 
-    <!-- <h3 style="color:#003366; margin-top:28px;">&#128208; Main Theoretical Guarantees</h3> ,    style="color:#003366; margin-top:28px;">&#129302;    -->
-<h3 style="color:#003366; margin-top:28px;"> Main Theoretical Guarantees</h3>
+<h3 style="color:#003366; margin-top:28px;">Main Theoretical Guarantees</h3>
 <ul>
   <li>
     <b>Theorem 1 (Bounded Representation Drift &mdash; G1):</b>
@@ -155,22 +154,25 @@ also moderates \(\eta_t=\eta_{\max}/(1+\mathcal{S}_t)\), bounding
     <b>Theorems 2&ndash;3 (Recursive Feasibility &amp; ISS &mdash; G2):</b>
     The BMPC remains feasible for all \(t'\geq t\) and the closed-loop belief
     is input-to-state stable:
-    \(\|z_t\|\leq\beta(\|z_0\|,t)+\gamma(\bar{d})\).
+    \(\|z_t\|\leq\bar\beta(\|z_0\|,t)+\gamma(\bar{d})\),
+    \(\bar\beta\in\mathcal{KL}\), \(\gamma\in\mathcal{K}\).
   </li>
   <li>
     <b>Proposition 1 + Corollary 1 (Physical Safety Certificate &mdash; G3):</b>
     \[
       \mathbb{P}\bigl((x_t,u_t)\in\mathcal{S}\bigr)
-      \geq 1-\delta - L_{g,i}L_d\varepsilon_{\mathrm{dec}},
+      \geq 1-\delta - f(\varepsilon_{\mathrm{dec}}),
       \quad\forall t\geq0,
     \]
-    with \(\delta=\max_i\delta_i\). The residual vanishes when
-    \(\varepsilon_{\mathrm{dec}}=0\). <i>This is the first verifiable physical
-    safety guarantee for latent-space MPC.</i>
+    where \(\sum_i\delta_i\leq\delta\) and
+    \(f(\varepsilon_{\mathrm{dec}})=L_{g,i}L_d\varepsilon_{\mathrm{dec}}\geq0\),
+    \(f(0)=0\). The residual vanishes when \(\varepsilon_{\mathrm{dec}}=0\).
+    <i>This is the first verifiable physical safety guarantee for
+    latent-space MPC accounting for decoder approximation error.</i>
   </li>
 </ul>
 
-<h3 style="color:#003366; margin-top:28px;"> Core Insight</h3>
+<h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
 <p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
           padding:0.8em 1.2em; border-radius:6px;">
 Unlike prior latent-MPC works that establish (G1)&ndash;(G2) in latent space only,
@@ -178,19 +180,21 @@ SafeCF-SSM provides an explicit physical safety certificate that accounts for
 decoder approximation error and bounds encoder reorganization simultaneously
 &mdash; closing the physical-latent gap identified as the central open problem.
 </p>
+
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
-
 
 <h3 style="color:#003366;">Nonlinear-Benchmark Motivation: Van der Pol Phase Plane</h3>
 <p>
 The Van der Pol oscillator exhibits significantly different
 limit cycles under different damping parameters \(\mu\),
 motivating the need for online adaptation.
-Adjust \(\mu\) below to observe how the phase portrait
-changes &mdash; this distributional shift is precisely what
-SafeCF-SSM detects via \(\mathcal{S}_t\) and compensates
-for online, as validated in Scenario A (Fig. 2).
+The safety bound \(|x_1|\leq X_{1,\max}=A(\mu_2)\approx2.66\) is physically
+motivated: the uncontrolled limit cycle amplitude \(A(\mu_1)\approx2.13\)
+lies within the bound, while \(A(\mu_2)\approx X_{1,\max}\) makes enforcement
+non-trivial without active adaptation.
+Adjust \(\mu\) below to observe how the phase portrait changes &mdash;
+this distributional shift is precisely what SafeCF-SSM detects via
+\(\mathcal{S}_t\) and compensates for online (Fig. 2).
 </p>
 
 <div style="margin:0.5rem 0 0.5rem 0;">
@@ -204,7 +208,7 @@ for online, as validated in Scenario A (Fig. 2).
   &nbsp;&nbsp;
   <label style="font-size:0.9em; color:#555;">
     <input type="checkbox" id="showBound" checked>
-    Show safety boundary \(|x_1|\leq2.5\) 
+    Show safety boundary \(|x_1|\leq X_{1,\max}\)
   </label>
 </div>
 
@@ -225,11 +229,27 @@ function vdpPhase(mu) {
   return {x1, x2};
 }
 
+// Compute limit cycle amplitude
+function vdpAmplitude(mu) {
+  const dt = 0.01, T = 4000;
+  var x1 = 2.0, x2 = 0.0;
+  var xmax = 0.0;
+  for (var i = 0; i < T; i++) {
+    var dx1 = x2;
+    var dx2 = mu*(1 - x1*x1)*x2 - x1;
+    x1 = x1 + dt*dx1;
+    x2 = x2 + dt*dx2;
+    if (i > T/2) xmax = Math.max(xmax, Math.abs(x1));
+  }
+  return xmax;
+}
+
 function drawPlot() {
   var mu = parseFloat(document.getElementById('muSlider').value);
   document.getElementById('muVal').innerText = mu.toFixed(1);
   var showBound = document.getElementById('showBound').checked;
   var d = vdpPhase(mu);
+  var amp = vdpAmplitude(mu);
 
   var traces = [{
     x: d.x1, y: d.x2,
@@ -240,19 +260,19 @@ function drawPlot() {
 
   if (showBound) {
     traces.push({
-      x: [2.5, 2.5, -2.5, -2.5, 2.5],
+      x: [amp, amp, -amp, -amp, amp],
       y: [-4, 4, 4, -4, -4],
       mode: 'lines',
       line: {color: 'rgba(200,0,0,0.3)', width: 2, dash: 'dot'},
-      name: '|x₁| ≤ 2.5',
+      name: '|x\u2081| \u2264 A(\u03bc) \u2248 ' + amp.toFixed(2),
       fill: 'none'
     });
   }
 
   Plotly.react('phasePlot', traces, {
-    xaxis: {title: 'x₁', range: [-3.5, 3.5],
+    xaxis: {title: 'x\u2081', range: [-3.5, 3.5],
             zeroline: true, zerolinecolor: '#ccc'},
-    yaxis: {title: 'x₂', range: [-4, 4],
+    yaxis: {title: 'x\u2082', range: [-4, 4],
             zeroline: true, zerolinecolor: '#ccc'},
     margin: {t: 20, b: 50, l: 50, r: 20},
     paper_bgcolor: '#fff',
@@ -265,87 +285,80 @@ document.getElementById('muSlider').addEventListener('input', drawPlot);
 document.getElementById('showBound').addEventListener('change', drawPlot);
 drawPlot();
 </script>
-    
 
-    
-
-<h2 style="color:#003366; margin-top:36px;">Simulation Studies: Van der Pol (VdP) Benchmark</h2>    
+<h2 style="color:#003366; margin-top:36px;">Simulation Studies:
+Van der Pol (VdP) Benchmark</h2>
 <p>
-Validated on the VdP oscillator (\(M=50\) Monte Carlo, \(T=80\,\text{s}\))
-across three distributional-shift scenarios:
+Validated on the VdP oscillator (\(M=25\) Monte Carlo, \(T=345\,\text{s}\),
+\(\mu_1=0.5\), \(\mu_2=2.66\)) across <b>four consecutive distributional-shift
+regimes</b> in a single continuous experiment without re-initialization:
 </p>
 
 <table border="1" cellpadding="8" cellspacing="0"
        style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
   <tr style="background:#003366; color:#fff;">
-    <th>Scenario</th>
+    <th>Regime</th>
+    <th>Duration</th>
     <th>Shift Type</th>
-    <th>Validates</th>
     <th>Key Result</th>
   </tr>
   <tr>
-    <td><b>A &mdash; Abrupt</b></td>
-    <td>\(\mu_1=0.5\to\mu_2=1.5\) at \(t_s\)</td>
-    <td>Tracking + safety under sudden dynamics change</td>
-    <td>Tracking AND safety &#10003;</td>
+    <td><b>Nominal</b></td>
+    <td>\(0\)&ndash;\(45\,\text{s}\)</td>
+    <td>\(\mu=\mu_1=0.5\), accurate model</td>
+    <td>No overhead: \(\beta_{i,t}\approx0\) &#10003;</td>
   </tr>
   <tr style="background:#f9f9f9;">
-    <td><b>B &mdash; Obs. Drift</b></td>
-    <td>Progressive sensor bias after \(t_s\)</td>
-    <td>Safety when tracking degrades (decoupled)</td>
-    <td>Safety without tracking &#10003;</td>
+    <td><b>Abrupt shift</b></td>
+    <td>\(45\)&ndash;\(115\,\text{s}\)</td>
+    <td>\(\mu_1\uparrow\mu_2=2.66\) instantaneously</td>
+    <td>Safety via \(\mathcal{S}_t\) spike &#10003;</td>
   </tr>
   <tr>
-    <td><b>C &mdash; Gradual</b></td>
-    <td>Exponential \(\mu_t\) transition (\(\tau_a=6\,\text{s}\))</td>
-    <td>Adaptive tightening advantage (Lemma 1)</td>
-    <td>Adaptive &gt; fixed tightening &#10003;</td>
+    <td><b>Observational drift</b></td>
+    <td>\(115\)&ndash;\(275\,\text{s}\)</td>
+    <td>Bias \(b_t\to[0.83,0.88]^\top\) exponentially</td>
+    <td>Safety despite unabsorbable bias (Gap 2) &#10003;</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td><b>Gradual drift</b></td>
+    <td>\(275\)&ndash;\(345\,\text{s}\)</td>
+    <td>\(\mu_t:\mu_1\nearrow\mu_2\) exponentially</td>
+    <td>Formal certificate via Cor. 1 &#10003;</td>
   </tr>
 </table>
 
 <p>
-All scenarios confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and 100% safety
-(Corollary 1). Robust MPC achieves RMSE \(1.0\)&ndash;\(1.04\) across all scenarios,
-confirming that fixed-margin tightening forfeits control authority unnecessarily.
+All four regimes confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1)
+and \(\geq99.8\%\) safety (Corollary 1) with
+\(\varepsilon_{\mathrm{dec}}\leq0.10\).
+Both baselines violate safety during observational drift;
+SafeCF-SSM maintains \(|x_1|\leq X_{1,\max}\) throughout.
 </p>
-
-
 
 <h2 style="color:#003366;">Reproducibility</h2>
 <p>
-Extended validation on a 3D quadrotor (\(n=12\), motor failure \(\eta:1.0\to0.6\))
-and all Julia source code are publicly available:
+All Julia source code is publicly available:
 </p>
-    
 <ul>
-  <li>                                                                           
+  <li>
     <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6[150526].jl"
        download="cf_deepsssm_vdp_v6[150526].jl">
       <code>cf_deepsssm_vdp_v6[150526].jl</code></a>
-    &mdash; Van der Pol benchmark, Scenarios A&ndash;C (Figs. 2&ndash;4, Table I)
+    &mdash; Van der Pol benchmark, 4 regimes, Gap-2 validation
+    (Fig. 2, Table I)
   </li>
   <li>
     <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
        download="safecf_ssm_quad3d_[150526].jl">
       <code>safecf_ssm_quad3d_[150526].jl</code></a>
-    &mdash; 3D quadrotor extended validation (\(n=12\) states, motor failure)
+    &mdash; 3D quadrotor benchmark (\(n=12\) states, motor failure,
+    Fig. 3, Table I)
   </li>
 </ul>
 
-
-
-   
-
-
-
-
-    
-
-
-    
-
-    
-<h3 style="color:#003366; margin-top:36px;">Extended Validation: 3D Quadrotor under Motor Failure</h3>
+<h3 style="color:#003366; margin-top:36px;">Extended Validation:
+3D Quadrotor under Motor Failure</h3>
 
 <p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
           padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
@@ -354,25 +367,26 @@ Can SafeCF-SSM maintain safety and tracking when a rotor partially fails mid-fli
 
 <p>
 A 3D quadrotor (\(n=12,\,m=4\)) undergoes rotor-1 efficiency loss
-\(\eta_t: 1.0\to0.6\) at \(t_s=20\,\text{s}\), inducing yaw-torque
-asymmetry and coupled attitude&ndash;altitude instability.
-The dynamics are:
+\(\rho_t: 1.0\to0.6\) at \(t_s=40\,\text{s}\), inducing yaw-torque
+asymmetry and lateral drift. The dynamics are:
 \[
 \dot{v} = \tfrac{1}{M}R(\phi,\theta,\psi)
 \begin{bmatrix}0\\0\\T_t\end{bmatrix}\!-ge_3,
 \qquad
 \dot{\omega} = J^{-1}(\tau - \omega\times J\omega),
 \]
-where \(T_t=\eta_t T_1+T_2+T_3+T_4\) and
-\(\tau=[\ell(T_2-T_4),\,\ell(T_3-\eta_t T_1),\,
-\kappa(\eta_t T_1-T_2+T_3-T_4)]^\top\).
-SafeCF-SSM adapts \(\hat\eta_t\) online via:
+where \(T_t=\rho_t T_1+T_2+T_3+T_4\) and
+\(\tau=[\ell(T_2-T_4),\,\ell(T_3-\rho_t T_1),\,
+\kappa(\rho_t T_1-T_2+T_3-T_4)]^\top\).
+SafeCF-SSM adapts \(\hat\rho_t\) online via:
 \[
-\hat\eta_{t+1} = \hat\eta_t + \eta_t\,\nabla_{\hat\eta}
+\hat\rho_{t+1} = \hat\rho_t + \eta_t\,\nabla_{\hat\rho}
 \log p_{\theta_t}(o_{t+1}\mid z_t,u_t),
+\quad
+\eta_t = \frac{\eta_{\max}}{1+\sqrt{\mathcal{S}_t}},
 \]
 with safety enforced via adaptive margin
-\(\beta_{i,t} = \max(c_i\mathcal{S}_t,\,L_{g,i}\sigma_t)\).
+\(\beta_{i,t} = \max(c_i\mathcal{S}_t,\,L_{g,i}L_d\,r_{\delta_i,t})\).
 </p>
 
 <table border="1" cellpadding="8" cellspacing="0"
@@ -391,7 +405,7 @@ with safety enforced via adaptive margin
   </tr>
   <tr>
     <td>\(I_{zz}\)</td><td>\(0.02\,\text{kg\,m}^2\)</td>
-    <td>\(\eta_1\to\eta_2\)</td><td>\(1.0\to0.6\)</td>
+    <td>\(\rho_1\to\rho_2\)</td><td>\(1.0\to0.6\) at \(t_s=40\,\text{s}\)</td>
   </tr>
   <tr style="background:#f9f9f9;">
     <td>\(\sigma_w,\sigma_v\)</td><td>\(0.05,\,0.10\)</td>
@@ -404,30 +418,28 @@ with safety enforced via adaptive margin
 </table>
 
 <p>
-\(M=30\) Monte Carlo runs confirm: SafeCF-SSM maintains altitude
-and attitude safety throughout failure, while Nominal MPC diverges
-and Robust MPC sacrifices tracking for conservatism.
-\(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and 100% safety
-(Corollary 1) hold across all runs &mdash; consistent with the
-VdP validation above.
+\(M=25\) Monte Carlo runs confirm: SafeCF-SSM maintains
+\(|p_y|\leq0.1\,\text{m}\) throughout the failure, while both baselines
+accumulate drift exceeding \(0.5\,\text{m}\).
+\(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and \(\geq99.8\%\) safety
+(Corollary 1) hold across all runs &mdash; consistent with
+the VdP validation above.
 </p>
 
-     <!-- Main figure -->
   <div style="text-align:center; margin-top:10px; margin-bottom:5px;">
-    <img src="fig_quad3d_motor_failure.pdf" alt="Deep SSSM framework" width="420"
+    <img src="fig_quad3d_motor_failure.pdf"
+         alt="3D Quadrotor motor failure benchmark" width="420"
          style="margin-bottom:10px; border-radius:4px;">
   </div>
 
-
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-
-
-<!-- Footer -->
 <footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
      background-color:#f9f9f9; border-top:1px solid #ddd;">
-  <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
-    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
+  <div id="footer-text"
+       style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp;
+    Control &amp; Robotics Research Group
   </div>
 </footer>
 
