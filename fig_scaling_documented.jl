@@ -1,7 +1,7 @@
 # =============================================================
 #  fig3_scaling.jl
-#  L-CSS Paper 2 — Figure 3 (Fig. 4 in submitted version)
-#  Nuchkrua, Boonto
+#  SPL  — Figure 3 (Fig. 4 in submitted version)
+#  Nuchkrua, Liu, & Boonto
 #
 #  PURPOSE:
 #    Validates Theorem 2 (Finite Expected Switching) by showing
@@ -15,7 +15,7 @@
 #             Confirms near-linear relationship predicted by
 #             Theorem 2 bound equation (15) in paper.
 #
-#  Created and Coded by Thanana, copyright
+#  Created and Coded by Thanana, 2026 copyright
 # =============================================================
 
 using Random, Distributions, StatsBase, Statistics
