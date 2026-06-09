@@ -2,7 +2,7 @@
 
 > **Robust Cognitive-Flexible Filtering under Noisy Innovation Scores**  
 > T. Nuchkrua, X. Liu, and S. Boonto  
-> *IEEE Control Signal Processing Letters (SPL)*, 2026  
+> *IEEE Signal Processing Letters (SPL)*, 2026  
 > Status: Under Review
 
 ---
