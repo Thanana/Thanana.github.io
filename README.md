@@ -1,8 +1,8 @@
-# Robust CF Filtering — IEEE L-CSS 2026
+# Robust CF Filtering — IEEE SPL 2026
 
 > **Robust Cognitive-Flexible Filtering under Noisy Innovation Scores**  
 > T. Nuchkrua and S. Boonto  
-> *IEEE Control Systems Letters (L-CSS)*, 2026  
+> *IEEE Control Signal Processing Letters (SPL)*, 2026  
 > Status: Under Review
 
 ---
@@ -78,7 +78,7 @@ Robust CF empirical count stays well below Theorem 2 bound ✓
   author  = {Nuchkrua, T. and Boonto, S.},
   title   = {Robust Cognitive-Flexible Filtering under
              Noisy Innovation Scores},
-  journal = {IEEE Control Systems Letters},
+  journal = {IEEE Signal Processing Letters},
   year    = {2026},
   note    = {Under review}
 }
@@ -92,4 +92,4 @@ Robust CF empirical count stays well below Theorem 2 bound ✓
 
 ---
 
-&copy; 2026 Thanana Nuchkrua | Control & Robotics Research Group
+&copyright; 2026 Thanana Nuchkrua | Control & Robotics Research Group
