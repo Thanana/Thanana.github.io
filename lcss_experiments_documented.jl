@@ -1,7 +1,7 @@
 # =============================================================
-#  lcss_experiments.jl
+#  spl_experiments.jl
 #  Robust Cognitive-Flexible Filtering under Noisy Innovation Scores
-#  Nuchkrua & Boonto, IEEE Control Systems Letters
+#  Nuchkrua, Liu, & Boonto, IEEE Signal Processing Letters
 #
 #  PURPOSE:
 #    Generates Figures 2 and 3 of the L-CSS paper, validating
@@ -17,7 +17,7 @@
 #
 #  Also prints Table I results (Experiment IV-C, Theorem 2)
 #
-#  Created and Coded by Thanana, copyright
+#  Created and Coded by Thanana, 2026 copyright
 # =============================================================
 
 using Distributions
