@@ -1,7 +1,7 @@
 # =============================================================
 #  spl_experiments.jl
 #  Robust Cognitive-Flexible Filtering under Noisy Innovation Scores
-#  Nuchkrua, Liu, & Boonto, IEEE Signal Processing Letters
+#  Nuchkrua, Liu, & Boonto, IEEE Signal Processing Letters 
 #
 #  PURPOSE:
 #    Generates Figures 2 and 3 of the L-CSS paper, validating
