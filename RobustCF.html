@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
@@ -7,11 +7,11 @@
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
 <title>Robust CF Filtering | IEEE Signal Processing Letters</title>
 <script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
+	TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
 </head>
@@ -20,22 +20,22 @@ MathJax.Hub.Config({
 <tr valign="top">
 
 <td id="layout-menu">
-  <div class="menu-category">Thanana</div>
-  <div class="menu-item"><a href="index.html">Home</a></div>
-  <div class="menu-item"><a href="Biography.html">Biography</a></div>
-  <div class="menu-item"><a href="Publication.html">Publication</a></div>
-  <div class="menu-category">Research</div>
-  <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
-  <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
-  <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
-  <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
-  <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
-  <div class="menu-item"><a href="RobustCF.html" class="current">Robust&nbsp;CF&nbsp;Filtering</a></div>
-  <div class="menu-category">Teaching</div>
-  <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
-  <div class="menu-category">Software</div>
-  <div class="menu-item"><a href="robotics.html">Robotics</a></div>
-  <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
+<div class="menu-category">Research</div>
+<div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+<div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+<div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+<div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+<div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+<div class="menu-item"><a href="RobustCF.html" class="current">Robust&nbsp;CF&nbsp;Filtering</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
 </td>
 
 <td id="layout-content">
@@ -43,411 +43,389 @@ MathJax.Hub.Config({
 
 <!-- Header -->
 <div style="text-align:center; margin-top:35px;">
-  <h1 style="color:#003366; font-weight:700; letter-spacing:0.4px;">
-    Robust Cognitive&ndash;Flexible Filtering<br/>
-    under Noisy Innovation Scores
-  </h1>
-  <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-top:6px;">
-    A margin that knows when to trust itself &mdash;
-    and when the noise has changed.
-  </p>
+<h1 style="color:#003366; font-weight:700; letter-spacing:0.4px;">
+Robust Cognitive&ndash;Flexible Filtering<br/>
+under Noisy Innovation Scores
+</h1>
+<p style="color:#00A6D6; font-style:italic; font-size:0.86em; margin-top:6px;">
+Structure selection that stays reliable &mdash; even when the scores are noisy.
+</p>
 </div>
 
 <!-- Paper info -->
-<div style="text-align:center; margin:18px auto; max-width:700px;
-            background:#f0f6fb; border-radius:8px; padding:14px 20px;
-            border:1px solid #cde4f5;">
-  <p style="margin:0; font-size:0.9em;
-            color:#00A6D6; font-style:italic;">
-    <b>Under review, IEEE Signal Processing Letters, 2026</b>
-  </p>
-</div>
+
+
+
+
+<div background:#f0f6fb; border-radius:8px; class="infoblock">
+<div class="blockcontent">
+
+
+
+
+<p style="margin:8px 0 0 0; text-align:center; font-size:0.9em;
+color:#00A6D6; font-style:italic">
+<b>Submitted to IEEE Signal Processing Letters, 2026</b>
+</p>
+slide: <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/beamer-SPL.pdf"
+download="beamer-SPL.pdf">
+<code>beamer-SPL.pdf</code></a> 
+
+<p><img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
+style="vertical-align:middle; margin-left:6px;"> Julia source code:
+</p>
+<ul>
+<li>
+<a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/lcss_experiments_documented.jl"
+download="lcss_experiments_documented.jl">
+<code>lcss_experiments_documented.jl</code></a>
+&mdash; Figs. 2&amp;3, Table I
+(validates Theorems 1&ndash;3)
+</li>
+<li>
+<a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/fig_scaling_documented.jl"
+download="fig_scaling_documented.jl">
+<code>fig_scaling_documented.jl</code></a>
+&mdash; Fig. 4, bound tightness
+(Theorem 2)
+</li>
+</ul>
+<p>
+
+
+</div>   </div>
+
 <!-- Motto -->
 <div style="text-align:center; margin:20px auto;
-            max-width:700px; line-height:1.55;">
-  <p style="color:#003366; font-size:0.95em;
-            font-style:italic; margin-bottom:6px;">
-    <b>Detect</b> structural mismatch,&nbsp;
-    <b>Switch</b> only when evidence is clear,&nbsp;
-    and <b>Adapt</b> the margin online as the noise
-    itself changes.
-  </p>
+max-width:700px; line-height:1.55;">
+<p style="color:#003366; font-size:0.85em;
+font-style:italic; margin-bottom:6px;">
+<b>Detect</b> structural mismatch,&nbsp;
+<b>Switch</b> only when evidence is clear,&nbsp;
+and <b>Stabilise</b> under noise &mdash; guaranteed.
+</p>
 </div>
 
 <hr style="border:0; border-top:1px solid #ccc;
-           width:55%; margin:18px auto;">
+width:55%; margin:18px auto;">
 
 <!-- Pipeline -->
 <div style="text-align:center; background-color:#f5f8fa;
-            border-radius:10px; padding:14px 12px;
-            margin:0 auto 30px auto; max-width:760px;
-            box-shadow:0 1px 4px rgba(0,0,0,0.06);">
-  <p style="margin:0; font-size:0.9em; color:#003366;">
-    <span style="color:#00A6D6;"><b>Belief \(\mathfrak{B}_t\)</b></span>
-    &rarr;
-    <span style="color:#0077AA;">
-      <b>Batch-split scores</b>
-    </span>
-    &rarr;
-    <span style="color:#0099CC;">
-      <b>Adaptive margin \(\delta_t\)</b>
-    </span>
-    &rarr;
-    <span style="color:#00A6D6;">
-      <b>Structure \(s_{t+1}\)</b>
-    </span>
-    &rarr;
-    <span style="color:#003366;">
-      <b>Belief \(\mathfrak{B}_{t+1}\)</b>
-    </span>
-  </p>
-  <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    The margin tracks the score noise online, at zero
-    extra Monte&nbsp;Carlo cost.
-  </p>
+border-radius:10px; padding:14px 12px;
+margin:0 auto 30px auto; max-width:720px;
+box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+<p style="margin:0; font-size:0.93em; color:#003366;">
+<span style="color:#00A6D6;"><b>Belief \(\mathfrak{B}_t\)</b></span>
+&rarr;
+<span style="color:#0077AA;">
+<b>Noisy Score \(\hat{\Phi}_t(s)\)</b>
+</span>
+&rarr;
+<span style="color:#0099CC;">
+<b>Margin Rule \(\delta&gt;2\bar{\varepsilon}\)</b>
+</span>
+&rarr;
+<span style="color:#00A6D6;">
+<b>Structure \(s_{t+1}\)</b>
+</span>
+&rarr;
+<span style="color:#003366;">
+<b>Belief Update \(\mathfrak{B}_{t+1}\)</b>
+</span>
+</p>
+<p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+A hysteresis-based switching rule that provably suppresses
+spurious transitions under bounded score noise.
+</p>
 </div>
 
 <!-- Problem -->
 <h3 style="color:#003366;">What Is the Problem?</h3>
 <p>
-<b>Cognitive Flexibility (CF)</b> [Nuchkrua &amp; Boonto,
-Automatica 2026] selects, at each step, the latent
-structure \(s\in\mathcal{S}\) minimising an innovation-based
-predictive score
-\(\Phi_t(s):=-\log\ell_{\theta,s}(y_{t+1}|\mathfrak{B}_t,u_t)\),
-leaving the underlying filter recursion intact. Under
-exact scores, three guarantees hold: <i>descent in
-expectation</i>, <i>finite switching</i>, and
-<i>non-chattering</i>.
+<b>Cognitive Flexibility (CF)</b> [Nuchkrua, Boonto &amp; Liu,
+arXiv:2604.08130] selects, at each step, the latent structure
+\(s\in\mathcal{S}\) minimising an innovation-based predictive score
+\(\Phi_t(s):=-\log\ell_{\theta,s}(y_{t+1}|\mathfrak{B}_t,u_t)\).
+Under exact scores, three guarantees hold: <i>descent in expectation</i>,
+<i>finite switching</i>, and <i>non-chattering</i>.
 </p>
 <p>
-In practice scores are estimated by a particle filter and
-carry additive perturbations \(\epsilon_t(s)\) with
+In practice, scores are estimated from a particle filter and
+carry additive perturbations \(\epsilon_t(s)\) satisfying
 \(\mathbb{E}[\epsilon_t(s)\mid\mathcal{I}_t]=0\) and
-\(|\epsilon_t(s)|\leq\bar{\varepsilon}\) a.s. Unprotected
-score minimisation is vulnerable to
-<b>spurious switching</b> &mdash; and any margin
-\(\delta\) calibrated to suppress it must, in a
-nonstationary setting, be calibrated
-<i>against a noise level that keeps changing</i>. This
-letter asks &mdash; and answers &mdash; two questions:
-does the theory survive noisy scores, and can the margin
-itself be found online, without a stationary calibration
-window?
+\(|\epsilon_t(s)|\leq\bar{\varepsilon}\) a.s.
+When score differences are of the same order as \(\bar{\varepsilon}\),
+direct score minimisation induces <b>spurious switching</b> &mdash;
+noise-driven transitions that degrade predictive accuracy and
+inflate computational cost.
+<i>Whether CF remains stable under corrupted scores was entirely open.</i>
 </p>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <!-- Solution -->
-<h3 style="color:#003366;">&#9881; The Margin-Based Rule</h3>
+<h3 style="color:#003366;">&#9881; The Margin-Based Solution</h3>
 <p>We introduce the <b>margin-based switching rule</b>:</p>
 <p style="text-align:center;">
 \[
 s_{t+1} = \begin{cases}
-\hat{s}_t, &amp;
-\hat{\Phi}_t(s_t) - \hat{\Phi}_t(\hat{s}_t) > \delta_t, \\
-s_t, &amp; \text{otherwise,}
+	\hat{s}_t, &amp;
+	\hat{\Phi}_t(s_t) - \hat{\Phi}_t(\hat{s}_t) > \delta, \\
+	s_t, &amp; \text{otherwise,}
 \end{cases}
 \quad \hat{s}_t\in\arg\min_{s}\hat{\Phi}_t(s),
 \]
 </p>
 <p>
-with \(\delta_t\ge2\varepsilon_t+\underline{m}\) for a
-deterministic floor \(\underline{m}>0\). The static
-case \(\delta\equiv\text{const}>2\bar{\varepsilon}\) is
-recovered exactly as a special case, and restores all
-three noiseless-style guarantees with no change to the
-filter recursion.
+with \(\delta > 2\bar{\varepsilon}\). This single design choice
+restores all three stability properties of the noiseless theory,
+with no modification to the underlying filter recursion.
+Inspired by hysteresis switching control [Morse 1996; Hespanha
+&amp; Morse 1999].
 </p>
 
-<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
-<h3 style="color:#003366;">&#128208; Main Theoretical Guarantees</h3>
-<ul>
-  <li>
-    <b>Theorem 1 (Descent):</b>
-    \(\mathbb{E}[\Phi_t(s_{t+1})\mid\mathcal{I}_t]
-    \leq\mathbb{E}[\Phi_t(s_t)\mid\mathcal{I}_t]\)
-    for all \(t\geq0\) &mdash; the expected score never
-    increases after a switch, regardless of noise.
-  </li>
-  <li>
-    <b>Theorem 2 (Finite expected switching):</b>
-    \[
-    \mathbb{E}[N_T]\leq\frac{1}{\delta-2\bar{\varepsilon}}
-    \sum_{t=0}^{T-1}
-    \mathbb{E}\!\left[\Phi_t(s_t)-\min_s\Phi_t(s)\right]
-    \]
-  </li>
-  <li>
-    <b>Theorem 3 (Non-chattering):</b>
-    if
-    \(\limsup_{t\to\infty}[\Phi_t(s_t)-\min_s\Phi_t(s)]
-    &lt;\delta-2\bar{\varepsilon}\) a.s., switching stops
-    a.s.
-  </li>
-  <li>
-    <b>Theorem 4 (adaptive margin, <i>new</i>):</b>
-    replacing \(\bar{\varepsilon},\delta\) by
-    \(\mathcal{I}_t\)-adapted \(\varepsilon_t,\delta_t\),
-    all three guarantees persist whenever the
-    <i>effective margin</i>
-    \(\delta_t-2\varepsilon_t\) stays above a floor. The
-    operative quantity was never \(\delta\) itself.
-  </li>
+<!-- Lock-in regimes -->
+<div style="background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px; margin:16px 0;">
+<p style="margin:0; font-size:0.9em; color:#003366;">
+<b>Lock-in and switching regimes</b>
+(let \(\gamma_t=\Phi_t(s_t)-\Phi_t(s^\star)\)):
+</p>
+<ul style="margin:6px 0 0 0; font-size:0.9em; color:#444;">
+<li>\(\gamma_t > \delta+2\bar{\varepsilon}\):
+switching <b>guaranteed</b></li>
+<li>\(\gamma_t-2\bar{\varepsilon}\leq\delta
+&lt;\gamma_t+2\bar{\varepsilon}\):
+switching <b>possible but not guaranteed</b></li>
+<li>\(\delta\geq\gamma_t+2\bar{\varepsilon}\):
+switching <b>impossible</b>
+(noise-only switch suppressed)</li>
 </ul>
-
-<div style="font-style:italic; background:#f5f9fb;
-            border-left:4px solid #00A6D6;
-            padding:0.8em 1.2em; border-radius:6px; margin:16px 0;">
-  A fixed margin must be calibrated offline against a
-  worst-case noise level &mdash; at odds with the online,
-  nonstationary regime that motivates adaptive filtering
-  in the first place. Theorem&nbsp;4 removes that
-  requirement entirely.
 </div>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
-<!-- Online calibration -->
-<h3 style="color:#003366;">&#9889; Zero-Overhead Online Calibration</h3>
-<p>
-A sliding window across time cannot estimate
-\(\varepsilon_t\) safely: its variability mixes genuine
-dynamic variation of the state with Monte&nbsp;Carlo
-error, and so overestimates the noise exactly when the
-system is most nonstationary. We instead exploit
-variability <i>within</i> a single time step: partition
-the existing \(N_p\) particles into \(B\) independently
-resampled batches. All batches see the same belief and
-observation, so their spread is <i>pure</i> Monte&nbsp;Carlo
-noise, invariant to the dynamics.
-</p>
-<p style="text-align:center;">
+<!-- Theorems -->
+<h3 style="color:#003366;">&#128208; Main Theoretical Guarantees</h3>
+<ul>
+<li>
+<b>Theorem 1 (Descent in Expectation):</b>
+\(\mathbb{E}[\Phi_t(s_{t+1})\mid\mathcal{I}_t]
+\leq\mathbb{E}[\Phi_t(s_t)\mid\mathcal{I}_t]\)
+for all \(t\geq 0\) &mdash; the expected predictive score
+never increases after a switch, regardless of noise realisations.
+</li>
+<li>
+<b>Theorem 2 (Finite Expected Switching):</b>
 \[
-\hat{\varepsilon}_t=\frac{\kappa}{\sqrt{B}}
-\max_{s\in\mathcal{S}}\operatorname{std}_{b\leq B}
-\{\hat{\Phi}_t^{(b)}(s)\},
-\qquad
-\varepsilon^{\mathrm{env}}_t=\max\{\hat{\varepsilon}_t,\,
-\lambda\,\varepsilon^{\mathrm{env}}_{t-1}\},
-\qquad
-\delta_t=\max\{(2+\eta)\varepsilon^{\mathrm{env}}_{t-1},
-\delta_{\min}\}.
+\mathbb{E}[N_T]\leq\frac{1}{\delta-2\bar{\varepsilon}}
+\sum_{t=0}^{T-1}
+\mathbb{E}\!\left[\Phi_t(s_t)-\min_{s\in\mathcal{S}}
+\Phi_t(s)\right]
 \]
-</p>
-<p>
-The peak-hold envelope rises immediately when the noise
-grows and relaxes only geometrically when it falls &mdash;
-the correct asymmetry for a quantity that must
-<i>upper-bound</i> a perturbation. Because the batches
-partition an unchanged particle budget, the scheme adds
-<b>zero</b> extra Monte&nbsp;Carlo cost: only \(O(BK)\)
-scalar operations per step.
-</p>
+&mdash; total switches scale as
+\((\delta-2\bar{\varepsilon})^{-1}\);
+finite whenever score suboptimality is summable.
+</li>
+<li>
+<b>Theorem 3 (Non-Chattering):</b>
+Once
+\(\limsup_{t\to\infty}[\Phi_t(s_t)-\min_s\Phi_t(s)]
+&lt;\delta-2\bar{\varepsilon}\) a.s.,
+no further switching occurs a.s. &mdash;
+CF stabilises after finitely many transitions.
+</li>
+</ul>
+
+<!-- Practical margin -->
+<div style="font-style:italic; background:#f5f9fb;
+border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px; margin:16px 0;">
+Setting \(\delta=\alpha\bar{\varepsilon}\) with
+\(\alpha\in(2,4]\) provides a practical operating range:
+\(\alpha\) close to 2 maximises responsiveness to genuine
+structural change, while larger \(\alpha\) provides greater
+noise immunity. The experiments use \(\alpha=2.5\);
+\(W_0=50\) steps is recommended for estimating
+\(\bar{\varepsilon}\) in practice.
+</div>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 
 <!-- Experiments -->
 <h2 style="color:#003366;">Numerical Experiments</h2>
 <p>
-We validate on the <b>Li&ndash;Jilkov constant-velocity /
-coordinated-turn (CV/CT) manoeuvring target benchmark</b>,
-a standard testbed for multiple-model tracking &mdash; not
-a synthetic scalar model. The true structure follows
-CV~(\(t{<}30\)) \(\to\) CT~(\(30{\leq}t{<}70\)) \(\to\)
-CV~(\(t{\geq}70\)). Two candidate sets are used: the
-binary \(\mathcal{S}_2=\{s_\mathrm{CV},s_\mathrm{CT}\}\),
-and the four-model dictionary \(\mathcal{S}_4\) adding
-left/right coordinated turns and a
-near-constant-acceleration model, chosen so that several
-candidates stay plausible throughout the manoeuvre.
-</p>
-<p>
-Crucially, <b>score noise is not injected</b>: scores are
-genuine particle-filter estimates, and nonstationarity is
-imposed physically by a <b>particle-budget schedule</b>
-&mdash; \(N_p=4000\) except \(N_p=60\) on
-\(t\in[40,75)\), as a radar resource manager reallocating
-effort across tracks would. This moves the noise scale
-directly: the 95th percentile of \(\hat{\varepsilon}_t\)
-rises from \(1.93\) to \(5.92\), a factor of \(3.07\). The
-schedule places the recovery transition at \(t=70\)
-<i>inside</i> the reduced-budget window, so a genuine
-structural change must be detected exactly when the
-scores are least reliable.
+Three experiments validate Theorems 1&ndash;3 on the canonical
+nonlinear stochastic growth model [Gordon 1993; Arulampalam 2002]:
+\[
+z_{t+1}=\tfrac{1}{2}z_t+\tfrac{25z_t}{1+z_t^2}
++8\cos(1.2t)+w_t,
+\quad y_t=\tfrac{1}{20}z_t^2+v_t,
+\]
+with \(w_t\sim\mathcal{N}(0,10)\),
+\(v_t\sim\mathcal{N}(0,1)\),
+\(z_0\sim\mathcal{N}(0,5)\),
+\(N_p=500\) particles, \(M=100\) runs, \(T=200\).
+Candidate structures: \(\mathcal{S}=\{s_\mathrm{nl},
+s_\mathrm{lin}\}\).
+Score perturbations
+\(\epsilon_t(s)\sim\mathrm{Uniform}(-\bar{\varepsilon},
+\bar{\varepsilon})\).
+Three methods: <b>Exact CF</b> (oracle),
+<b>CF without margin</b> (\(\delta=0\)), and
+<b>Robust CF</b> (\(\delta=2.5\bar{\varepsilon}\)).
 </p>
 
 <!-- Table I -->
-<h3 style="color:#003366;">Table I: Switching and Detection Metrics</h3>
-<div style="overflow-x:auto; margin:0 auto; max-width:820px;">
+<h3 style="color:#003366;">Table I: Switching and Score Results</h3>
+<div style="overflow-x:auto; margin:0 auto; max-width:780px;">
 <table style="border-collapse:collapse; width:100%;
-              font-size:0.86em; text-align:center;">
-  <thead>
-    <tr style="background-color:#003366; color:white;">
-      <th style="padding:7px 10px;" rowspan="2">Method</th>
-      <th style="padding:7px 10px;" colspan="4">
-        \(\mathcal{S}_2\) (\(K=2\))</th>
-      <th style="padding:7px 10px;" colspan="4">
-        \(\mathcal{S}_4\) (\(K=4\))</th>
-    </tr>
-    <tr style="background-color:#003366; color:#cde4f5;">
-      <th style="padding:5px 8px;">\(\mathbb{E}[N_T]\)</th>
-      <th style="padding:5px 8px;">FA</th>
-      <th style="padding:5px 8px;">\(D_1\)</th>
-      <th style="padding:5px 8px;">ACC</th>
-      <th style="padding:5px 8px;">\(\mathbb{E}[N_T]\)</th>
-      <th style="padding:5px 8px;">FA</th>
-      <th style="padding:5px 8px;">\(D_1\)</th>
-      <th style="padding:5px 8px;">ACC</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color:#f5f8fa;">
-      <td style="padding:6px 8px; text-align:left;">
-        CF without margin</td>
-      <td>17.5</td><td>12.9</td><td>1.0</td><td>0.840</td>
-      <td>40.6</td><td>32.7</td><td>1.0</td><td>0.637</td>
-    </tr>
-    <tr>
-      <td style="padding:6px 8px; text-align:left;">
-        Fixed \(\delta=4.83\)</td>
-      <td><b>2.5</b></td><td><b>0.7</b></td><td>3.2</td>
-      <td><b>0.873</b></td>
-      <td><b>3.2</b></td><td><b>1.1</b></td><td>3.6</td>
-      <td><b>0.734</b></td>
-    </tr>
-    <tr style="background-color:#f5f8fa;">
-      <td style="padding:6px 8px; text-align:left;">
-        Fixed \(\delta=14.81\)</td>
-      <td>0.6</td><td>0.4</td><td>32.8</td><td>0.591</td>
-      <td>0.7</td><td>0.5</td><td>32.1</td><td>0.548</td>
-    </tr>
-    <tr style="background-color:#e8f4fb; font-weight:bold;">
-      <td style="padding:6px 8px; text-align:left;">
-        <b>Adaptive \(\delta_t\)</b></td>
-      <td>3.9</td><td>1.9</td><td>1.4</td><td>0.849</td>
-      <td>4.3</td><td>2.8</td><td>2.0</td><td>0.688</td>
-    </tr>
-  </tbody>
+font-size:0.88em; text-align:center;">
+<thead>
+<tr style="background-color:#003366; color:white;">
+<th style="padding:8px 10px;" rowspan="2">Method</th>
+<th style="padding:8px 10px;" colspan="2">
+\(\bar{\varepsilon}=0.5\)</th>
+<th style="padding:8px 10px;" colspan="2">
+\(\bar{\varepsilon}=1.5\)</th>
+<th style="padding:8px 10px;" colspan="2">
+\(\bar{\varepsilon}=3.0\)</th>
+</tr>
+<tr style="background-color:#003366; color:#cde4f5;">
+<th style="padding:6px 10px;">\(\mathbb{E}[N_T]\)</th>
+<th style="padding:6px 10px;">\(\bar{\Phi}_T\)</th>
+<th style="padding:6px 10px;">\(\mathbb{E}[N_T]\)</th>
+<th style="padding:6px 10px;">\(\bar{\Phi}_T\)</th>
+<th style="padding:6px 10px;">\(\mathbb{E}[N_T]\)</th>
+<th style="padding:6px 10px;">\(\bar{\Phi}_T\)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:#f5f8fa;">
+<td style="padding:7px 10px; text-align:left;">
+Exact CF (oracle)</td>
+<td>0.3</td><td>2.71</td>
+<td>0.3</td><td>2.71</td>
+<td>0.3</td><td>2.71</td>
+</tr>
+<tr>
+<td style="padding:7px 10px; text-align:left;">
+CF w/o margin (\(\delta=0\))</td>
+<td>83.7</td><td>9.60</td>
+<td>81.1</td><td>9.58</td>
+<td>79.2</td><td>9.55</td>
+</tr>
+<tr style="background-color:#e8f4fb; font-weight:bold;">
+<td style="padding:7px 10px; text-align:left;">
+<b>Robust CF (proposed)</b></td>
+<td>0.3</td><td>2.83</td>
+<td>1.3</td><td>2.95</td>
+<td>7.9</td><td>3.48</td>
+</tr>
+<tr style="background-color:#f5f8fa;
+color:#666; font-style:italic;">
+<td style="padding:7px 10px; text-align:left;">
+Thm. 2 bound</td>
+<td>8.2</td><td>&mdash;</td>
+<td>11.4</td><td>&mdash;</td>
+<td>17.6</td><td>&mdash;</td>
+</tr>
+</tbody>
 </table>
 </div>
-<p style="font-size:0.83em; color:#777; text-align:center; margin-top:6px;">
-  \(\mathbb{E}[N_T]\): switches; FA: false alarms outside
-  transition windows; \(D_1\): detection delay at
-  \(t=30\); ACC: selection accuracy. \(\mathbb{E}[N_T]\)
-  alone is misleading &mdash; the largest fixed margin
-  minimises it purely by failing to react.
+<p style="font-size:0.85em; color:#777;
+text-align:center; margin-top:6px;">
+Lower \(\mathbb{E}[N_T]\) and \(\bar{\Phi}_T\) indicate
+better performance.
+Robust CF stays well below Theorem 2 bound &#10003;
 </p>
 
-<!-- Table II -->
+<!-- Experiment descriptions -->
 <h3 style="color:#003366; margin-top:24px;">
-  Table II: Removing the Calibration Stage</h3>
-<div style="overflow-x:auto; margin:0 auto; max-width:640px;">
-<table style="border-collapse:collapse; width:100%;
-              font-size:0.87em; text-align:center;">
-  <thead>
-    <tr style="background-color:#003366; color:white;">
-      <th style="padding:7px 10px;">Procedure</th>
-      <th style="padding:7px 10px;">full budget</th>
-      <th style="padding:7px 10px;">reduced budget</th>
-      <th style="padding:7px 10px;">nonstationary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color:#f5f8fa;">
-      <td style="padding:6px 10px; text-align:left;">
-        Oracle \(\delta^\star\) <i>(ground truth)</i></td>
-      <td>0.951</td><td>0.685</td><td>0.879</td>
-    </tr>
-    <tr>
-      <td style="padding:6px 10px; text-align:left;">
-        Offline rule, \(\delta{=}4.83\)</td>
-      <td>0.898</td><td>0.681</td><td>0.857</td>
-    </tr>
-    <tr style="background-color:#e8f4fb; font-weight:bold;">
-      <td style="padding:6px 10px; text-align:left;">
-        <b>Adaptive \(\delta_t\)</b> <i>(no tuning)</i></td>
-      <td><b>0.943</b></td><td><b>0.693</b></td>
-      <td>0.847</td>
-    </tr>
-    <tr style="background-color:#f5f8fa; color:#555;
-               font-style:italic; font-size:0.92em;">
-      <td style="padding:5px 10px; text-align:left;">
-        Adaptive \(-\) offline (paired, 95% CI)</td>
-      <td>\(+0.045\pm0.030\)</td>
-      <td>\(+0.012\pm0.029\)</td>
-      <td>\(-0.010\pm0.027\)</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<p style="font-size:0.83em; color:#777; text-align:center; margin-top:6px;">
-  Selection accuracy on \(\mathcal{S}_2\), \(M=50\) per
-  point. The adaptive rule is significantly better at
-  full budget and never worse in any regime tested.
-</p>
-
-<div style="font-style:italic; background:#f5f9fb;
-            border-left:4px solid #00A6D6;
-            padding:0.8em 1.2em; border-radius:6px; margin:16px 0;">
-  Accuracy varies by \(0.357\) across
-  \(\delta\in[0,18]\) at full budget &mdash; the choice of
-  margin is consequential, yet the accuracy-optimal
-  \(\delta^\star\) is defined against the
-  <i>true</i> structure sequence and is therefore an
-  <b>oracle</b> quantity, unavailable in deployment. The
-  adaptive rule reaches its neighbourhood without being
-  told where it is.
-</div>
+Experiment Results</h3>
+<ul>
+<li>
+<b>Exp. I (Descent, Fig. 2):</b>
+Running-average \(\bar{\Phi}_t\) of Robust CF
+tracks the oracle throughout; CF without margin
+remains elevated by \(\approx3\times\),
+confirming Theorem 1.
+</li>
+<li>
+<b>Exp. II (Finite switching, Table I):</b>
+Robust CF empirical \(\mathbb{E}[N_T]\) lies
+well below the Theorem 2 bound at all noise
+levels, confirming Theorem 2.
+</li>
+<li>
+<b>Exp. III (Non-chattering, Fig. 3):</b>
+Robust CF maintains \(\hat{p}_t&lt;0.05\);
+CF without margin exhibits
+\(\hat{p}_t\approx0.4\) persistently,
+confirming Theorem 3.
+</li>
+<li>
+<b>Bound tightness (Fig. 4):</b>
+Empirical \(\mathbb{E}[N_T]\) decays
+monotonically with \(\alpha=\delta/\bar{\varepsilon}\)
+and lies strictly below the Theorem 2 bound
+for all \(\alpha&gt;2.5\).
+</li>
+</ul>
 
 <hr style="border:0; border-top:1px solid #eee;
-           margin:28px 0 24px 0;">
+margin:28px 0 24px 0;">
 
 <!-- Applications -->
 <h2 style="color:#003366;">Impact and Applications</h2>
 <ul>
-  <li>Adaptive state estimation under sensor noise and
-      model uncertainty</li>
-  <li>Particle filter-based systems where score
-      approximation errors are unavoidable</li>
-  <li>Manoeuvring target tracking with resource-managed
-      (time-varying) particle budgets</li>
-  <li>Neural-network-aided filtering (KalmanNet,
-      Split-KalmanNet, Latent-KalmanNet) where learned
-      scores carry structured, nonstationary errors</li>
-  <li>Supervisory control and fault detection under
-      drifting noise levels</li>
+<li>Adaptive state estimation under sensor noise
+and model uncertainty</li>
+<li>Particle filter-based systems where score
+approximation errors are unavoidable</li>
+<li>Neural-network-aided filtering (KalmanNet,
+Split-KalmanNet, Latent-KalmanNet) where
+learned scores carry structured errors</li>
+<li>Supervisory control with noisy performance metrics</li>
+<li>Fault detection in drifting systems</li>
 </ul>
 
 <hr style="border:0; border-top:1px solid #eee;
-           margin:28px 0 24px 0;">
+margin:28px 0 24px 0;">
 
 <!-- Reproducibility -->
 <h2 style="color:#003366;">Reproducibility</h2>
-<p>Julia source code is publicly available:</p>
+<p>All Julia source code is publicly available:</p>
 <ul>
-  <li>
-    <code>spl_adaptive_margin.jl</code>
-    &mdash; Li&ndash;Jilkov CV/CT benchmark, batch-split
-    estimator, adaptive margin, three-regime sweep
-    (Tables&nbsp;I&ndash;II)
-  </li>
+<li>
+<a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/lcss_experiments_documented.jl"
+download="lcss_experiments_documented.jl">
+<code>lcss_experiments_documented.jl</code></a>
+&mdash; Figs. 2&amp;3, Table I
+(validates Theorems 1&ndash;3)
+</li>
+<li>
+<a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/fig_scaling_documented.jl"
+download="fig_scaling_documented.jl">
+<code>fig_scaling_documented.jl</code></a>
+&mdash; Fig. 4, bound tightness
+(Theorem 2)
+</li>
 </ul>
 <p>
-  <a href="https://thanana.github.io/README.md"
-     target="_blank">&#x1F4E6; Full repository</a>
+<a href="https://thanana.github.io/README.md"
+target="_blank">&#x1F4E6; Full repository</a>
 </p>
 
 <!-- Footer -->
 <footer id="footer"
-  style="text-align:center; margin-top:40px; padding:14px 0;
-         background-color:#f9f9f9; border-top:1px solid #ddd;">
-  <div id="footer-text"
-    style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
-    &copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp;
-    Control &amp; Robotics Research Group, KMUTT
-  </div>
+style="text-align:center; margin-top:40px; padding:14px 0;
+background-color:#f9f9f9; border-top:1px solid #ddd;">
+<div id="footer-text"
+style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+&copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp;
+Control &amp; Robotics Research Group, KMUTT
+</div>
 </footer>
 
 </div>
