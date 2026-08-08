@@ -243,14 +243,69 @@ scalar operations per step.
 
 <!-- Experiments -->
 <h2 style="color:#003366;">Numerical Experiments</h2>
+
 <p>
 We validate on the <b>Li&ndash;Jilkov constant-velocity /
 coordinated-turn (CV/CT) manoeuvring target benchmark</b>,
 a standard testbed for multiple-model tracking &mdash; not
-a synthetic scalar model. The true structure follows
+a synthetic scalar model. The target state is
+\(x_t=[p_x,\dot{p}_x,p_y,\dot{p}_y]^\top\in\mathbb{R}^4\),
+where \(p_x,p_y\) are position components in the
+horizontal plane and \(\dot{p}_x,\dot{p}_y\) the
+corresponding velocities, following
+\(x_{t+1}=F_tx_t+w_t\), \(w_t\sim\mathcal{N}(0,Q)\). The
+true structure switches as
 CV~(\(t{<}30\)) \(\to\) CT~(\(30{\leq}t{<}70\)) \(\to\)
-CV~(\(t{\geq}70\)). Two candidate sets are used: the
-binary \(\mathcal{S}_2=\{s_\mathrm{CV},s_\mathrm{CT}\}\),
+CV~(\(t{\geq}70\)).
+</p>
+
+<div style="background:#f8fafc; border:1px solid #dde8f0;
+            border-radius:8px; padding:14px 20px;
+            margin:16px auto; max-width:680px;">
+  <p style="margin:0 0 8px 0; font-size:0.88em; color:#003366;">
+    <b>Transition matrices</b> (omitted from the letter for
+    space; \(\Delta t\) is the sampling interval and
+    \(\omega\) the turn rate):
+  </p>
+  <p style="text-align:center; margin:10px 0;">
+    \[
+    F_\mathrm{CV} =
+    \begin{bmatrix}
+      1 & \Delta t & 0 & 0\\
+      0 & 1 & 0 & 0\\
+      0 & 0 & 1 & \Delta t\\
+      0 & 0 & 0 & 1
+    \end{bmatrix}
+    \]
+  </p>
+  <p style="text-align:center; margin:10px 0;">
+    \[
+    F_\mathrm{CT} =
+    \begin{bmatrix}
+      1 & \frac{\sin\omega\Delta t}{\omega} &
+      0 & -\frac{1-\cos\omega\Delta t}{\omega}\\
+      0 & \cos\omega\Delta t &
+      0 & -\sin\omega\Delta t\\
+      0 & \frac{1-\cos\omega\Delta t}{\omega} &
+      1 & \frac{\sin\omega\Delta t}{\omega}\\
+      0 & \sin\omega\Delta t &
+      0 & \cos\omega\Delta t
+    \end{bmatrix}
+    \]
+  </p>
+  <p style="margin:8px 0 0 0; font-size:0.85em; color:#666;">
+    CT reduces to CV as \(\omega\to0\)
+    (L&rsquo;H\^opital on both fractions). The
+    near-constant-acceleration model used in the
+    four-model dictionary shares this 4-D state space
+    with inflated process noise rather than an augmented
+    state.
+  </p>
+</div>
+
+<p>
+Two candidate sets are used: the binary
+\(\mathcal{S}_2=\{s_\mathrm{CV},s_\mathrm{CT}\}\),
 and the four-model dictionary \(\mathcal{S}_4\) adding
 left/right coordinated turns and a
 near-constant-acceleration model, chosen so that several
@@ -270,7 +325,6 @@ schedule places the recovery transition at \(t=70\)
 structural change must be detected exactly when the
 scores are least reliable.
 </p>
-
 <!-- Table I -->
 <h3 style="color:#003366;">Table I: Switching and Detection Metrics</h3>
 <div style="overflow-x:auto; margin:0 auto; max-width:820px;">
