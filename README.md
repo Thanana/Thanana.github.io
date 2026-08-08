@@ -1,11 +1,6 @@
 # Robust CF Filtering — IEEE SPL 2026
 
-> **Robust Cognitive-Flexible Filtering under Noisy Innovation Scores**
-> T. Nuchkrua, X. Liu, and S. Boonto
-> *IEEE Signal Processing Letters (SPL)*, 2026
-> Status: Under Review
 
----
 
 ## Overview
 
@@ -81,20 +76,6 @@ being tuned. ✓
 
 ---
 
-## Citation
-
-```bibtex
-@article{nuchkrua2026robustcf,
-  author  = {Nuchkrua, T., Liu, X., and Boonto, S.},
-  title   = {Robust Cognitive-Flexible Filtering under
-             Noisy Innovation Scores},
-  journal = {IEEE Signal Processing Letters},
-  year    = {2026},
-  note    = {Under review}
-}
-```
-
----
 
 ## Webpage
 
