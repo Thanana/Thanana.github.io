@@ -4,7 +4,7 @@ using Printf
 
 # ============================================================
 #  spl_adaptive_margin.jl
-#  SPL resubmission (SPL-47532-2026)
+#  
 #  Answers Reviewer 1 comments 1.1, 1.2, 1.3
 #
 #  DERIVED FROM radar_final_v6.jl  WITH THREE CHANGES
@@ -34,7 +34,7 @@ using Printf
 #       adaptive and fixed schemes differ ONLY in delta.
 #
 #
-#  2026 copyright@ Thanana
+#  Copyright © 2026 Thanana Nuchkrua
 #
 #  Outputs
 #  -------
