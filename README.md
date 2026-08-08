@@ -1,4 +1,4 @@
-# Robust CF Filtering — IEEE SPL 2026
+# Robust CF Filtering — IEEE SPL 2026 (under review)
 
 
 
@@ -83,4 +83,4 @@ being tuned. ✓
 
 ---
 
-&copy; 2026 Control & Robotics Research Group, KMUTT
+&copy; 2026 Control & Robotics Research Group
