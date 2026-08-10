@@ -18,7 +18,6 @@ MathJax.Hub.Config({
 <body>
 <table summary="Table for page layout." id="tlayout">
 <tr valign="top">
-
   <!-- Left navigation -->
   <td id="layout-menu">
     <div class="menu-category">Thanana</div>
@@ -39,374 +38,220 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="robotics.html">Robotics</a></div>
     <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
   </td>
-
   <!-- Main content -->
   <td id="layout-content">
   <div id="toptitle">
-
 <h1 style="color:#003366; text-align:center; margin-top:30px;">
-  SafeCF-SSM: Cognitive-Flexible Control with Explicit Physical
-  Safety Guarantees for Latent-Space MPC
+  SafeCF&ndash;SSM: Certifying, Not Closing, the
+  Physical&ndash;Latent Problem in Adaptive Latent-Space Control
 </h1>
 <p style="text-align:center; color:#555; font-size:0.95em;">
-   <i>IEEE L-CSS, 2026</i>
+   <i>Submitted to IEEE Control Systems Letters (L-CSS), 2026</i>
 </p>
-
 <!-- Loop Banner -->
 <div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
-            padding:14px 12px; margin:0 auto 30px auto; max-width:720px;
+            padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
             box-shadow:0 1px 4px rgba(0,0,0,0.06);">
   <p style="margin:0; font-size:0.95em; color:#003366;">
     <span style="color:#00A6D6;"><b>Latent Belief \((z_t,\Sigma_t)\)</b></span> &rarr;
     <span style="color:#0077AA;"><b>Surprise \(\mathcal{S}_t\)</b></span> &rarr;
     <span style="color:#0099CC;"><b>Adaptive Margin \(\beta_{i,t}\)</b></span> &rarr;
-    <span style="color:#00A6D6;"><b>BMPC \(u_t\)</b></span> &rarr;
-    <span style="color:#003366;"><b>Physical Safety
-    \(\mathbb{P}(\cdot)\geq1-\delta-f(\varepsilon_{\mathrm{dec}})\)</b></span>
+    <span style="color:#00A6D6;"><b>Certified Control \(u_t\)</b></span> &rarr;
+    <span style="color:#003366;"><b>Realizability Test
+    \(\varepsilon_{\mathrm{dec},i}+r_{i,t}(\delta_i)&lt;b_i\)</b></span>
   </p>
   <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    A single surprise signal \(\mathcal{S}_t\) simultaneously tightens safety
-    constraints and regulates encoder reorganization &mdash; closing the
-    physical-latent gap.
+    A single surprise signal \(\mathcal{S}_t\) simultaneously tightens the
+    safety margin and gates encoder reorganization, yielding a checkable
+    realizability condition: each constrained channel is either
+    <b>certified</b> or explicitly declared <b>uncertifiable</b> &mdash;
+    the physical&ndash;latent gap is made measurable, not assumed away.
   </p>
 </div>
-
-
 	<div class="infoblock">
 <div class="blockcontent">
 	SafeCF--SSM presentation: <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/Beamer-SafeCF-SSM-LCSS-1.pdf"
        download="Beamer-SafeCF-SSM-LCSS-1.pdf">
-      <code>Beamer-SafeCF-SSM-LCSS-1.pdf</code></a> 
-
+      <code>Beamer-SafeCF-SSM-LCSS-1.pdf</code></a>
 	<p>
 <img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
-       style="vertical-align:middle; margin-left:6px;"> Julia source code:
+       style="vertical-align:middle; margin-left:6px;" /> Julia source code:
 </p>
 <ul>
-  <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6[150526].jl"
-       download="cf_deepsssm_vdp_v6[150526].jl">
-      <code>cf_deepsssm_vdp_v6[150526].jl</code></a>
-    &mdash; Van der Pol benchmark, 4 regimes, Gap-2 validation
-    (Fig. 2, Table I)
-  </li>
   <li>
     <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
        download="safecf_ssm_quad3d_[150526].jl">
       <code>safecf_ssm_quad3d_[150526].jl</code></a>
-    &mdash; 3D quadrotor benchmark (\(n=12\) states, motor failure,
-    Fig. 3, Table I)
+    &mdash; 3D quadrotor benchmark (\(n=12\) states, \(k=6&lt;n_s=8\),
+    partial rotor failure, Figs. 2&ndash;4, Table I)
   </li>
 </ul>
-	
-				   		
-</div>   </div>
-    
-	  
-<p>
-  <b>SafeCF-SSM</b> is a cognitive-flexible control framework for latent-space MPC
-  under distributional shift. It addresses two open problems: unregulated representation
-  adaptation and the physical-latent safety gap &mdash; through surprise-driven bounded
-  latent adaptation, adaptive constraint tightening, and an explicit decoder-aware
-  physical safety certificate.
+<p style="font-size:0.85em; color:#777; margin-top:0.6em;">
+  An earlier Van der Pol oscillator prototype from a previous project stage
+  is retained in the repository for reference; it is not part of the current
+  manuscript's validation, which uses a single, thoroughly analyzed
+  benchmark by design (see below).
 </p>
 
+</div>   </div>
 
 
+<p>
+  <b>SafeCF-SSM</b> is a control-law-agnostic safety layer for latent-space
+  MPC under distributional shift. It routes one predictive-mismatch signal
+  to both the online adaptation rate and the per-channel safety margin, and
+  turns the resulting physical-latent gap into a checkable
+  <b>realizability condition</b> &mdash; certifying each constrained channel,
+  or explicitly declaring it uncertifiable, rather than assuming the gap
+  away.
+</p>
 
-    
-    
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
 <h3 style="color:#003366;">What Is the Problem?</h3>
 <p>
-Latent-space MPC approaches adapt to distributional shift but provide safety guarantees
+Latent-space MPC approaches adapt to distributional shift but certify safety
 in latent space only. When the decoder has approximation error
-\(\varepsilon_{\mathrm{dec}}\geq 0\), a plan safe in \(z_t\) may be unsafe in \(x_t\)
-&mdash; the <b>physical-latent gap</b>.
+\(\varepsilon_{\mathrm{dec}}\geq 0\), a plan admissible in \(z_t\) may still
+violate the constraint on \(x_t\) &mdash; the <b>physical-latent
+problem</b>. When the latent dimension \(k\) is below the number of
+safety-relevant physical channels \(n_s\), no decoder map
+\(\mathbb{R}^{n_s}\!\to\!\mathbb{R}^{k}\) can be injective, so some decoder
+error is structurally unavoidable; which channel absorbs it is a codec
+choice, not a training failure. SafeCF-SSM does not assume a better decoder
+closes this gap &mdash; it measures it, per channel, and checks whether it
+is small enough to certify.
 </p>
 <p>
-Matters worsen under distributional shift: as the encoder \(\phi_{\theta_t}\) adapts
-online, this gap can grow without bound if representation reorganization is left
-unregulated. Existing approaches implicitly assume \(\varepsilon_{\mathrm{dec}}=0\)
-and provide no bound on the rate of encoder change during adaptation.
+Matters worsen under distributional shift: as the encoder
+\(\phi_{\vartheta_t}\) adapts online, the gap can grow without bound if
+representation reorganization is left unregulated. Existing approaches
+either assume the representation is frozen after training or bound decoder
+error with a global Lipschitz constant that is vacuous for a deep network of
+any size.
 </p>
-
 <h3 style="color:#003366; margin-top:28px;">Three Coupled Mechanisms</h3>
 <p>
-SafeCF-SSM addresses the problem through three dedicated components, each satisfying
-one requirement of the problem statement:
+SafeCF-SSM addresses the problem through three dedicated components, each
+satisfying one requirement of the problem statement:
 </p>
 <ul>
   <li>
-    <b>SSM Latent Model:</b> provides latent state \(z_t\) and predictive uncertainty
-    \(\Sigma_t\) via EKF encoder \(q_{\phi_{\theta_t}}(z_t|\mathcal{H}_t)\),
-    enabling uncertainty-aware BMPC planning.
+    <b>SSM Latent Model:</b> provides latent state \(z_t\) and predictive
+    uncertainty \(\Sigma_t\) via a trained nonlinear encoder&ndash;decoder
+    pair and online belief filtering, enabling uncertainty-aware BMPC
+    planning without a hand-specified observation model.
   </li>
   <li>
     <b>BMPC with Adaptive Tightening:</b> enforces physical safety via the
     unified margin
-    \(\beta_{i,t}=\max(c_i\mathcal{S}_t,\,L_{g,i}L_d\,r_{\delta_i,t})\),
-    where \(r_{\delta_i,t}=c_{\delta_i}\sqrt{\lambda_{\max}(\Sigma_t)}\)
-    is a calibrated confidence radius (Assumption 3).
-    The probabilistic constraint
-    \(\mathbb{P}(\tilde{\mathcal{G}}_i(z_{t+k},u_{t+k})\leq0)\geq1-\delta_i\)
-    is implemented as deterministic tightening (Lemma 1).
-    Unlike Nominal MPC (\(\beta\equiv0\)) and Robust MPC (fixed \(\beta_{\max}\)),
-    \(\beta_{i,t}\) responds online to both model uncertainty \(\Sigma_t\) and
-    distributional shift \(\mathcal{S}_t\).
+    \(\beta_{i,t}=\max\bigl(L_{g,i}\sigma_i\sqrt{2\mathcal{S}_{t-1}},\,
+    L_{g,i}\,r_{i,t}(\delta_i)\bigr)+L_{g,i}\,\varepsilon_{\mathrm{dec},i}\),
+    where \(r_{i,t}(\delta_i)\) is a calibrated confidence radius of the
+    belief (Assumption 3) and \(\varepsilon_{\mathrm{dec},i}\) is the
+    channel-wise decoder error (Assumption 4). No Lipschitz constant of the
+    <i>decoder</i> appears &mdash; only of the constraint function
+    \(\mathcal{G}_i\) &mdash; which is what makes the margin numerically
+    evaluable. Together these give a checkable realizability condition: a
+    channel is certifiable exactly when
+    \(\varepsilon_{\mathrm{dec},i}+r_{i,t}(\delta_i) &lt; b_i\); a channel that
+    fails this test admits no certificate under the given codec, for any
+    control law.
   </li>
   <li>
     <b>Surprise-driven CF Adaptation:</b> bounds encoder reorganization
-    \(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|
-    \leq L_\phi\eta_{\max}L_\Delta=:\varepsilon_{\mathrm{cf}}\),
-    satisfying the CF constraint and lifting latent safety to physical space
-    via Proposition 1.
+    \(\|\phi_{\vartheta_{t+1}}-\phi_{\vartheta_t}\|
+    \leq L_\phi\eta_{\max}L_\Delta=:\varepsilon_{\mathrm{cf}}\)
+    via the surprise-gated step size
+    \(\eta_t=\eta_{\max}/(1+\sqrt{\mathcal{S}_t})\); the same
+    \(\mathcal{S}_t\) that widens \(\beta_{i,t}\) also shrinks the
+    adaptation step, precisely when the model is least trustworthy.
   </li>
 </ul>
-
 <h3 style="color:#003366; margin-top:28px;">The Dual Role of \(\mathcal{S}_t\)</h3>
 <p>
 The predictive surprise
-\(\mathcal{S}_t:=-\log p_{\theta_t}(o_{t+1}|z_t,u_t)\)
-is large when the model is mismatched and small when consistent with observations.
-The same signal \(\mathcal{S}_t\) that tightens \(\beta_{i,t}\) in the BMPC layer
-also moderates
-\(\eta_t=\eta_{\max}/(1+\sqrt{\mathcal{S}_t})\),
-bounding \(\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|\)
-and reducing the physical-latent gap.
+\(\mathcal{S}_t:=-\log p_{\vartheta_t}(z^{\mathrm{meas}}_{t+1}\mid z_t,u_t)\)
+is large when the latent transition model is mismatched with the newest
+measurement and small when consistent with it. The same signal
+\(\mathcal{S}_t\) that tightens \(\beta_{i,t}\) in the BMPC layer also
+moderates \(\eta_t=\eta_{\max}/(1+\sqrt{\mathcal{S}_t})\), bounding
+\(\|\phi_{\vartheta_{t+1}}-\phi_{\vartheta_t}\|\) so that the margin absorbs
+exactly the perturbation the update can induce &mdash; keeping the
+certificate valid while the representation continues to adapt, rather than
+shrinking the gap itself.
 </p>
-
 <h3 style="color:#003366; margin-top:28px;">Main Theoretical Guarantees</h3>
 <ul>
   <li>
-    <b>Theorem 1 (Bounded Representation Drift &mdash; G1):</b>
-    \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) for all \(t\), where
-    \(\mathrm{CFI}_t:=\|\phi_{\theta_{t+1}}-\phi_{\theta_t}\|/\varepsilon_{\mathrm{cf}}\).
-    Unlike prior adaptive MPC methods that bound parameter drift
-    \(\|\theta_{t+1}-\theta_t\|\) alone, SafeCF-SSM bounds
-    <i>encoder reorganization</i> directly.
+    <b>Theorem 1 (Surprise-Gated Parameter Drift &mdash; G1):</b>
+    \(\|\vartheta_{t+1}-\vartheta_t\|\leq\eta_{\max}L_\Delta/
+    (1+\sqrt{\mathcal{S}_t})\), with the induced model and encoder
+    perturbation shrinking at the same rate. The uniform bound
+    \(\mathrm{CFI}_t:=\|\phi_{\vartheta_{t+1}}-\phi_{\vartheta_t}\|/
+    \varepsilon_{\mathrm{cf}}\leq1\) follows as a <i>corollary</i> of the
+    design choice \(\eta_{\max}\leq\varepsilon_{\mathrm{cf}}/(L_\phi
+    L_\Delta)\), not as an independent guarantee &mdash; the substantive
+    content is that the perturbation the safety margin must absorb shrinks
+    precisely when the model is least trustworthy.
   </li>
   <li>
-    <b>Theorems 2&ndash;3 (Recursive Feasibility &amp; ISS &mdash; G2):</b>
-    The BMPC remains feasible for all \(t'\geq t\) and the closed-loop belief
-    is input-to-state stable:
-    \(\|z_t\|\leq\bar\beta(\|z_0\|,t)+\gamma(\bar{d})\),
-    \(\bar\beta\in\mathcal{KL}\), \(\gamma\in\mathcal{K}\).
+    <b>Recursive feasibility &amp; ISS:</b> not claimed here as an original
+    result. A receding-horizon instantiation of the certificate inherits
+    these properties from standard robust-MPC arguments; SafeCF-SSM's own
+    contribution and experiments concern the certificate/monitor layer
+    itself, which is analyzed and validated directly.
   </li>
   <li>
-    <b>Proposition 1 + Corollary 1 (Physical Safety Certificate &mdash; G3):</b>
-    \[
-      \mathbb{P}\bigl((x_t,u_t)\in\mathcal{S}\bigr)
-      \geq 1-\delta - f(\varepsilon_{\mathrm{dec}}),
-      \quad\forall t\geq0,
-    \]
-    where \(\sum_i\delta_i\leq\delta\) and
-    \(f(\varepsilon_{\mathrm{dec}})=L_{g,i}L_d\varepsilon_{\mathrm{dec}}\geq0\),
-    \(f(0)=0\). The residual vanishes when \(\varepsilon_{\mathrm{dec}}=0\).
-    <i>This is the first verifiable physical safety guarantee for
-    latent-space MPC accounting for decoder approximation error.</i>
+    <b>Proposition 1 + Corollaries 1&ndash;2 (Physical Safety &amp;
+    Realizability &mdash; G2):</b>
+    if \(\beta_{i,t}\geq L_{g,i}(r_{i,t}(\delta_i)+
+    \varepsilon_{\mathrm{dec},i})\) then
+    \(\mathbb{P}(\mathcal{G}_i(x_{t+1},u_t)\leq0)\geq1-\delta_i\)
+    (Prop.&nbsp;1); for a box constraint this is achievable
+    <i>if and only if</i>
+    \(\varepsilon_{\mathrm{dec},i}+r_{i,t}(\delta_i) &lt; b_i\)
+    (Cor.&nbsp;1, realizability) &mdash; a channel violating this bound
+    admits no certificate under the given codec, irrespective of the
+    control law. A probabilistic relaxation of the decoder-accuracy
+    assumption (Cor.&nbsp;2) gives
+    \(\mathbb{P}\geq1-\delta_i-\alpha_i\), the version used in every
+    reported experiment.
+    <i>This is a checkable, per-channel realizability condition that needs
+    no Lipschitz constant of the decoder and holds while the representation
+    continues to adapt.</i>
   </li>
 </ul>
-
 <h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
 <p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
           padding:0.8em 1.2em; border-radius:6px;">
-Unlike prior latent-MPC works that establish (G1)&ndash;(G2) in latent space only,
-SafeCF-SSM provides an explicit physical safety certificate that accounts for
-decoder approximation error and bounds encoder reorganization simultaneously
-&mdash; closing the physical-latent gap identified as the central open problem.
+Unlike prior latent-MPC work that establishes drift and feasibility
+guarantees in latent space only, assuming a fixed and exact representation,
+SafeCF-SSM does not assume the physical&ndash;latent gap can be closed. It
+makes the gap measurable through a per-channel realizability test that
+remains valid while the representation is re-identified online &mdash;
+certifying a channel, or explicitly declaring it uncertifiable, instead of
+assuming decoder accuracy away.
 </p>
-
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
-<h3 style="color:#003366;">Nonlinear-Benchmark Motivation: Van der Pol Phase Plane</h3>
-<p>
-The Van der Pol oscillator exhibits significantly different
-limit cycles under different damping parameters \(\mu\),
-motivating the need for online adaptation.
-The safety bound \(|x_1|\leq X_{1,\max}=A(\mu_2)\approx2.66\) is physically
-motivated: the uncontrolled limit cycle amplitude \(A(\mu_1)\approx2.13\)
-lies within the bound, while \(A(\mu_2)\approx X_{1,\max}\) makes enforcement
-non-trivial without active adaptation.
-Adjust \(\mu\) below to observe how the phase portrait changes &mdash;
-this distributional shift is precisely what SafeCF-SSM detects via
-\(\mathcal{S}_t\) and compensates for online (Fig. 2).
-</p>
-
-<div style="margin:0.5rem 0 0.5rem 0;">
-  <label style="font-size:0.95em; color:#003366;">
-    <b>\(\mu\) = </b>
-    <input type="range" id="muSlider" min="0.1" max="3.0"
-           step="0.1" value="0.5"
-           style="width:200px; vertical-align:middle;">
-    <span id="muVal" style="color:#c8973a; font-weight:bold;">0.5</span>
-  </label>
-  &nbsp;&nbsp;
-  <label style="font-size:0.9em; color:#555;">
-    <input type="checkbox" id="showBound" checked>
-    Show safety boundary \(|x_1|\leq X_{1,\max}\)
-  </label>
-</div>
-
-<div id="phasePlot" style="width:100%; height:380px;"></div>
-
-<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-<script>
-function vdpPhase(mu) {
-  const dt = 0.01, T = 2000;
-  var x1 = [0.5], x2 = [0.1];
-  for (var i = 0; i < T; i++) {
-    var a = x1[i], b = x2[i];
-    var dx1 = b;
-    var dx2 = mu*(1 - a*a)*b - a;
-    x1.push(a + dt*dx1);
-    x2.push(b + dt*dx2);
-  }
-  return {x1, x2};
-}
-
-// Compute limit cycle amplitude
-function vdpAmplitude(mu) {
-  const dt = 0.01, T = 4000;
-  var x1 = 2.0, x2 = 0.0;
-  var xmax = 0.0;
-  for (var i = 0; i < T; i++) {
-    var dx1 = x2;
-    var dx2 = mu*(1 - x1*x1)*x2 - x1;
-    x1 = x1 + dt*dx1;
-    x2 = x2 + dt*dx2;
-    if (i > T/2) xmax = Math.max(xmax, Math.abs(x1));
-  }
-  return xmax;
-}
-
-function drawPlot() {
-  var mu = parseFloat(document.getElementById('muSlider').value);
-  document.getElementById('muVal').innerText = mu.toFixed(1);
-  var showBound = document.getElementById('showBound').checked;
-  var d = vdpPhase(mu);
-  var amp = vdpAmplitude(mu);
-
-  var traces = [{
-    x: d.x1, y: d.x2,
-    mode: 'lines',
-    line: {color: '#0077cc', width: 1.5},
-    name: 'Phase trajectory'
-  }];
-
-  if (showBound) {
-    traces.push({
-      x: [amp, amp, -amp, -amp, amp],
-      y: [-4, 4, 4, -4, -4],
-      mode: 'lines',
-      line: {color: 'rgba(200,0,0,0.3)', width: 2, dash: 'dot'},
-      name: '|x\u2081| \u2264 A(\u03bc) \u2248 ' + amp.toFixed(2),
-      fill: 'none'
-    });
-  }
-
-  Plotly.react('phasePlot', traces, {
-    xaxis: {title: 'x\u2081', range: [-3.5, 3.5],
-            zeroline: true, zerolinecolor: '#ccc'},
-    yaxis: {title: 'x\u2082', range: [-4, 4],
-            zeroline: true, zerolinecolor: '#ccc'},
-    margin: {t: 20, b: 50, l: 50, r: 20},
-    paper_bgcolor: '#fff',
-    plot_bgcolor: '#fafafa',
-    legend: {x: 0.7, y: 0.95}
-  });
-}
-
-document.getElementById('muSlider').addEventListener('input', drawPlot);
-document.getElementById('showBound').addEventListener('change', drawPlot);
-drawPlot();
-</script>
-
-<h2 style="color:#003366; margin-top:36px;">Simulation Studies:
-Van der Pol (VdP) Benchmark</h2>
-<p>
-Validated on the VdP oscillator (\(M=25\) Monte Carlo, \(T=345\,\text{s}\),
-\(\mu_1=0.5\), \(\mu_2=2.66\)) across <b>four consecutive distributional-shift
-regimes</b> in a single continuous experiment without re-initialization:
-</p>
-
-<table border="1" cellpadding="8" cellspacing="0"
-       style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
-  <tr style="background:#003366; color:#fff;">
-    <th>Regime</th>
-    <th>Duration</th>
-    <th>Shift Type</th>
-    <th>Key Result</th>
-  </tr>
-  <tr>
-    <td><b>Nominal</b></td>
-    <td>\(0\)&ndash;\(45\,\text{s}\)</td>
-    <td>\(\mu=\mu_1=0.5\), accurate model</td>
-    <td>No overhead: \(\beta_{i,t}\approx0\) &#10003;</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td><b>Abrupt shift</b></td>
-    <td>\(45\)&ndash;\(115\,\text{s}\)</td>
-    <td>\(\mu_1\uparrow\mu_2=2.66\) instantaneously</td>
-    <td>Safety via \(\mathcal{S}_t\) spike &#10003;</td>
-  </tr>
-  <tr>
-    <td><b>Observational drift</b></td>
-    <td>\(115\)&ndash;\(275\,\text{s}\)</td>
-    <td>Bias \(b_t\to[0.83,0.88]^\top\) exponentially</td>
-    <td>Safety despite unabsorbable bias (Gap 2) &#10003;</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td><b>Gradual drift</b></td>
-    <td>\(275\)&ndash;\(345\,\text{s}\)</td>
-    <td>\(\mu_t:\mu_1\nearrow\mu_2\) exponentially</td>
-    <td>Formal certificate via Cor. 1 &#10003;</td>
-  </tr>
-</table>
-
-<p>
-All four regimes confirm \(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1)
-and \(\geq99.8\%\) safety (Corollary 1) with
-\(\varepsilon_{\mathrm{dec}}\leq0.10\).
-Both baselines violate safety during observational drift;
-SafeCF-SSM maintains \(|x_1|\leq X_{1,\max}\) throughout.
-</p>
-
-<h2 style="color:#003366;">Reproducibility</h2>
-<p>
-All Julia source code is publicly available:
-</p>
-<ul>
-  <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/cf_deepsssm_vdp_v6[150526].jl"
-       download="cf_deepsssm_vdp_v6[150526].jl">
-      <code>cf_deepsssm_vdp_v6[150526].jl</code></a>
-    &mdash; Van der Pol benchmark, 4 regimes, Gap-2 validation
-    (Fig. 2, Table I)
-  </li>
-  <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
-       download="safecf_ssm_quad3d_[150526].jl">
-      <code>safecf_ssm_quad3d_[150526].jl</code></a>
-    &mdash; 3D quadrotor benchmark (\(n=12\) states, motor failure,
-    Fig. 3, Table I)
-  </li>
-</ul>
-
-<h3 style="color:#003366; margin-top:36px;">Extended Validation:
-3D Quadrotor under Motor Failure</h3>
-
+<h2 style="color:#003366; margin-top:36px;">Simulation Study:
+3D Quadrotor under Rotor Failure</h2>
 <p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
           padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
-Can SafeCF-SSM maintain safety and tracking when a rotor partially fails mid-flight?
+Can SafeCF-SSM certify safety, and correctly refuse to certify it, when a
+rotor partially fails mid-flight?
 </p>
-
 <p>
-A 3D quadrotor (\(n=12,\,m=4\)) undergoes rotor-1 efficiency loss
-\(\rho_t: 1.0\to0.6\) at \(t_s=40\,\text{s}\), inducing yaw-torque
-asymmetry and lateral drift. The dynamics are:
+The quadrotor is a <i>controlled testbed</i>, not a target application: the
+latent bottleneck \(k=6&lt;n_s=8\) yields a <i>measurable</i>
+physical&ndash;latent problem, and the rotor fault a known distributional
+shift, isolating the phenomenon the theory addresses. A 3D quadrotor
+(\(n=12\) states, \(m=4\) inputs) undergoes rotor-1 efficiency loss
+\(\rho_t:1.0\to0.6\) at \(t_s=35\,\text{s}\), inducing yaw-torque asymmetry
+and lateral drift; from \(t=150\,\text{s}\) the altitude reference also
+descends \(2.0\to0.8\,\text{m}\) over \(30\,\text{s}\) and is then held, so
+the certificate must survive a commanded manoeuvre, not just a fixed
+set-point. The dynamics are:
 \[
 \dot{v} = \tfrac{1}{M}R(\phi,\theta,\psi)
 \begin{bmatrix}0\\0\\T_t\end{bmatrix}\!-ge_3,
@@ -415,18 +260,20 @@ asymmetry and lateral drift. The dynamics are:
 \]
 where \(T_t=\rho_t T_1+T_2+T_3+T_4\) and
 \(\tau=[\ell(T_2-T_4),\,\ell(T_3-\rho_t T_1),\,
-\kappa(\rho_t T_1-T_2+T_3-T_4)]^\top\).
-SafeCF-SSM adapts \(\hat\rho_t\) online via:
+c_\tau(\rho_t T_1-T_2+T_3-T_4)]^\top\). The safety-relevant channels are
+\(s_t=[p_z,\phi,\theta,v_x,v_y,v_z,p,q]^\top\) (\(n_s=8\)); \(p_x,p_y,\psi,r\)
+are unconstrained and handled by the standard cascade outer loop.
+SafeCF-SSM identifies \(\hat\rho_t\) online via the generic update rule
 \[
-\hat\rho_{t+1} = \hat\rho_t + \eta_t\,\nabla_{\hat\rho}
-\log p_{\theta_t}(o_{t+1}\mid z_t,u_t),
+\hat\vartheta_{t+1} = (1-\eta_t)\hat\vartheta_t + \eta_t\hat\vartheta_t^\star,
+\quad
+\hat\vartheta_t^\star\in\arg\min_\vartheta
+\bigl\|z^{\mathrm{meas}}_{t+1}-f_\vartheta(z_t,u_t)\bigr\|^2,
 \quad
 \eta_t = \frac{\eta_{\max}}{1+\sqrt{\mathcal{S}_t}},
 \]
-with safety enforced via adaptive margin
-\(\beta_{i,t} = \max(c_i\mathcal{S}_t,\,L_{g,i}L_d\,r_{\delta_i,t})\).
+with safety enforced via the adaptive margin \(\beta_{i,t}\) above.
 </p>
-
 <table border="1" cellpadding="8" cellspacing="0"
        style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
   <tr style="background:#003366; color:#fff;">
@@ -439,44 +286,117 @@ with safety enforced via adaptive margin
   </tr>
   <tr style="background:#f9f9f9;">
     <td>\(I_{xx},I_{yy}\)</td><td>\(0.01\,\text{kg\,m}^2\)</td>
-    <td>\(\kappa\)</td><td>\(0.1\)</td>
+    <td>\(c_\tau\)</td><td>\(0.1\)</td>
   </tr>
   <tr>
     <td>\(I_{zz}\)</td><td>\(0.02\,\text{kg\,m}^2\)</td>
-    <td>\(\rho_1\to\rho_2\)</td><td>\(1.0\to0.6\) at \(t_s=40\,\text{s}\)</td>
+    <td>\(\rho_1\to\rho_2\)</td><td>\(1.0\to0.6\) at \(t_s=35\,\text{s}\)</td>
   </tr>
   <tr style="background:#f9f9f9;">
     <td>\(\sigma_w,\sigma_v\)</td><td>\(0.05,\,0.10\)</td>
-    <td>Safety: \(p_z\)</td><td>\(\geq0.3\,\text{m}\)</td>
+    <td>Encoder/decoder</td><td>\(k=6&lt;n_s=8&lt;n=12\)</td>
   </tr>
   <tr>
-    <td>\(T_{\max}\)</td><td>\(10\,\text{N}\)</td>
-    <td>Safety: \(|\phi|,|\theta|\)</td><td>\(\leq30^\circ\)</td>
+    <td>Safety: \(p_z\)</td><td>\(\geq0.3\,\text{m}\)</td>
+    <td>Safety: \(|p_z-p_z^{\rm ref}|\)</td><td>\(\leq0.25\,\text{m}\)</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td>Safety: \(|\phi|\)</td><td>\(\leq15^\circ\)</td>
+    <td>Safety: \(|\theta|\)</td><td>\(\leq20^\circ\)</td>
   </tr>
 </table>
-
-
-
-
-
-    
 <p>
-\(M=25\) Monte Carlo runs confirm: SafeCF-SSM maintains
-\(|p_y|\leq0.1\,\text{m}\) throughout the failure, while both baselines
-accumulate drift exceeding \(0.5\,\text{m}\).
-\(\mathbb{E}[\mathrm{CFI}_t]\leq1\) (Theorem 1) and \(\geq99.8\%\) safety
-(Corollary 1) hold across all runs &mdash; consistent with
-the VdP validation above.
+The encoder, decoder, and \(\rho\)-aware transition map are trained
+feedforward networks (\(8\to96\to64\to6\), \(6\to64\to96\to8\),
+\(11\to96\to64\to6\); \(\tanh\), residual transition), trained jointly on
+\(7\times10^4\) transitions with a reconstruction loss weighted toward the
+constrained channels &mdash; not an EKF or a hand-designed observer.
 </p>
-
-  <div style="text-align:center; margin-top:10px; margin-bottom:5px;">
-    <img src="fig_quad3d_motor_failure_290426_1.pdf"
-         alt="3D Quadrotor motor failure benchmark" width="420"
-         style="margin-bottom:10px; border-radius:4px;">
-  </div>
-
+<p>
+Across \(10\) seeds (\(205\,\text{s}\) horizon), SafeCF-SSM holds
+\(99.5\%\) of post-failure steps inside the certified safe set versus
+\(46.6\%\) for a fixed-model predictive safety-filter (PSF) baseline, blind
+to the fault &mdash; its worst seed beats PSF's best seed. During the
+\(2\,\text{s}\) detection window immediately after the fault, SafeCF-SSM is
+briefly <i>worse</i> than PSF (\(52.5\%\) vs.\ \(77.5\%\)): no causal law
+can react before an innovation reveals the fault, and that window is
+exactly the interval the surprise-gated margin is built to cover &mdash;
+\(\mathcal{S}_t\) peaks there, so the margin is widest precisely when it is
+needed. After detection the two diverge sharply: \(99.6\%\) vs.\
+\(47.3\%\). Throughout, \(\mathrm{CFI}_t\leq1\) holds for every run
+(observed max \(0.138\)), and the true efficiency loss \(\rho=0.6\) is
+recovered from latent innovations alone
+(\(\rho^\star=0.600\)), converging within \(5\,\text{s}\) and holding
+\(0.58\)&ndash;\(0.62\) through the commanded descent.
+</p>
+<p>
+The same test also produces a <b>negative result</b>: under this codec, the
+altitude channel fails the realizability condition &mdash; its belief
+radius (\(0.31\,\text{m}\)) alone exceeds the residual corridor
+(\(0.06\,\text{m}\)) left after decoder-error tightening &mdash; and is
+declared <b>uncertifiable</b> for any control law, not merely for BMPC.
+Attitude (roll, pitch) remains certifiable, though conservatively
+(\(|\hat\theta|\leq13.2^\circ\) against the \(20^\circ\) specification), the
+price of \(k&lt;n_s\). This is the kind of conclusion a purely empirical
+controller comparison cannot produce.
+</p>
+<table border="1" cellpadding="6" cellspacing="0"
+       style="border-collapse:collapse; width:100%; font-size:0.85em; margin:1rem 0;">
+  <tr style="background:#003366; color:#fff;">
+    <th>Property / Metric</th><th>Result</th>
+  </tr>
+  <tr>
+    <td>Genuine latent bottleneck, \(k&lt;n_s\)</td>
+    <td>\(6 &lt; 8\) &#10003;</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td>False certificates, \(\theta\,/\,\phi\,/\,p_z\) (before &rarr; after tightening)</td>
+    <td>\(17\to7\)\,/\,\(30\to1\)\,/\,\(67\to2\) &#10003;</td>
+  </tr>
+  <tr>
+    <td>Residual rate vs.\ budget \(\alpha_i\)</td>
+    <td>\(\leq1.7\times10^{-4}\) vs.\ \(10^{-2}\) &#10003;</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td>Certifiable channel</td>
+    <td>\(\theta,\phi\) &#10003;;&nbsp; \(p_z\) &#10007; (empty set)</td>
+  </tr>
+  <tr>
+    <td>\(\rho\) identified from latent innovations</td>
+    <td>\(\arg\min=0.600\) &#10003;</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td>Post-failure occupancy, SafeCF&ndash;SSM vs.\ PSF</td>
+    <td>\(99.5\%\) vs.\ \(46.6\%\)</td>
+  </tr>
+  <tr>
+    <td>Detection transient / sustained, SafeCF&ndash;SSM</td>
+    <td>\(52.5\%\) / \(99.6\%\)</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td>Detection transient / sustained, PSF</td>
+    <td>\(77.5\%\) / \(47.3\%\)</td>
+  </tr>
+</table>
+<p style="font-size:0.85em; color:#777;">
+Full per-channel breakdown, enforcement ablation, and the
+conservatism&ndash;authority trade-off across \(\alpha_i\) are reported in
+the manuscript (Table I).
+</p>
+<h2 style="color:#003366; margin-top:36px;">Reproducibility</h2>
+<p>
+Julia source code for the quadrotor benchmark is publicly available:
+</p>
+<ul>
+  <li>
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
+       download="safecf_ssm_quad3d_[150526].jl">
+      <code>safecf_ssm_quad3d_[150526].jl</code></a>
+    &mdash; 3D quadrotor benchmark (\(n=12\) states, \(k=6&lt;n_s=8\),
+    partial rotor failure, Figs. 2&ndash;4, Table I)
+  </li>
+</ul>
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
 <footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
      background-color:#f9f9f9; border-top:1px solid #ddd;">
   <div id="footer-text"
@@ -485,7 +405,6 @@ the VdP validation above.
     Control &amp; Robotics Research Group
   </div>
 </footer>
-
 </td>
 </tr>
 </table>
