@@ -1,1 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Robotics: Kinematics, Dynamics &amp; Control</title>
+<!-- MathJax -->
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+  <!-- Left navigation -->
+  <td id="layout-menu">
+    <div class="menu-category">Thanana</div>
+    <div class="menu-item"><a href="index.html">Home</a></div>
+    <div class="menu-item"><a href="Biography.html">Biography</a></div>
+    <div class="menu-item"><a href="Publication.html">Publication</a></div>
+    <div class="menu-category">Research</div>
+    <div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+    <div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+    <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+    <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+    <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+    <div class="menu-category">Teaching</div>
+    <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+    <div class="menu-item"><a href="robotics.html">Robotics</a></div>
+    <div class="menu-category">Software</div>
+    <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+  </td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Robotics: Kinematics, Dynamics &amp; Control</h1>
+<div style="text-align:center; margin: 0px 0;">
+ <svg width="450" height="270" viewBox="0 0 850 500" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+    <defs>
+      <marker id="rarrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#0b2740"/>
+      </marker>
+      <marker id="garrow" markerWidth="9" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 9 3.5, 0 7" fill="#14532d"/>
+      </marker>
+    </defs>
 
+    <!-- World frame at base -->
+    <g transform="translate(150,420)">
+      <line x1="0" y1="0" x2="60" y2="0" stroke="#94a3b8" stroke-width="2" marker-end="url(#rarrow)"/>
+      <line x1="0" y1="0" x2="0" y2="-60" stroke="#94a3b8" stroke-width="2" marker-end="url(#rarrow)"/>
+      <text x="66" y="4" font-family="sans-serif" font-size="16" fill="#64748b">x</text>
+      <text x="-14" y="-58" font-family="sans-serif" font-size="16" fill="#64748b">y</text>
+      <text x="-20" y="20" font-family="sans-serif" font-size="16" fill="#64748b">{0}</text>
+    </g>
+
+    <!-- Fixed base hatching -->
+    <g stroke="#0b2740" stroke-width="2">
+      <line x1="120" y1="420" x2="180" y2="420"/>
+      <line x1="126" y1="420" x2="116" y2="432"/>
+      <line x1="140" y1="420" x2="130" y2="432"/>
+      <line x1="154" y1="420" x2="144" y2="432"/>
+      <line x1="168" y1="420" x2="158" y2="432"/>
+      <line x1="182" y1="420" x2="172" y2="432"/>
+    </g>
+
+    <!-- Reference line for q1 (horizontal) -->
+    <line x1="150" y1="420" x2="420" y2="420" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="5,4"/>
+    <!-- Reference line for q2 (extension of link 1) -->
+    <line x1="380" y1="260" x2="470" y2="228" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="5,4"/>
+
+    <!-- Angle arcs -->
+    <path d="M 200,420 A 50,50 0 0,0 191,391.3" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>
+    <text x="212" y="405" font-family="sans-serif" font-size="18" fill="#0369a1">q&#8321;</text>
+    <path d="M 412.8,237.2 A 40,40 0 0,1 418.8,269.7" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+    <text x="424" y="252" font-family="sans-serif" font-size="18" fill="#92400e">q&#8322;</text>
+
+    <!-- Link 1 -->
+    <line x1="150" y1="420" x2="380" y2="260" stroke="#0b2740" stroke-width="7" stroke-linecap="round"/>
+    <text x="230" y="368" font-family="sans-serif" font-size="18" fill="#1f2937">Link 1</text>
+
+    <!-- Link 2 -->
+    <line x1="380" y1="260" x2="620" y2="320" stroke="#0b2740" stroke-width="7" stroke-linecap="round"/>
+    <text x="450" y="322" font-family="sans-serif" font-size="18" fill="#1f2937">Link 2</text>
+
+    <!-- Joints -->
+    <circle cx="150" cy="420" r="10" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+    <circle cx="380" cy="260" r="10" fill="#0ea5e9" stroke="#0b2740" stroke-width="2"/>
+    <circle cx="620" cy="320" r="8" fill="#f1f5f9" stroke="#0b2740" stroke-width="3"/>
+
+    <!-- Joint velocity arrows (curved, small) -->
+    <path d="M 178,388 A 34,34 0 0,1 168,352" fill="none" stroke="#0369a1" stroke-width="2" marker-end="url(#rarrow)"/>
+    <text x="146" y="352" font-family="sans-serif" font-size="15" fill="#0369a1">q&#775;&#8321;</text>
+    <path d="M 408,232 A 30,30 0 0,1 418,200" fill="none" stroke="#92400e" stroke-width="2" marker-end="url(#rarrow)"/>
+    <text x="398" y="192" font-family="sans-serif" font-size="15" fill="#92400e">q&#775;&#8322;</text>
+
+    <!-- Task-space velocity from end-effector, via Jacobian -->
+    <line x1="620" y1="320" x2="700" y2="278" stroke="#14532d" stroke-width="3" marker-end="url(#garrow)"/>
+    <text x="640" y="266" font-family="sans-serif" font-size="17" fill="#14532d" font-weight="bold">x&#775; = J(q) q&#775;</text>
+
+    <!-- Desired goal pose -->
+    <circle cx="700" cy="360" r="10" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
+    <line x1="620" y1="320" x2="694" y2="354" stroke="#166534" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <text x="700" y="388" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#14532d">goal pose</text>
+
+    <text x="150" y="450" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#1f2937">Base (fixed)</text>
+    <text x="640" y="300" font-family="sans-serif" font-size="16" fill="#1f2937">End-effector</text>
+  </svg>
+</div>
+
+<h2>Prerequisites</h2>
+<ul>
+  <em>[Optional]</em> Programming experience (MATLAB or Python). <em>[Must have]</em> Linear algebra, multivariable calculus, and an introductory course in dynamics or classical mechanics.
+</ul>
+
+<h2>Course description</h2>
+<ul>
+  <li>This course is a broad, hands-on introduction to <strong>robotic manipulators and mobile robots</strong>: how they are actuated and sensed, how their motion is described and planned, and how they are controlled. Topics include actuators and drives, embedded control software, sensing, forward and inverse kinematics (Denavit&ndash;Hartenberg convention), differential kinematics and the Jacobian, kinematic singularities and redundancy, statics, trajectory generation, manipulator dynamics (Newton&ndash;Euler and Lagrangian formulations), joint-space and task-space control, force/impedance control, non-holonomic mobile robots, and an introduction to robot vision and navigation.</li>
+</ul>
+
+<h2>Course objectives</h2>
+<ul>
+  <li>Equip students with the ability to model, analyze, and control robotic manipulators and mobile robots</li>
+  <li>Develop working fluency with kinematics, Jacobians, dynamics, and classical control as applied to robotic systems</li>
+  <li>Enable design and evaluation of motion plans and controllers in simulation and on hardware</li>
+  <li>Provide hands-on experience through problem sets, a lab component, and a design project</li>
+</ul>
+
+<h2>Learning outcomes</h2>
+<ul>
+  <li>Derive forward and inverse kinematics for serial manipulators using homogeneous transforms and DH parameters</li>
+  <li>Compute the manipulator Jacobian, identify kinematic singularities, and resolve redundancy (e.g. via <code>pinv</code>)</li>
+  <li>Generate smooth joint- and task-space trajectories subject to velocity/acceleration limits</li>
+  <li>Derive equations of motion via Newton&ndash;Euler and Lagrangian methods</li>
+  <li>Design and implement joint-space, task-space, and force/impedance controllers</li>
+  <li>Analyze non-holonomic constraints and basic navigation for mobile robots</li>
+</ul>
+
+<h2>Course Schedule (15 Weeks) and Materials</h2>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr>
+    <th>Week</th>
+    <th>Topic</th>
+    <th>Slides</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Introduction to Robotics, Actuators &amp; Drives</td>
+    <td><a href="slides/lecture01_intro.pdf">Lecture 1</a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Control Components &amp; Embedded Control Software</td>
+    <td><a href="slides/lecture02_control_sw.pdf">Lecture 2</a></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Sensors for Robotics</td>
+    <td><a href="slides/lecture03_sensors.pdf">Lecture 3</a></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Forward Kinematics &amp; the Denavit&ndash;Hartenberg Convention</td>
+    <td><a href="slides/lecture04_forward_kinematics.pdf">Lecture 4</a></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Inverse Kinematics</td>
+    <td><a href="slides/lecture05_inverse_kinematics.pdf">Lecture 5</a></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Differential Kinematics &amp; the Jacobian</td>
+    <td><a href="slides/Jacobian2026.pdf">Lecture 6</a></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Kinematic Singularities &amp; Redundant Manipulators</td>
+    <td><a href="slides/lecture07_singularities.pdf">Lecture 7</a></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Midterm Review &amp; Exam</td>
+    <td>&mdash;</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Statics &amp; the Energy Method</td>
+    <td><a href="slides/lecture09_statics.pdf">Lecture 9</a></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>Trajectory Generation &amp; Motion Planning</td>
+    <td><a href="slides/lecture10_trajectory.pdf">Lecture 10</a></td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>Manipulator Dynamics (Newton&ndash;Euler &amp; Lagrangian)</td>
+    <td><a href="slides/lecture11_dynamics.pdf">Lecture 11</a></td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>Joint-space &amp; Task-space Control, Computed Torque</td>
+    <td><a href="slides/lecture12_control.pdf">Lecture 12</a></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Force &amp; Impedance Control, Compliance</td>
+    <td><a href="slides/lecture13_force_control.pdf">Lecture 13</a></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Non-holonomic Mobile Robots, Vision &amp; Navigation</td>
+    <td><a href="slides/lecture14_mobile_vision.pdf">Lecture 14</a></td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>Project Presentations &amp; Final Review</td>
+    <td>&mdash;</td>
+  </tr>
+</table>
+
+<h2>Textbooks</h2>
+<ul>
+  <li><em>Asada &amp; Slotine</em>, <strong>Robot Analysis and Control</strong></li>
+  <li><em>Craig</em>, <strong>Introduction to Robotics: Mechanics and Control</strong></li>
+  <li><em>Spong, Hutchinson &amp; Vidyasagar</em>, <strong>Robot Modeling and Control</strong></li>
+  <li><em>Siciliano, Sciavicco, Villani &amp; Oriolo</em>, <strong>Robotics: Modelling, Planning and Control</strong></li>
+  <li>Selected notes and simulation resources (e.g. MATLAB Robotics Toolbox, Python <code>roboticstoolbox</code>)</li>
+</ul>
+
+<h2>Midterm exam</h2>
+<ul>
+  <li><strong>Week 8</strong> &mdash; in class, closed book. One A4 cheat sheet allowed.</li>
+  <li>Coverage: Topics from Weeks 1&ndash;7 (kinematics, DH parameters, forward/inverse kinematics, Jacobian, singularities)</li>
+</ul>
+
+<h2>Labs &amp; Projects</h2>
+<ul>
+  <li><strong>Lab sessions</strong>: hands-on exercises on a physical or simulated manipulator/mobile robot, run alongside the lecture schedule (kinematics implementation, Jacobian-based control, trajectory tracking).</li>
+  <li><strong>Course Project</strong>: Students select a robotic platform (manipulator or mobile robot), implement a kinematics/dynamics model and controller, and write a 6&ndash;8 page report including methodology, experiments, and analysis.</li>
+  <li>Project Proposal: Week 10</li>
+  <li>Checkpoint: Week 13</li>
+  <li>Final Presentation: Week 15</li>
+  <li>Topics may include redundant-manipulator control, impedance/force control, mobile robot navigation, or vision-guided manipulation.</li>
+</ul>
+
+<div id="footer">
+Page generated 2026-08-19, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</td>
+</table>
+</body>
+</html>
