@@ -46,7 +46,7 @@ MathJax.Hub.Config({
   Physical&ndash;Latent Problem in Adaptive Latent-Space Control
 </h1>
 <p style="text-align:center; color:#555; font-size:0.95em;">
-   <i>  </i>
+    <i>  </i>
 </p>
 <!-- Loop Banner -->
 <div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
@@ -70,9 +70,11 @@ MathJax.Hub.Config({
 </div>
 	<div class="infoblock">
 <div class="blockcontent">
-	SafeCF--SSM presentation: <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/"
-       download="">
+	SafeCF--SSM presentation: <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/Beamer-SafeCF-SSM-LCSS-1.pdf"
+       download="Beamer-SafeCF-SSM-LCSS-1.pdf">
       <code>Beamer-SafeCF-SSM-LCSS-1.pdf</code></a>
+    <br/>
+    <span style="color:#00A6D6; font-weight:bold;">&#9654; Supplementary Video:</span> <a href="safecf_ssm_run_mujoco.mp4" target="_blank"><code>safecf_ssm_run_mujoco.mp4</code></a>
 	<p>
 <img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
        style="vertical-align:middle; margin-left:6px;" /> Julia source code:
@@ -81,7 +83,7 @@ MathJax.Hub.Config({
   <li>
     <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
        download="safecf_ssm_quad3d_[150526].jl">
-      <code>   </code></a>
+      <code>safecf_ssm_quad3d_[150526].jl</code></a>
     &mdash; 3D quadrotor benchmark (\(n=12\) states, \(k=6&lt;n_s=8\),
     partial rotor failure, Figs. 2&ndash;4, Table I)
   </li>
@@ -241,6 +243,19 @@ assuming decoder accuracy away.
 Can SafeCF-SSM certify safety, and correctly refuse to certify it, when a
 rotor partially fails mid-flight?
 </p>
+
+<!-- ================= VIDEO EMBED SECTION ================= -->
+<div style="text-align:center; margin: 2rem 0; padding: 15px; background-color: #fcfcfc; border: 1px solid #eaeaea; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+  <video width="100%" style="max-width: 800px; border-radius: 6px; border: 1px solid #ccc;" controls>
+    <source src="safecf_ssm_run_mujoco.mp4" type="video/mp4" />
+    Your browser does not support the video tag. Please <a href="safecf_ssm_run_mujoco.mp4">download the video</a> to view it.
+  </video>
+  <p style="font-size:0.9em; color:#444; margin-top:12px; margin-bottom:0; line-height:1.5;">
+    <b>Supplementary Video:</b> 3D Quadrotor operating under rotor failure. Note the immediate spike in the <b>surprise signal</b> \(\mathcal{S}_t\) at \(t_s=35\,\text{s}\) and the system correctly declining to certify the altitude channel (<i>"uncertifiable"</i>) rather than over-claiming safety.
+  </p>
+</div>
+<!-- ======================================================= -->
+
 <p>
 The quadrotor is a <i>controlled testbed</i>, not a target application: the
 latent bottleneck \(k=6&lt;n_s=8\) yields a <i>measurable</i>
@@ -389,7 +404,7 @@ Julia source code for the quadrotor benchmark is publicly available:
 </p>
 <ul>
   <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/"
+    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
        download="safecf_ssm_quad3d_[150526].jl">
       <code>safecf_ssm_quad3d_[150526].jl</code></a>
     &mdash; 3D quadrotor benchmark (\(n=12\) states, \(k=6&lt;n_s=8\),
