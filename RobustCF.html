@@ -31,6 +31,7 @@ MathJax.Hub.Config({
   <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
   <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
   <div class="menu-item"><a href="RobustCF.html" class="current">Robust&nbsp;CF&nbsp;Filtering</a></div>
+  <div class="menu-item"><a href="SafeCF-SSM.html">SafeCF-SSM</a></div>
   <div class="menu-category">Teaching</div>
   <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
   <div class="menu-category">Software</div>
@@ -51,10 +52,10 @@ MathJax.Hub.Config({
     A margin that knows when to trust itself &mdash;
     and when the noise has changed.
   </p>
+  <p style="text-align:center; color:#555; font-size:0.95em;">
+    <i>Accepted in IEEE Signal Processing Letters (SPL)</i>
+  </p>
 </div>
-
-<!-- Paper info -->
-
 
 <!-- Motto -->
 <div style="text-align:center; margin:20px auto;
@@ -101,6 +102,16 @@ MathJax.Hub.Config({
   </p>
 </div>
 
+<!-- ================= GRAPHICAL ABSTRACT SECTION ================= -->
+<div style="text-align:center; margin: 2rem 0; padding: 20px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+  <h3 style="color:#003366; margin-top:0; margin-bottom:15px; font-weight:600;">Graphical Abstract</h3>
+  <img src="ani108.png" alt="Proposed Adaptive SafeCF Architecture" style="max-width: 100%; border-radius: 6px; border: 1px solid #ddd;" />
+  <p style="font-size:0.9em; color:#444; margin-top:16px; margin-bottom:0; line-height:1.6; text-align:left; padding:0 10px;">
+    <b>Adaptive Margin Architecture:</b> A batch-split estimator extracts score noise variance \(\hat{\varepsilon}_t\) from existing particles with zero overhead. This dynamically scales an adaptive margin \(\delta_t\), structurally preventing noise-induced spurious switching while rigorously preserving descent and finite-switching guarantees under nonstationary regimes.
+  </p>
+</div>
+<!-- ======================================================= -->
+
 <!-- Problem -->
 <h3 style="color:#003366;">What Is the Problem?</h3>
 <p>
@@ -123,8 +134,7 @@ score minimisation is vulnerable to
 \(\delta\) calibrated to suppress it must, in a
 nonstationary setting, be calibrated
 <i>against a noise level that keeps changing</i>. This
-letter asks &mdash; and answers &mdash; two questions:
-does the theory survive noisy scores, and can the margin
+letter asks &mdash; and answers &mdash; does the theory survive noisy scores, and can the margin
 itself be found online, without a stationary calibration
 window?
 </p>
@@ -137,9 +147,9 @@ window?
 <p style="text-align:center;">
 \[
 s_{t+1} = \begin{cases}
-\hat{s}_t, &amp;
+\hat{s}_t, &
 \hat{\Phi}_t(s_t) - \hat{\Phi}_t(\hat{s}_t) > \delta_t, \\
-s_t, &amp; \text{otherwise,}
+s_t, & \text{otherwise,}
 \end{cases}
 \quad \hat{s}_t\in\arg\min_{s}\hat{\Phi}_t(s),
 \]
@@ -176,7 +186,7 @@ filter recursion.
     <b>Theorem 3 (Non-chattering):</b>
     if
     \(\limsup_{t\to\infty}[\Phi_t(s_t)-\min_s\Phi_t(s)]
-    &lt;\delta-2\bar{\varepsilon}\) a.s., switching stops
+    <\delta-2\bar{\varepsilon}\) a.s., switching stops
     a.s.
   </li>
   <li>
@@ -487,12 +497,6 @@ scores are least reliable.
   <a href="https://thanana.github.io/README.md"
      target="_blank">&#x1F4E6; Full repository</a>
 </p>
-
-
-
-
-
-  
 
 <!-- Footer -->
 <footer id="footer"
