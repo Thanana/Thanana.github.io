@@ -105,7 +105,7 @@ MathJax.Hub.Config({
 <!-- ================= GRAPHICAL ABSTRACT SECTION ================= -->
 <div style="text-align:center; margin: 2rem 0; padding: 20px; background-color: #ffffff; border: 1px solid #eaeaea; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
   <h3 style="color:#003366; margin-top:0; margin-bottom:15px; font-weight:600;">Graphical Abstract</h3>
-  <img src="GraphicallyAcceptedSPL[camera_version].pdf" alt="Robust Cognitive-Flexible Filtering under Noisy Innovation Scores" style="max-width: 100%; border-radius: 6px; border: 1px solid #ddd;" />
+  <img src="RobustCF_graphical_abstract.png" alt="Robust Cognitive-Flexible Filtering under Noisy Innovation Scores" style="max-width: 100%; border-radius: 6px; border: 1px solid #ddd;" />
   <p style="font-size:0.9em; color:#444; margin-top:16px; margin-bottom:0; line-height:1.6; text-align:left; padding:0 10px;">
     <b>Adaptive Margin Architecture:</b> A batch-split estimator extracts score noise variance \(\hat{\varepsilon}_t\) from existing particles with zero overhead. This dynamically scales an adaptive margin \(\delta_t\), structurally preventing noise-induced spurious switching while rigorously preserving descent and finite-switching guarantees under nonstationary regimes.
   </p>
@@ -386,6 +386,12 @@ scores are least reliable.
       <td>3.9</td><td>1.9</td><td>1.4</td><td>0.849</td>
       <td>4.3</td><td>2.8</td><td>2.0</td><td>0.688</td>
     </tr>
+    <tr>
+      <td style="padding:6px 8px; text-align:left;">
+        IMM, \(p_\mathrm{stay}=0.99\)</td>
+      <td>3.6</td><td>1.5</td><td>1.5</td><td><b>0.897</b></td>
+      <td>7.5</td><td>4.6</td><td>1.8</td><td>0.723</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -396,6 +402,26 @@ scores are least reliable.
   alone is misleading &mdash; the largest fixed margin
   minimises it purely by failing to react.
 </p>
+
+<div style="font-style:italic; background:#f5f9fb;
+            border-left:4px solid #00A6D6;
+            padding:0.8em 1.2em; border-radius:6px; margin:16px 0;
+            text-align:left;">
+  <b>Comparison with IMM.</b> At its best setting, IMM is
+  more accurate on \(\mathcal{S}_2\) (0.897 against 0.849)
+  and recovers sooner &mdash; soft mixing hedges where a
+  hard switch commits, but it needs a transition matrix
+  and carries none of Theorems&nbsp;1&ndash;4. The ordering
+  reverses on \(\mathcal{S}_4\): the margin beats every
+  IMM setting swept (0.734 against 0.699&ndash;0.723), and
+  in the reduced-budget window \(\delta_t\) admits 0.87
+  switches against 1.50&ndash;4.40 across the sweep. Under
+  score noise, IMM's false-alarm rate moves \(4.5\times\)
+  over \(p_\mathrm{stay}\in[0.80,0.99]\) &mdash; exact
+  likelihoods would leave it nearly insensitive to that
+  choice, so the transition matrix needs a noise level
+  that is not known online.
+</div>
 
 <!-- Table II -->
 <h3 style="color:#003366; margin-top:24px;">
@@ -442,7 +468,9 @@ scores are least reliable.
 <p style="font-size:0.83em; color:#777; text-align:center; margin-top:6px;">
   Selection accuracy on \(\mathcal{S}_2\), \(M=50\) per
   point. The adaptive rule is significantly better at
-  full budget and never worse in any regime tested.
+  full budget and statistically indistinguishable from
+  offline calibration in the other two regimes (pooled
+  \(+0.016\pm0.017\)).
 </p>
 
 <div style="font-style:italic; background:#f5f9fb;
