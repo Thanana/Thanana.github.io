@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>SafeCF-SSM | IEEE L-CSS</title>
+<title>Robust CF Filtering | IEEE SPL</title>
 <script type="text/javascript" async
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -30,8 +30,8 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
     <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
-    <div class="menu-item"><a href="RobustCF.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
-    <div class="menu-item"><a href="SafeCF-SSM.html" class="current">SafeCF-SSM</a></div>
+    <div class="menu-item"><a href="RobustCF.html" class="current">Robust&nbsp;CF&nbsp;Filtering</a></div>
+    <div class="menu-item"><a href="SafeCF-SSM.html">SafeCF-SSM</a></div>
     <div class="menu-category">Teaching</div>
     <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
     <div class="menu-category">Software</div>
@@ -42,375 +42,126 @@ MathJax.Hub.Config({
   <td id="layout-content">
   <div id="toptitle">
 <h1 style="color:#003366; text-align:center; margin-top:30px;">
-  SafeCF&ndash;SSM: Certifying, Not Closing, the
-  Physical&ndash;Latent Problem in Adaptive Latent-Space Control
+  Robust Cognitive-Flexible Filtering under Noisy Innovation Scores
 </h1>
 <p style="text-align:center; color:#555; font-size:0.95em;">
-    <i>  </i>
+    <i>Accepted in IEEE Signal Processing Letters (SPL)</i>
 </p>
+
 <!-- Loop Banner -->
 <div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
             padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
             box-shadow:0 1px 4px rgba(0,0,0,0.06);">
   <p style="margin:0; font-size:0.95em; color:#003366;">
-    <span style="color:#00A6D6;"><b>Latent Belief \((z_t,\Sigma_t)\)</b></span> &rarr;
-    <span style="color:#0077AA;"><b>Surprise \(\mathcal{S}_t\)</b></span> &rarr;
-    <span style="color:#0099CC;"><b>Adaptive Margin \(\beta_{i,t}\)</b></span> &rarr;
-    <span style="color:#00A6D6;"><b>Certified Control \(u_t\)</b></span> &rarr;
-    <span style="color:#003366;"><b>Realizability Test
-    \(\varepsilon_{\mathrm{dec},i}+r_{i,t}(\delta_i)&lt;b_i\)</b></span>
+    <span style="color:#00A6D6;"><b>Noisy Scores \(\hat{\Phi}_t(s)\)</b></span> &rarr;
+    <span style="color:#0077AA;"><b>Batch-Split Spread \(\hat{\varepsilon}_t\)</b></span> &rarr;
+    <span style="color:#0099CC;"><b>Adaptive Margin \(\delta_t\)</b></span> &rarr;
+    <span style="color:#003366;"><b>Robust CF Update \(s_{t+1}\)</b></span>
   </p>
   <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    A single surprise signal \(\mathcal{S}_t\) simultaneously tightens the
-    safety margin and gates encoder reorganization, yielding a checkable
-    realizability condition: each constrained channel is either
-    <b>certified</b> or explicitly declared <b>uncertifiable</b> &mdash;
-    the physical&ndash;latent gap is made measurable, not assumed away.
+    A batch-split estimator bounds conditionally zero-mean particle noise online with zero overhead,
+    driving an adaptive margin \(\delta_t\) that prevents spurious switching while guaranteeing structural descent.
   </p>
 </div>
-	<div class="infoblock">
-<div class="blockcontent">
-	SafeCF--SSM presentation: <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/Beamer-SafeCF-SSM-LCSS-1.pdf"
-       download="Beamer-SafeCF-SSM-LCSS-1.pdf">
-      <code>Beamer-SafeCF-SSM-LCSS-1.pdf</code></a>
-    <br/>
-    <span style="color:#00A6D6; font-weight:bold;">&#9654; Supplementary Video:</span> <a href="safecf_ssm_run_mujoco.mp4" target="_blank"><code>safecf_ssm_run_mujoco.mp4</code></a>
-	<p>
-<img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
-       style="vertical-align:middle; margin-left:6px;" /> Julia source code:
-</p>
-<ul>
-  <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
-       download="safecf_ssm_quad3d_[150526].jl">
-      <code>safecf_ssm_quad3d_[150526].jl</code></a>
-    &mdash; 3D quadrotor benchmark (\(n=12\) states, \(k=6&lt;n_s=8\),
-    partial rotor failure, Figs. 2&ndash;4, Table I)
-  </li>
-</ul>
-<p style="font-size:0.85em; color:#777; margin-top:0.6em;">
-  An earlier Van der Pol oscillator prototype from a previous project stage
-  is retained in the repository for reference; it is not part of the current
-  manuscript's validation, which uses a single, thoroughly analyzed
-  benchmark by design (see below).
-</p>
 
-</div>   </div>
-
-
-<p>
-  <b>SafeCF-SSM</b> is a control-law-agnostic safety layer for latent-space
-  MPC under distributional shift. It routes one predictive-mismatch signal
-  to both the online adaptation rate and the per-channel safety margin, and
-  turns the resulting physical-latent gap into a checkable
-  <b>realizability condition</b> &mdash; certifying each constrained channel,
-  or explicitly declaring it uncertifiable, rather than assuming the gap
-  away.
-</p>
-
-
-<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-<h3 style="color:#003366;">What Is the Problem?</h3>
-<p>
-Latent-space MPC approaches adapt to distributional shift but certify safety
-in latent space only. When the decoder has approximation error
-\(\varepsilon_{\mathrm{dec}}\geq 0\), a plan admissible in \(z_t\) may still
-violate the constraint on \(x_t\) &mdash; the <b>physical-latent
-problem</b>. When the latent dimension \(k\) is below the number of
-safety-relevant physical channels \(n_s\), no decoder map
-\(\mathbb{R}^{n_s}\!\to\!\mathbb{R}^{k}\) can be injective, so some decoder
-error is structurally unavoidable; which channel absorbs it is a codec
-choice, not a training failure. SafeCF-SSM does not assume a better decoder
-closes this gap &mdash; it measures it, per channel, and checks whether it
-is small enough to certify.
-</p>
-<p>
-Matters worsen under distributional shift: as the encoder
-\(\phi_{\vartheta_t}\) adapts online, the gap can grow without bound if
-representation reorganization is left unregulated. Existing approaches
-either assume the representation is frozen after training or bound decoder
-error with a global Lipschitz constant that is vacuous for a deep network of
-any size.
-</p>
-<h3 style="color:#003366; margin-top:28px;">Three Coupled Mechanisms</h3>
-<p>
-SafeCF-SSM addresses the problem through three dedicated components, each
-satisfying one requirement of the problem statement:
-</p>
-<ul>
-  <li>
-    <b>SSM Latent Model:</b> provides latent state \(z_t\) and predictive
-    uncertainty \(\Sigma_t\) via a trained nonlinear encoder&ndash;decoder
-    pair and online belief filtering, enabling uncertainty-aware BMPC
-    planning without a hand-specified observation model.
-  </li>
-  <li>
-    <b>BMPC with Adaptive Tightening:</b> enforces physical safety via the
-    unified margin
-    \(\beta_{i,t}=\max\bigl(L_{g,i}\sigma_i\sqrt{2\mathcal{S}_{t-1}},\,
-    L_{g,i}\,r_{i,t}(\delta_i)\bigr)+L_{g,i}\,\varepsilon_{\mathrm{dec},i}\),
-    where \(r_{i,t}(\delta_i)\) is a calibrated confidence radius of the
-    belief (Assumption 3) and \(\varepsilon_{\mathrm{dec},i}\) is the
-    channel-wise decoder error (Assumption 4). No Lipschitz constant of the
-    <i>decoder</i> appears &mdash; only of the constraint function
-    \(\mathcal{G}_i\) &mdash; which is what makes the margin numerically
-    evaluable. Together these give a checkable realizability condition: a
-    channel is certifiable exactly when
-    \(\varepsilon_{\mathrm{dec},i}+r_{i,t}(\delta_i) &lt; b_i\); a channel that
-    fails this test admits no certificate under the given codec, for any
-    control law.
-  </li>
-  <li>
-    <b>Surprise-driven CF Adaptation:</b> bounds encoder reorganization
-    \(\|\phi_{\vartheta_{t+1}}-\phi_{\vartheta_t}\|
-    \leq L_\phi\eta_{\max}L_\Delta=:\varepsilon_{\mathrm{cf}}\)
-    via the surprise-gated step size
-    \(\eta_t=\eta_{\max}/(1+\sqrt{\mathcal{S}_t})\); the same
-    \(\mathcal{S}_t\) that widens \(\beta_{i,t}\) also shrinks the
-    adaptation step, precisely when the model is least trustworthy.
-  </li>
-</ul>
-<h3 style="color:#003366; margin-top:28px;">The Dual Role of \(\mathcal{S}_t\)</h3>
-<p>
-The predictive surprise
-\(\mathcal{S}_t:=-\log p_{\vartheta_t}(z^{\mathrm{meas}}_{t+1}\mid z_t,u_t)\)
-is large when the latent transition model is mismatched with the newest
-measurement and small when consistent with it. The same signal
-\(\mathcal{S}_t\) that tightens \(\beta_{i,t}\) in the BMPC layer also
-moderates \(\eta_t=\eta_{\max}/(1+\sqrt{\mathcal{S}_t})\), bounding
-\(\|\phi_{\vartheta_{t+1}}-\phi_{\vartheta_t}\|\) so that the margin absorbs
-exactly the perturbation the update can induce &mdash; keeping the
-certificate valid while the representation continues to adapt, rather than
-shrinking the gap itself.
-</p>
-<h3 style="color:#003366; margin-top:28px;">Main Theoretical Guarantees</h3>
-<ul>
-  <li>
-    <b>Theorem 1 (Surprise-Gated Parameter Drift &mdash; G1):</b>
-    \(\|\vartheta_{t+1}-\vartheta_t\|\leq\eta_{\max}L_\Delta/
-    (1+\sqrt{\mathcal{S}_t})\), with the induced model and encoder
-    perturbation shrinking at the same rate. The uniform bound
-    \(\mathrm{CFI}_t:=\|\phi_{\vartheta_{t+1}}-\phi_{\vartheta_t}\|/
-    \varepsilon_{\mathrm{cf}}\leq1\) follows as a <i>corollary</i> of the
-    design choice \(\eta_{\max}\leq\varepsilon_{\mathrm{cf}}/(L_\phi
-    L_\Delta)\), not as an independent guarantee &mdash; the substantive
-    content is that the perturbation the safety margin must absorb shrinks
-    precisely when the model is least trustworthy.
-  </li>
-  <li>
-    <b>Recursive feasibility &amp; ISS:</b> not claimed here as an original
-    result. A receding-horizon instantiation of the certificate inherits
-    these properties from standard robust-MPC arguments; SafeCF-SSM's own
-    contribution and experiments concern the certificate/monitor layer
-    itself, which is analyzed and validated directly.
-  </li>
-  <li>
-    <b>Proposition 1 + Corollaries 1&ndash;2 (Physical Safety &amp;
-    Realizability &mdash; G2):</b>
-    if \(\beta_{i,t}\geq L_{g,i}(r_{i,t}(\delta_i)+
-    \varepsilon_{\mathrm{dec},i})\) then
-    \(\mathbb{P}(\mathcal{G}_i(x_{t+1},u_t)\leq0)\geq1-\delta_i\)
-    (Prop.&nbsp;1); for a box constraint this is achievable
-    <i>if and only if</i>
-    \(\varepsilon_{\mathrm{dec},i}+r_{i,t}(\delta_i) &lt; b_i\)
-    (Cor.&nbsp;1, realizability) &mdash; a channel violating this bound
-    admits no certificate under the given codec, irrespective of the
-    control law. A probabilistic relaxation of the decoder-accuracy
-    assumption (Cor.&nbsp;2) gives
-    \(\mathbb{P}\geq1-\delta_i-\alpha_i\), the version used in every
-    reported experiment.
-    <i>This is a checkable, per-channel realizability condition that needs
-    no Lipschitz constant of the decoder and holds while the representation
-    continues to adapt.</i>
-  </li>
-</ul>
-<h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
-<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
-          padding:0.8em 1.2em; border-radius:6px;">
-Unlike prior latent-MPC work that establishes drift and feasibility
-guarantees in latent space only, assuming a fixed and exact representation,
-SafeCF-SSM does not assume the physical&ndash;latent gap can be closed. It
-makes the gap measurable through a per-channel realizability test that
-remains valid while the representation is re-identified online &mdash;
-certifying a channel, or explicitly declaring it uncertifiable, instead of
-assuming decoder accuracy away.
-</p>
-<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-<h2 style="color:#003366; margin-top:36px;">Simulation Study:
-3D Quadrotor under Rotor Failure</h2>
-<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
-          padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
-Can SafeCF-SSM certify safety, and correctly refuse to certify it, when a
-rotor partially fails mid-flight?
-</p>
-
-<!-- ================= VIDEO EMBED SECTION ================= -->
+<!-- ================= GRAPHICAL ABSTRACT SECTION ================= -->
 <div style="text-align:center; margin: 2rem 0; padding: 15px; background-color: #fcfcfc; border: 1px solid #eaeaea; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-  <video width="100%" style="max-width: 800px; border-radius: 6px; border: 1px solid #ccc;" controls preload="metadata" poster="thumbnail.jpg">
-    <source src="web_ready_video.mp4" type="video/mp4" />
-    Your browser does not support the video tag. Please <a href="web_ready_video.mp4">download the video</a> to view it.
-  </video>
+  <h3 style="color:#003366; margin-top:0; margin-bottom:15px;">Graphical Abstract</h3>
+  <img src="ani108.png" alt="Proposed Adaptive SafeCF Architecture" style="max-width: 100%; border-radius: 6px; border: 1px solid #ccc;" />
   <p style="font-size:0.9em; color:#444; margin-top:12px; margin-bottom:0; line-height:1.5;">
-    <b>Supplementary Video:</b> 3D Quadrotor operating under rotor failure. Note the immediate spike in the <b>surprise signal</b> \(\mathcal{S}_t\) at \(t_s=35\,\text{s}\) and the system correctly declining to certify the altitude channel (<i>"uncertifiable"</i>) rather than over-claiming safety.
+    <b>Adaptive Margin Architecture:</b> A batch-split estimator extracts score noise variance \(\hat{\varepsilon}_t\) from existing particles with zero overhead. This dynamically scales an adaptive margin \(\delta_t\), structurally preventing noise-induced spurious switching while rigorously preserving descent and finite-switching guarantees under nonstationary regimes.
   </p>
 </div>
 <!-- ======================================================= -->
 
+<div class="infoblock">
+<div class="blockcontent">
+  <span style="color:#00A6D6; font-weight:bold;">&#9654; Source Code:</span> <a href="https://thanana.github.io/RobustCF.html" target="_blank"><code>GitHub Repository</code></a>
+  <br/>
+  <span style="color:#00A6D6; font-weight:bold;">&#9654; IEEE Xplore:</span> <i>(Early Access Coming Soon)</i>
+</div>
+</div>
+
 <p>
-The quadrotor is a <i>controlled testbed</i>, not a target application: the
-latent bottleneck \(k=6&lt;n_s=8\) yields a <i>measurable</i>
-physical&ndash;latent problem, and the rotor fault a known distributional
-shift, isolating the phenomenon the theory addresses. A 3D quadrotor
-(\(n=12\) states, \(m=4\) inputs) undergoes rotor-1 efficiency loss
-\(\rho_t:1.0\to0.6\) at \(t_s=35\,\text{s}\), inducing yaw-torque asymmetry
-and lateral drift; from \(t=150\,\text{s}\) the altitude reference also
-descends \(2.0\to0.8\,\text{m}\) over \(30\,\text{s}\) and is then held, so
-the certificate must survive a commanded manoeuvre, not just a fixed
-set-point. The dynamics are:
-\[
-\dot{v} = \tfrac{1}{M}R(\phi,\theta,\psi)
-\begin{bmatrix}0\\0\\T_t\end{bmatrix}\!-ge_3,
-\qquad
-\dot{\omega} = J^{-1}(\tau - \omega\times J\omega),
-\]
-where \(T_t=\rho_t T_1+T_2+T_3+T_4\) and
-\(\tau=[\ell(T_2-T_4),\,\ell(T_3-\rho_t T_1),\,
-c_\tau(\rho_t T_1-T_2+T_3-T_4)]^\top\). The safety-relevant channels are
-\(s_t=[p_z,\phi,\theta,v_x,v_y,v_z,p,q]^\top\) (\(n_s=8\)); \(p_x,p_y,\psi,r\)
-are unconstrained and handled by the standard cascade outer loop.
-SafeCF-SSM identifies \(\hat\rho_t\) online via the generic update rule
-\[
-\hat\vartheta_{t+1} = (1-\eta_t)\hat\vartheta_t + \eta_t\hat\vartheta_t^\star,
-\quad
-\hat\vartheta_t^\star\in\arg\min_\vartheta
-\bigl\|z^{\mathrm{meas}}_{t+1}-f_\vartheta(z_t,u_t)\bigr\|^2,
-\quad
-\eta_t = \frac{\eta_{\max}}{1+\sqrt{\mathcal{S}_t}},
-\]
-with safety enforced via the adaptive margin \(\beta_{i,t}\) above.
+  <b>Cognitive Flexibility (CF)</b> resolves structural mismatch in Bayesian filtering by selecting, at each step, the structure minimizing an innovation-based predictive score. However, existing theory assumes exact scores, whereas practical particle filters corrupt them with bounded, conditionally zero-mean noise. Without protection, this noise induces <b>spurious switching</b> &mdash; degrading accuracy, inflating computational cost, and invalidating noiseless guarantees.
 </p>
-<table border="1" cellpadding="8" cellspacing="0"
-       style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
-  <tr style="background:#003366; color:#fff;">
-    <th>Parameter</th><th>Value</th>
-    <th>Parameter</th><th>Value</th>
-  </tr>
-  <tr>
-    <td>\(M\)</td><td>\(1.0\,\text{kg}\)</td>
-    <td>\(\ell\)</td><td>\(0.2\,\text{m}\)</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td>\(I_{xx},I_{yy}\)</td><td>\(0.01\,\text{kg\,m}^2\)</td>
-    <td>\(c_\tau\)</td><td>\(0.1\)</td>
-  </tr>
-  <tr>
-    <td>\(I_{zz}\)</td><td>\(0.02\,\text{kg\,m}^2\)</td>
-    <td>\(\rho_1\to\rho_2\)</td><td>\(1.0\to0.6\) at \(t_s=35\,\text{s}\)</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td>\(\sigma_w,\sigma_v\)</td><td>\(0.05,\,0.10\)</td>
-    <td>Encoder/decoder</td><td>\(k=6&lt;n_s=8&lt;n=12\)</td>
-  </tr>
-  <tr>
-    <td>Safety: \(p_z\)</td><td>\(\geq0.3\,\text{m}\)</td>
-    <td>Safety: \(|p_z-p_z^{\rm ref}|\)</td><td>\(\leq0.25\,\text{m}\)</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td>Safety: \(|\phi|\)</td><td>\(\leq15^\circ\)</td>
-    <td>Safety: \(|\theta|\)</td><td>\(\leq20^\circ\)</td>
-  </tr>
-</table>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+<h3 style="color:#003366;">The Solution: Adaptive Margin via Batch-Split Estimator</h3>
 <p>
-The encoder, decoder, and \(\rho\)-aware transition map are trained
-feedforward networks (\(8\to96\to64\to6\), \(6\to64\to96\to8\),
-\(11\to96\to64\to6\); \(\tanh\), residual transition), trained jointly on
-\(7\times10^4\) transitions with a reconstruction loss weighted toward the
-constrained channels &mdash; not an EKF or a hand-designed observer.
-</p>
-<p>
-Across \(10\) seeds (\(205\,\text{s}\) horizon), SafeCF-SSM holds
-\(99.5\%\) of post-failure steps inside the certified safe set versus
-\(46.6\%\) for a fixed-model predictive safety-filter (PSF) baseline, blind
-to the fault &mdash; its worst seed beats PSF's best seed. During the
-\(2\,\text{s}\) detection window immediately after the fault, SafeCF-SSM is
-briefly <i>worse</i> than PSF (\(52.5\%\) vs.\ \(77.5\%\)): no causal law
-can react before an innovation reveals the fault, and that window is
-exactly the interval the surprise-gated margin is built to cover &mdash;
-\(\mathcal{S}_t\) peaks there, so the margin is widest precisely when it is
-needed. After detection the two diverge sharply: \(99.6\%\) vs.\
-\(47.3\%\). Throughout, \(\mathrm{CFI}_t\leq1\) holds for every run
-(observed max \(0.138\)), and the true efficiency loss \(\rho=0.6\) is
-recovered from latent innovations alone
-(\(\rho^\star=0.600\)), converging within \(5\,\text{s}\) and holding
-\(0.58\)&ndash;\(0.62\) through the commanded descent.
-</p>
-<p>
-The same test also produces a <b>negative result</b>: under this codec, the
-altitude channel fails the realizability condition &mdash; its belief
-radius (\(0.31\,\text{m}\)) alone exceeds the residual corridor
-(\(0.06\,\text{m}\)) left after decoder-error tightening &mdash; and is
-declared <b>uncertifiable</b> for any control law, not merely for BMPC.
-Attitude (roll, pitch) remains certifiable, though conservatively
-(\(|\hat\theta|\leq13.2^\circ\) against the \(20^\circ\) specification), the
-price of \(k&lt;n_s\). This is the kind of conclusion a purely empirical
-controller comparison cannot produce.
-</p>
-<table border="1" cellpadding="6" cellspacing="0"
-       style="border-collapse:collapse; width:100%; font-size:0.85em; margin:1rem 0;">
-  <tr style="background:#003366; color:#fff;">
-    <th>Property / Metric</th><th>Result</th>
-  </tr>
-  <tr>
-    <td>Genuine latent bottleneck, \(k&lt;n_s\)</td>
-    <td>\(6 &lt; 8\) &#10003;</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td>False certificates, \(\theta\,/\,\phi\,/\,p_z\) (before &rarr; after tightening)</td>
-    <td>\(17\to7\)\,/\,\(30\to1\)\,/\,\(67\to2\) &#10003;</td>
-  </tr>
-  <tr>
-    <td>Residual rate vs.\ budget \(\alpha_i\)</td>
-    <td>\(\leq1.7\times10^{-4}\) vs.\ \(10^{-2}\) &#10003;</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td>Certifiable channel</td>
-    <td>\(\theta,\phi\) &#10003;;&nbsp; \(p_z\) &#10007; (empty set)</td>
-  </tr>
-  <tr>
-    <td>\(\rho\) identified from latent innovations</td>
-    <td>\(\arg\min=0.600\) &#10003;</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td>Post-failure occupancy, SafeCF&ndash;SSM vs.\ PSF</td>
-    <td>\(99.5\%\) vs.\ \(46.6\%\)</td>
-  </tr>
-  <tr>
-    <td>Detection transient / sustained, SafeCF&ndash;SSM</td>
-    <td>\(52.5\%\) / \(99.6\%\)</td>
-  </tr>
-  <tr style="background:#f9f9f9;">
-    <td>Detection transient / sustained, PSF</td>
-    <td>\(77.5\%\) / \(47.3\%\)</td>
-  </tr>
-</table>
-<p style="font-size:0.85em; color:#777;">
-Full per-channel breakdown, enforcement ablation, and the
-conservatism&ndash;authority trade-off across \(\alpha_i\) are reported in
-the manuscript (Table I).
-</p>
-<h2 style="color:#003366; margin-top:36px;">Reproducibility</h2>
-<p>
-Julia source code for the quadrotor benchmark is publicly available:
+We introduce a margin-based switching rule where a structural transition only occurs if the noisy score advantage of the challenger exceeds \(\delta_t\). To avoid relying on an offline, fixed worst-case bound, we developed a <b>zero-overhead online calibration</b> scheme:
 </p>
 <ul>
   <li>
-    <a href="https://raw.githubusercontent.com/Thanana/Thanana.github.io/master/safecf_ssm_quad3d_[150526].jl"
-       download="safecf_ssm_quad3d_[150526].jl">
-      <code>safecf_ssm_quad3d_[150526].jl</code></a>
-    &mdash; 3D quadrotor benchmark (\(n=12\) states, \(k=6&lt;n_s=8\),
-    partial rotor failure, Figs. 2&ndash;4, Table I)
+    <b>Batch-Split Estimator:</b> Partitions the \(N_p\) particles into \(B\) disjoint batches. The spread among these batches directly measures the approximation noise \(\hat{\varepsilon}_t\) without requiring any additional Monte Carlo simulations.
+  </li>
+  <li>
+    <b>Peak-Hold Envelope:</b> Passes \(\hat{\varepsilon}_t\) through a geometric envelope \(\bar{\varepsilon}_t = \max\{\hat{\varepsilon}_t, \lambda\bar{\varepsilon}_{t-1}\}\) to ensure it acts as a robust upper bound.
+  </li>
+  <li>
+    <b>Adaptive Margin \(\delta_t\):</b> Scales directly with the envelope (\(\delta_t = \max\{(2+\eta)\bar{\varepsilon}_{t-1}, \delta_{\min}\}\)), ensuring the effective margin \(\delta_t - 2\varepsilon_t\) remains strictly positive.
   </li>
 </ul>
+
+<h3 style="color:#003366; margin-top:28px;">Main Theoretical Guarantees</h3>
+<p>Replacing the static bound with our \(\mathcal{I}_t\)-adapted sequence, we formally prove that:</p>
+<ul>
+  <li>
+    <b>Expected Score Descent (Theorem 2):</b> \(\mathbb{E}[\Phi_{t}(s_{t+1})\mid\mathcal{I}_{t}] \leq \mathbb{E}[\Phi_{t}(s_{t})\mid\mathcal{I}_{t}]\)
+  </li>
+  <li>
+    <b>Finite Expected Switching (Theorem 3):</b> \(\mathbb{E}[N_T]\) is strictly bounded by cumulative score suboptimality scaled by the effective margin.
+  </li>
+  <li>
+    <b>Non-Chattering a.s. (Theorem 4):</b> Structure selection stabilizes almost surely as the system converges.
+  </li>
+</ul>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
+<h2 style="color:#003366; margin-top:36px;">Simulation Study: Li-Jilkov CV/CT Radar Tracking</h2>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+          padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
+Does the adaptive margin successfully suppress noise-induced false alarms without requiring manual tuning or compromising responsiveness?
+</p>
+<p>
+We validate the architecture on the classic Li-Jilkov manoeuvring target benchmark (Constant Velocity to Coordinated Turn). Crucially, <b>noise is not artificially injected</b>. Scores are genuine particle-filter estimates, meaning \(\epsilon_t(s)\) represents real Monte Carlo error. We impose a nonstationary budget schedule (\(N_p=4000\) dropping to \(N_p=60\)) to mimic a radar resource manager. This sudden drop in particles causes the noise scale to spike, rigorously testing the adaptive margin exactly when scores are least reliable.
+</p>
+
+<table border="1" cellpadding="6" cellspacing="0"
+       style="border-collapse:collapse; width:100%; font-size:0.85em; margin:1rem 0;">
+  <tr style="background:#003366; color:#fff;">
+    <th>Property / Metric</th><th>Unprotected CF (\(\delta=0\))</th><th>Adaptive Margin \(\delta_t\)</th>
+  </tr>
+  <tr>
+    <td>False Alarms (FA) on \(\mathcal{S}_2\)</td>
+    <td>12.9</td>
+    <td><b>1.9</b> (10x reduction)</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td>False Alarms (FA) on \(\mathcal{S}_4\)</td>
+    <td>32.7</td>
+    <td><b>2.8</b> (10x reduction)</td>
+  </tr>
+  <tr>
+    <td>Accuracy at Full Budget (\(\mathcal{S}_2\))</td>
+    <td>0.840</td>
+    <td><b>0.943</b> (Matches Oracle \(\delta^\star\))</td>
+  </tr>
+  <tr style="background:#f9f9f9;">
+    <td>Delay at Maneuver Onset (\(D_1\))</td>
+    <td>1.0</td>
+    <td>1.4 (Highly responsive)</td>
+  </tr>
+  <tr>
+    <td>Extra Monte Carlo Cost</td>
+    <td>None</td>
+    <td><b>Zero</b> (Reuses existing particles)</td>
+  </tr>
+</table>
+<p style="font-size:0.85em; color:#777;">
+By explicitly adapting to the nonstationary noise envelope, the proposed rule cuts false alarms tenfold and matches the offline oracle calibration without requiring any manual tuning in deployment.
+</p>
+
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
 <footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
      background-color:#f9f9f9; border-top:1px solid #ddd;">
