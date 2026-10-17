@@ -47,7 +47,7 @@ Neural Belief Corrections for MPC: Plan-Consistent Scalar Budgets
 versus Myopic Directional Constraints
 </h1>
 <p style="text-align:center; color:#555; font-size:0.95em;">
-<br/>
+Thanana Nuchkrua, Xiaoqi Liu, and Sudchai Boonto<br/>
 <i>Technical Note submitted to IEEE Transactions on Automatic Control, 2026</i>
 </p>
 </div>
@@ -84,13 +84,8 @@ style="vertical-align:middle; margin-left:6px;" /> Julia source code and data:
 <li>
 <a href="NeuralBeliefMPC_code.zip" download="NeuralBeliefMPC_code.zip">
 <code>NeuralBeliefMPC_code.zip</code></a>
-&mdash; replay, closed-loop and figure scripts (Julia) and analysis scripts (Python), with README (0.3&nbsp;MB)
-</li>
-<li>
-<a href="https://github.com/Thanana/Thanana.github.io/releases/download/NeuralBeliefMPC-v1/TAC_TN_controller_aware_evidence.zip">
-<code>TAC_TN_controller_aware_evidence.zip</code></a>
-&mdash; complete archive: pinned Julia environments, trained checkpoints, raw records of all
-600 pendulum and 120 PAM episodes, frozen-context studies, closed-loop results and SHA-256 hashes (217&nbsp;MB)
+&mdash; Julia code with pinned environments and trained checkpoints, Python analysis
+scripts, packed replay contexts, and every pooled context and closed-loop result, with README (13&nbsp;MB)
 </li>
 </ul>
 </div></div>
@@ -278,16 +273,15 @@ logs bit for bit.
 <li>
 <a href="NeuralBeliefMPC_code.zip" download="NeuralBeliefMPC_code.zip">
 <code>NeuralBeliefMPC_code.zip</code></a>
-&mdash; scripts only: <code>revision/julia/run_all.sh</code> (replay and frozen-context extraction),
+&mdash; <code>revision/julia/run_all.sh</code> (replay and frozen-context extraction),
 <code>revision/julia/closed_loop/</code> (closed-loop deployment),
 <code>revision/analysis/</code> (pooled study, certificates, Proposition 3 constants)
 </li>
-<li>
-<a href="https://github.com/Thanana/Thanana.github.io/releases/download/NeuralBeliefMPC-v1/TAC_TN_controller_aware_evidence.zip">
-<code>TAC_TN_controller_aware_evidence.zip</code></a>
-&mdash; complete archive with data, checkpoints, raw records, README and SHA-256 hashes
-</li>
 </ul>
+<p>
+Raw per-tick records of all 600 pendulum and 120 PAM episodes (about 280&nbsp;MB) are
+available from the authors on request.
+</p>
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
 <footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
 background-color:#f9f9f9; border-top:1px solid #ddd;">
