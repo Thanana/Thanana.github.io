@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Neural Belief MPC | IEEE TAC</title>
+<script type="text/javascript" async
+src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<!-- Left navigation -->
+<td id="layout-menu">
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
+<div class="menu-category">Research</div>
+<div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+<div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+<div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+<div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+<div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+<div class="menu-item"><a href="RobustCF.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
+<div class="menu-item"><a href="SafeCF-SSM.html">SafeCF-SSM</a></div>
+<div class="menu-item"><a href="NeuralBeliefMPC.html" class="current">Neural&nbsp;Belief&nbsp;MPC</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+</td>
+<!-- Main content -->
+<td id="layout-content">
+<div id="toptitle">
+<h1 style="color:#003366; text-align:center; margin-top:30px;">
+Neural Belief Corrections for MPC: Plan-Consistent Scalar Budgets
+versus Myopic Directional Constraints
+</h1>
+<p style="text-align:center; color:#555; font-size:0.95em;">
+Thanana Nuchkrua, Xiaoqi Liu, and Sudchai Boonto<br/>
+<i>Technical Note submitted to IEEE Transactions on Automatic Control, 2026</i>
+</p>
+</div>
+<!-- Loop Banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
+box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+<p style="margin:0; font-size:0.95em; color:#003366;">
+<span style="color:#00A6D6;"><b>Reference belief \(\mathfrak{B}^r_t\)</b></span> &rarr;
+<span style="color:#0077AA;"><b>Neural proposal \((m,P)\)</b></span> &rarr;
+<span style="color:#0099CC;"><b>Budgets \(\delta_E,\ \varepsilon_B\)</b></span> &rarr;
+<span style="color:#00A6D6;"><b>MPC cell \(\mathcal{C}\)</b></span> &rarr;
+<span style="color:#003366;"><b>Input tolerances \(\bar u_c,\ \bar u_a\)</b></span>
+</p>
+<p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+The controller's input tolerances fix how far a neural observer may move its
+belief. A single scalar budget keeps the whole predicted input plan within
+tolerance; constraining only the applied input admits corrections that later
+inputs amplify &mdash; and in closed loop, plan consistency is still not safety.
+</p>
+</div>
+<div class="infoblock">
+<div class="blockcontent">
+<span style="color:#00A6D6; font-weight:bold;">&#9654; Supplementary Video S1:</span>
+<a href="NeuralBeliefMPC/TAC_TN_Supplementary_Video_S1.mp4" target="_blank"><code>TAC_TN_Supplementary_Video_S1.mp4</code></a> (94&nbsp;s)
+<br/>
+Supplementary document (7 pages):
+<a href="NeuralBeliefMPC/NeuralBeliefMPC_supplement.pdf" target="_blank"><code>NeuralBeliefMPC_supplement.pdf</code></a>
+<p>
+<img src="Julia_powerful.pdf" alt="Julia-powered" width="100"
+style="vertical-align:middle; margin-left:6px;" /> Julia source code and data:
+</p>
+<ul>
+<li>
+<a href="NeuralBeliefMPC/NeuralBeliefMPC_code.zip" download="NeuralBeliefMPC_code.zip">
+<code>NeuralBeliefMPC_code.zip</code></a>
+&mdash; replay, closed-loop and figure scripts (Julia) and analysis scripts (Python), with README (0.3&nbsp;MB)
+</li>
+<li>
+<a href="https://github.com/Thanana/Thanana.github.io/releases/download/NeuralBeliefMPC-v1/TAC_TN_controller_aware_evidence.zip">
+<code>TAC_TN_controller_aware_evidence.zip</code></a>
+&mdash; complete archive: pinned Julia environments, trained checkpoints, raw records of all
+600 pendulum and 120 PAM episodes, frozen-context studies, closed-loop results and SHA-256 hashes (217&nbsp;MB)
+</li>
+</ul>
+</div></div>
+
+<p>
+<b>Neural Belief MPC</b> asks a simple question about online-adapted neural
+observers: <i>how far may the observer move its belief before the controller's
+input changes by more than a prescribed tolerance?</i> We answer it with two
+certified belief budgets set directly from the input tolerances, and then show
+what happens when the simple scalar budget is replaced by sharper,
+controller-direction constraints.
+</p>
+
+<div style="text-align:center; margin:1.5rem 0;">
+<img src="NeuralBeliefMPC/pipeline.png" alt="CF observer at one decision tick" style="max-width:100%; border:1px solid #eee; border-radius:6px;" />
+<p style="font-size:0.85em; color:#555; margin-top:8px;">
+CF observer at one decision tick: the reference and the replay cache inform
+accept/hold; the projected belief feeds the controller.
+</p>
+</div>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h3 style="color:#003366;">What Is the Problem?</h3>
+<p>
+An online-adapted neural observer changes the belief from which a
+certainty-equivalent MPC computes its input in two distinct ways at every
+tick: the encoder <b>corrects</b> a reference belief, and accepted parameter
+<b>updates</b> move the belief computed from the same context.
+Prediction-score descent bounds neither change, whereas a control designer
+thinks in tolerances on input changes. The question is which belief budgets
+guarantee prescribed input tolerances &mdash; and how conservative the
+simplest such budget is.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Two Budgets and a Design Rule</h3>
+<ul>
+<li>
+<b>Every-correction budget (Theorem 1):</b> each deployed correction obeys
+\(W_2(b_g,b_r)\le\delta_E\) with respect to its reference, including ticks
+without adaptation.
+</li>
+<li>
+<b>Same-context update budget (Theorem 2):</b> every accepted parameter update
+moves the belief computed from the same context by at most
+\(\varepsilon_B\) &mdash; a limit the correction budget alone cannot enforce.
+</li>
+<li>
+<b>Controller-to-observer rule (Corollary 1):</b> inside a known affine MPC cell
+\(\mathcal{C}\) with gain \(g_M=\|K_MS_x\|_2\),
+\[
+\delta_E\le\min\{\delta_{\mathcal C}(\widehat x_r),\ \bar u_c/g_M\},\qquad
+\varepsilon_B\le\bar u_a/g_M
+\]
+keeps the current QP feasible and bounds correction- and adaptation-induced
+input changes by \(\bar u_c\) and \(\bar u_a\), without a true-state error bound.
+</li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">Scalar Budget versus Directional Constraints</h3>
+<p>
+The scalar rule is a ball; the controller only "sees" the directions in the
+row space of its input map. Constraining those directions directly over the
+first \(H\) predicted inputs gives a larger set \(\mathcal{D}_B\supseteq\mathcal{S}_B\).
+</p>
+<ul>
+<li>
+<b>Theorem 3 (Scalar-envelope conservatism):</b> \(\mathcal S_B\subseteq\mathcal D_B\),
+with a nested-projection inequality; the extra corrections admitted by
+\(\mathcal D_B\) lie, up to an explicit margin, in \(\ker G_H\).
+</li>
+<li>
+<b>Proposition 3 (Plan consistency and myopia):</b> the scalar ball keeps all
+\(N\) predicted correction-induced inputs within \(\bar u_c\); with \(H=1\),
+later predicted inputs can be driven up to
+\(\gamma_k\sqrt{\tau^{\star2}-r_s^2}\), and under nominal propagation the
+next applied inputs and states are amplified by explicit factors.
+</li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px;">
+Admitting more belief motion in directions the current input does not see is
+not free: later inputs see it. Constraining the whole horizon restores plan
+consistency, but plan consistency is not safety &mdash; for this observer the
+scalar rule's conservatism is protective, and admitting more belief motion
+requires independent evidence that the proposal is accurate.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h2 style="color:#003366; margin-top:36px;">Simulation Study: Single and Double Inverted Pendulum</h2>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
+Do sharper, controller-aware belief constraints help a neural observer in
+closed loop with MPC?
+</p>
+
+<!-- ================= VIDEO EMBED SECTION ================= -->
+<div style="text-align:center; margin: 2rem 0; padding: 15px; background-color: #fcfcfc; border: 1px solid #eaeaea; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+<video width="100%" style="max-width: 800px; border-radius: 6px; border: 1px solid #ccc;" controls="controls" preload="metadata" poster="NeuralBeliefMPC/poster.png">
+<source src="NeuralBeliefMPC/TAC_TN_Supplementary_Video_S1.mp4" type="video/mp4" />
+Your browser does not support the video tag. Please <a href="NeuralBeliefMPC/TAC_TN_Supplementary_Video_S1.mp4">download the video</a> to view it.
+</video>
+<p style="font-size:0.9em; color:#444; margin-top:12px; margin-bottom:0; line-height:1.5;">
+<b>Supplementary Video S1:</b> Part 1 replays the saved Double-IP dropout run
+(seed 96301, 0.5&times; playback); Part 2 animates the closed-loop comparison
+after a last-pole mass change: the original map and the scalar rule stay within
+limits, whereas the directional variants violate them.
+</p>
+</div>
+<!-- ======================================================= -->
+
+<p>
+The plants are the official DeepMind Control Suite cart&ndash;pole and its
+two-pole generator, simulated in MuJoCo with RK4 at a 20&nbsp;ms control tick.
+Positions and angles are measured with noise, velocities are hidden, and five
+profiles (nominal, last-pole mass +50%, angle bias, angle dropout, combined)
+are run with five seeds per plant. A horizon-50 constrained MPC uses the
+observer's belief.
+</p>
+<table border="1" cellpadding="8" cellspacing="0"
+style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
+<tr style="background:#003366; color:#fff;">
+<th>Study</th><th>Scale</th><th>Main finding</th>
+</tr>
+<tr>
+<td>Frozen contexts, \(H=1\)</td><td>4633 contexts from 50 replayed episodes</td>
+<td>Later predicted inputs reach \(18.7\times\) the tolerance</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Frozen contexts, \(H=N\)</td><td>same contexts</td>
+<td>Plan within tolerance; Double-IP proposal distortion reduced by 9.6&ndash;30.5% (median); not more accurate against truth</td>
+</tr>
+<tr>
+<td>Closed loop</td><td>300 runs (2 plants &times; 25 episodes &times; 3 maps &times; 2 tolerances)</td>
+<td>Directional variants lose most originally safe Double-IP episodes</td>
+</tr>
+</table>
+
+<p>
+Closed-loop Double IP, 25 episodes per entry, correction tolerance
+\(\bar u_c=0.001/0.01\)&nbsp;N:
+</p>
+<table border="1" cellpadding="6" cellspacing="0"
+style="border-collapse:collapse; width:100%; font-size:0.85em; margin:1rem 0;">
+<tr style="background:#003366; color:#fff;">
+<th>Deployed mean</th><th>Zero-violation episodes</th><th>Tracking RMSE [deg]</th><th>Plan change \(\max_k|G_kd|/\bar u_c\)</th>
+</tr>
+<tr>
+<td>Original radial map</td><td>17 / 17</td><td>0.89 / 0.89</td><td>&ndash;</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Scalar rule</td><td>16 / 17 (15 of the original 17 retained)</td><td>2.34 / 2.29</td><td>0.21 / 0.21</td>
+</tr>
+<tr>
+<td>Directional, \(H=1\)</td><td>9 / 8</td><td>2.99 / 3.11</td><td>67.9 / 6.08</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Directional, \(H=N\)</td><td>1 / 2</td><td>688 / 321</td><td>1.00 / 1.00</td>
+</tr>
+</table>
+<p style="font-size:0.85em; color:#777;">
+Tracking is the median over the 15 episodes that are safe under both the
+original map and the scalar rule. In the Single IP all three maps keep 25/25
+episodes safe with the original 0.34&deg; median tracking. A separate
+PAM-inspired surrogate study is reported in the manuscript and Supplement S6.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Scope</h3>
+<p>
+The certificates hold in exact arithmetic under the stated covariance, domain
+and cell assumptions; they bound belief and input changes, not true-state
+estimation error. The trials establish neither an adaptation or covariance
+benefit nor nonlinear safety or recursive feasibility.
+</p>
+
+<h2 style="color:#003366; margin-top:36px;">Reproducibility</h2>
+<p>
+All simulations, observers and MPC run in Julia 1.12.1 with pinned
+environments; post hoc projection studies and certificates use Python
+(NumPy, CVXPY/Clarabel, SciPy). The 50 replays reproduce the archived test
+logs bit for bit.
+</p>
+<ul>
+<li>
+<a href="NeuralBeliefMPC/NeuralBeliefMPC_code.zip" download="NeuralBeliefMPC_code.zip">
+<code>NeuralBeliefMPC_code.zip</code></a>
+&mdash; scripts only: <code>revision/julia/run_all.sh</code> (replay and frozen-context extraction),
+<code>revision/julia/closed_loop/</code> (closed-loop deployment),
+<code>revision/analysis/</code> (pooled study, certificates, Proposition 3 constants)
+</li>
+<li>
+<a href="https://github.com/Thanana/Thanana.github.io/releases/download/NeuralBeliefMPC-v1/TAC_TN_controller_aware_evidence.zip">
+<code>TAC_TN_controller_aware_evidence.zip</code></a>
+&mdash; complete archive with data, checkpoints, raw records, README and SHA-256 hashes
+</li>
+</ul>
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
+background-color:#f9f9f9; border-top:1px solid #ddd;">
+<div id="footer-text"
+style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+&copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp;
+Control &amp; Robotics Research Group
+</div>
+</footer>
+</td>
+</tr>
+</table>
+</body>
+</html>
