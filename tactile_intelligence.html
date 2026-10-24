@@ -1,234 +1,344 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>Tactile Intelligence Loop</title>
-
-<!-- MathJax -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Tactile Intelligence | Thanana Nuchkrua</title>
 <script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
+MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
 </script>
-
-<!-- TU Delft–style aesthetic -->
-<style>
-/* -------------------------------
-   TU Delft–style visual harmony
---------------------------------*/
-body {
-  background: linear-gradient(180deg, #ffffff 0%, #f6f9fb 100%);
-  color: #1a1a1a;
-  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.75;
-  margin: 0;
-  padding: 0 10%;
-  font-size: 16px;
-  animation: fadeIn 0.8s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Title & quote */
-h1 {
-  color: #00407a;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  margin-top: 60px;
-  text-shadow: 0px 1px 2px rgba(0,0,0,0.1);
-}
-#quote {
-  color: #00A6D6;
-  font-style: italic;
-  text-align: center;
-  margin-top: 10px;  
-  margin-bottom: 40px;
-  font-weight: 400;
-}
-
-/* Headings */
-h2 {
-  color: #003366;
-  margin-top: 30px;
-  font-weight: 600;
-}
-
-/* Paragraphs */
-p {
-  text-align: justify;
-  margin: 15px 0;
-}
-
-/* Lists */
-ul {
-  margin: 15px 0 15px 30px;
-  line-height: 1.7;
-}
-ul li strong {
-  color: #004c8c;
-}
-
-/* Image styling */
-img {
-  display: block;
-  margin: 40px auto 20px auto;
-  border-radius: 0px;
- /* box-shadow: 0 4px 14px rgba(0,0,0,0.12); */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-}
-
-/* Figure caption */
-p[style*="font-size:0.9em"] {
-  color: #555 !important;
-  font-style: italic;
-}
-
-/* Footer */
-#footer {
-  text-align: center;
-  font-size: 0.85em;
-  color: #888;
-  margin-top: 60px;
-  border-top: 1px solid #e0e0e0;
-  padding-top: 20px;
-}
-#footer a {
-  color: #00A6D6;
-  text-decoration: none;
-}
-#footer a:hover {
-  text-decoration: underline;
-}
-
-/* Back link */
-a[href="index.html"] {
-  display: inline-block;
-  margin-top: 40px;
-  text-decoration: none;
-  font-weight: 500;
-  color: #00407a !important;
-  transition: color 0.2s ease;
-}
-a[href="index.html"]:hover {
-  color: #00A6D6 !important;
-}
+<style type="text/css">
+.ti-quote { text-align:center; color:#00A6D6; font-style:italic; font-size:1.1em; margin:6px 0 26px 0; }
+.ti-lead { font-size:1.02em; line-height:1.75; text-align:justify; }
+.ti-fig { text-align:center; margin:26px 0 8px 0; }
+.ti-fig svg { width:100%; height:auto; }
+.ti-cap { font-size:0.88em; color:#555; text-align:left; margin:6px 4% 24px 4%; line-height:1.55; }
+.ti-cap b { color:#003366; }
+.ti-h { color:#003366; margin-top:30px; border-bottom:2px solid #e6eef4; padding-bottom:4px; }
+.ti-grid { display:flex; flex-wrap:wrap; gap:14px; margin:14px 0; }
+.ti-card { flex:1 1 220px; background:#f5f9fb; border-left:4px solid #00A6D6; border-radius:6px; padding:10px 14px; font-size:0.94em; line-height:1.6; }
+.ti-card b { color:#003366; }
+.ti-eq { background:#fafcfd; border:1px solid #e6eef4; border-radius:6px; padding:6px 12px; margin:12px 0; overflow-x:auto; }
+.ti-rq { counter-reset:rq; list-style:none; padding-left:0; }
+.ti-rq li { counter-increment:rq; margin:10px 0; padding-left:42px; position:relative; line-height:1.65; }
+.ti-rq li:before { content:"Q" counter(rq); position:absolute; left:0; top:0; background:#003366; color:#fff; font-size:0.8em; font-weight:bold; border-radius:4px; padding:1px 7px; }
+.ti-motto { text-align:center; margin-top:44px; }
+.ti-motto p { margin:4px 0; }
 </style>
 </head>
-
 <body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
+<div class="menu-category">Research</div>
+<div class="menu-item"><a href="tactile_intelligence.html" class="current">Tactile&nbsp;Intelligence</a></div>
+<div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+<div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+<div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+<div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+<div class="menu-item"><a href="RobustCF.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
+<div class="menu-item"><a href="SafeCF-SSM.html">SafeCF-SSM</a></div>
+<div class="menu-item"><a href="NeuralBeliefMPC.html">Neural&nbsp;Belief&nbsp;MPC</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+</td>
+<td id="layout-content">
+
 <div id="toptitle">
-  <h1>Tactile Intelligence </h1>
+<h1 style="color:#003366; text-align:center; margin-top:30px;">Tactile Intelligence</h1>
 </div>
-<h2 id="quote">“To touch is to understand — robots that learn as they feel.”</h2>
+<p class="ti-quote">&ldquo;To touch is to understand &mdash; robots that learn as they feel.&rdquo;</p>
 
+<p class="ti-lead">
+Robots now see and plan well, yet they still fail at the moment of contact.
+Friction changes, objects slip, and the contact patch is hidden from cameras,
+so the quantities that matter most for manipulation are the ones a robot can
+measure least directly. <b>Tactile intelligence</b> treats touch as a
+<i>closed loop</i>: tactile signals update a belief about the hidden contact
+state, an uncertainty-aware controller acts on that belief, and the action
+itself creates the next tactile measurement.
+</p>
+
+<!-- Figure 1: the loop (icon style) -->
+<div class="ti-fig">
+<svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tactile intelligence loop: touch, infer, decide, act">
+<defs>
+<marker id="k1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#000"/></marker>
+</defs>
+<g font-family="Times New Roman, Times, serif" fill="#000">
+<!-- ring arcs -->
+<path d="M 450 92 A 150 150 0 0 1 528 196" fill="none" stroke="#000" stroke-width="1.3" marker-end="url(#k1)"/>
+<path d="M 520 270 A 150 150 0 0 1 440 336" fill="none" stroke="#000" stroke-width="1.3" marker-end="url(#k1)"/>
+<path d="M 312 336 A 150 150 0 0 1 238 266" fill="none" stroke="#000" stroke-width="1.3" marker-end="url(#k1)"/>
+<path d="M 232 196 A 150 150 0 0 1 310 92" fill="none" stroke="#000" stroke-width="1.3" marker-end="url(#k1)"/>
+
+<!-- centre: belief -->
+<g transform="translate(340,170)">
+ <path d="M0,62 C18,62 22,4 40,4 C58,4 62,62 80,62 Z" fill="#c9d3f3" stroke="#1f3fae" stroke-width="1.6"/>
+ <line x1="40" y1="0" x2="40" y2="62" stroke="#7f93e0" stroke-dasharray="4 3"/>
+ <line x1="-6" y1="62" x2="86" y2="62" stroke="#777" stroke-width="0.8"/>
+</g>
+<text x="380" y="255" text-anchor="middle" font-size="16">Belief over contact state</text>
+<text x="380" y="274" text-anchor="middle" font-size="15" font-style="italic">p<tspan font-style="normal">(</tspan>z<tspan font-size="10" dy="4">t</tspan><tspan dy="-4" font-style="normal"> | history)</tspan></text>
+
+<!-- 1 Touch (top): pressure grid -->
+<g transform="translate(348,10)" stroke="#1f3fae" stroke-width="1">
+ <rect x="0" y="0" width="16" height="16" fill="#eef1fb"/><rect x="16" y="0" width="16" height="16" fill="#c9d3f3"/><rect x="32" y="0" width="16" height="16" fill="#eef1fb"/><rect x="48" y="0" width="16" height="16" fill="#eef1fb"/>
+ <rect x="0" y="16" width="16" height="16" fill="#c9d3f3"/><rect x="16" y="16" width="16" height="16" fill="#3550c4"/><rect x="32" y="16" width="16" height="16" fill="#7f93e0"/><rect x="48" y="16" width="16" height="16" fill="#eef1fb"/>
+ <rect x="0" y="32" width="16" height="16" fill="#eef1fb"/><rect x="16" y="32" width="16" height="16" fill="#7f93e0"/><rect x="32" y="32" width="16" height="16" fill="#1f3fae"/><rect x="48" y="32" width="16" height="16" fill="#c9d3f3"/>
+</g>
+<text x="380" y="78" text-anchor="middle" font-size="16"><tspan font-weight="bold">1</tspan>  Touch: tactile signals <tspan font-style="italic">y</tspan><tspan font-size="10" dy="4">t</tspan></text>
+
+<!-- 2 Infer (right): neural net -->
+<g transform="translate(560,160)" stroke="#9b2d9b" stroke-width="0.9">
+ <g opacity="0.55">
+ <line x1="6" y1="10" x2="36" y2="0"/><line x1="6" y1="10" x2="36" y2="34"/><line x1="6" y1="10" x2="36" y2="68"/>
+ <line x1="6" y1="58" x2="36" y2="0"/><line x1="6" y1="58" x2="36" y2="34"/><line x1="6" y1="58" x2="36" y2="68"/>
+ <line x1="36" y1="0" x2="66" y2="18"/><line x1="36" y1="34" x2="66" y2="18"/><line x1="36" y1="68" x2="66" y2="18"/>
+ <line x1="36" y1="0" x2="66" y2="50"/><line x1="36" y1="34" x2="66" y2="50"/><line x1="36" y1="68" x2="66" y2="50"/>
+ </g>
+ <g fill="#f3e3f3"><circle cx="6" cy="10" r="5"/><circle cx="6" cy="58" r="5"/><circle cx="36" cy="0" r="5"/><circle cx="36" cy="34" r="5" fill="#9b2d9b"/><circle cx="36" cy="68" r="5"/><circle cx="66" cy="18" r="5"/><circle cx="66" cy="50" r="5"/></g>
+</g>
+<text x="595" y="256" text-anchor="middle" font-size="16"><tspan font-weight="bold">2</tspan>  Infer</text>
+<text x="595" y="275" text-anchor="middle" font-size="14">latent stochastic model</text>
+
+<!-- 3 Decide (bottom): predicted plan -->
+<g transform="translate(338,328)">
+ <line x1="0" y1="4" x2="84" y2="4" stroke="#888" stroke-dasharray="6 4"/>
+ <line x1="0" y1="52" x2="84" y2="52" stroke="#888" stroke-dasharray="6 4"/>
+ <path d="M6,40 C24,36 30,22 48,24 C62,26 70,16 80,18" fill="none" stroke="#e0701a" stroke-width="2.2"/>
+ <circle cx="6" cy="40" r="3.4" fill="#e0701a"/><circle cx="48" cy="24" r="3.4" fill="#e0701a"/><circle cx="80" cy="18" r="3.4" fill="#e0701a"/>
+</g>
+<text x="380" y="404" text-anchor="middle" font-size="16"><tspan font-weight="bold">3</tspan>  Decide: uncertainty-aware MPC / RL, <tspan font-style="italic">u</tspan><tspan font-size="10" dy="4">t</tspan><tspan dy="-4"> = </tspan><tspan font-style="italic">&#960;</tspan>(<tspan font-style="italic">b</tspan><tspan font-size="10" dy="4">t</tspan><tspan dy="-4">)</tspan></text>
+
+<!-- 4 Act (left): gripper -->
+<g transform="translate(122,150)">
+ <rect x="22" y="0" width="40" height="12" fill="#555"/>
+ <rect x="22" y="12" width="9" height="40" fill="#555"/>
+ <rect x="53" y="12" width="9" height="40" fill="#555"/>
+ <rect x="33" y="26" width="18" height="34" rx="3" fill="#f6dcc4" stroke="#e0701a" stroke-width="1.6"/>
+ <path d="M27,64 q4,6 8,0 q4,-6 8,0 q4,6 8,0 q4,-6 8,0" fill="none" stroke="#e0701a" stroke-width="1.4"/>
+</g>
+<text x="164" y="256" text-anchor="middle" font-size="16"><tspan font-weight="bold">4</tspan>  Act</text>
+<text x="164" y="275" text-anchor="middle" font-size="14">grip force, surface haptics</text>
+</g>
+</svg>
+</div>
+<p class="ti-cap"><b>Figure 1.</b> The tactile intelligence loop. Contact produces
+tactile signals (1); a latent stochastic model turns them into a belief over the
+hidden contact state&mdash;slip, friction, object pose (2); a controller plans
+with that belief and its uncertainty (3); and the resulting grip or surface-haptic
+action changes the contact, which produces the next measurement (4).</p>
+
+<h2 class="ti-h">Motivation</h2>
 <p>
-  Despite remarkable advances in perception and planning, modern robots still struggle with <em>contact-rich interactions</em>. 
-  Friction, slip, and occlusion introduce uncertainty at the very interface between robot and world. 
-  The <strong>Tactile Intelligence Loop</strong> envisions a unified architecture where <em>sensing, inference, and control</em> 
-  form a continuous cycle — allowing robots to learn and reason through the act of touch itself.
+I want robots that can <b>feel, adapt, and decide</b> through touch. My work
+in robust, adaptive and Bayesian model predictive control, combined with
+reinforcement learning, suggests a shift in viewpoint: compliance need not be
+only a passive mechanical property; it can be an <b>active principle of
+intelligence</b>. A compliant robot should not resist uncertainty at contact,
+but yield to it, interpret it, and learn from it&mdash;while still meeting the
+safety and stability guarantees that control theory demands.
 </p>
 
-<img src="tactile_intelligence_loop.png" width="400" alt="Tactile Intelligence Loop diagram" />
-<p style="font-size:0.9em; color:#666; text-align:center;">
-</p>
-
-<h2>Motivation</h2>
+<h2 class="ti-h">Problem formulation</h2>
 <p>
-  I am driven by the vision of robots that can <strong>feel, adapt, and decide</strong> through tactile experience.  
-  My long-term goal is to bridge <em>tactile sensing</em> with <em>policy learning and model-based control</em>, 
-  enabling robots to interact with their environments as fluidly and intuitively as humans do.
+Let \(z_t\) be the latent contact state (e.g., slip velocity, friction
+coefficient, object pose), \(u_t\) the grip or haptic command, and \(y_t\) the
+tactile measurement, which is noisy and only partially informative:
 </p>
-
+<div class="ti-eq">
+\[
+z_{t+1}=f_\vartheta(z_t,u_t)+w_t,\qquad
+y_t=h_\psi(z_t)+\nu_t,\qquad
+b_t=p\bigl(z_t\mid y_{0:t},u_{0:t-1}\bigr).
+\]
+</div>
 <p>
-  Building upon my research in <strong>robust, adaptive, and Bayesian model predictive control</strong>—augmented by reinforcement learning— 
-  I aim to transform compliance from a passive mechanical property into an <strong>active principle of intelligence</strong>. 
-  This idea evolves into a <em>closed tactile intelligence loop</em>: coupling tactile perception, stochastic state inference, 
-  and uncertainty-aware control to achieve dexterous, human-compatible manipulation.
+The controller chooses actions from the belief \(b_t\), not from the true state:
 </p>
-
+<div class="ti-eq">
+\[
+u_t=\pi(b_t)=\arg\min_{u_{t:t+N-1}}\ \mathbb{E}_{b_t}\!\Bigl[\sum_{k=0}^{N-1}\ell(z_{t+k},u_{t+k})\Bigr]
+\quad\text{s.t.}\quad \Pr\bigl(\text{slip}_{t+k}\bigr)\le\epsilon .
+\]
+</div>
 <p>
-  This pursuit embodies my broader philosophy of <em>compliant intelligence</em>—that robots should not resist uncertainty, 
-  but rather yield, interpret, and learn from it. By merging the physics of touch with the mathematics of control and learning, 
-  we move closer to robots that are safe, adaptable, and profoundly aware.
+The central difficulty is that \(f_\vartheta\) and \(h_\psi\) are learned and
+adapt online, so the belief that the controller trusts can itself change in
+ways that are not safe. Making that interface safe is the common thread of
+my current work.
 </p>
 
-<h2>Core Ideas</h2>
-<ul>
-  <li><strong>Latent tactile state:</strong> deep stochastic state-space models capturing uncertainty and temporal structure.</li>
-  <li><strong>Policy optimization:</strong> reinforcement learning for long-term adaptation; MPC for constraint-aware decision-making.</li>
-  <li><strong>Bidirectional touch:</strong> surface haptics to actively modulate fingertip friction—blurring the line between sensing and communication.</li>
+<!-- Figure 2: closed tactile pipeline (icon style of the TAC observer figure) -->
+<div class="ti-fig">
+<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Closed tactile pipeline">
+<defs>
+<marker id="k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#000"/></marker>
+</defs>
+<g font-family="Times New Roman, Times, serif" fill="#000">
+<!-- 1 tactile sensing: pressure grid -->
+<g transform="translate(55,30)">
+ <g stroke="#1f3fae" stroke-width="1">
+ <rect x="0" y="0" width="16" height="16" fill="#eef1fb"/><rect x="16" y="0" width="16" height="16" fill="#c9d3f3"/><rect x="32" y="0" width="16" height="16" fill="#eef1fb"/><rect x="48" y="0" width="16" height="16" fill="#eef1fb"/>
+ <rect x="0" y="16" width="16" height="16" fill="#c9d3f3"/><rect x="16" y="16" width="16" height="16" fill="#3550c4"/><rect x="32" y="16" width="16" height="16" fill="#7f93e0"/><rect x="48" y="16" width="16" height="16" fill="#eef1fb"/>
+ <rect x="0" y="32" width="16" height="16" fill="#eef1fb"/><rect x="16" y="32" width="16" height="16" fill="#7f93e0"/><rect x="32" y="32" width="16" height="16" fill="#1f3fae"/><rect x="48" y="32" width="16" height="16" fill="#c9d3f3"/>
+ <rect x="0" y="48" width="16" height="16" fill="#eef1fb"/><rect x="16" y="48" width="16" height="16" fill="#eef1fb"/><rect x="32" y="48" width="16" height="16" fill="#c9d3f3"/><rect x="48" y="48" width="16" height="16" fill="#eef1fb"/>
+ </g>
+</g>
+<text x="87" y="122" text-anchor="middle" font-size="16">Tactile sensing</text>
+<text x="87" y="142" text-anchor="middle" font-size="16" font-style="italic">y<tspan font-size="11" dy="4">t</tspan></text>
+
+<!-- 2 encoder: neural net -->
+<g transform="translate(235,28)" stroke="#9b2d9b" stroke-width="0.9">
+ <g opacity="0.55">
+ <line x1="6" y1="10" x2="36" y2="0"/><line x1="6" y1="10" x2="36" y2="34"/><line x1="6" y1="10" x2="36" y2="68"/>
+ <line x1="6" y1="58" x2="36" y2="0"/><line x1="6" y1="58" x2="36" y2="34"/><line x1="6" y1="58" x2="36" y2="68"/>
+ <line x1="36" y1="0" x2="66" y2="18"/><line x1="36" y1="34" x2="66" y2="18"/><line x1="36" y1="68" x2="66" y2="18"/>
+ <line x1="36" y1="0" x2="66" y2="50"/><line x1="36" y1="34" x2="66" y2="50"/><line x1="36" y1="68" x2="66" y2="50"/>
+ </g>
+ <g fill="#f3e3f3"><circle cx="6" cy="10" r="5"/><circle cx="6" cy="58" r="5"/><circle cx="36" cy="0" r="5"/><circle cx="36" cy="34" r="5" fill="#9b2d9b"/><circle cx="36" cy="68" r="5"/><circle cx="66" cy="18" r="5"/><circle cx="66" cy="50" r="5"/></g>
+</g>
+<text x="270" y="122" text-anchor="middle" font-size="16">Neural encoder</text>
+<text x="270" y="142" text-anchor="middle" font-size="16" font-style="italic">q<tspan font-style="normal">(</tspan>z<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> | </tspan>y<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">)</tspan></text>
+
+<!-- 3 latent belief: gaussian -->
+<g transform="translate(415,26)">
+ <path d="M0,70 C20,70 25,4 40,4 C55,4 60,70 80,70 Z" fill="#c9d3f3" stroke="#1f3fae" stroke-width="1.6"/>
+ <line x1="40" y1="0" x2="40" y2="70" stroke="#7f93e0" stroke-dasharray="4 3"/>
+ <line x1="-4" y1="70" x2="84" y2="70" stroke="#777" stroke-width="0.8"/>
+</g>
+<text x="455" y="122" text-anchor="middle" font-size="16">Latent belief</text>
+<text x="455" y="142" text-anchor="middle" font-size="16" font-style="italic">b<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> = (</tspan>m<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">, </tspan>P<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">)</tspan></text>
+
+<!-- 4 RL-MPC: predicted plan -->
+<g transform="translate(600,30)">
+ <line x1="0" y1="6" x2="84" y2="6" stroke="#888" stroke-dasharray="6 4"/>
+ <line x1="0" y1="58" x2="84" y2="58" stroke="#888" stroke-dasharray="6 4"/>
+ <path d="M6,44 C24,40 30,26 48,28 C62,30 70,20 80,22" fill="none" stroke="#e0701a" stroke-width="2.2"/>
+ <circle cx="6" cy="44" r="3.4" fill="#e0701a"/><circle cx="48" cy="28" r="3.4" fill="#e0701a"/><circle cx="80" cy="22" r="3.4" fill="#e0701a"/>
+</g>
+<text x="642" y="122" text-anchor="middle" font-size="16">RL&#8211;MPC</text>
+<text x="642" y="142" text-anchor="middle" font-size="16" font-style="italic">u<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> = </tspan>&#960;<tspan font-style="normal">(</tspan>b<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">)</tspan></text>
+
+<!-- 5 act: gripper on object -->
+<g transform="translate(790,22)">
+ <rect x="22" y="0" width="40" height="12" fill="#555"/>
+ <rect x="22" y="12" width="9" height="40" fill="#555"/>
+ <rect x="53" y="12" width="9" height="40" fill="#555"/>
+ <rect x="33" y="26" width="18" height="34" rx="3" fill="#f6dcc4" stroke="#e0701a" stroke-width="1.6"/>
+ <path d="M27,64 q4,6 8,0 q4,-6 8,0 q4,6 8,0 q4,-6 8,0" fill="none" stroke="#e0701a" stroke-width="1.4"/>
+</g>
+<text x="832" y="122" text-anchor="middle" font-size="16">Grip and</text>
+<text x="832" y="142" text-anchor="middle" font-size="16">surface haptics</text>
+
+<!-- forward arrows -->
+<line x1="130" y1="62" x2="222" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
+<line x1="312" y1="62" x2="405" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
+<line x1="502" y1="62" x2="590" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
+<line x1="692" y1="62" x2="780" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
+
+<!-- safety monitor -->
+<g transform="translate(548,226)">
+ <circle cx="0" cy="0" r="22" fill="#fff" stroke="#6a1b7a" stroke-width="2"/>
+ <path d="M-10,0 L-3,8 L11,-8" fill="none" stroke="#6a1b7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="548" y="270" text-anchor="middle" font-size="16">Belief budget / safety monitor</text>
+<text x="548" y="290" text-anchor="middle" font-size="15" font-style="italic">&#961;<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> &#8804; </tspan>&#949;<tspan font-size="11" dy="4">B</tspan><tspan dy="-4" font-style="normal">, &#8195;</tspan>|&#916;u| &#8804; &#363;</text>
+<path d="M455,150 C460,190 500,215 524,222" fill="none" stroke="#000" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#k)"/>
+<path d="M572,222 C600,212 636,190 642,152" fill="none" stroke="#000" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#k)"/>
+<text x="430" y="196" font-size="14" font-style="italic">b<tspan font-size="10" dy="4">t</tspan></text>
+<text x="625" y="200" font-size="14">accept / hold</text>
+
+<!-- contact feedback -->
+<path d="M832,152 L832,312 L18,312 L18,62 L42,62" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
+<text x="220" y="304" font-size="15"><tspan font-style="italic">y</tspan><tspan font-size="10" dy="4">t+1</tspan><tspan dy="-4">; physical contact closes the loop</tspan></text>
+</g>
+</svg>
+</div>
+<p class="ti-cap"><b>Figure 2.</b> The closed tactile pipeline. Tactile signals \(y_t\) are
+encoded into a latent stochastic belief \(b_t\) that adapts online; an RL&ndash;MPC
+controller plans grip and surface-haptic commands \(u_t\) on that belief; and physical
+contact returns the next measurement \(y_{t+1}\) (solid arrows). The safety monitor
+(dashed arrows) is the interface I study most closely: it accepts a belief change only
+if its effect on the controller stays within a prescribed input tolerance, as in my
+<a href="NeuralBeliefMPC.html">Neural Belief MPC</a> work.</p>
+
+<h2 class="ti-h">Core ideas</h2>
+<div class="ti-grid">
+  <div class="ti-card"><b>Latent tactile state.</b> Deep stochastic state-space
+  models capture what touch cannot measure directly&mdash;slip, friction and
+  contact geometry&mdash;together with their uncertainty and temporal structure.</div>
+  <div class="ti-card"><b>Belief-aware control.</b> MPC handles constraints such as
+  force limits and slip margins; reinforcement learning supplies long-term
+  adaptation. Both act on the belief, not on a single estimate.</div>
+  <div class="ti-card"><b>Bidirectional touch.</b> Surface haptics actively modulate
+  fingertip friction, so the robot can both sense and shape contact&mdash;blurring
+  the line between perception and action.</div>
+</div>
+
+<h2 class="ti-h">Research questions</h2>
+<ul class="ti-rq">
+  <li>How can a learned tactile model keep a calibrated belief when contact is
+  intermittent and sensors saturate or drop out?</li>
+  <li>How far may an online-adapted belief move before the controller's grip
+  command changes by more than a safe tolerance?</li>
+  <li>When should the controller trust touch, and when should it fall back to a
+  conservative, model-based action?</li>
 </ul>
 
-
-
-<h2>Conceptually, the framework forms a closed tactile loop</h2> 
-
-<p> <img src="Pipeline_Tacttile_Intelligence-updated.pdf" width="900"
-     alt="Pipeline Tactile Intelligence diagram"
-     style="float:left; margin:10px 20px 10px 0; border-radius:6px;">
-</p>
-  
-
-
-<div style="clear:both;"></div>
-<p style="font-size:0.9em; color:#666; text-align:left; margin-top:8px;">
-  <em>Figure — Closed tactile feedback loop integrating tactile sensing, latent state inference, and uncertainty-aware control.</em>
-</p>
-
-  <p>
-  This framework integrates tactile sensing, latent tactile inference, and uncertainty-aware control in a closed feedback loop. 
-  Tactile sensors generate rich contact signals that are compressed into latent stochastic representations; these are then used 
-  by an RL–MPC controller to adjust grip and friction through surface-haptics feedback, forming a continuous tactile reasoning cycle. 
-</p>
-
-
-  
-
-  
-  
-   
-<h2>Objective</h2>
+<h2 class="ti-h">Foundations in my current work</h2>
 <p>
- 
-  To develop robots that <em>yield to uncertainty</em> yet remain stable, safe, and dexterous — 
-  advancing tactile robotics toward truly human-compatible interaction.
+Each question builds on results I have developed for learned state estimation
+and control under partial observation:
 </p>
+<ul>
+  <li><a href="DeepSSSM.html"><b>Seeing Beyond Vision</b></a> &mdash; bounded-error
+  latent belief tracking when the sensor is occluded, the visual analogue of
+  intermittent contact.</li>
+  <li><a href="RobustCF.html"><b>Robust CF Filtering</b></a> and
+  <a href="SafeCF-SSM.html"><b>SafeCF-SSM</b></a> &mdash; cognitive-flexible filtering
+  and calibrated safety monitoring of decoded latent predictions under online
+  adaptation.</li>
+  <li><a href="NeuralBeliefMPC.html"><b>Neural Belief MPC</b></a> &mdash; certified
+  belief budgets that limit how far a neural observer may move the input plan of
+  an MPC.</li>
+</ul>
+
+<h2 class="ti-h">Objective</h2>
+<p>
+To develop robots that <i>yield to uncertainty</i> yet remain stable, safe and
+dexterous&mdash;advancing tactile robotics toward truly human-compatible
+interaction in manipulation, assistance and rehabilitation.
 </p>
 
-<p style="text-align:center;">
-  <a href="index.html">&larr; Back to Home</a>
-</p>
-
-
-
- <!-- TU Delft Motto Closing -->
-<div style="text-align:center; margin-top:60px; animation: fadeIn 1.2s ease-in;">
-  <p style="color:#00A6D6; font-style:italic; font-size:1.15em; margin-bottom:6px;">
-    “To touch is to understand — robots that learn as they feel.”
-  </p>
-  <p style="color:#003366; font-size:0.95em; font-style:italic; margin-top:0;">
-    <strong>Challenge. Change. Impact.</strong> — through tactile intelligence.
-  </p>
+<div class="ti-motto">
+<p style="color:#00A6D6; font-style:italic; font-size:1.12em;">&ldquo;To touch is to understand &mdash; robots that learn as they feel.&rdquo;</p>
+<p style="color:#003366; font-size:0.95em;"><b>Challenge. Change. Impact.</b> &mdash; through tactile intelligence.</p>
 </div>
 
+<p style="text-align:center; margin-top:30px;"><a href="index.html">&larr; Back to Home</a></p>
 
-  
 <div id="footer">
-  <div id="footer-text">
-    Page generated by <a href="https://github.com/wsshin/jemdoc_mathjax" target="_blank">jemdoc+MathJax</a>.
-  </div>
+<div id="footer-text">
+Page generated by <a href="https://github.com/wsshin/jemdoc_mathjax" target="_blank">jemdoc+MathJax</a>.
 </div>
+</div>
+</td>
+</tr>
+</table>
 </body>
 </html>
