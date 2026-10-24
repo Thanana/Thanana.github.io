@@ -183,99 +183,96 @@ ways that are not safe. Making that interface safe is the common thread of
 my current work.
 </p>
 
-<!-- Figure 2: closed tactile pipeline (icon style of the TAC observer figure) -->
+<!-- Figure 2: certified belief-control interface (block diagram) -->
 <div class="ti-fig">
-<svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Closed tactile pipeline">
+<svg viewBox="0 0 940 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Certified interface between a learned tactile belief and the controller">
 <defs>
-<marker id="k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#000"/></marker>
+<marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#003366"/></marker>
+<marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#00A6D6"/></marker>
 </defs>
-<g font-family="Times New Roman, Times, serif" fill="#000">
-<!-- 1 tactile sensing: pressure grid -->
-<g transform="translate(55,30)">
- <g stroke="#1f3fae" stroke-width="1">
- <rect x="0" y="0" width="16" height="16" fill="#eef1fb"/><rect x="16" y="0" width="16" height="16" fill="#c9d3f3"/><rect x="32" y="0" width="16" height="16" fill="#eef1fb"/><rect x="48" y="0" width="16" height="16" fill="#eef1fb"/>
- <rect x="0" y="16" width="16" height="16" fill="#c9d3f3"/><rect x="16" y="16" width="16" height="16" fill="#3550c4"/><rect x="32" y="16" width="16" height="16" fill="#7f93e0"/><rect x="48" y="16" width="16" height="16" fill="#eef1fb"/>
- <rect x="0" y="32" width="16" height="16" fill="#eef1fb"/><rect x="16" y="32" width="16" height="16" fill="#7f93e0"/><rect x="32" y="32" width="16" height="16" fill="#1f3fae"/><rect x="48" y="32" width="16" height="16" fill="#c9d3f3"/>
- <rect x="0" y="48" width="16" height="16" fill="#eef1fb"/><rect x="16" y="48" width="16" height="16" fill="#eef1fb"/><rect x="32" y="48" width="16" height="16" fill="#c9d3f3"/><rect x="48" y="48" width="16" height="16" fill="#eef1fb"/>
- </g>
-</g>
-<text x="87" y="122" text-anchor="middle" font-size="16">Tactile sensing</text>
-<text x="87" y="142" text-anchor="middle" font-size="16" font-style="italic">y<tspan font-size="11" dy="4">t</tspan></text>
+<g font-family="Times New Roman, Times, serif">
+<text x="12" y="20" font-size="14" font-weight="bold" fill="#003366">(a) Correction path &#8212; every tick</text>
+<text x="12" y="254" font-size="14" font-weight="bold" fill="#00A6D6">(b) Adaptation path &#8212; frozen context</text>
+<line x1="10" y1="234" x2="930" y2="234" stroke="#e3ecf2"/>
 
-<!-- 2 encoder: neural net -->
-<g transform="translate(235,28)" stroke="#9b2d9b" stroke-width="0.9">
- <g opacity="0.55">
- <line x1="6" y1="10" x2="36" y2="0"/><line x1="6" y1="10" x2="36" y2="34"/><line x1="6" y1="10" x2="36" y2="68"/>
- <line x1="6" y1="58" x2="36" y2="0"/><line x1="6" y1="58" x2="36" y2="34"/><line x1="6" y1="58" x2="36" y2="68"/>
- <line x1="36" y1="0" x2="66" y2="18"/><line x1="36" y1="34" x2="66" y2="18"/><line x1="36" y1="68" x2="66" y2="18"/>
- <line x1="36" y1="0" x2="66" y2="50"/><line x1="36" y1="34" x2="66" y2="50"/><line x1="36" y1="68" x2="66" y2="50"/>
- </g>
- <g fill="#f3e3f3"><circle cx="6" cy="10" r="5"/><circle cx="6" cy="58" r="5"/><circle cx="36" cy="0" r="5"/><circle cx="36" cy="34" r="5" fill="#9b2d9b"/><circle cx="36" cy="68" r="5"/><circle cx="66" cy="18" r="5"/><circle cx="66" cy="50" r="5"/></g>
-</g>
-<text x="270" y="122" text-anchor="middle" font-size="16">Neural encoder</text>
-<text x="270" y="142" text-anchor="middle" font-size="16" font-style="italic">q<tspan font-style="normal">(</tspan>z<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> | </tspan>y<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">)</tspan></text>
+<!-- (a) blocks -->
+<rect x="10" y="36" width="150" height="80" rx="6" fill="#f5f9fb" stroke="#003366" stroke-width="1.3"/>
+<text x="85" y="62" text-anchor="middle" font-size="15" fill="#003366" font-weight="bold">Reference belief</text>
+<text x="85" y="82" text-anchor="middle" font-size="13.5" fill="#333">predicted from the</text>
+<text x="85" y="100" text-anchor="middle" font-size="13.5" fill="#333">previous contact</text>
 
-<!-- 3 latent belief: gaussian -->
-<g transform="translate(415,26)">
- <path d="M0,70 C20,70 25,4 40,4 C55,4 60,70 80,70 Z" fill="#c9d3f3" stroke="#1f3fae" stroke-width="1.6"/>
- <line x1="40" y1="0" x2="40" y2="70" stroke="#7f93e0" stroke-dasharray="4 3"/>
- <line x1="-4" y1="70" x2="84" y2="70" stroke="#777" stroke-width="0.8"/>
-</g>
-<text x="455" y="122" text-anchor="middle" font-size="16">Latent belief</text>
-<text x="455" y="142" text-anchor="middle" font-size="16" font-style="italic">b<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> = (</tspan>m<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">, </tspan>P<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">)</tspan></text>
+<rect x="195" y="36" width="150" height="80" rx="6" fill="#f5f9fb" stroke="#003366" stroke-width="1.3"/>
+<text x="270" y="62" text-anchor="middle" font-size="15" fill="#003366" font-weight="bold">Tactile encoder</text>
+<text x="270" y="82" text-anchor="middle" font-size="13.5" fill="#333">proposes a correction</text>
+<text x="270" y="100" text-anchor="middle" font-size="13.5" fill="#333">from new contact</text>
 
-<!-- 4 RL-MPC: predicted plan -->
-<g transform="translate(600,30)">
- <line x1="0" y1="6" x2="84" y2="6" stroke="#888" stroke-dasharray="6 4"/>
- <line x1="0" y1="58" x2="84" y2="58" stroke="#888" stroke-dasharray="6 4"/>
- <path d="M6,44 C24,40 30,26 48,28 C62,30 70,20 80,22" fill="none" stroke="#e0701a" stroke-width="2.2"/>
- <circle cx="6" cy="44" r="3.4" fill="#e0701a"/><circle cx="48" cy="28" r="3.4" fill="#e0701a"/><circle cx="80" cy="22" r="3.4" fill="#e0701a"/>
-</g>
-<text x="642" y="122" text-anchor="middle" font-size="16">RL&#8211;MPC</text>
-<text x="642" y="142" text-anchor="middle" font-size="16" font-style="italic">u<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> = </tspan>&#960;<tspan font-style="normal">(</tspan>b<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal">)</tspan></text>
+<rect x="380" y="36" width="170" height="80" rx="6" fill="#003366"/>
+<text x="465" y="62" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold">Correction budget</text>
+<text x="465" y="82" text-anchor="middle" font-size="13.5" fill="#cfe9f5">projects the belief</text>
+<text x="465" y="100" text-anchor="middle" font-size="13.5" fill="#cfe9f5" font-style="italic">within &#948;<tspan font-size="10" dy="3">E</tspan><tspan dy="-3" font-style="normal"> of the reference</tspan></text>
 
-<!-- 5 act: gripper on object -->
-<g transform="translate(790,22)">
- <rect x="22" y="0" width="40" height="12" fill="#555"/>
- <rect x="22" y="12" width="9" height="40" fill="#555"/>
- <rect x="53" y="12" width="9" height="40" fill="#555"/>
- <rect x="33" y="26" width="18" height="34" rx="3" fill="#f6dcc4" stroke="#e0701a" stroke-width="1.6"/>
- <path d="M27,64 q4,6 8,0 q4,-6 8,0 q4,6 8,0 q4,-6 8,0" fill="none" stroke="#e0701a" stroke-width="1.4"/>
-</g>
-<text x="832" y="122" text-anchor="middle" font-size="16">Grip and</text>
-<text x="832" y="142" text-anchor="middle" font-size="16">surface haptics</text>
+<rect x="585" y="36" width="150" height="80" rx="6" fill="#f5f9fb" stroke="#003366" stroke-width="1.3"/>
+<text x="660" y="62" text-anchor="middle" font-size="15" fill="#003366" font-weight="bold">MPC</text>
+<text x="660" y="82" text-anchor="middle" font-size="13.5" fill="#333">grip / haptic command</text>
+<text x="660" y="100" text-anchor="middle" font-size="13.5" fill="#333">from the belief mean</text>
 
-<!-- forward arrows -->
-<line x1="130" y1="62" x2="222" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
-<line x1="312" y1="62" x2="405" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
-<line x1="502" y1="62" x2="590" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
-<line x1="692" y1="62" x2="780" y2="62" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
+<rect x="770" y="36" width="160" height="80" rx="6" fill="#fff" stroke="#003366" stroke-width="1.3" stroke-dasharray="5 3"/>
+<text x="850" y="62" text-anchor="middle" font-size="15" fill="#003366" font-weight="bold">Input tolerance</text>
+<text x="850" y="82" text-anchor="middle" font-size="13.5" fill="#333">set by actuator and</text>
+<text x="850" y="100" text-anchor="middle" font-size="13.5" fill="#333">user comfort, <tspan font-style="italic">&#363;</tspan><tspan font-size="10" dy="3">c</tspan></text>
 
-<!-- safety monitor -->
-<g transform="translate(548,226)">
- <circle cx="0" cy="0" r="22" fill="#fff" stroke="#6a1b7a" stroke-width="2"/>
- <path d="M-10,0 L-3,8 L11,-8" fill="none" stroke="#6a1b7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<text x="548" y="270" text-anchor="middle" font-size="16">Belief budget / safety monitor</text>
-<text x="548" y="290" text-anchor="middle" font-size="15" font-style="italic">&#961;<tspan font-size="11" dy="4">t</tspan><tspan dy="-4" font-style="normal"> &#8804; </tspan>&#949;<tspan font-size="11" dy="4">B</tspan><tspan dy="-4" font-style="normal">, &#8195;</tspan>|&#916;u| &#8804; &#363;</text>
-<path d="M455,150 C460,190 500,215 524,222" fill="none" stroke="#000" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#k)"/>
-<path d="M572,222 C600,212 636,190 642,152" fill="none" stroke="#000" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#k)"/>
-<text x="430" y="196" font-size="14" font-style="italic">b<tspan font-size="10" dy="4">t</tspan></text>
-<text x="625" y="200" font-size="14">accept / hold</text>
+<line x1="160" y1="76" x2="193" y2="76" stroke="#003366" stroke-width="1.3" marker-end="url(#m1)"/>
+<line x1="345" y1="76" x2="378" y2="76" stroke="#003366" stroke-width="1.3" marker-end="url(#m1)"/>
+<line x1="550" y1="76" x2="583" y2="76" stroke="#003366" stroke-width="1.3" marker-end="url(#m1)"/>
+<path d="M850,118 L850,170 L465,170 L465,120" fill="none" stroke="#003366" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#m1)"/>
+<text x="657" y="162" text-anchor="middle" font-size="13.5" fill="#003366" font-style="italic">tolerance selects the budget</text>
+<text x="610" y="204" text-anchor="middle" font-size="13.5" fill="#333">Guarantee: every deployed correction moves the command by at most <tspan font-style="italic">&#363;</tspan><tspan font-size="10" dy="3">c</tspan></text>
 
-<!-- contact feedback -->
-<path d="M832,152 L832,312 L18,312 L18,62 L42,62" fill="none" stroke="#000" stroke-width="1.2" marker-end="url(#k)"/>
-<text x="220" y="304" font-size="15"><tspan font-style="italic">y</tspan><tspan font-size="10" dy="4">t+1</tspan><tspan dy="-4">; physical contact closes the loop</tspan></text>
+<!-- (b) blocks -->
+<rect x="10" y="270" width="150" height="80" rx="6" fill="#fff" stroke="#00A6D6" stroke-width="1.3"/>
+<text x="85" y="296" text-anchor="middle" font-size="15" fill="#00407a" font-weight="bold">Replay cache</text>
+<text x="85" y="316" text-anchor="middle" font-size="13.5" fill="#333">recent contacts and</text>
+<text x="85" y="334" text-anchor="middle" font-size="13.5" fill="#333">prediction errors</text>
+
+<rect x="195" y="270" width="150" height="80" rx="6" fill="#fff" stroke="#00A6D6" stroke-width="1.3"/>
+<text x="270" y="296" text-anchor="middle" font-size="15" fill="#00407a" font-weight="bold">Candidate update</text>
+<text x="270" y="316" text-anchor="middle" font-size="13.5" fill="#333">of encoder and</text>
+<text x="270" y="334" text-anchor="middle" font-size="13.5" fill="#333">contact model</text>
+
+<rect x="380" y="270" width="170" height="80" rx="6" fill="#00A6D6"/>
+<text x="465" y="296" text-anchor="middle" font-size="15" fill="#fff" font-weight="bold">Update gate</text>
+<text x="465" y="316" text-anchor="middle" font-size="13.5" fill="#fff">accept only if the score drops</text>
+<text x="465" y="334" text-anchor="middle" font-size="13.5" fill="#fff">and the belief moves &#8804; <tspan font-style="italic">&#949;</tspan><tspan font-size="10" dy="3">B</tspan></text>
+
+<rect x="585" y="270" width="150" height="80" rx="6" fill="#fff" stroke="#00A6D6" stroke-width="1.3"/>
+<text x="660" y="296" text-anchor="middle" font-size="15" fill="#00407a" font-weight="bold">Accept or hold</text>
+<text x="660" y="316" text-anchor="middle" font-size="13.5" fill="#333">new parameters used</text>
+<text x="660" y="334" text-anchor="middle" font-size="13.5" fill="#333">at the next contact</text>
+
+<rect x="770" y="270" width="160" height="80" rx="6" fill="#fff" stroke="#00A6D6" stroke-width="1.3" stroke-dasharray="5 3"/>
+<text x="850" y="296" text-anchor="middle" font-size="15" fill="#00407a" font-weight="bold">Update tolerance</text>
+<text x="850" y="316" text-anchor="middle" font-size="13.5" fill="#333">largest command change</text>
+<text x="850" y="334" text-anchor="middle" font-size="13.5" fill="#333">from learning, <tspan font-style="italic">&#363;</tspan><tspan font-size="10" dy="3">a</tspan></text>
+
+<line x1="160" y1="310" x2="193" y2="310" stroke="#00A6D6" stroke-width="1.3" marker-end="url(#m2)"/>
+<line x1="345" y1="310" x2="378" y2="310" stroke="#00A6D6" stroke-width="1.3" marker-end="url(#m2)"/>
+<line x1="550" y1="310" x2="583" y2="310" stroke="#00A6D6" stroke-width="1.3" marker-end="url(#m2)"/>
+<path d="M770,290 L752,290 L752,260 L465,260 L465,268" fill="none" stroke="#00A6D6" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#m2)"/>
+<path d="M660,268 L660,240 L270,240 L270,118" fill="none" stroke="#00A6D6" stroke-width="1.3" stroke-dasharray="3 3" marker-end="url(#m2)"/>
+<text x="300" y="230" font-size="12.5" fill="#00A6D6" font-style="italic">accepted parameters reach the encoder</text>
 </g>
 </svg>
 </div>
-<p class="ti-cap"><b>Figure 2.</b> The closed tactile pipeline. Tactile signals \(y_t\) are
-encoded into a latent stochastic belief \(b_t\) that adapts online; an RL&ndash;MPC
-controller plans grip and surface-haptic commands \(u_t\) on that belief; and physical
-contact returns the next measurement \(y_{t+1}\) (solid arrows). The safety monitor
-(dashed arrows) is the interface I study most closely: it accepts a belief change only
-if its effect on the controller stays within a prescribed input tolerance, as in my
-<a href="NeuralBeliefMPC.html">Neural Belief MPC</a> work.</p>
+<p class="ti-cap"><b>Figure 2.</b> How learning from touch is kept safe for the controller.
+Figure&nbsp;1 shows <i>what</i> the loop does; this figure shows <i>how</i> its weakest
+link&mdash;the learned belief that the controller trusts&mdash;is certified.
+(a)&nbsp;Every correction proposed by the tactile encoder is projected within a budget
+\(\delta_E\) chosen from the input tolerance \(\bar u_c\), so no correction moves the
+grip or haptic command by more than \(\bar u_c\). (b)&nbsp;A learning update is accepted
+only if it lowers the prediction score <i>and</i> moves the belief by at most
+\(\varepsilon_B\), chosen from the update tolerance \(\bar u_a\). This two-budget structure
+is the one I certify for MPC in <a href="NeuralBeliefMPC.html">Neural Belief MPC</a>;
+in wearable haptics the tolerances come from the user as well as the actuator.</p>
 
 <h2 class="ti-h">Core ideas</h2>
 <div class="ti-grid">
