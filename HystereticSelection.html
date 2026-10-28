@@ -1,23 +1,78 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
 <title>Hysteretic Selection | IEEE L-CSS</title>
+<script type="text/javascript" async
+src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
 </head>
 <body>
-<div id="layout-content">
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<!-- Left navigation -->
+<td id="layout-menu">
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
+<div class="menu-category">Research</div>
+<div class="menu-item"><a href="tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+<div class="menu-item"><a href="DeepSSSM.html">Seeing&nbsp;Beyond&nbsp;Vision</a></div>
+<div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+<div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
+<div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
+<div class="menu-item"><a href="RobustCF.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
+<div class="menu-item"><a href="SafeCF-SSM.html">SafeCF-SSM</a></div>
+<div class="menu-item"><a href="NeuralBeliefMPC.html">Neural&nbsp;Belief&nbsp;MPC</a></div>
+<div class="menu-item"><a href="HystereticSelection.html" class="current">Hysteretic&nbsp;Selection</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+</td>
+<!-- Main content -->
+<td id="layout-content">
 <div id="toptitle">
-<h1>Switching and Recovery Guarantees for Hysteretic Model Selection under Monte Carlo Likelihood Refreshes</h1>
+<h1 style="color:#003366; text-align:center; margin-top:30px;">
+Switching and Recovery Guarantees for Hysteretic Model Selection
+under Monte Carlo Likelihood Refreshes
+</h1>
+<p style="text-align:center; color:#555; font-size:0.95em;">
+<br/>
+<i>Letter submitted to IEEE Control Systems Letters, October 2026</i>
+</p>
 </div>
-<p><i>Letter prepared for submission to IEEE Control Systems Letters, October 2026.</i></p>
-<p><b>Monte Carlo likelihood &rarr; sample bank (size M, refresh rate &chi;) &rarr; hysteretic selector (margin &delta;) &rarr; observer / controller</b></p>
-<p>When model likelihoods are computed by Monte Carlo integration, redrawing the samples can change the selected model even when the evidence moves slowly. For a hysteretic hard selector, this letter asks how sample size, refresh rate and margin should be chosen together, and gives switching and recovery guarantees that charge query motion and sample-bank refreshes separately.</p>
+<!-- Loop Banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
+box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+<p style="margin:0; font-size:0.95em; color:#003366;">
+<span style="color:#00A6D6;"><b>Monte Carlo likelihood</b></span> &rarr;
+<span style="color:#0077AA;"><b>Sample bank \((M,\ \chi)\)</b></span> &rarr;
+<span style="color:#0099CC;"><b>Hysteretic selector \(\delta\)</b></span> &rarr;
+<span style="color:#003366;"><b>Observer / controller</b></span>
+</p>
+<p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+Redrawing Monte Carlo samples can switch the selected model even when the evidence
+moves slowly; reusing one bank stops this but can lock in a wrong decision. Sample size,
+refresh rate and margin must be designed together &mdash; and fewer switches can mean
+persistent wrong decisions.
+</p>
+</div>
 <table class="imgtable"><tr><td>
 <img src="HystereticSelection_sketch.png" alt="Selection loop and schematic score gap" width="620px" />&nbsp;</td>
 <td align="left"></td></tr></table>
-<p>(a) Selection loop with design variables M, &chi;, &delta;. (b) Schematic for two models: query motion moves the evaluated gap smoothly, refreshes make it jump, and crossing to the far side of the band &plusmn;&delta; is a switch. Refreshes alone cause a wrong switch and its reversal.</p>
+<p>(a) Selection loop with design variables \(M,\ \chi,\ \delta\). (b) Schematic for two models: query motion moves the evaluated gap smoothly, refreshes make it jump, and crossing to the far side of the band \(\pm\delta\) is a switch. Refreshes alone cause a wrong switch and its reversal.</p>
 <h2>What Is the Problem?</h2>
 <p>A supervisor that selects one model from a finite dictionary must respond to regime changes while limiting reconfiguration. A hard selector is needed when one model drives a downstream action, such as gain scheduling, controller reconfiguration or allocating computation to a single filter. With Monte Carlo likelihoods, every refresh of the sample bank perturbs the evidence and can trigger switches by itself; reusing one bank removes this effect but can lock in a wrong decision.</p>
 <h2>Main Results</h2>
@@ -55,7 +110,13 @@
 <li><p>The cached audit reproduces Table I from the archived Monte Carlo score streams; removing the cache flag regenerates all streams.</p></li>
 <li><p>Supplementary video: 35 s Julia-rendered replay of the tracking study and the design test (above; render script in the zip, <tt>videos/</tt>).</p></li>
 </ul>
-<div id="footer"><div id="footer-text">&copy; 2026 Thanana Nuchkrua | Control &amp; Robotics Research Group</div></div>
+<div id="footer">
+<div id="footer-text">
+&copy; 2026 Thanana Nuchkrua
 </div>
+</div>
+</td>
+</tr>
+</table>
 </body>
 </html>
