@@ -1,0 +1,57 @@
+# jemdoc: menu{MENU}{HystereticSelection.html}
+= Switching and Recovery Guarantees for Hysteretic Model Selection under Monte Carlo Likelihood Refreshes
+
+/Letter prepared for submission to IEEE Control Systems Letters, October 2026./
+
+*Monte Carlo likelihood → sample bank (size M, refresh rate χ) → hysteretic selector (margin δ) → observer / controller*
+
+When model likelihoods are computed by Monte Carlo integration, redrawing the samples can change the selected model even when the evidence moves slowly. For a hysteretic hard selector, this letter asks how sample size, refresh rate and margin should be chosen together, and gives switching and recovery guarantees that charge query motion and sample-bank refreshes separately.
+
+~~~
+{}{img_left}{HystereticSelection_sketch.png}{Selection loop and schematic score gap}{620px}{}
+(a) Selection loop with design variables M, χ, δ. (b) Schematic for two models: query motion moves the evaluated gap smoothly, refreshes make it jump, and crossing to the far side of the band ±δ is a switch. Refreshes alone cause a wrong switch and its reversal.
+~~~
+
+== What Is the Problem?
+A supervisor that selects one model from a finite dictionary must respond to regime changes while limiting reconfiguration. A hard selector is needed when one model drives a downstream action, such as gain scheduling, controller reconfiguration or allocating computation to a single filter. With Monte Carlo likelihoods, every refresh of the sample bank perturbs the evidence and can trigger switches by itself; reusing one bank removes this effect but can lock in a wrong decision.
+
+== Main Results
+- *Recorded-score account (Theorems 1–2).* On every path, switches are bounded by the initial potential plus the upward variation of the recorded scores, divided by the margin; an exact identity counts corrections. No accuracy certificate is needed.
+- *Refresh-aware design (Theorem 3).* Query motion and bank refreshes enter the switch budget separately, giving an explicit margin window that guarantees a prescribed switching density and immediate correction when the true score gap exceeds a threshold.
+- *Uniform concentration (Lemma 2).* Hoeffding bounds on likelihood ratios, uniform over a covering of the query region and valid for sample-dependent queries, turn the window into a sample size for continuous predictive laws with bounded kernels.
+- *Observer consequence (Corollary 2).* A selected-model observer inherits an average-dwell-time bound, conditional on the interval count.
+
+== Core Insight
+Fewer switches can mean persistent wrong decisions. With four samples per reused bank, the exact failure probability per regime change is 5\/16 = 31.25%, mostly from a hysteresis dead zone rather than rank reversal; the observed rate is 32.5 ± 1.7%.
+
+~~~
+{}{img_left}{HystereticSelection_design_test.png}{Finite-support design test}{620px}{}
+Finite-support design test, 200 paired query paths: (a) mean switches; (b) sustained-recovery failures with the exact reuse bracket (shaded). Dotted lines: certified budgets M = 945 (reuse) and 255,196 (fresh).
+~~~
+
+== Numerical Studies
+~~~
+{}{table}{studies}
+Study | Scale | Finding ||
+Finite-support design test | 200 paired query paths, 16 sample sizes, reuse vs fresh | Exact prediction of reuse failures at every sample size ||
+Three-dimensional CV\/CT tracking | 100 paired trajectories, K = 2 and 4, 10 selectors | IMM-MAP is a special case for K = 2; for K = 4 only its margin form recovers ||
+Observer audit | 800 paths | Bound holds on every path; conservative
+~~~
+
+== Supplementary Video
+35 s Julia-rendered replay of the three-dimensional tracking study and the finite-support design test.
+
+~~~
+{}{raw}
+<video controls width="620" poster="HystereticSelection_video_poster.png"><source src="HystereticSelection_video.mp4" type="video/mp4" /></video>
+~~~
+
+[HystereticSelection_video.mp4 Download video (MP4, 0.4 MB)]
+
+== Scope
+The certificates are sufficient, not necessary, and hold on a high-probability accuracy event. The Gaussian tracking study measures the conservatism of the recorded-score accounts; Lemma 2 is not evaluated for that tracker.
+
+== Reproducibility
+- [HystereticSelection_code.zip Code and data (zip)]: Julia 1.12.1 with pinned environments (CairoMakie 0.15.13, Distributions 0.25.129), predeclared seeds, test suites, archived score streams and all result files, with a README mapping every figure and table to its script.
+- The cached audit reproduces Table I from the archived Monte Carlo score streams; removing the cache flag regenerates all streams.
+- Supplementary video: 35 s Julia-rendered replay of the tracking study and the design test.
