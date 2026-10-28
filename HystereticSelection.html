@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Hysteretic Selection | IEEE L-CSS</title>
+</head>
+<body>
+<div id="layout-content">
+<div id="toptitle">
+<h1>Switching and Recovery Guarantees for Hysteretic Model Selection under Monte Carlo Likelihood Refreshes</h1>
+</div>
+<p><i>Letter prepared for submission to IEEE Control Systems Letters, October 2026.</i></p>
+<p><b>Monte Carlo likelihood &rarr; sample bank (size M, refresh rate &chi;) &rarr; hysteretic selector (margin &delta;) &rarr; observer / controller</b></p>
+<p>When model likelihoods are computed by Monte Carlo integration, redrawing the samples can change the selected model even when the evidence moves slowly. For a hysteretic hard selector, this letter asks how sample size, refresh rate and margin should be chosen together, and gives switching and recovery guarantees that charge query motion and sample-bank refreshes separately.</p>
+<table class="imgtable"><tr><td>
+<img src="HystereticSelection_sketch.png" alt="Selection loop and schematic score gap" width="620px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<p>(a) Selection loop with design variables M, &chi;, &delta;. (b) Schematic for two models: query motion moves the evaluated gap smoothly, refreshes make it jump, and crossing to the far side of the band &plusmn;&delta; is a switch. Refreshes alone cause a wrong switch and its reversal.</p>
+<h2>What Is the Problem?</h2>
+<p>A supervisor that selects one model from a finite dictionary must respond to regime changes while limiting reconfiguration. A hard selector is needed when one model drives a downstream action, such as gain scheduling, controller reconfiguration or allocating computation to a single filter. With Monte Carlo likelihoods, every refresh of the sample bank perturbs the evidence and can trigger switches by itself; reusing one bank removes this effect but can lock in a wrong decision.</p>
+<h2>Main Results</h2>
+<ul>
+<li><p><b>Recorded-score account (Theorems 1&ndash;2).</b> On every path, switches are bounded by the initial potential plus the upward variation of the recorded scores, divided by the margin; an exact identity counts corrections. No accuracy certificate is needed.</p></li>
+<li><p><b>Refresh-aware design (Theorem 3).</b> Query motion and bank refreshes enter the switch budget separately, giving an explicit margin window that guarantees a prescribed switching density and immediate correction when the true score gap exceeds a threshold.</p></li>
+<li><p><b>Uniform concentration (Lemma 2).</b> Hoeffding bounds on likelihood ratios, uniform over a covering of the query region and valid for sample-dependent queries, turn the window into a sample size for continuous predictive laws with bounded kernels.</p></li>
+<li><p><b>Observer consequence (Corollary 2).</b> A selected-model observer inherits an average-dwell-time bound, conditional on the interval count.</p></li>
+</ul>
+<h2>Core Insight</h2>
+<p>Fewer switches can mean persistent wrong decisions. With four samples per reused bank, the exact failure probability per regime change is 5/16 = 31.25%, mostly from a hysteresis dead zone rather than rank reversal; the observed rate is 32.5 &plusmn; 1.7%.</p>
+<table class="imgtable"><tr><td>
+<img src="HystereticSelection_design_test.png" alt="Finite-support design test" width="620px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<p>Finite-support design test, 200 paired query paths: (a) mean switches; (b) sustained-recovery failures with the exact reuse bracket (shaded). Dotted lines: certified budgets M = 945 (reuse) and 255,196 (fresh).</p>
+<h2>Numerical Studies</h2>
+<table id="studies">
+<tr class="r1"><td class="c1">Study </td><td class="c2"> Scale </td><td class="c3"> Finding </td></tr>
+<tr class="r2"><td class="c1">Finite-support design test </td><td class="c2"> 200 paired query paths, 16 sample sizes, reuse vs fresh </td><td class="c3"> Exact prediction of reuse failures at every sample size </td></tr>
+<tr class="r3"><td class="c1">Three-dimensional CV/CT tracking </td><td class="c2"> 100 paired trajectories, K = 2 and 4, 10 selectors </td><td class="c3"> IMM-MAP is a special case for K = 2; for K = 4 only its margin form recovers </td></tr>
+<tr class="r4"><td class="c1">Observer audit </td><td class="c2"> 800 paths </td><td class="c3"> Bound holds on every path; conservative </td></tr>
+</table>
+<h2>Supplementary Video</h2>
+<p>35 s Julia-rendered replay of the three-dimensional tracking study and the finite-support design test.</p>
+<video controls width="620" poster="HystereticSelection_video_poster.png">
+<source src="HystereticSelection_video.mp4" type="video/mp4" />
+<a href="HystereticSelection_video.mp4">Download the video (MP4)</a>
+</video>
+<p><a href="HystereticSelection_video.mp4">Download video (MP4, 0.4 MB)</a></p>
+<h2>Scope</h2>
+<p>The certificates are sufficient, not necessary, and hold on a high-probability accuracy event. The Gaussian tracking study measures the conservatism of the recorded-score accounts; Lemma 2 is not evaluated for that tracker.</p>
+<h2>Reproducibility</h2>
+<ul>
+<li><p><a href="HystereticSelection_code.zip">Code and data (zip, 5.7 MB)</a>: Julia 1.12.1 with pinned environments (CairoMakie 0.15.13, Distributions 0.25.129), predeclared seeds, test suites, archived score streams and all result files, with a README mapping every figure and table to its script.</p></li>
+<li><p>The cached audit reproduces Table I from the archived Monte Carlo score streams; removing the cache flag regenerates all streams.</p></li>
+<li><p>Supplementary video: 35 s Julia-rendered replay of the tracking study and the design test (above; render script in the zip, <tt>videos/</tt>).</p></li>
+</ul>
+<div id="footer"><div id="footer-text">&copy; 2026 Thanana Nuchkrua | Control &amp; Robotics Research Group</div></div>
+</div>
+</body>
+</html>
