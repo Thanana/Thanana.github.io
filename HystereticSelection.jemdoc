@@ -1,7 +1,7 @@
 # jemdoc: menu{MENU}{HystereticSelection.html}
 = Switching and Recovery Guarantees for Hysteretic Model Selection under Monte Carlo Likelihood Refreshes
 
-/Letter prepared for submission to IEEE Control Systems Letters, October 2026./
+/Preparing for submission to IEEE Control Systems Letters, October 2026./
 
 *Monte Carlo likelihood → sample bank (size M, refresh rate χ) → hysteretic selector (margin δ) → observer / controller*
 
