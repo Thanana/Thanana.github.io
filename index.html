@@ -106,7 +106,7 @@ MathJax.Hub.Config({
   <h3>Highlights: </h3>
    <ul>
           <li><p>10.2026: New preprints on certified learning-enabled estimation and control:
-          <a href="HystereticSelection.html">Hysteretic Selection</a>,
+          <a href="HystereticSelection.html">Hysteretic Selection</a> (IEEE L-CSS),
           <a href="NeuralBeliefMPC.html">Neural Belief MPC</a> (IEEE TAC, submitted),
           <a href="SafeCF-SSM.html">SafeCF-SSM</a> and <a href="RobustCF.html">Robust CF Filtering</a> &mdash; see <a href="Publication.html">Publication</a>.</p></li>
           <li><p>2026: \(''\)Bayesian Model Predictive Control for Open Quantum Systems: Robust Qubit State
@@ -125,19 +125,15 @@ MathJax.Hub.Config({
             
 </div>   </div>
 
-  <h2 >Research Vision</h2>
+  <h2 style="color:#003366;">Research Vision</h2>
 <p class="rv-lead">
-<b>Systems that learn must also know how far they may change.</b>
-I aim to build learning-enabled autonomous systems &mdash; robots first, and equally vehicles, energy
-and cyber-physical systems &mdash; that <b>feel, believe, adapt and decide</b> under uncertainty, with every
-change to what they believe certified against the tolerances of what they do. I call this
-<b>Compliant Intelligence</b>: stability gained by adapting to uncertainty rather than resisting it.
+<b>Learning without guaranteed bounds is a liability.</b> My vision is to engineer autonomous systems &mdash; from embodied robots to cyber-physical architectures &mdash; that rigorously <b>feel, believe, adapt, and decide</b> in open environments. Every adaptation in the system's belief state must be mathematically certified against the physical tolerances of the actions it drives. I define this paradigm as <b>Compliant Intelligence</b>: achieving robust stability by dynamically embracing uncertainty rather than rigidly resisting it.
 </p>
-<div class="rv-axis">
-<b>Feel</b> &rarr; <b>Believe</b> &rarr; <b>Adapt</b> &rarr; <b>Decide</b> &rarr; <b>Interact</b>
+<div style="text-align:center; margin: 1.5em 0; padding: 0.8em 0; border-top: 1px solid #d6e6f0; border-bottom: 1px solid #d6e6f0; font-size: 1.05em; color: #003366; letter-spacing: 1px;">
+  <b>Feel</b> &nbsp;&rarr;&nbsp; <b>Believe</b> &nbsp;&rarr;&nbsp; <b>Adapt</b> &nbsp;&rarr;&nbsp; <b>Decide</b> &nbsp;&rarr;&nbsp; <b>Interact</b>
 </div>
 
-<h2 >Research Track</h2>
+<h2 style="color:#003366;">Research Track</h2>
 <div class="rv-track">
   <div class="rv-row">
     <span class="rv-stage">FOUNDATION</span>
@@ -153,7 +149,7 @@ change to what they believe certified against the tolerances of what they do. I 
     <span class="rv-q">Can that adaptation remain robust when the innovation signal itself is noisy?</span>
   </div>
 
- <div class="rv-row">
+  <div class="rv-row">
     <span class="rv-stage">BELIEF</span>
     <span class="rv-title"><a href="DeepSSSMpaper.html">Reliable latent belief (Deep SSSM)</a></span>
     <span class="rv-tag rv-rev">IEEE RA-L &middot; under review</span>
@@ -163,7 +159,7 @@ change to what they believe certified against the tolerances of what they do. I 
   <div class="rv-row">
     <span class="rv-stage">TRUST</span>
     <span class="rv-title"><a href="SafeCF-SSM.html">Trustworthy safety monitoring (SafeCF)</a></span>
-    <span class="rv-tag rv-rev">IEEE RA-L &middot; under review</span>
+    <span class="rv-tag rv-sub">IEEE RA-L &middot; submitted</span>
     <span class="rv-q">When can physical quantities decoded from latent belief be trusted for safety assessment?</span>
   </div>
 
@@ -189,22 +185,20 @@ change to what they believe certified against the tolerances of what they do. I 
   </div>
 </div>
 
-  
-
-<h2 >Scientific Research Philosophy</h2>
+<h2 style="color:#003366;">Scientific Research Philosophy</h2>
 <p class="rv-lead" style="margin-bottom:8px;">
-<b>Adaptation bounded by guarantees.</b> My research isolates the <i>belief</i> of a learning-enabled system and asks a fundamental question: how aggressively can this belief adapt, switch, or correct itself without violating the strict safety tolerances of the physical decisions it drives?
+<b>One object, one question.</b> I study the <i>belief</i> a learning-enabled robot acts on, and ask
+how far it may <b>change</b> &mdash; switch, be corrected, adapt &mdash; with guarantees stated in the
+tolerances of the decision it drives.
 </p>
 <ul>
-  <li><p><b>Dynamic Structure Switching:</b> Certifying the limits of how often a system can change its world model under noisy evidence.</p></li>
-  <li><p><b>Controller-Aware Budgets:</b> Bounding neural observer corrections directly via the robustness margins of Model Predictive Control (MPC).</p></li>
-  <li><p><b>Trust in Latency:</b> Decoding rigorous safety certificates from learned latent states, ensuring resilience even when perception fails.</p></li>
-  <li><p><b>Embodied Validation:</b> Grounding these theoretical guarantees in the physical realities of tactile intelligence and compliant soft robotics.</p></li>
+  <li><p><b>When to switch.</b> Certified structure switching: how often a robot may change its model of the world, and how fast it must recover, when the evidence itself is noisy.</p></li>
+  <li><p><b>How far to correct.</b> Controller-aware belief budgets: limits on what a neural observer may change, set directly by the input tolerances of MPC.</p></li>
+  <li><p><b>When to trust.</b> Reliability of learned latent belief: when quantities decoded from it can be used for safety, especially when perception drops out.</p></li>
+  <li><p><b>Where it lands.</b> Compliant robots that touch: tactile perception and soft actuation as the physical test of these guarantees.</p></li>
 </ul>
-<p class="rv-motto">&ldquo;Agile in learning. Provable in action.&rdquo;</p>
+<p class="rv-motto">&ldquo;Challenge. Change. Impact.&rdquo;</p>
 
-
-  
 <h2>Professional Services
   </h2>
             <ul> </ul>
