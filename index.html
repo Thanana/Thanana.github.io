@@ -5,7 +5,7 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>SBL-Based Adaptive Impedance Control</title>
+<title>Thanana Nuchkrua, Ph.D.</title>
 
 <!-- MathJax -->   
 <script type="text/javascript" async
@@ -18,6 +18,25 @@ MathJax.Hub.Config({
 </script>
 <!-- End MathJax -->
 
+<style type="text/css">
+.rv-lead{font-size:1.02em;line-height:1.7;text-align:justify;margin:6px 0 14px 0;}
+.rv-axis{text-align:center;color:#003366;font-size:0.95em;letter-spacing:0.3px;background:#f5f8fa;border-radius:8px;padding:9px 10px;margin:10px 0 16px 0;}
+.rv-axis b{color:#00A6D6;}
+.rv-track { margin: 10px 0; padding: 0; }
+.rv-row { position: relative; padding: 12px 0; border-bottom: 1px dashed #d6e6f0; }
+.rv-row:last-child { border-bottom: none; }
+.rv-stage { display: inline-block; min-width: 110px; font-size: 0.85em; font-weight: bold; letter-spacing: 1px; color: #003366; }
+.rv-title { font-weight: bold; color: #003366; }
+.rv-title a { color: #003366; text-decoration: none; border-bottom: 1px dotted #00A6D6; }
+.rv-q { display: block; color: #444; font-style: italic; font-size: 0.93em; margin: 4px 0 0 110px; }
+.rv-tag{display:inline-block;font-size:0.72em;font-weight:bold;letter-spacing:0.4px;border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:1px;}
+.rv-pub{background:#e3f4ea;color:#1d6b3a;}
+.rv-rev{background:#e6f0fa;color:#1f4e8c;}
+.rv-sub{background:#fff3e0;color:#9a5a00;}
+.rv-prep{background:#f0f0f0;color:#666;}
+.rv-motto{text-align:center;color:#00A6D6;font-style:italic;margin:16px 0 4px 0;}
+@media (max-width:640px){.rv-q{margin-left:0;}.rv-stage{display:block;}}
+</style>
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
@@ -26,7 +45,7 @@ MathJax.Hub.Config({
  <!-- Left navigation -->
   <td id="layout-menu">
     <div class="menu-category">Thanana</div>
-    <div class="menu-item"><a href="index.html">Home</a></div>
+    <div class="menu-item"><a href="index.html" class="current">Home</a></div>
     <div class="menu-item"><a href="Biography.html">Biography</a></div>
     <div class="menu-item"><a href="Publication.html">Publication</a></div>
 
@@ -36,10 +55,14 @@ MathJax.Hub.Config({
     <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
     <div class="menu-item"><a href="Cyber.html">Data-driven&nbsp;Control</a></div>
     <div class="menu-item"><a href="large-scale.html">Large-scale&nbsp;System</a></div>
-	  
+    <div class="menu-item"><a href="RobustCF.html">Robust&nbsp;CF&nbsp;Filtering</a></div>
+    <div class="menu-item"><a href="SafeCF-SSM.html">SafeCF-SSM</a></div>
+    <div class="menu-item"><a href="NeuralBeliefMPC.html">Neural&nbsp;Belief&nbsp;MPC</a></div>
+    <div class="menu-item"><a href="HystereticSelection.html">Hysteretic&nbsp;Selection</a></div>
+    
     <div class="menu-category">Teaching</div>
     <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
-	<div class="menu-item"><a href="Robotics.html">Introduction&nbsp;to Robotics</a></div>
+  <div class="menu-item"><a href="Robotics.html">Introduction&nbsp;to Robotics</a></div>
 
     <div class="menu-category">Software</div>
     <div class="menu-item"><a href="robotics.html">Robotics</a></div>
@@ -56,104 +79,168 @@ MathJax.Hub.Config({
 
 
 
-	
+  
 
 
 
-	
-	
-	
-	      <h1>Thanana Nuchkrua, Ph.D. </h1>
+  
+  
+  
+        <h1>Thanana Nuchkrua, Ph.D. </h1>
 </div>
           <p>              <table class="imgtable"><tr><td>
 <img src="Google1.jpg" alt="Thanana Nuchkrua" width="220 px" height="206 px" />&nbsp;</td>
 <td align="left"><h3 style="color:#003366; font-weight:normal;">Robotics & Control Researcher | Compliant Intelligence</h3>
-	<h5> Independent PI in Control and Robotics group</h5> 
-	 <i> </i> 
-<h3> </h3>			   
-			   <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="Contact" href="mailto:thanana.nuch@yahoo.com"
-			   target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="email2.png" style="width:1.2em;margin-right:.6em;" alt="ORCID iD icon">Contact</a></div>
-			   <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="google-scholar" href="https://scholar.google.com/citations?hl=en&user=U1PDxDEAAAAJ&view_op=list_works&gmla=AJsN-F5kLgWi7xSyTpDZ0x6m6hKBhNts4DW0Z3aBKmSKvK6Qt3KvjisClbzVDeQEbNQ3hvcSAqCpFuCH-RpIzMLl0ItpwA1VP8-fJFFG-hvSbkOMSJnn1wM"
-			   target="" rel="noopener noreferrer" style="vertical-align:top;"><img src="google1.png" style="width:1.2em;margin-right:.6em;" alt="ORCID iD icon">Scholar</a></div>
-			   <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="ORCiD" href="https://orcid.org/0000-0001-7877-491X" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="orcid1.png" style="width:1.2em;margin-right:.6em;" alt="ORCID iD icon">ORCiD</a></div>
+  <h5> Independent PI in Control and Robotics group</h5> 
+   <i> </i> 
+<h3> </h3>         
+         <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="Contact" href="mailto:thanana.nuch@yahoo.com"
+         target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="email2.png" style="width:1.2em;margin-right:.6em;" alt="Email icon">Contact</a></div>
+         <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="google-scholar" href="https://scholar.google.com/citations?hl=en&user=U1PDxDEAAAAJ&view_op=list_works&gmla=AJsN-F5kLgWi7xSyTpDZ0x6m6hKBhNts4DW0Z3aBKmSKvK6Qt3KvjisClbzVDeQEbNQ3hvcSAqCpFuCH-RpIzMLl0ItpwA1VP8-fJFFG-hvSbkOMSJnn1wM"
+         target="" rel="noopener noreferrer" style="vertical-align:top;"><img src="google1.png" style="width:1.2em;margin-right:.6em;" alt="Google Scholar icon">Scholar</a></div>
+         <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="ORCiD" href="https://orcid.org/0000-0001-7877-491X" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="orcid1.png" style="width:1.2em;margin-right:.6em;" alt="ORCID iD icon">ORCiD</a></div>
 </td></tr></table>  
-	
-	<div class="infoblock">
+  
+  <div class="infoblock">
 <div class="blockcontent">
-	<h3>Highlights: </h3>
-	 <ul>
-			    <li><p>09.2019: \(''\)Contouring Control Consensus for Robot Manipulators\(''\) won <b> the 
-		 best young paper award, finalist </b> at The 58<sup>th</sup> Annual Conference of the Society of Instrument and Control Engineers of Japan 
-			   (SICE), Japan. </p>
+  <h3>Highlights: </h3>
+   <ul>
+          <li><p>10.2026: New preprints on certified learning-enabled estimation and control:
+          <a href="HystereticSelection.html">Hysteretic Selection</a> (IEEE L-CSS),
+          <a href="NeuralBeliefMPC.html">Neural Belief MPC</a> (IEEE TAC, submitted),
+          <a href="SafeCF-SSM.html">SafeCF-SSM</a> and <a href="RobustCF.html">Robust CF Filtering</a> &mdash; see <a href="Publication.html">Publication</a>.</p></li>
+          <li><p>2026: \(''\)Bayesian Model Predictive Control for Open Quantum Systems: Robust Qubit State
+          Regulation under Decoherence\(''\) <b>accepted</b> at IFAC 2026.
+          [<a href="BMPCQuantum.html">project page</a>]</p></li>
+          <li><p>09.2019: \(''\)Contouring Control Consensus for Robot Manipulators\(''\) won <b> the 
+     best young paper award, finalist </b> at The 58<sup>th</sup> Annual Conference of the Society of Instrument and Control Engineers of Japan 
+         (SICE), Japan. </p>
                         <li><p>01.2019: \(''\)Sparse Bayesian Learning-based Adaptive Impedance Control in Physical 
                             Human-robot-interaction\(''\) won <b> the best paper award</b> at The 2019 International Symposium on Instrumentation, Control, 
-			   Artificial Intelligence, and Robotics. </p>
-				
+         Artificial Intelligence, and Robotics. </p>
+        
                         </li>    </ul>    
-	
-	
-			   		
+  
+  
+            
 </div>   </div>
 
-	<h2>Research Interests</h2>
+  <h2 style="color:#003366;">Research Vision</h2>
+<p class="rv-lead">
+<b>Systems that learn must also know how far they may change.</b>
+I aim to build learning-enabled autonomous systems &mdash; robots first, and equally vehicles, energy
+and cyber-physical systems &mdash; that <b>feel, believe, adapt and decide</b> under uncertainty, with every
+change to what they believe certified against the tolerances of what they do. I call this
+<b>Compliant Intelligence</b>: stability gained by adapting to uncertainty rather than resisting it.
+</p>
+<div class="rv-axis">
+<b>Feel</b> &rarr; <b>Believe</b> &rarr; <b>Adapt</b> &rarr; <b>Decide</b> &rarr; <b>Interact</b>
+</div>
+
+<h2 style="color:#003366;">Research Track</h2>
+<div class="rv-track">
+  <div class="rv-row">
+    <span class="rv-stage">FOUNDATION</span>
+    <span class="rv-title"><a href="AutomaticaCF.html">Cognitive flexibility as a structural operator on belief</a></span>
+    <span class="rv-tag rv-rev">Automatica &middot; under review</span>
+    <span class="rv-q">What is cognitive flexibility as a structural operation on belief?</span>
+  </div>
+
+  <div class="rv-row">
+    <span class="rv-stage">ADAPTATION</span>
+    <span class="rv-title"><a href="RobustCF.html">Robust adaptation under noisy innovation scores</a></span>
+    <span class="rv-tag rv-pub">IEEE SPL &middot; published</span>
+    <span class="rv-q">Can that adaptation remain robust when the innovation signal itself is noisy?</span>
+  </div>
+
+  <div class="rv-row">
+    <span class="rv-stage">BELIEF</span>
+    <span class="rv-title"><a href="DeepSSSMpaper.html">Reliable latent belief (Deep SSSM)</a></span>
+    <span class="rv-tag rv-rev">IEEE RA-L &middot; under review</span>
+    <span class="rv-q">Can learned latent belief remain reliable when perception disappears?</span>
+  </div>
+
+  <div class="rv-row">
+    <span class="rv-stage">TRUST</span>
+    <span class="rv-title"><a href="SafeCF-SSM.html">Trustworthy safety monitoring (SafeCF)</a></span>
+    <span class="rv-tag rv-sub">IEEE RA-L &middot; submitted</span>
+    <span class="rv-q">When can physical quantities decoded from latent belief be trusted for safety assessment?</span>
+  </div>
+
+  <div class="rv-row">
+    <span class="rv-stage">CONTROL</span>
+    <span class="rv-title"><a href="NeuralBeliefMPC.html">Controller-aware belief correction</a></span>
+    <span class="rv-tag rv-sub">IEEE TAC TN &middot; submitted</span>
+    <span class="rv-q">How far may belief be corrected before the MPC plan changes beyond prescribed tolerances?</span>
+  </div>
+
+  <div class="rv-row">
+    <span class="rv-stage">DECISION</span>
+    <span class="rv-title"><a href="HystereticSelection.html">Certified structure switching</a></span>
+    <span class="rv-tag rv-sub">IEEE L-CSS</span>
+    <span class="rv-tag rv-prep">IEEE TAC (Co-Flex) &middot; in preparation</span>
+    <span class="rv-q">When, and how often, may the structure itself switch inside a closed loop?</span>
+  </div>
+
+  <div class="rv-row">
+    <span class="rv-stage">EMBODIMENT</span>
+    <span class="rv-title"><a href="tactile_intelligence.html">Tactile intelligence</a></span>
+    <span class="rv-q">Uncertainty-aware tactile perception, stochastic belief and adaptive control in physical contact, building on compliant pneumatic-artificial-muscle control (IEEE Trans. Ind. Electron., 2022).</span>
+  </div>
+</div>
+
+<h2 style="color:#003366;">Research Interests</h2>
+<p class="rv-lead" style="margin-bottom:8px;">
+<b>One object, one question.</b> I study the <i>belief</i> a learning-enabled robot acts on, and ask
+how far it may <b>change</b> &mdash; switch, be corrected, adapt &mdash; with guarantees stated in the
+tolerances of the decision it drives.
+</p>
 <ul>
-  <li><p>Data-driven and learning-enabled control of complex robotic and cyber-physical systems.</p></li>
-  <li><p>Safe human–robot interaction and decision-making under uncertainty.</p></li>
-  <li><p>Soft robotics and compliant actuation (e.g., pneumatic artificial muscles, Deep SSSM for HRI).</p></li>
+  <li><p><b>When to switch.</b> Certified structure switching: how often a robot may change its model of the world, and how fast it must recover, when the evidence itself is noisy.</p></li>
+  <li><p><b>How far to correct.</b> Controller-aware belief budgets: limits on what a neural observer may change, set directly by the input tolerances of MPC.</p></li>
+  <li><p><b>When to trust.</b> Reliability of learned latent belief: when quantities decoded from it can be used for safety, especially when perception drops out.</p></li>
+  <li><p><b>Where it lands.</b> Compliant robots that touch: tactile perception and soft actuation as the physical test of these guarantees.</p></li>
 </ul>
+<p class="rv-motto">&ldquo;Challenge. Change. Impact.&rdquo;</p>
 
-<h2 style="color:#003366;">Research Vision</h2>
-<p>
-My long-term goal is to build robots that can <strong>learn to feel and decide</strong> — machines that not only control motion but also interpret and adapt to uncertainty through touch.  
-I call this idea <strong>Compliant Intelligence</strong>: the ability of a robot to maintain stability not by resisting disturbances, but by adapting to them.  
-This principle integrates <strong>tactile sensing</strong>, <strong>deep stochastic modeling</strong>, and <strong>Bayesian / Deep MPC</strong> to enable dexterous and human-compatible manipulation.
-</p>
-
-<p>
-<a href="https://thanana.github.io/tactile_intelligence.html" style="color:#0067B8; font-weight:bold; text-decoration:none;">
-→ Tactile Intelligence Loop Project
-</a>
-</p>
-
-
-	<h2>Professional Services
-	</h2>
+<h2>Professional Services
+  </h2>
             <ul> </ul>
-	
+  
 <h3>Reviewer Board</h3>
                     <ul>
                         <li><p>Machines</p>
                         </li>    </ul> 
 
-	
-	<h3>Program Committee</h3>
+  
+  <h3>Program Committee</h3>
                     <ul>
-						 <li><p>The 2025 International Conference
+             <li><p>The 2025 International Conference
 on Automation and Intelligent Technology (ICAIT 2025), China.</p>
-							 
+               
                         <li><p>The 2019 IEEE International Conference on Robotics and Biomimetics (ROBIO 2019), Yunnan, China.</p>
                         
-	</li> </ul> 
-	
+  </li> </ul> 
+  
             <h3>Session Chair</h3>
                     <ul>
-			    <li><p>\(''\)Model Learning for Control\(''\), 14<sup>th</sup> IEEE International Conference on Automation Science and Engineering (CASE 2018), 
+          <li><p>\(''\)Model Learning for Control\(''\), 14<sup>th</sup> IEEE International Conference on Automation Science and Engineering (CASE 2018), 
                             August 20-24, 2018, TU München, Germany.</p>
-				
-			    <li><p>\(''\)Robotic and Automation Systems II\(''\), The 58<sup>th</sup> Annual Conference of the Society of Instrument and Control Engineers of Japan (SICE), 
+        
+          <li><p>\(''\)Robotic and Automation Systems II\(''\), The 58<sup>th</sup> Annual Conference of the Society of Instrument and Control Engineers of Japan (SICE), 
                             September 10-13, 2019, Hiroshima, Japan.</p>
                         </li>    </ul>       
-	
+  
              <h3>Selected Talk</h3>
                     <ul>
-			    <li><p>Control, Learning, and Optimization: from physic-based to data-driven</p>
+          <li><p>Control, Learning, and Optimization: from physic-based to data-driven</p>
                         <li><p>Learning-based Non-linear Adaptive Robust Control Framework: Dual-arm Robot</p>
-				
+        
                         </li>    </ul>    
 
 <div id="footer">
 <div id="footer-text">
-Page generated 2022-06-05 05:16:31 GMT, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.  
+&copy; 2026 Thanana Nuchkrua. Page generated by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.  
 </div>
 </div>
 </td>
