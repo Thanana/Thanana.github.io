@@ -36,140 +36,19 @@
 <div id="toptitle">
 
   
-<style>
-.wmc-concept {
-  margin: 1.6em 0;
-  padding: 1.25em;
-  border: 1px solid #d8e0e8;
-  border-left: 4px solid #315c86;
-  background: #f8fafc;
-}
-.wmc-concept figcaption {
-  margin-bottom: 1em;
-  color: #24496b;
-  font-weight: bold;
-}
-.wmc-flow {
-  display: flex;
-  align-items: stretch;
-  gap: 0.65em;
-}
-.wmc-stage {
-  flex: 1;
-  min-width: 0;
-  padding: 0.9em;
-  background: white;
-  border: 1px solid #d8e0e8;
-}
-.wmc-stage strong {
-  display: block;
-  margin-bottom: 0.4em;
-  color: #24496b;
-  font-size: 1.12em;
-}
-.wmc-stage span {
-  display: block;
-  line-height: 1.5;
-}
-.wmc-arrow {
-  align-self: center;
-  color: #64829b;
-  font-size: 1.4em;
-}
-.wmc-feedback {
-  margin-top: 1em;
-  padding-top: 0.8em;
-  border-top: 1px dashed #9aafc0;
-  color: #34566f;
-  text-align: left;
-  line-height: 1.5;
-}
-.wmc-note {
-  margin: 0.8em 0 0;
-  font-size: 0.9em;
-  color: #555;
-}
-@media (max-width: 1000px) {
-  .wmc-flow { flex-direction: column; }
-  .wmc-arrow { transform: rotate(90deg); }
-}
-</style>
-
-<h1>World Models and Control</h1>
-</div>
-
-<p><i>Learning to infer, predict, adapt, and control under uncertainty.</i></p>
-
-<p>My research connects <b>Bayesian state estimation</b>,
-<b>stochastic world models</b>, and <b>robust and adaptive control</b>.
-I investigate how intelligent systems build beliefs from incomplete
-observations, predict possible futures, and revise their internal
-models while keeping those beliefs useful for control.
-</p>
-
-<p>A central question guides this work:
-<b>what should change in a system's representation of the world,
-and how much can change while remaining compatible with its
-controller?</b> This question connects <b>structural belief
-adaptation</b>, <b>reliable latent modeling</b>, and
-<b>controller-aware inference</b>, with compliant robotic
-interaction as a longer-term application.
-</p>
-
-<figure class="wmc-concept" aria-labelledby="wmc-caption">
-  <figcaption id="wmc-caption">
-    From observations to control—and back through evidence
+<figure style="margin: 1.5em 0;">
+  <img src="world-models-control-concept.png"
+       alt="World Models and Control: inference, prediction,
+            structural adaptation, assessment, and control,
+            connected through observations and feedback."
+       style="display: block; width: 100%; max-width: 1100px;
+              height: auto;" />
+  <figcaption style="margin-top: 0.7em; color: #555;">
+    Connecting uncertain observations, adaptive world models,
+    and controller-aware inference.
+    Guarantees depend on the assumptions of each study.
   </figcaption>
-
-  <div class="wmc-flow">
-    <div class="wmc-stage">
-      <strong>Infer</strong>
-      <span>Incomplete observations<br />
-      &#8595;<br />
-      Beliefs over hidden states</span>
-    </div>
-
-    <span class="wmc-arrow" aria-hidden="true">&#8594;</span>
-
-    <div class="wmc-stage">
-      <strong>Adapt</strong>
-      <span>Predictive evidence<br />
-      &#8595;<br />
-      Revised latent structure and dynamics</span>
-    </div>
-
-    <span class="wmc-arrow" aria-hidden="true">&#8594;</span>
-
-    <div class="wmc-stage">
-      <strong>Assess</strong>
-      <span>Uncertainty and model assumptions<br />
-      &#8595;<br />
-      Conditions for physical certificates</span>
-    </div>
-
-    <span class="wmc-arrow" aria-hidden="true">&#8594;</span>
-
-    <div class="wmc-stage">
-      <strong>Control</strong>
-      <span>Controller requirements<br />
-      &#8595;<br />
-      Allowable belief corrections</span>
-    </div>
-  </div>
-
-  <div class="wmc-feedback">
-    <b>&#8634; Closing the loop:</b>
-    actions generate new observations; predictive discrepancies
-    inform belief and model revision.
-  </div>
-
-  <p class="wmc-note">
-    Conceptual connections across the research studies.
-    Certificates and control guarantees depend on the assumptions
-    established in each study.
-  </p>
 </figure>
-
 
   
 <h2>Seeing Beyond Vision: Stochastic World Models</h2>
