@@ -41,6 +41,7 @@ MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
 <div class="menu-item"><a href="Biography.html">Biography</a></div>
 <div class="menu-item"><a href="Publication.html">Publication</a></div>
  
+<div class="menu-category">Research</div>
 <div class="menu-item"><a href="world-models-control.html" >World&nbsp;Models&nbsp;and&nbsp;Control</a></div>
 <div class="menu-item"><a href="https://thanana.github.io/nonholonomic.html">Holonomic&nbsp;Systems</a></div>
 <div class="menu-item"><a href="https://thanana.github.io/Cyber.html">Human-robot&nbsp;Interaction</a></div>
@@ -56,6 +57,7 @@ MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } });
     <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
   </td>
 
+<td id="layout-content">
 <div id="toptitle">
 <h1 style="color:#003366; text-align:center; margin-top:30px;">Tactile Intelligence</h1>
 </div>
@@ -149,8 +151,8 @@ in robust, adaptive and Bayesian model predictive control, combined with
 reinforcement learning, suggests a shift in viewpoint: compliance need not be
 only a passive mechanical property; it can be an <b>active principle of
 intelligence</b>. A compliant robot should not resist uncertainty at contact,
-but yield to it, interpret it, and learn from it&mdash;while still meeting the
-safety and stability guarantees that control theory demands.
+but yield to it, interpret it, and learn from it&mdash;with safety and stability treated as explicit requirements to be established
+under appropriate modeling and control assumptions.
 </p>
 
 <h2 class="ti-h">Problem formulation</h2>
@@ -178,13 +180,14 @@ u_t=\pi(b_t)=\arg\min_{u_{t:t+N-1}}\ \mathbb{E}_{b_t}\!\Bigl[\sum_{k=0}^{N-1}\el
 <p>
 The central difficulty is that \(f_\vartheta\) and \(h_\psi\) are learned and
 adapt online, so the belief that the controller trusts can itself change in
-ways that are not safe. Making that interface safe is the common thread of
-my current work.
+ways that are not safe. Understanding and constraining that interface is a central theme of
+my current work. The formulation above describes a research objective;
+its tactile implementation and guarantees remain to be established.
 </p>
 
 <!-- Figure 2: certified belief-control interface (block diagram) -->
 <div class="ti-fig">
-<svg viewBox="0 0 940 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Certified interface between a learned tactile belief and the controller">
+<svg viewBox="0 0 940 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Proposed tactile application of a controller-aware belief interface">
 <defs>
 <marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#003366"/></marker>
 <marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#00A6D6"/></marker>
@@ -225,7 +228,7 @@ my current work.
 <line x1="550" y1="76" x2="583" y2="76" stroke="#003366" stroke-width="1.3" marker-end="url(#m1)"/>
 <path d="M850,118 L850,170 L465,170 L465,120" fill="none" stroke="#003366" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#m1)"/>
 <text x="657" y="162" text-anchor="middle" font-size="13.5" fill="#003366" font-style="italic">tolerance selects the budget</text>
-<text x="610" y="204" text-anchor="middle" font-size="13.5" fill="#333">Guarantee: every deployed correction moves the command by at most <tspan font-style="italic">&#363;</tspan><tspan font-size="10" dy="3">c</tspan></text>
+<text x="610" y="204" text-anchor="middle" font-size="13.5" fill="#333">Under the MPC assumptions: correction-induced command change is at most <tspan font-style="italic">&#363;</tspan><tspan font-size="10" dy="3">c</tspan></text>
 
 <!-- (b) blocks -->
 <rect x="10" y="270" width="150" height="80" rx="6" fill="#fff" stroke="#00A6D6" stroke-width="1.3"/>
@@ -262,27 +265,27 @@ my current work.
 </g>
 </svg>
 </div>
-<p class="ti-cap"><b>Figure 2.</b> How learning from touch is kept safe for the controller.
-Figure&nbsp;1 shows <i>what</i> the loop does; this figure shows <i>how</i> its weakest
-link&mdash;the learned belief that the controller trusts&mdash;is certified.
-(a)&nbsp;Every correction proposed by the tactile encoder is projected within a budget
-\(\delta_E\) chosen from the input tolerance \(\bar u_c\), so no correction moves the
-grip or haptic command by more than \(\bar u_c\). (b)&nbsp;A learning update is accepted
-only if it lowers the prediction score <i>and</i> moves the belief by at most
-\(\varepsilon_B\), chosen from the update tolerance \(\bar u_a\). This two-budget structure
-is the one I certify for MPC in <a href="NeuralBeliefMPC.html">Neural Belief MPC</a>;
-in wearable haptics the tolerances come from the user as well as the actuator.</p>
+<p class="ti-cap"><b>Figure 2.</b> A proposed controller-aware interface for tactile learning, inspired by
+<a href="NeuralBeliefMPC.html">Neural Belief MPC</a>.
+(a) A correction budget limits the distance from a reference belief.
+(b) A separate same-context budget limits belief changes induced by accepted
+parameter updates. In the MPC study, prescribed input tolerances determine
+these budgets under the stated covariance, domain, and affine-cell assumptions.
+The tactile and haptic blocks illustrate a prospective application; transferring
+these results requires validating the contact model and controller assumptions.
+Input-plan consistency alone does not establish physical safety, user comfort,
+or closed-loop stability.</p>
 
 <h2 class="ti-h">Core ideas</h2>
 <div class="ti-grid">
   <div class="ti-card"><b>Latent tactile state.</b> Deep stochastic state-space
   models capture what touch cannot measure directly&mdash;slip, friction and
   contact geometry&mdash;together with their uncertainty and temporal structure.</div>
-  <div class="ti-card"><b>Belief-aware control.</b> MPC handles constraints such as
-  force limits and slip margins; reinforcement learning supplies long-term
-  adaptation. Both act on the belief, not on a single estimate.</div>
+  <div class="ti-card"><b>Belief-aware control.</b> The proposed direction investigates MPC for force and slip constraints
+  alongside reinforcement learning for longer-term adaptation. The aim is
+  to use belief information and uncertainty explicitly in decision making.</div>
   <div class="ti-card"><b>Bidirectional touch.</b> Surface haptics actively modulate
-  fingertip friction, so the robot can both sense and shape contact&mdash;blurring
+  fingertip friction, offering a route to both sense and shape contact&mdash;blurring
   the line between perception and action.</div>
 </div>
 
@@ -291,27 +294,24 @@ in wearable haptics the tolerances come from the user as well as the actuator.</
   <li>How can a learned tactile model keep a calibrated belief when contact is
   intermittent and sensors saturate or drop out?</li>
   <li>How far may an online-adapted belief move before the controller's grip
-  command changes by more than a safe tolerance?</li>
+  command changes by more than a prescribed input tolerance?</li>
   <li>When should the controller trust touch, and when should it fall back to a
   conservative, model-based action?</li>
 </ul>
 
 <h2 class="ti-h">Foundations in my current work</h2>
 <p>
-Each question builds on results I have developed for learned state estimation
-and control under partial observation:
+These questions draw on my work in learned state estimation and control
+under partial observation. Their transfer to tactile interaction is a research direction:
 </p>
 <ul>
-  <li><a href="DeepSSSM.html"><b>Seeing Beyond Vision</b></a> &mdash; bounded-error
-  latent belief tracking when the sensor is occluded, the visual analogue of
-  intermittent contact.</li>
+  <li><a href="DeepSSSM.html"><b>Seeing Beyond Vision</b></a> &mdash; stochastic latent modeling and uncertainty propagation under occlusion,
+  providing a modeling connection to intermittent tactile observations.</li>
   <li><a href="RobustCF.html"><b>Robust CF Filtering</b></a> and
   <a href="SafeCF-SSM.html"><b>SafeCF-SSM</b></a> &mdash; cognitive-flexible filtering
-  and calibrated safety monitoring of decoded latent predictions under online
-  adaptation.</li>
-  <li><a href="NeuralBeliefMPC.html"><b>Neural Belief MPC</b></a> &mdash; certified
-  belief budgets that limit how far a neural observer may move the input plan of
-  an MPC.</li>
+  and conditional physical-latent certification under online adaptation.</li>
+  <li><a href="NeuralBeliefMPC.html"><b>Neural Belief MPC</b></a> &mdash; belief correction and adaptation budgets tied to input tolerances
+  within a known affine MPC cell, under stated assumptions.</li>
 </ul>
 
 <h2 class="ti-h">Objective</h2>
