@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="generator" content="jemdoc+MathJax" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Thanana Nuchkrua: Bayesian state estimation, stochastic world models, structural belief adaptation, and controller-aware inference." />
+<link rel="stylesheet" href="jemdoc-world-models.css" type="text/css" />
+<link rel="stylesheet" href="world-models-control.css" type="text/css" />
+<title>World Models and Control</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="https://thanana.github.io/index.html">Home</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/Biography.html">Biography</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/Publication.html">Publication</a></div>
+<div class="menu-category">Research</div>
+<div class="menu-item"><a href="world-models-control.html" class="current">World&nbsp;Models&nbsp;and&nbsp;Control</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/tactile_intelligence.html">Tactile&nbsp;Intelligence</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/Cyber.html">Human-robot&nbsp;Interaction</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/large-scale.html">Cyber-physical&nbsp;Systems</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="https://thanana.github.io/reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="https://thanana.github.io/robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/image.html">Image&nbsp;Processing</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>World Models and Control</h1>
+</div>
+<p><i>Learning to infer, predict, and control under uncertainty.</i>
+</p>
+<p>My research connects <b>Bayesian state estimation</b>, <b>stochastic world models</b>, and <b>adaptive control</b>. I study how a robot can maintain a useful belief about its environment, revise that belief when the model is mismatched, and use it for downstream decisions.
+</p>
+<p>The work develops from <b>structural belief adaptation</b> through <b>reliable latent modeling</b> and <b>controller-aware inference</b>, toward compliant robotic interaction.
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p><b>Infer:</b> estimate hidden states from incomplete observations.<br />
+<b>Adapt:</b> change the representation when a fixed model becomes restrictive.<br />
+<b>Assess:</b> identify when a latent belief supports a physical certificate.<br />
+<b>Control:</b> relate belief corrections to the controller's input tolerances.
+</p>
+</div></div>
+<h2>Seeing Beyond Vision: Stochastic World Models</h2>
+<p>A world model describes how a system evolves and how observations arise. Under partial observability, a robot must reason about hidden states and possible futures, rather than rely only on the current image.
+</p>
+<p><b>Deep Stochastic State-Space Models (Deep SSSM)</b> combine a probabilistic encoder, stochastic latent transitions, and variational inference. The aim is to carry uncertainty from perception into prediction, providing a foundation for planning under noise and occlusion.
+</p>
+<p><a href="https://thanana.github.io/DeepSSSM.html">Seeing Beyond Vision: research overview</a> | <a href="https://thanana.github.io/DeepSSSMpaper.html">Deep SSSM: study details</a>
+</p>
+<h2>Research Threads and Selected Work</h2>
+<h3>1. Structural Belief Adaptation</h3>
+<p><b>What if parameter tuning cannot repair the model mismatch?</b>
+</p>
+<p>Cognitive Flexibility selects among latent structures using innovation-based predictive evidence, while preserving the Bayesian filtering recursion. The analysis separates well-posedness, the selection mechanism, and its consequences under the stated conditions.
+</p>
+<p><b>Study:</b> <a href="https://thanana.github.io/AutomaticaCF.html">Cognitive Flexibility as a Latent Structural Operator for Bayesian State Estimation</a>
+</p>
+<h3>2. Robust Adaptation under Noisy Evidence</h3>
+<p><b>When does a score difference justify changing the model?</b>
+</p>
+<p>Robust CF introduces switching margins that account for noisy innovation scores. A batch-split estimator uses existing particles to inform online margin calibration as the noise scale changes. The guarantees depend on the stated score-noise and effective-margin conditions.
+</p>
+<p><b>Study:</b> <a href="https://thanana.github.io/RobustCF.html">Robust Cognitive-Flexible Filtering under Noisy Innovation Scores</a>
+</p>
+<h3>3. Reliable Latent Prediction</h3>
+<p><b>Can a learned belief remain useful when perception disappears?</b>
+</p>
+<p>Deep SSSM studies stochastic latent dynamics and uncertainty propagation for occlusion-robust robotic prediction. A variational framework connects representation learning and prediction, laying a modeling foundation for future predictive and Bayesian model predictive control.
+</p>
+<p><b>Study:</b> <a href="https://thanana.github.io/DeepSSSMpaper.html">Deep Stochastic State-Space Modeling for Occlusion-Robust Robotic Manipulation</a>
+</p>
+<h3>4. Physical-Latent Certification</h3>
+<p><b>When can a decoded latent belief support a physical safety claim?</b>
+</p>
+<p>SafeCF-SSM combines channel-wise decoder error and belief uncertainty in a realizability test. Predictive surprise regulates both adaptation and safety margins. Each constrained channel is certified under the stated assumptions or explicitly declared uncertifiable under the given codec.
+</p>
+<p>In the reported quadrotor rotor-failure simulation, attitude channels remain certifiable while altitude is declared uncertifiable. The contribution makes the physical-latent gap checkable; it does not assume that the gap disappears.
+</p>
+<p><b>Study:</b> <a href="https://thanana.github.io/SafeCF-SSM.html">SafeCF-SSM: Certifying, Not Closing, the Physical-Latent Problem in Adaptive Latent-Space Control</a>
+</p>
+<h3>5. Controller-Aware Belief Correction</h3>
+<p><b>How far may a neural observer move its belief before the MPC plan changes too much?</b>
+</p>
+<p>Neural Belief MPC derives separate correction and same-context adaptation budgets from prescribed input tolerances within a known affine MPC cell. It examines why constraints on the current input can miss changes later in the predicted plan.
+</p>
+<p>These certificates bound belief and input changes under the stated assumptions. Plan consistency alone does not establish true-state accuracy, nonlinear safety, or recursive feasibility.
+</p>
+<p><b>Study:</b> <a href="https://thanana.github.io/NeuralBeliefMPC.html">Neural Belief Corrections for MPC: Plan-Consistent Scalar Budgets versus Myopic Directional Constraints</a>
+</p>
+<h3>6. Model Switching and Recovery</h3>
+<p><b>How should sample size, sample refreshes, and hysteresis be designed together?</b>
+</p>
+<p>Hysteretic Selection separates changes in the evidence from changes caused by refreshing Monte Carlo samples. Recorded-score accounts relate switching and recovery to sample size, refresh rate, and margin. A key distinction is that fewer switches can coexist with persistent wrong decisions.
+</p>
+<p><b>Study:</b> <a href="https://thanana.github.io/HystereticSelection.html">Switching and Recovery Guarantees for Hysteretic Model Selection under Monte Carlo Likelihood Refreshes</a>
+</p>
+<h2>Toward Compliant Intelligence</h2>
+<p>The longer-term direction connects uncertainty-aware tactile perception, stochastic belief, structural adaptation, and adaptive decision making in compliant robotic systems:
+</p>
+<p><b>Feel -&gt; Believe -&gt; Adapt -&gt; Decide -&gt; Interact</b>
+</p>
+<p><b>Co-Flex</b>, a direction in preparation, asks when and how often a model structure may switch within a closed loop. Hysteretic Selection is a related switching study and remains a separate work.
+</p>
+<p>Physical embodiment builds on earlier compliant pneumatic-artificial-muscle control and connects to <a href="https://thanana.github.io/tactile_intelligence.html">Tactile Intelligence</a>. Integrating the full belief-to-interaction pipeline remains a research objective; the studies above address its individual components.
+</p>
+<p><a href="https://thanana.github.io/large-scale.html">Related work on compliant actuation</a> | <a href="https://thanana.github.io/Publication.html">All publications</a>
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p>The studies examine different interfaces between inference, modeling, and control. Improved predictive fit does not itself establish controller safety; latent feasibility requires physical error accounting; and plan consistency does not itself establish closed-loop safety. Please see each study for its assumptions, evidence, and limitations.
+</p>
+</div></div>
+<p>Thanana Nuchkrua | Control &amp; Robotics Research
+</p>
+</td>
+</tr>
+</table>
+</body>
+</html>
