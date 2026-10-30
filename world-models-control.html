@@ -1,37 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta name="generator" content="jemdoc+MathJax" />
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Thanana Nuchkrua: Bayesian state estimation, stochastic world models, structural belief adaptation, and controller-aware inference." />
-<link rel="stylesheet" href="jemdoc-world-models.css" type="text/css" />
-<link rel="stylesheet" href="world-models-control.css" type="text/css" />
-<title>World Models and Control</title>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Thanana Nuchkrua, Ph.D.</title>
+
+<!-- MathJax -->   
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+
+<style type="text/css">
+.rv-lead{font-size:1.02em;line-height:1.7;text-align:justify;margin:6px 0 14px 0;}
+.rv-axis{text-align:center;color:#003366;font-size:0.95em;letter-spacing:0.3px;background:#f5f8fa;border-radius:8px;padding:9px 10px;margin:10px 0 16px 0;}
+.rv-axis b{color:#00A6D6;}
+.rv-track { margin: 10px 0; padding: 0; }
+.rv-row { position: relative; padding: 12px 0; border-bottom: 1px dashed #d6e6f0; }
+.rv-row:last-child { border-bottom: none; }
+.rv-stage { display: inline-block; min-width: 110px; font-size: 0.85em; font-weight: bold; letter-spacing: 1px; color: #003366; }
+.rv-title { font-weight: bold; color: #003366; }
+.rv-title a { color: #003366; text-decoration: none; border-bottom: 1px dotted #00A6D6; }
+.rv-q { display: block; color: #444; font-style: italic; font-size: 0.93em; margin: 4px 0 0 110px; }
+.rv-tag{display:inline-block;font-size:0.72em;font-weight:bold;letter-spacing:0.4px;border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:1px;}
+.rv-pub{background:#e3f4ea;color:#1d6b3a;}
+.rv-rev{background:#e6f0fa;color:#1f4e8c;}
+.rv-sub{background:#fff3e0;color:#9a5a00;}
+.rv-prep{background:#f0f0f0;color:#666;}
+.rv-motto{text-align:center;color:#00A6D6;font-style:italic;margin:16px 0 4px 0;}
+@media (max-width:640px){.rv-q{margin-left:0;}.rv-stage{display:block;}}
+</style>
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
 <tr valign="top">
-<td id="layout-menu">
-<div class="menu-category">Thanana</div>
-<div class="menu-item"><a href="https://thanana.github.io/index.html">Home</a></div>
-<div class="menu-item"><a href="https://thanana.github.io/Biography.html">Biography</a></div>
-<div class="menu-item"><a href="https://thanana.github.io/Publication.html">Publication</a></div>
 
-  
-<div class="menu-category">Research</div>
-<div class="menu-item"><a href="world-models-control.html" class="current">World&nbsp;Models&nbsp;and&nbsp;Control</a></div>
+ <!-- Left navigation -->
+  <td id="layout-menu">
+    <div class="menu-category">Thanana</div>
+    <div class="menu-item"><a href="index.html">Home</a></div>
+    <div class="menu-item"><a href="Biography.html">Biography</a></div>
+    <div class="menu-item"><a href="Publication.html">Publication</a></div>
+
+    <div class="menu-category">Research</div>
+
+    
+
+
+<div class="menu-item"><a href="world-models-control.html"class="current">World&nbsp;Models&nbsp;and&nbsp;Control</a></div>
 <div class="menu-item"><a href="https://thanana.github.io/nonholonomic.html">Holonomic&nbsp;Systems</a></div>
 <div class="menu-item"><a href="https://thanana.github.io/Cyber.html">Human-robot&nbsp;Interaction</a></div>
 <div class="menu-item"><a href="https://thanana.github.io/large-scale.html">Cyber-physical&nbsp;Systems</a></div>
+    
+    
+    <div class="menu-category">Teaching</div>
+    <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+  <div class="menu-item"><a href="Robotics.html">Introduction&nbsp;to Robotics</a></div>
 
-  
-<div class="menu-category">Teaching</div>
-<div class="menu-item"><a href="https://thanana.github.io/reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
-<div class="menu-category">Software</div>
-<div class="menu-item"><a href="https://thanana.github.io/robotics.html">Robotics</a></div>
-<div class="menu-item"><a href="https://thanana.github.io/image.html">Image&nbsp;Processing</a></div>
-</td>
+    <div class="menu-category">Software</div>
+    <div class="menu-item"><a href="robotics.html">Robotics</a></div>
+    <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+  </td>
+
 <td id="layout-content">
 <div id="toptitle">
 
