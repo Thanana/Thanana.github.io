@@ -105,78 +105,156 @@ MathJax.Hub.Config({
   </figcaption>
 </figure>
   
-<h2>Seeing Beyond Vision: Stochastic World Models</h2>
-<p>A world model describes how a system evolves and how observations arise. Under partial observability, a robot must reason about hidden states and possible futures, rather than rely only on the current image.
-</p>
-<p><b>Deep Stochastic State-Space Models (Deep SSSM)</b> combine a probabilistic encoder, stochastic latent transitions, and variational inference. The aim is to carry uncertainty from perception into prediction, providing a foundation for planning under noise and occlusion.
-</p>
-<p><a href="https://thanana.github.io/DeepSSSM.html">Seeing Beyond Vision: research overview</a> | <a href="https://thanana.github.io/DeepSSSMpaper.html">Deep SSSM: study details</a>
-</p>
-<h2>Research Threads and Selected Work</h2>
-<h3>1. Structural Belief Adaptation</h3>
-<p><b>What if parameter tuning cannot repair the model mismatch?</b>
-</p>
-<p>Cognitive Flexibility selects among latent structures using innovation-based predictive evidence, while preserving the Bayesian filtering recursion. The analysis separates well-posedness, the selection mechanism, and its consequences under the stated conditions.
-</p>
-<p><b>Study:</b> <a href="https://thanana.github.io/AutomaticaCF.html">Cognitive Flexibility as a Latent Structural Operator for Bayesian State Estimation</a>
-</p>
-<h3>2. Robust Adaptation under Noisy Evidence</h3>
-<p><b>When does a score difference justify changing the model?</b>
-</p>
-<p>Robust CF introduces switching margins that account for noisy innovation scores. A batch-split estimator uses existing particles to inform online margin calibration as the noise scale changes. The guarantees depend on the stated score-noise and effective-margin conditions.
-</p>
-<p><b>Study:</b> <a href="https://thanana.github.io/RobustCF.html">Robust Cognitive-Flexible Filtering under Noisy Innovation Scores</a>
-</p>
-<h3>3. Reliable Latent Prediction</h3>
-<p><b>Can a learned belief remain useful when perception disappears?</b>
-</p>
-<p>Deep SSSM studies stochastic latent dynamics and uncertainty propagation for occlusion-robust robotic prediction. A variational framework connects representation learning and prediction, laying a modeling foundation for future predictive and Bayesian model predictive control.
-</p>
-<p><b>Study:</b> <a href="https://thanana.github.io/DeepSSSMpaper.html">Deep Stochastic State-Space Modeling for Occlusion-Robust Robotic Manipulation</a>
-</p>
-<h3>4. Physical-Latent Certification</h3>
-<p><b>When can a decoded latent belief support a physical safety claim?</b>
-</p>
-<p>SafeCF-SSM combines channel-wise decoder error and belief uncertainty in a realizability test. Predictive surprise regulates both adaptation and safety margins. Each constrained channel is certified under the stated assumptions or explicitly declared uncertifiable under the given codec.
-</p>
-<p>In the reported quadrotor rotor-failure simulation, attitude channels remain certifiable while altitude is declared uncertifiable. The contribution makes the physical-latent gap checkable; it does not assume that the gap disappears.
-</p>
-<p><b>Study:</b> <a href="https://thanana.github.io/SafeCF-SSM.html">SafeCF-SSM: Certifying, Not Closing, the Physical-Latent Problem in Adaptive Latent-Space Control</a>
-</p>
-<h3>5. Controller-Aware Belief Correction</h3>
-<p><b>How far may a neural observer move its belief before the MPC plan changes too much?</b>
-</p>
-<p>Neural Belief MPC derives separate correction and same-context adaptation budgets from prescribed input tolerances within a known affine MPC cell. It examines why constraints on the current input can miss changes later in the predicted plan.
-</p>
-<p>These certificates bound belief and input changes under the stated assumptions. Plan consistency alone does not establish true-state accuracy, nonlinear safety, or recursive feasibility.
-</p>
-<p><b>Study:</b> <a href="https://thanana.github.io/NeuralBeliefMPC.html">Neural Belief Corrections for MPC: Plan-Consistent Scalar Budgets versus Myopic Directional Constraints</a>
-</p>
-<h3>6. Model Switching and Recovery</h3>
-<p><b>How should sample size, sample refreshes, and hysteresis be designed together?</b>
-</p>
-<p>Hysteretic Selection separates changes in the evidence from changes caused by refreshing Monte Carlo samples. Recorded-score accounts relate switching and recovery to sample size, refresh rate, and margin. A key distinction is that fewer switches can coexist with persistent wrong decisions.
-</p>
-<p><b>Study:</b> <a href="https://thanana.github.io/HystereticSelection.html">Switching and Recovery Guarantees for Hysteretic Model Selection under Monte Carlo Likelihood Refreshes</a>
-</p>
+<h2>Research Themes and Selected Work</h2>
+<p>The four panels above connect complementary questions:
+how to infer hidden states, adapt latent representations,
+predict and assess physical consequences, and keep belief
+changes compatible with controller requirements.</p>
+
+<h3>(a) Infer Hidden States</h3>
+<p><b>What can a system infer when observations are incomplete?</b></p>
+
+<p>A world model describes how hidden states evolve and how
+observations arise. Under partial observability, a system must
+maintain a belief about what it cannot directly observe.
+<b>Deep Stochastic State-Space Models (Deep SSSM)</b> combine
+probabilistic encoding, stochastic latent transitions, and
+variational inference to connect observations with uncertain
+latent states.</p>
+
+<p>This research links Bayesian state estimation with learned
+representations, providing the inference foundation for
+prediction under noise and occlusion.</p>
+
+<p><a href="https://thanana.github.io/DeepSSSM.html">Seeing Beyond
+Vision: research overview</a> |
+<a href="https://thanana.github.io/DeepSSSMpaper.html">Deep SSSM:
+study details</a></p>
+
+<h3>(b) Adapt Latent Structure</h3>
+<p><b>What should change when parameter tuning cannot repair
+model mismatch?</b></p>
+
+<p><b>Cognitive Flexibility</b> selects among latent structures
+using innovation-based predictive evidence while preserving
+the Bayesian filtering recursion. It treats the internal
+representation itself as an object of adaptation.</p>
+
+<p><b>Robust CF</b> addresses uncertainty in that evidence.
+Switching margins account for noisy innovation scores, while
+a batch-split estimator uses existing particles to inform
+online margin calibration as the noise scale changes.
+The guarantees depend on the stated score-noise and
+effective-margin conditions.</p>
+
+<p><b>Hysteretic Selection</b> complements these studies by
+examining how sample size, Monte Carlo refreshes, and switching
+margins affect switching and recovery. It distinguishes
+changes in the evidence from changes caused by refreshing
+samples, showing why fewer switches can coexist with
+persistent wrong decisions.</p>
+
+<p><b>Selected work:</b><br />
+<a href="https://thanana.github.io/AutomaticaCF.html">Cognitive
+Flexibility: structural belief adaptation</a><br />
+<a href="https://thanana.github.io/RobustCF.html">Robust CF:
+adaptation under noisy evidence</a><br />
+<a href="https://thanana.github.io/HystereticSelection.html">Hysteretic
+Selection: model switching and recovery</a></p>
+
+<h3>(c) Predict and Assess</h3>
+<p><b>Which futures can a model predict, and what can its
+beliefs certify?</b></p>
+
+<p><b>Deep SSSM</b> studies stochastic latent dynamics and
+uncertainty propagation for occlusion-robust robotic prediction.
+Its variational framework connects representation learning
+with prediction, laying a modeling foundation for future
+predictive and Bayesian model predictive control.</p>
+
+<p><b>SafeCF-SSM</b> examines the interface between latent
+beliefs and physical constraints. A realizability test
+combines channel-wise decoder error with belief uncertainty;
+predictive surprise regulates adaptation and safety margins.
+Each constrained channel is certified under the stated
+assumptions or explicitly declared uncertifiable under
+the given codec.</p>
+
+<p>In the reported quadrotor rotor-failure simulation,
+attitude channels remain certifiable while altitude is
+declared uncertifiable. This makes the physical-latent
+gap explicit and checkable.</p>
+
+<p><b>Selected work:</b><br />
+<a href="https://thanana.github.io/DeepSSSMpaper.html">Deep SSSM:
+stochastic latent prediction</a><br />
+<a href="https://thanana.github.io/SafeCF-SSM.html">SafeCF-SSM:
+physical-latent certification</a></p>
+
+<h3>(d) Respect Controller Requirements</h3>
+<p><b>How far may an observer move its belief before the
+controller's plan changes too much?</b></p>
+
+<p><b>Neural Belief MPC</b> derives separate budgets for belief
+corrections and same-context adaptation from prescribed input
+tolerances within a known affine MPC cell. This connects
+the observer's allowable changes directly to the
+controller's requirements.</p>
+
+<p>The study distinguishes constraints on the currently
+applied input from requirements covering the full predicted
+input plan. Corrections that have little effect on the current
+input may still be amplified later in the horizon.</p>
+
+<p>The resulting certificates bound belief and input changes
+under stated assumptions. Plan consistency alone does not
+establish true-state accuracy, nonlinear safety, or
+recursive feasibility.</p>
+
+<p><b>Study:</b>
+<a href="https://thanana.github.io/NeuralBeliefMPC.html">Neural
+Belief Corrections for MPC: Plan-Consistent Scalar Budgets
+versus Myopic Directional Constraints</a></p>
+
 <h2>Toward Compliant Intelligence</h2>
-<p>The longer-term direction connects uncertainty-aware tactile perception, stochastic belief, structural adaptation, and adaptive decision making in compliant robotic systems:
-</p>
-<p><b>Feel -&gt; Believe -&gt; Adapt -&gt; Decide -&gt; Interact</b>
-</p>
-<p><b>Co-Flex</b>, a direction in preparation, asks when and how often a model structure may switch within a closed loop. Hysteretic Selection is a related switching study and remains a separate work.
-</p>
-<p>Physical embodiment builds on earlier compliant pneumatic-artificial-muscle control and connects to <a href="https://thanana.github.io/tactile_intelligence.html">Tactile Intelligence</a>. Integrating the full belief-to-interaction pipeline remains a research objective; the studies above address its individual components.
-</p>
-<p><a href="https://thanana.github.io/large-scale.html">Related work on compliant actuation</a> | <a href="https://thanana.github.io/Publication.html">All publications</a>
-</p>
+<p>The longer-term direction brings these research themes
+into physical interaction: connecting uncertainty-aware
+tactile perception, stochastic belief, structural adaptation,
+and adaptive decision making in compliant robotic systems.</p>
+
+<p><b>Feel &#8594; Believe &#8594; Adapt &#8594; Decide
+&#8594; Interact</b></p>
+
+<p><b>Co-Flex</b>, a direction in preparation, asks when and
+how often a model structure may switch within a closed loop.
+Hysteretic Selection provides a related study of switching
+and recovery and remains a separate work.</p>
+
+<p>Physical embodiment builds on earlier work in compliant
+pneumatic-artificial-muscle control and connects to
+<a href="https://thanana.github.io/tactile_intelligence.html">Tactile
+Intelligence</a>. Integrating the full belief-to-interaction
+pipeline remains a research objective; the studies above
+address its individual components.</p>
+
+<p><a href="https://thanana.github.io/large-scale.html">Related
+work on compliant actuation</a> |
+<a href="https://thanana.github.io/Publication.html">All
+publications</a></p>
+
 <div class="infoblock">
 <div class="blockcontent">
-<p>The studies examine different interfaces between inference, modeling, and control. Improved predictive fit does not itself establish controller safety; latent feasibility requires physical error accounting; and plan consistency does not itself establish closed-loop safety. Please see each study for its assumptions, evidence, and limitations.
-</p>
-</div></div>
-<p>Thanana Nuchkrua | Control &amp; Robotics Research
-</p>
+<p><b>Reading the figure.</b> Panels (a)&#8211;(d) summarize
+connections across related studies rather than a single
+validated architecture. Predictive fit, physical
+certifiability, and controller-plan consistency address
+different questions. Each study establishes its own
+assumptions, evidence, and limits.</p>
+</div>
+</div>
+
+<p>Thanana Nuchkrua | Control &amp; Robotics Research</p>
+
 </td>
 </tr>
 </table>
