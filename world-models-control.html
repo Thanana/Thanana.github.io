@@ -81,28 +81,32 @@ MathJax.Hub.Config({
        style="display: block; width: 100%; max-width: 1100px;
               height: auto;" />
 
-  <figcaption style="margin-top: 0.8em; color: #444;
-                     line-height: 1.6;">
-    <b>World Models and Control.</b>
-    <b>(a)</b> Infer hidden states from incomplete observations
-    and represent uncertainty through
-    <a href="DeepSSSMpaper.html">Bayesian beliefs</a>.
-    <b>(b)</b> Use predictive evidence to
-    <a href="AutomaticaCF.html">adapt latent structure</a>,
-    with <a href="RobustCF.html">robustness to noisy scores</a>.
-    <b>(c)</b> Predict possible futures and assess when decoded
-    beliefs support
-    <a href="SafeCF-SSM.html">physical certificates</a>
-    under stated assumptions.
-    <b>(d)</b> Relate allowable belief corrections to
-    <a href="NeuralBeliefMPC.html">controller input tolerances</a>.
-    The bottom loop connects observations, internal models,
-    control, and physical feedback; the reverse arrow shows
-    how controller requirements inform inference.
-    <br />
-    <i>Conceptual connections across related studies;
-    guarantees depend on each study's assumptions.</i>
-  </figcaption>
+ <figcaption style="margin-top: 0.8em;">
+  <div class="infoblock">
+    <div class="blockcontent">
+      <p style="color: #444; line-height: 1.6;">
+        <b>World Models and Control.</b>
+        <b>(a)</b> Infer hidden states from incomplete observations
+        and represent uncertainty through
+        <a href="DeepSSSMpaper.html">Bayesian beliefs</a>.
+        <b>(b)</b> Use predictive evidence to
+        <a href="AutomaticaCF.html">adapt latent structure</a>,
+        with <a href="RobustCF.html">robustness to noisy scores</a>.
+        <b>(c)</b> Predict possible futures and assess when decoded
+        beliefs support
+        <a href="SafeCF-SSM.html">physical certificates</a>
+        under stated assumptions.
+        <b>(d)</b> Relate allowable belief corrections to
+        <a href="NeuralBeliefMPC.html">controller input tolerances</a>.
+        The bottom loop connects observations, internal models,
+        control, and physical feedback; the reverse arrow shows
+        how controller requirements inform inference.
+      </p>
+      <p><i>Conceptual connections across related studies;
+        guarantees depend on each study's assumptions.</i></p>
+    </div>
+  </div>
+</figcaption>
 </figure>
   
 <h2>Research Themes and Selected Work</h2>
