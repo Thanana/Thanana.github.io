@@ -74,19 +74,36 @@ MathJax.Hub.Config({
 
   
 <figure style="margin: 1.5em 0;">
-  <img src="world-models-control-concept.png"
-       alt="World Models and Control: inference, prediction,
-            structural adaptation, assessment, and control,
-            connected through observations and feedback."
+  <img src="world-models-control-concept-v2.png"
+       alt="Four research themes: Bayesian state inference,
+            latent structure adaptation, prediction and physical
+            assessment, and controller-aware belief corrections."
        style="display: block; width: 100%; max-width: 1100px;
               height: auto;" />
-  <figcaption style="margin-top: 0.7em; color: #555;">
-    Connecting uncertain observations, adaptive world models,
-    and controller-aware inference.
-    Guarantees depend on the assumptions of each study.
+
+  <figcaption style="margin-top: 0.8em; color: #444;
+                     line-height: 1.6;">
+    <b>World Models and Control.</b>
+    <b>(a)</b> Infer hidden states from incomplete observations
+    and represent uncertainty through
+    <a href="DeepSSSMpaper.html">Bayesian beliefs</a>.
+    <b>(b)</b> Use predictive evidence to
+    <a href="AutomaticaCF.html">adapt latent structure</a>,
+    with <a href="RobustCF.html">robustness to noisy scores</a>.
+    <b>(c)</b> Predict possible futures and assess when decoded
+    beliefs support
+    <a href="SafeCF-SSM.html">physical certificates</a>
+    under stated assumptions.
+    <b>(d)</b> Relate allowable belief corrections to
+    <a href="NeuralBeliefMPC.html">controller input tolerances</a>.
+    The bottom loop connects observations, internal models,
+    control, and physical feedback; the reverse arrow shows
+    how controller requirements inform inference.
+    <br />
+    <i>Conceptual connections across related studies;
+    guarantees depend on each study's assumptions.</i>
   </figcaption>
 </figure>
-
   
 <h2>Seeing Beyond Vision: Stochastic World Models</h2>
 <p>A world model describes how a system evolves and how observations arise. Under partial observability, a robot must reason about hidden states and possible futures, rather than rely only on the current image.
