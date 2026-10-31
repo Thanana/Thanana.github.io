@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -7,7 +8,7 @@
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
 <title>Estimation and Control | Thanana Nuchkrua</title>
 
-<!-- MathJax -->   
+<!-- MathJax -->
 <script type="text/javascript" async="async"
   src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -19,264 +20,410 @@ MathJax.Hub.Config({
 <!-- End MathJax -->
 
 <style type="text/css">
-.rv-lead{font-size:1.02em;line-height:1.7;text-align:justify;margin:6px 0 14px 0;}
-.rv-axis{text-align:center;color:#003366;font-size:0.95em;letter-spacing:0.3px;background:#f5f8fa;border-radius:8px;padding:9px 10px;margin:10px 0 16px 0;}
-.rv-axis b{color:#00A6D6;}
+.rv-lead {
+  font-size: 1.02em;
+  line-height: 1.7;
+  text-align: justify;
+  margin: 6px 0 14px 0;
+}
+.rv-subtitle {
+  color: #003366;
+  font-size: 1.12em;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 8px 0 16px 0;
+}
+.rv-axis {
+  text-align: center;
+  color: #003366;
+  font-size: 0.95em;
+  letter-spacing: 0.3px;
+  background: #f5f8fa;
+  border-radius: 8px;
+  padding: 9px 10px;
+  margin: 10px 0 16px 0;
+}
+.rv-axis b { color: #00A6D6; }
 .rv-track { margin: 10px 0; padding: 0; }
-.rv-row { position: relative; padding: 12px 0; border-bottom: 1px dashed #d6e6f0; }
+.rv-row {
+  position: relative;
+  padding: 12px 0;
+  border-bottom: 1px dashed #d6e6f0;
+}
 .rv-row:last-child { border-bottom: none; }
-.rv-stage { display: inline-block; min-width: 110px; font-size: 0.85em; font-weight: bold; letter-spacing: 1px; color: #003366; }
+.rv-stage {
+  display: inline-block;
+  min-width: 110px;
+  font-size: 0.85em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #003366;
+}
 .rv-title { font-weight: bold; color: #003366; }
-.rv-title a { color: #003366; text-decoration: none; border-bottom: 1px dotted #00A6D6; }
-.rv-q { display: block; color: #444; font-style: italic; font-size: 0.93em; margin: 4px 0 0 110px; }
-.rv-tag{display:inline-block;font-size:0.72em;font-weight:bold;letter-spacing:0.4px;border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:1px;}
-.rv-pub{background:#e3f4ea;color:#1d6b3a;}
-.rv-rev{background:#e6f0fa;color:#1f4e8c;}
-.rv-sub{background:#fff3e0;color:#9a5a00;}
-.rv-prep{background:#f0f0f0;color:#666;}
-.rv-motto{text-align:center;color:#00A6D6;font-style:italic;margin:16px 0 4px 0;}
-@media (max-width:640px){.rv-q{margin-left:0;}.rv-stage{display:block;}}
+.rv-title a {
+  color: #003366;
+  text-decoration: none;
+  border-bottom: 1px dotted #00A6D6;
+}
+.rv-q {
+  display: block;
+  color: #444;
+  font-style: italic;
+  font-size: 0.93em;
+  margin: 4px 0 0 110px;
+}
+.rv-tag {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 6px;
+  vertical-align: 1px;
+}
+.rv-pub { background: #e3f4ea; color: #1d6b3a; }
+.rv-rev { background: #e6f0fa; color: #1f4e8c; }
+.rv-sub { background: #fff3e0; color: #9a5a00; }
+.rv-prep { background: #f0f0f0; color: #666; }
+.rv-motto {
+  text-align: center;
+  color: #00A6D6;
+  font-style: italic;
+  margin: 16px 0 4px 0;
+}
+.rv-figure { margin: 1.5em 0; }
+.rv-figure img {
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+}
+.rv-caption { margin-top: 0.8em; }
+
+@media (max-width:640px) {
+  .rv-q { margin-left: 0; }
+  .rv-stage { display: block; }
+}
 </style>
 </head>
+
 <body>
 <table summary="Table for page layout." id="tlayout">
 <tr valign="top">
 
- <!-- Left navigation -->
-  <td id="layout-menu">
-    <div class="menu-category">Thanana</div>
-    <div class="menu-item"><a href="index.html">Home</a></div>
-    <div class="menu-item"><a href="Biography.html">Biography</a></div>
-    <div class="menu-item"><a href="Publication.html">Publication</a></div>
+<!-- Left navigation -->
+<td id="layout-menu">
 
- <div class="menu-category">Research</div>
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
 
+<div class="menu-category">Research</div>
 <div class="menu-item">
-  <a href="world-models-control.html" class="current">
-    Estimation&#160;and&#160;Control
-  </a>
+  <a href="world-models-control.html" class="current">Estimation&#160;and&#160;Control</a>
+</div>
+<div class="menu-item">
+  <a href="https://thanana.github.io/nonholonomic.html">Holonomic&#160;Systems</a>
+</div>
+<div class="menu-item">
+  <a href="https://thanana.github.io/Cyber.html">Human-robot&#160;Interaction</a>
+</div>
+<div class="menu-item">
+  <a href="https://thanana.github.io/large-scale.html">Cyber-physical&#160;Systems</a>
 </div>
 
+<div class="menu-category">Teaching</div>
 <div class="menu-item">
-  <a href="https://thanana.github.io/nonholonomic.html">
-    Holonomic&#160;Systems
-  </a>
+  <a href="reinforcement_learning.html">Reinforcement&#160;Learning</a>
+</div>
+<div class="menu-item">
+  <a href="Robotics.html">Introduction&#160;to&#160;Robotics</a>
 </div>
 
-<div class="menu-item">
-  <a href="https://thanana.github.io/Cyber.html">
-    Human-robot&#160;Interaction
-  </a>
-</div>
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image&#160;Processing</a></div>
 
-<div class="menu-item">
-  <a href="https://thanana.github.io/large-scale.html">
-    Cyber-physical&#160;Systems
-  </a>
-</div>
-    
-    
-    <div class="menu-category">Teaching</div>
-    <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&#160;Learning</a></div>
-  <div class="menu-item"><a href="Robotics.html">Introduction&#160;to Robotics</a></div>
+</td>
 
-    <div class="menu-category">Software</div>
-    <div class="menu-item"><a href="robotics.html">Robotics</a></div>
-    <div class="menu-item"><a href="image.html">Image&#160;Processing</a></div>
-  </td>
-
+<!-- Main content -->
 <td id="layout-content">
-<div id="toptitle">
 
-  <h1>Estimation and Control</h1>
+<div id="toptitle">
+<h1>Estimation and Control</h1>
 </div>
 
-<p class="rv-lead"><b>Research philosophy.</b> How can intelligent systems estimate hidden states, adapt their internal models, and make reliable control decisions under uncertainty? My research connects probabilistic state estimation, cognitive flexibility, learned world models, and controller-aware predictive control. These complementary directions study how uncertain information can support prediction and decisions in dynamical and robotic systems.</p>
+<p class="rv-subtitle">
+World Models, Cognitive Flexibility, and Predictive Control
+</p>
 
-  
-<figure style="margin: 1.5em 0;">
-  <img src="world-models-control-compact.png"
-       alt="Four research themes: Bayesian state inference,
-            latent structure adaptation, prediction and physical
-            assessment, and controller-aware belief corrections."
-       style="display: block; width: 100%; max-width: 1100px;
-              height: auto;" />
+<p class="rv-lead">
+<b>Research philosophy.</b>
+How can intelligent systems estimate hidden states, adapt their
+internal models, and make reliable control decisions under
+uncertainty? My research connects probabilistic state estimation,
+cognitive flexibility, learned world models, and controller-aware
+predictive control. These complementary directions study how
+uncertain information can support prediction and decisions in
+dynamical and robotic systems.
+</p>
 
- <figcaption style="margin-top: 0.8em;">
-  <div class="infoblock">
-    <div class="blockcontent">
-      <p style="color: #444; line-height: 1.6;">
-        <b>Estimation and Control.</b>
-        <b>(a)</b> Infer hidden states from incomplete observations
-        and represent uncertainty through
-        <a href="DeepSSSM.html">Bayesian beliefs</a>.
-        <b>(b)</b> Use predictive evidence to
-        <a href="AutomaticaCF.html">adapt latent structure</a>,
-        with <a href="RobustCF.html">robustness to noisy scores</a>.
-        <b>(c)</b> Predict possible futures and assess when decoded
-        beliefs support
-        <a href="SafeCF-SSM.html">physical certificates</a>
-        under stated assumptions.
-        <b>(d)</b> Relate allowable belief corrections to
-        <a href="NeuralBeliefMPC.html">controller input tolerances</a>.
-        The bottom loop connects observations, internal models,
-        control, and physical feedback; the reverse arrow shows
-        how controller requirements inform inference.
-      </p>
-      <p><i>Conceptual connections across related studies;
-        guarantees depend on each study's assumptions.</i></p>
-    </div>
-  </div>
-</figcaption>
-</figure>
-  
+<!-- Research overview figure -->
+<div class="rv-figure">
+
+<img src="world-models-control-compact.png"
+     alt="Four connected research themes: Bayesian state inference,
+          cognitive-flexible latent structure adaptation,
+          stochastic world-model prediction and physical assessment,
+          and controller-aware belief corrections." />
+
+<div class="rv-caption">
+<div class="infoblock">
+<div class="blockcontent">
+
+<p style="color: #444; line-height: 1.6;">
+<b>Estimation and Control: World Models and Belief-Space Methods.</b>
+<b>(a)</b> Infer hidden states from incomplete observations
+and represent uncertainty through
+<a href="DeepSSSM.html">Bayesian beliefs</a>.
+<b>(b)</b> Use predictive evidence to
+<a href="AutomaticaCF.html">adapt latent structure</a>,
+with <a href="RobustCF.html">robustness to noisy scores</a>.
+<b>(c)</b> Predict possible futures and assess when decoded
+beliefs support
+<a href="SafeCF-SSM.html">physical certificates</a>
+under stated assumptions.
+<b>(d)</b> Relate allowable belief corrections to
+<a href="NeuralBeliefMPC.html">controller input tolerances</a>.
+The bottom loop connects observations, internal models,
+control, and physical feedback; the reverse arrow shows
+how controller requirements inform inference.
+</p>
+
+<p>
+<i>Conceptual connections across related studies;
+guarantees depend on each study's assumptions.</i>
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
 <h2>Research Themes and Selected Work</h2>
-<p>The four themes connect complementary research questions: how to
-estimate hidden states, adapt latent structure when models are
-inadequate, quantify uncertainty in predictions and physical
+
+<p>
+The four themes connect complementary research questions:
+how to estimate hidden states, adapt latent structure when models
+are inadequate, quantify uncertainty in predictions and physical
 assessments, and align belief corrections with the requirements
 of predictive controllers. The figure summarizes conceptual links
-across distinct studies, not a single experimentally validated system.</p>
+across distinct studies, not a single experimentally validated system.
+</p>
 
+<!-- Theme A -->
 <h3>(a) State Estimation and Belief Modeling</h3>
-<p><b>What can a system infer when observations are incomplete?</b></p>
 
-<p>A world model describes how hidden states evolve and how
+<p>
+<b>What can a system infer when observations are incomplete?</b>
+</p>
+
+<p>
+A world model describes how hidden states evolve and how
 observations arise. Under partial observability, a system must
 maintain a belief about what it cannot directly observe.
 <b>Deep Stochastic State-Space Models (Deep SSSM)</b> combine
 probabilistic encoding, stochastic latent transitions, and
 variational inference to connect observations with uncertain
-latent states.</p>
+latent states.
+</p>
 
-<p>This research links Bayesian state estimation with learned
+<p>
+This research links Bayesian state estimation with learned
 representations, providing the inference foundation for
-prediction under noise and occlusion.</p>
+prediction under noise and occlusion.
+</p>
 
-<p><a href="https://thanana.github.io/DeepSSSM.html">Seeing Beyond
-Vision: research overview</a> |
-<a href="https://thanana.github.io/DeepSSSMpaper.html">Deep SSSM:
-study details</a></p>
+<p>
+<a href="https://thanana.github.io/DeepSSSM.html">
+Seeing Beyond Vision: research overview</a> |
+<a href="https://thanana.github.io/DeepSSSMpaper.html">
+Deep SSSM: study details</a>
+</p>
 
+<!-- Theme B -->
 <h3>(b) Cognitive Flexibility and Structural Adaptation</h3>
-<p><b>What should change when parameter tuning cannot repair
-model mismatch?</b></p>
 
-<p><b>Cognitive Flexibility</b> selects among latent structures
+<p>
+<b>What should change when parameter tuning cannot repair
+model mismatch?</b>
+</p>
+
+<p>
+<b>Cognitive Flexibility</b> selects among latent structures
 using innovation-based predictive evidence while preserving
 the Bayesian filtering recursion. It treats the internal
-representation itself as an object of adaptation.</p>
+representation itself as an object of adaptation.
+</p>
 
-<p><b>Robust CF</b> addresses uncertainty in that evidence.
+<p>
+<b>Robust CF</b> addresses uncertainty in that evidence.
 Switching margins account for noisy innovation scores, while
 a batch-split estimator uses existing particles to inform
 online margin calibration as the noise scale changes.
 The guarantees depend on the stated score-noise and
-effective-margin conditions.</p>
+effective-margin conditions.
+</p>
 
-<p><b>Hysteretic Selection</b> complements these studies by
+<p>
+<b>Hysteretic Selection</b> complements these studies by
 examining how sample size, Monte Carlo refreshes, and switching
 margins affect switching and recovery. It distinguishes
 changes in the evidence from changes caused by refreshing
 samples, showing why fewer switches can coexist with
-persistent wrong decisions.</p>
+persistent wrong decisions.
+</p>
 
-<p><b>Selected work:</b><br />
-<a href="https://thanana.github.io/AutomaticaCF.html">Cognitive
-Flexibility: structural belief adaptation</a><br />
-<a href="https://thanana.github.io/RobustCF.html">Robust CF:
-adaptation under noisy evidence</a><br />
-<a href="https://thanana.github.io/HystereticSelection.html">Hysteretic
-Selection: model switching and recovery</a></p>
+<p>
+<b>Selected work:</b><br />
+<a href="https://thanana.github.io/AutomaticaCF.html">
+Cognitive Flexibility: structural belief adaptation</a><br />
+<a href="https://thanana.github.io/RobustCF.html">
+Robust CF: adaptation under noisy evidence</a><br />
+<a href="https://thanana.github.io/HystereticSelection.html">
+Hysteretic Selection: model switching and recovery</a>
+</p>
 
+<!-- Theme C -->
 <h3>(c) World Models and Uncertainty Quantification</h3>
-<p><b>Which futures can a model predict, and what can its
-beliefs certify?</b></p>
 
-<p><b>Deep SSSM</b> studies stochastic latent dynamics and
+<p>
+<b>Which futures can a model predict, and what can its
+beliefs certify?</b>
+</p>
+
+<p>
+<b>Deep SSSM</b> studies stochastic latent dynamics and
 uncertainty propagation for occlusion-robust robotic prediction.
 Its variational framework connects representation learning
 with prediction, laying a modeling foundation for future
-predictive and Bayesian model predictive control.</p>
+predictive and Bayesian model predictive control.
+</p>
 
-<p><b>SafeCF-SSM</b> examines the interface between latent
+<p>
+<b>SafeCF-SSM</b> examines the interface between latent
 beliefs and physical constraints. A realizability test
 combines channel-wise decoder error with belief uncertainty;
 predictive surprise regulates adaptation and safety margins.
 Each constrained channel is certified under the stated
 assumptions or explicitly declared uncertifiable under
-the given codec.</p>
+the given codec.
+</p>
 
-<p>In the reported quadrotor rotor-failure simulation,
+<p>
+In the reported quadrotor rotor-failure simulation,
 attitude channels remain certifiable while altitude is
 declared uncertifiable. This makes the physical-latent
-gap explicit and checkable.</p>
+gap explicit and checkable.
+</p>
 
-<p><b>Selected work:</b><br />
-<a href="https://thanana.github.io/DeepSSSMpaper.html">Deep SSSM:
-stochastic latent prediction</a><br />
-<a href="https://thanana.github.io/SafeCF-SSM.html">SafeCF-SSM:
-physical-latent certification</a></p>
+<p>
+<b>Selected work:</b><br />
+<a href="https://thanana.github.io/DeepSSSMpaper.html">
+Deep SSSM: stochastic latent prediction</a><br />
+<a href="https://thanana.github.io/SafeCF-SSM.html">
+SafeCF-SSM: physical-latent certification</a>
+</p>
 
+<!-- Theme D -->
 <h3>(d) Controller-Aware Estimation and Predictive Control</h3>
-<p><b>How far may an observer move its belief before the
-controller's plan changes too much?</b></p>
 
-<p><b>Neural Belief MPC</b> derives separate budgets for belief
+<p>
+<b>How far may an observer move its belief before the
+controller's plan changes too much?</b>
+</p>
+
+<p>
+<b>Neural Belief MPC</b> derives separate budgets for belief
 corrections and same-context adaptation from prescribed input
 tolerances within a known affine MPC cell. This connects
 the observer's allowable changes directly to the
-controller's requirements.</p>
+controller's requirements.
+</p>
 
-<p>The study distinguishes constraints on the currently
+<p>
+The study distinguishes constraints on the currently
 applied input from requirements covering the full predicted
 input plan. Corrections that have little effect on the current
-input may still be amplified later in the horizon.</p>
+input may still be amplified later in the horizon.
+</p>
 
-<p>The resulting certificates bound belief and input changes
+<p>
+The resulting certificates bound belief and input changes
 under stated assumptions. Plan consistency alone does not
 establish true-state accuracy, nonlinear safety, or
-recursive feasibility.</p>
+recursive feasibility.
+</p>
 
-<p><b>Study:</b>
-<a href="https://thanana.github.io/NeuralBeliefMPC.html">Neural
-Belief Corrections for MPC: Plan-Consistent Scalar Budgets
-versus Myopic Directional Constraints</a></p>
+<p>
+<b>Study:</b>
+<a href="https://thanana.github.io/NeuralBeliefMPC.html">
+Neural Belief Corrections for MPC: Plan-Consistent Scalar Budgets
+versus Myopic Directional Constraints</a>
+</p>
 
+<!-- Research outlook -->
 <h2>Toward Compliant Intelligence</h2>
-<p>The longer-term direction brings these research themes
+
+<p>
+The longer-term direction brings these research themes
 into physical interaction: connecting uncertainty-aware
 tactile perception, stochastic belief, structural adaptation,
-and adaptive decision making in compliant robotic systems.</p>
+and adaptive decision making in compliant robotic systems.
+</p>
 
-<p><b>Feel &#8594; Believe &#8594; Adapt &#8594; Decide
-&#8594; Interact</b></p>
+<p>
+<b>Feel &#8594; Believe &#8594; Adapt &#8594; Decide
+&#8594; Interact</b>
+</p>
 
-<p><b>Co-Flex</b>, a direction in preparation, asks when and
+<p>
+<b>Co-Flex</b>, a direction in preparation, asks when and
 how often a model structure may switch within a closed loop.
 Hysteretic Selection provides a related study of switching
-and recovery and remains a separate work.</p>
+and recovery and remains a separate work.
+</p>
 
-<p>Physical embodiment builds on earlier work in compliant
+<p>
+Physical embodiment builds on earlier work in compliant
 pneumatic-artificial-muscle control and connects to
-<a href="https://thanana.github.io/tactile_intelligence.html">Tactile
-Intelligence</a>. Integrating the full belief-to-interaction
+<a href="https://thanana.github.io/tactile_intelligence.html">
+Tactile Intelligence</a>. Integrating the full belief-to-interaction
 pipeline remains a research objective; the studies above
-address its individual components.</p>
+address its individual components.
+</p>
 
-<p><a href="https://thanana.github.io/large-scale.html">Related
-work on compliant actuation</a> |
-<a href="https://thanana.github.io/Publication.html">All
-publications</a></p>
+<p>
+<a href="https://thanana.github.io/large-scale.html">
+Related work on compliant actuation</a> |
+<a href="https://thanana.github.io/Publication.html">
+All publications</a>
+</p>
 
 <div class="infoblock">
 <div class="blockcontent">
-<p><b>Reading the figure.</b> Panels (a)&#8211;(d) summarize
+
+<p>
+<b>Reading the figure.</b> Panels (a)&#8211;(d) summarize
 connections across related studies rather than a single
 validated architecture. Predictive fit, physical
 certifiability, and controller-plan consistency address
 different questions. Each study establishes its own
-assumptions, evidence, and limits.</p>
+assumptions, evidence, and limits.
+</p>
+
 </div>
 </div>
 
