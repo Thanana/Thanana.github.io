@@ -371,19 +371,3 @@ table.imgtable, table.imgtable td {
 	border: none;
 	text-align: left;
 }
-
-/* Keep the jemdoc menu on the left, including narrow screens.
-   Important declarations override the page's inline mobile stacking rule. */
-@media screen and (max-width: 760px) {
-  table#tlayout { display: table !important; width: 100% !important; table-layout: fixed; margin: 0; }
-  table#tlayout > tbody { display: table-row-group !important; }
-  table#tlayout > tbody > tr { display: table-row !important; }
-  table#tlayout > tbody > tr > #layout-menu,
-  table#tlayout > tbody > tr > #layout-content { display: table-cell !important; vertical-align: top; }
-  #layout-menu { width: 125px !important; min-width: 0 !important; padding: 8px 6px !important; white-space: normal; font-size: 13px; }
-  #layout-menu .menu-item { white-space: normal; overflow-wrap: anywhere; }
-  #layout-menu a { margin-left: 0; }
-  #layout-content { width: auto !important; min-width: 0 !important; padding: 0 10px 24px !important; overflow-wrap: break-word; }
-  #layout-content img { max-width: 100%; height: auto; }
-  .ds-table-wrap { max-width: 100%; overflow-x: auto; }
-}
