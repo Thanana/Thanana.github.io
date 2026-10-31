@@ -54,9 +54,12 @@ to study <b>bounded-error belief tracking under visual occlusion</b>.
 Its central result links transition contractivity to a bound on latent rollout error;
 a MuJoCo UR5e study examines the conditions and behavior behind that result.</p>
 
+
+  
+
 <h2>Model</h2>
 <div class="ds-figure">
-<img src="deepsssm-architecture.png" alt="Masked image, probabilistic encoder, stochastic latent transition, probabilistic decoder, and reconstruction." />
+<img src="deepsssmarchitecture.png" alt="Masked image, probabilistic encoder, stochastic latent transition, probabilistic decoder, and reconstruction." />
 <p class="ds-caption"><b>From observations to predictions.</b> A mask-aware encoder
 infers latent states; a GRU-conditioned stochastic transition propagates them;
 a decoder reconstructs images and estimates per-pixel uncertainty. Architecture
@@ -64,6 +67,10 @@ from Figure 1 of the paper.</p>
 </div>
 <p>Training combines a <b>variational objective</b>, <b>variance calibration</b>,
 and a <b>sparse-Bayesian latent regularizer</b>.</p>
+
+
+
+
   
 
 <h2>Bounded Drift under Occlusion</h2>
