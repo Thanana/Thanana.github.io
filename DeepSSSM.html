@@ -2,18 +2,23 @@
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Neural Belief MPC | IEEE TAC</title>
-<script type="text/javascript" async
-src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-	TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<title>Seeing Beyond Vision | Deep SSSM | Thanana Nuchkrua</title>
+
+
+<style type="text/css">
+html,body{margin-left:0;padding-left:0;}table#tlayout{margin-left:0;margin-right:0;}
+table#tlayout{width:100%;max-width:1400px;table-layout:fixed;}#layout-menu{width:190px;}#layout-content{line-height:1.55;min-width:0;width:auto;} .ds-figure{margin:1.5em 0;max-width:1080px;}
+.ds-figure img{display:block;width:100%;height:auto;}.ds-caption{font-size:.93em;color:#444;margin-top:.7em;}
+.ds-equation{padding:12px;background:#f6f8fa;overflow-x:auto;}
+.ds-results{border-collapse:collapse;width:100%;max-width:1080px;margin:1em 0;}
+.ds-results th,.ds-results td{border:1px solid #d8dfe5;padding:8px 12px;text-align:left;}
+.ds-results th{background:#f3f6f9;color:#24496b;}
+@media(max-width:760px){table#tlayout,table#tlayout>tbody,table#tlayout>tbody>tr{display:block;width:auto;}#layout-menu,#layout-content{display:block;width:auto;min-width:0;}#layout-content{padding:0 16px 24px;}#layout-menu{padding-bottom:12px;}.ds-table-wrap{overflow-x:auto;}}
+</style>
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
@@ -40,162 +45,91 @@ MathJax.Hub.Config({
 <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
 </td>
 
-  <!-- Main content -->
-  <td id="layout-content">
-  <div id="toptitle">
- 
 
-    
+<td id="layout-content">
+<div id="toptitle"><h1>Seeing Beyond Vision</h1></div>
+<p><i>When vision disappears, how far can a learned belief drift?</i></p>
+<p><b>Deep SSSM</b> combines mask-aware inference and stochastic latent dynamics
+to study <b>bounded-error belief tracking under visual occlusion</b>.
+Its central result links transition contractivity to a bound on latent rollout error;
+a MuJoCo UR5e study examines the conditions and behavior behind that result.</p>
 
-<!-- ============================= -->
-<!-- Header + Motto for Deep SSSM  -->
-<!-- ============================= -->
-
-<div style="text-align:center; margin-top:35px;">
-  <h1 style="color:#003366; font-weight:700; letter-spacing:0.4px;">
-    Seeing Beyond Vision
-  </h1>
-  <p style="color:#00A6D6; font-style:italic; font-size:1.1em; margin-top:6px;">
-    From pixels to latent imagination — robots that see beyond the image.
-  </p>
+<h2>Model</h2>
+<div class="ds-figure">
+<img src="deepsssm-architecture.png" alt="Masked image, probabilistic encoder, stochastic latent transition, probabilistic decoder, and reconstruction." />
+<p class="ds-caption"><b>From observations to predictions.</b> A mask-aware encoder
+infers latent states; a GRU-conditioned stochastic transition propagates them;
+a decoder reconstructs images and estimates per-pixel uncertainty. Architecture
+from Figure 1 of the paper.</p>
 </div>
+<p>Training combines a <b>variational objective</b>, <b>variance calibration</b>,
+and a <b>sparse-Bayesian latent regularizer</b>.</p>
 
-<!-- Motto Block -->
-<div style="text-align:center; margin:22px auto; max-width:700px; line-height:1.55;">
-  <p style="color:#003366; font-size:0.95em; font-style:italic; margin-bottom:6px;">
-    <b>Challenge</b> uncertainty,&nbsp;
-    <b>Change</b> perception through latent dynamics,&nbsp;
-    and drive <b>Impact</b> toward uncertainty-aware embodied intelligence.
-  </p>
+<h2>Bounded Drift under Occlusion</h2>
+<p>Under strict contractivity <b>L &lt; 1</b> and the stated residual-noise and
+encoder assumptions, the mean-square latent rollout error satisfies:</p>
+<div class="ds-equation">
+<i>V</i><sub>k</sub> &le; <i>L</i><sup>2k</sup><i>V</i><sub>0</sub>
++ &sigma;<sup>2</sup>(1 &minus; <i>L</i><sup>2k</sup>)/(1 &minus; <i>L</i><sup>2</sup>).
 </div>
+<p>The initial-error contribution decays and the bound approaches a finite noise
+floor. Recurrent visibility yields a peak-of-cycle bound. At <b>L = 1</b>,
+the RMS bound instead grows as O(&radic;k).</p>
+<div class="infoblock"><div class="blockcontent">
+<p><b>What is bounded?</b> Rollout drift relative to the encoder-reference latent.
+The result is conditional: the reported L is empirically estimated, and
+pixel-level calibration is a decoder-mediated proxy. Physical-state bounds
+require additional decoder-bridge conditions.</p>
+</div></div>
 
-<hr style="border:0; border-top:1px solid #ccc; width:55%; margin:18px auto;">
-
-
-
-
-    
-
-<!-- Section Header -->
-<h2 style="color:#003366; text-align:center; margin-top:30px;">Deep Stochastic State-Space Models (Deep SSSM)</h2>
-
- <!-- Main figure -->
-  <div style="text-align:center; margin-top:10px; margin-bottom:5px;">
-    <img src="DeepSSSM1.pdf" alt="Deep SSSM framework" width="420"
-         style="margin-bottom:10px; border-radius:4px;">
-  </div>
-
-  <!-- Pipeline below figure -->
-  <div style="text-align:center; margin-top:4px; margin-bottom:20px;">
-    <p style="color:#003366; font-style:italic; font-size:0.9em;">
-      Deep SSSM pipeline: <b>Observation</b> → <b>Latent State Inference</b> → 
-      <b>Stochastic Prediction</b> → <b>Control &amp; Planning</b> → <b>Feedback</b>
-    </p>
-  </div>
-
-<!-- Loop Banner -->
-<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
-            padding:14px 12px; margin:0 auto 30px auto; max-width:720px;
-            box-shadow:0 1px 4px rgba(0,0,0,0.06);">
-  <p style="margin:0; font-size:0.95em; color:#003366;">
-    <span style="color:#00A6D6;"><b>Perception</b></span> → 
-    <span style="color:#0077AA;"><b>Inference</b></span> → 
-    <span style="color:#0099CC;"><b>Prediction</b></span> → 
-    <span style="color:#00A6D6;"><b>Planning</b></span> → 
-    <span style="color:#003366;"><b>Action</b></span>
-  </p>
-  <p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
-    Robots learn to act beyond direct observation through stochastic world modeling.
-  </p>
+<h2>Evidence: MuJoCo UR5e</h2>
+<p><b>1,000 episodes &times; 50 frames.</b> A small target is occluded in about
+89% of frames; its mean visible area is approximately 0.146% of the image.
+Visibility masks are supplied by simulator segmentation.</p>
+<div class="ds-table-wrap">
+<table class="ds-results" summary="Selected results reported in the manuscript">
+<thead><tr><th>Measure</th><th>Reported result</th></tr></thead>
+<tbody>
+<tr><td>Empirically estimated transition gain</td><td>L = 0.411</td></tr>
+<tr><td>Latent RMS error, horizon 1 &rarr; 20</td><td>0.42 &rarr; 0.092</td></tr>
+<tr><td>Global reconstruction RMSE, visible / occluded</td><td>0.121 / 0.121</td></tr>
+<tr><td>Target-mask-weighted RMSE</td><td>0.217 &plusmn; 0.031</td></tr>
+<tr><td>Pixel-level calibration error (ECE)</td><td>0.021</td></tr>
+</tbody></table>
 </div>
+<div class="ds-figure">
+<img src="deepsssm-visual-results.png" alt="Eight timesteps showing RGB inputs, reconstructions, uncertainty maps, and segmentation." />
+<p class="ds-caption"><b>Perception under occlusion.</b> Inputs, reconstructions,
+uncertainty maps, and segmentation across eight timesteps (paper, Figure 4).
+Global image error is dominated by the background; target-region error is
+reported separately above.</p>
+</div>
+<div class="ds-figure">
+<img src="deepsssm-error-calibration.png" alt="Latent error contraction and pixel-level calibration reliability plots from the paper." />
+<p class="ds-caption"><b>Stability and calibration are distinct.</b> Latent rollout
+error contracts while the decoder represents spatially varying uncertainty
+(paper, Figures 5&ndash;6).</p>
+</div>
+<p><b>Ablation insight.</b> Zeroing the stochastic head preserves measured
+contraction but worsens ECE from 0.021 to 0.090. The modified PlaNet baseline
+shows growing latent error; because multiple components change together,
+that comparison does not isolate the mask's effect alone.</p>
 
-<!-- Concept -->
-<p>
-  <b>Deep SSSMs</b> are <i>probabilistic world models</i> that fuse 
-  <b>stochastic latent dynamics</b> with <b>control-theoretic planning</b>.
-  They enable robots to reason about hidden or occluded states, predict environment evolution,
-  and plan actions under uncertainty.
-</p>
+<h2>From Belief Tracking toward Control</h2>
+<p>The demonstration runs Deep SSSM alongside a <b>joint-level PD controller</b>;
+uncertainty is displayed, not used to choose actions. The demonstrated scope
+is simulated belief tracking and reconstruction. Target-pose accuracy,
+grasp success, and uncertainty-aware control remain future evaluations.</p>
+<p>Within <a href="world-models-control.html">World Models and Control</a>,
+this work supplies the inference and prediction foundation. Related studies
+address <a href="SafeCF-SSM.html">physical-latent certification</a> and
+<a href="NeuralBeliefMPC.html">controller-aware belief corrections</a>.</p>
 
-<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;">
-
-<h3 style="color:#003366;">What Is Deep SSSM?</h3>
-<p>
-A <b>Deep Stochastic State-Space Model</b> learns to represent
-complex, partially observable systems via <i>latent states</i> that evolve probabilistically:
-</p>
-
-<p style="text-align:center; font-family:'Courier New', monospace; font-size:0.95em; color:#333;">
-s<sub>t+1</sub> ∼ p(s<sub>t+1</sub>|s<sub>t</sub>, a<sub>t</sub>), 
-o<sub>t</sub> ∼ p(o<sub>t</sub>|s<sub>t</sub>)
-</p>
-
-<p>
-Instead of relying only on visible cues, Deep SSSM constructs an <i>internal probabilistic world</i> —
-a compact, uncertainty-aware abstraction of how the system truly evolves beneath noisy or occluded observations.
-</p>
-
-<h3 style="color:#003366; margin-top:30px;">⚙️ Why It Matters</h3>
-<p>
-Robotic systems often face <b>occlusion</b>, <b>sensor noise</b>, and <b>partial visibility</b>.
-Deterministic models assume full observability and collapse uncertainty into one estimate,
-yielding <i>overconfident and brittle predictions</i>.
-The key challenge is to represent uncertainty <b>explicitly</b> while remaining computationally efficient for real-time control.
-</p>
-
-<h3 style="color:#003366; margin-top:28px;">🌌 How Deep SSSM Addresses This</h3>
-<ul>
-  <li><b>Stochastic latent transition:</b> captures multi-modal futures and propagates uncertainty forward.</li>
-  <li><b>Probabilistic encoder:</b> filters occluded observations into calibrated latent beliefs.</li>
-  <li><b>Variational inference:</b> jointly optimizes prediction and uncertainty calibration.</li>
-</ul>
-
-<p>
-Rather than predicting a single trajectory, Deep SSSM models <b>distributions</b> over future states,
-enabling <i>uncertainty-aware planning and control</i> that stay stable under occlusion, drift, or unseen disturbances.
-</p>
-
-<h3 style="color:#003366; margin-top:28px;">🤖 Core Insight</h3>
-<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
-          padding:0.8em 1.2em; border-radius:6px;">
-Deep SSSM turns perception + control into a single probabilistic reasoning process — 
-where uncertainty is not a nuisance to remove, but a signal to learn, model, and exploit.
-</p>
-
-<h2 style="color:#003366; margin-top:36px;">Impact and Applications</h2>
-<p>
-Deep SSSM establishes a foundation for <b>occlusion-robust visual control</b> and
-<b>uncertainty-aware decision-making</b> in robotics. Its implications span:
-</p>
-<ul>
-  <li>Vision-based manipulation under partial observability</li>
-  <li>Human–robot collaboration and shared autonomy</li>
-  <li>Predictive control under dynamic, uncertain environments</li>
-</ul>
-
-<h2>Publication</h2>
-
-    
-<dl>
-<dt><a href="https://thanana.github.io/DeepSSSMpaper.html" target=&ldquo;blank&rdquo;>Deep Stochastic State-Space Modeling for Occlusion-Robust Robotic Manipulation</a>.</dt>
-<dd><p></p></dd>
-
-    
-  <p style="font-size:0.85em; color:#777; text-align:center;">
-    <i>Toward robots that reason in uncertainty — perceiving, predicting, and acting beyond what is seen.</i>
-  </p>
-
- <!-- ============================= -->
-<!-- Footer Section -->
-<!-- ============================= -->
-<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0; background-color:#f9f9f9; border-top:1px solid #ddd;">
-  <div id="footer-text" style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
-    © 2025 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp; Control &amp; Robotics Research Group
-  </div>
-</footer>
-
-</td>
-</tr>
-</table>
-</body>
-</html>
+<h2>Paper</h2>
+<p><b>Deep SSSM: Provable Bounded-Error Latent Belief Tracking under Visual Occlusion.</b></p>
+<p><a href="DeepSSSMpaper.html">Related study page</a> |
+<a href="Publication.html">Publications</a></p>
+<div id="footer"><div id="footer-text">
+Copyright 2026 Thanana Nuchkrua | Control &amp; Robotics Research Group
+</div></div>
+</td></tr></table></body></html>
