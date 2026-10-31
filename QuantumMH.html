@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="jemdoc.css" type="text/css" />
 <title>Quantum-Transport-Informed Digital-Twin MPC | Thanana Nuchkrua</title>
 <script type="text/x-mathjax-config">
@@ -8,8 +7,8 @@ MathJax.Hub.Config({tex2jax:{inlineMath:[['$','$'],['\\(','\\)']]}});
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <style>
-html,body{margin:0;background:#fff;}table#tlayout{margin:0;width:100%;max-width:1280px;table-layout:fixed;}
-#layout-menu{width:200px;}#layout-content{min-width:0;width:auto;line-height:1.6;padding:0 28px 30px;}
+html,body{margin:0;background:#fff;}table#tlayout{margin:0;width:auto;table-layout:auto;}
+#layout-menu{width:auto;}#layout-content{min-width:800px;width:800px;line-height:1.6;padding:0 1em 30px;}
 section{margin:1.5em 0;}h1{font-size:1.8em;}h2 em{font-style:normal;}
 .contrib-card,.theory-card,.exp-item,.timeline-item,.resource{margin:1em 0;}
 .contrib-title,.theory-heading,.timeline-title,.exp-name{font-weight:bold;color:#224b8d;}
@@ -19,17 +18,16 @@ section{margin:1.5em 0;}h1{font-size:1.8em;}h2 em{font-style:normal;}
 .metric-val{font-weight:bold;}.metric-val em{font-style:normal;}
 .results-card{border:1px solid #ddd;max-width:680px;}.results-card>.label{display:block;background:#f6f6f6;padding:8px 12px;font-weight:bold;}
 .pull-quote{border-left:3px solid #ccc;padding-left:14px;color:#555;font-style:italic;}
-@media(max-width:760px){table#tlayout,table#tlayout>tbody,table#tlayout>tbody>tr{display:block;width:auto;}#layout-menu,#layout-content{display:block;width:auto;min-width:0;}#layout-menu{padding-bottom:12px;}#layout-content{padding:0 18px 24px;}}
+
 </style></head><body><table id="tlayout" summary="Table for page layout"><tr valign="top"><td id="layout-menu"><div class="menu-category">Thanana</div>
 <div class="menu-item"><a href="index.html">Home</a></div>
 <div class="menu-item"><a href="Biography.html">Biography</a></div>
 <div class="menu-item"><a href="Publication.html">Publication</a></div>
-  
 <div class="menu-category">Research</div>
-<div class="menu-item"><a href="world-models-control.html">Estimation&nbsp;and&nbsp;Control</a></div>
+<div class="menu-item"><a href="world-models-control.html">World&nbsp;Models&nbsp;and&nbsp;Control</a></div>
 <div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
 <div class="menu-item"><a href="Cyber.html">Human-robot&nbsp;Interaction</a></div>
-  
+<div class="menu-item"><a href="large-scale.html">Cyber-physical&nbsp;Systems</a></div>
 <div class="menu-category">Teaching</div>
 <div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
 <div class="menu-item"><a href="Robotics.html">Introduction&nbsp;to Robotics</a></div>
@@ -37,11 +35,12 @@ section{margin:1.5em 0;}h1{font-size:1.8em;}h2 em{font-style:normal;}
 <div class="menu-item"><a href="robotics.html">Robotics</a></div>
 <div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div></td><td id="layout-content"><div id="toptitle">
 <h1>Quantum-Transport-Informed Digital-Twin MPC for Metal-Hydride Hydrogen Storage</h1></div>
-<p><i></i></p>
+<p><b>Thanana Nuchkrua, Sudchai Boonto, and Xiaoqi Liu</b></p>
+<p><i>Submitted to IEEE Transactions on Control Systems Technology, 2026.</i></p>
 <p>Connecting microscopic hydrogen transport with macroscopic predictive control through a physics-consistent digital twin.</p>
 <p><a href="#abstract">Abstract</a> | <a href="#contributions">Contributions</a> | <a href="#theory">Theory</a> | <a href="#results">Results</a> | <a href="#paper">Paper and code</a></p><!-- ============= ABSTRACT ============= -->
 <figure style="margin:1.2em 0;">
-<img src="quantum-hydride-heatflow-corrected.jpg" alt="Quantum transport informs the digital twin and MPC, with measurement feedback from metal-hydride storage." style="display:block;width:100%;height:auto;border:0;box-shadow:none;" />
+<img src="quantum-hydride-pipeline.jpg" alt="Quantum transport informs the digital twin and MPC, with measurement feedback from metal-hydride storage." style="display:block;width:100%;height:auto;border:0;box-shadow:none;" />
 <figcaption><div class="infoblock"><div class="blockcontent"><p><b>From quantum transport to predictive control.</b> Temperature-dependent diffusion informs the digital twin and parameter estimation. The twin supplies the MPC prediction model; reactor measurements feed back to update the twin. Curves and reactor geometry are schematic; evaluation uses physics-calibrated simulations.</p></div></div></figcaption>
 </figure>
 <section id="abstract">
@@ -370,7 +369,15 @@ section{margin:1.5em 0;}h1{font-size:1.8em;}h2 em{font-style:normal;}
 
     <div class="contrib-card">
       
-      
+      <div class="contrib-title">Cite</div>
+      <p class="contrib-desc">
+        Nuchkrua, T., Boonto, S., Liu, X.<br>
+        "Quantum-Transport-Informed Digital-Twin MPC for
+        Metal-Hydride Hydrogen Storage."<br>
+        Submitted, IEEE TCST, 2026.
+      </p>
+      <div class="contrib-tag">BibTeX coming soon</div>
+    </div>
   </div>
 </section>
 
