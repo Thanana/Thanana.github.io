@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Quantum-Transport-Informed Digital-Twin MPC | Thanana Nuchkrua</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax:{inlineMath:[['$','$'],['\\(','\\)']]}});
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<style>
+html,body{margin:0;background:#fff;}table#tlayout{margin:0;width:100%;max-width:1280px;table-layout:fixed;}
+#layout-menu{width:200px;}#layout-content{min-width:0;width:auto;line-height:1.6;padding:0 28px 30px;}
+section{margin:1.5em 0;}h1{font-size:1.8em;}h2 em{font-style:normal;}
+.contrib-card,.theory-card,.exp-item,.timeline-item,.resource{margin:1em 0;}
+.contrib-title,.theory-heading,.timeline-title,.exp-name{font-weight:bold;color:#224b8d;}
+.contrib-tag,.theory-label,.timeline-year,.exp-num{color:#666;font-size:.9em;}
+.theory-eq{background:#f6f6f6;padding:12px;overflow-x:auto;}
+.metric-row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #ddd;padding:8px 12px;}
+.metric-val{font-weight:bold;}.metric-val em{font-style:normal;}
+.results-card{border:1px solid #ddd;max-width:680px;}.results-card>.label{display:block;background:#f6f6f6;padding:8px 12px;font-weight:bold;}
+.pull-quote{border-left:3px solid #ccc;padding-left:14px;color:#555;font-style:italic;}
+@media(max-width:760px){table#tlayout,table#tlayout>tbody,table#tlayout>tbody>tr{display:block;width:auto;}#layout-menu,#layout-content{display:block;width:auto;min-width:0;}#layout-menu{padding-bottom:12px;}#layout-content{padding:0 18px 24px;}}
+</style></head><body><table id="tlayout" summary="Table for page layout"><tr valign="top"><td id="layout-menu"><div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
+<div class="menu-category">Research</div>
+<div class="menu-item"><a href="world-models-control.html">World&nbsp;Models&nbsp;and&nbsp;Control</a></div>
+<div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+<div class="menu-item"><a href="Cyber.html">Human-robot&nbsp;Interaction</a></div>
+<div class="menu-item"><a href="large-scale.html">Cyber-physical&nbsp;Systems</a></div>
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+<div class="menu-item"><a href="Robotics.html">Introduction&nbsp;to Robotics</a></div>
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div></td><td id="layout-content"><div id="toptitle">
+<h1>Quantum-Transport-Informed Digital-Twin MPC for Metal-Hydride Hydrogen Storage</h1></div>
+<p><b>Thanana Nuchkrua, Sudchai Boonto, and Xiaoqi Liu</b></p>
+<p><i>Submitted to IEEE Transactions on Control Systems Technology, 2026.</i></p>
+<p>Connecting microscopic hydrogen transport with macroscopic predictive control through a physics-consistent digital twin.</p>
+<p><a href="#abstract">Abstract</a> | <a href="#contributions">Contributions</a> | <a href="#theory">Theory</a> | <a href="#results">Results</a> | <a href="#paper">Paper and code</a></p><!-- ============= ABSTRACT ============= -->
+<figure style="margin:1.2em 0;">
+<img src="quantum-hydride-pipeline.jpg" alt="Quantum transport informs the digital twin and MPC, with measurement feedback from metal-hydride storage." style="display:block;width:100%;height:auto;border:0;box-shadow:none;" />
+<figcaption><div class="infoblock"><div class="blockcontent"><p><b>From quantum transport to predictive control.</b> Temperature-dependent diffusion informs the digital twin and parameter estimation. The twin supplies the MPC prediction model; reactor measurements feed back to update the twin. Curves and reactor geometry are schematic; evaluation uses physics-calibrated simulations.</p></div></div></figcaption>
+</figure>
+<section id="abstract">
+  
+  <h2 class="section-title">
+    A unified framework for <em>quantum-aware</em> hydrogen control.
+  </h2>
+
+  <div class="infoblock"><div class="blockcontent">
+    <p>
+      Classical metal-hydride (MH) hydrogen-storage systems exhibit
+      inherently slow absorption/desorption dynamics that worsen at
+      low temperatures ($T \lesssim 200\,\mathrm{K}$), where
+      <strong>quantum-mechanical transport effects</strong> — hydrogen
+      tunneling and zero-point lattice vibrations — sustain measurable
+      diffusion that classical Arrhenius kinetics cannot predict, causing
+      systematic actuation bias and degraded closed-loop performance.
+    </p>
+    <p>
+      This work presents a <strong>quantum-transport-informed MPC framework</strong>
+      with a parameter-level digital-twin estimation architecture, in which
+      a temperature-dependent quantum correction factor $g_q(T)$, grounded
+      in zero-point energy theory, augments the classical Arrhenius law and
+      is propagated through a multi-fidelity hierarchy into the MPC
+      prediction matrices, enforcing a physics-consistent parameter manifold
+      $\Theta$ at every online weighted least-squares update.
+    </p>
+    <p>
+      Physics-calibrated simulations on the authors' LaNi$_5$-H$_2$ platform
+      demonstrate <strong>70.2% settling-time reduction</strong> over
+      classical MPC and <strong>50.0% over the authors' prior LARC</strong>,
+      with complete overshoot elimination at $120\,\mathrm{K}$ and a
+      zero-overshoot safety benefit persisting across the full operating
+      range $(298$–$333\,\mathrm{K})$.
+    </p>
+  </div></div>
+</section>
+
+<!-- ============= PULL QUOTE ============= -->
+<section>
+  <div class="pull-quote">
+    Classical and quantum-informed transport models predict different response rates.<br>
+    The study examines how this model mismatch affects predictive control.
+  </div>
+</section>
+
+<!-- ============= CONTRIBUTIONS ============= -->
+<section id="contributions">
+  
+  <h2 class="section-title">
+    Four contributions, <em>theoretical</em> and <em>numerical</em>.
+  </h2>
+
+  <div class="contrib-grid">
+    <div class="contrib-card reveal">
+      
+      <div class="contrib-title">Quantum-Informed Diffusion Model</div>
+      <p class="contrib-desc">
+        Temperature-dependent correction factor $g_q(T)$, grounded
+        in zero-point energy theory, augments the classical Arrhenius law
+        for control-ready effective diffusion.
+      </p>
+      <div class="contrib-tag">Section II-B</div>
+    </div>
+
+    <div class="contrib-card reveal">
+      
+      <div class="contrib-title">Physics-Consistent Estimation Architecture</div>
+      <p class="contrib-desc">
+        Microscopic quantum transport parameters propagate into macroscopic
+        MPC prediction matrices via a multi-fidelity hierarchy, enforcing
+        the manifold $\Theta$ at every update.
+      </p>
+      <div class="contrib-tag">Section III-B</div>
+    </div>
+
+    <div class="contrib-card reveal">
+      
+      <div class="contrib-title">Robust Estimation, Formal Guarantees</div>
+      <p class="contrib-desc">
+        Huber-WLS regression identifies $[\mathcal{D}_0, E_a]^\top$
+        from noisy, sparse data. Lemma 2 proves $\mathcal{O}(N^{-1/2})$
+        bootstrap confidence-interval convergence.
+      </p>
+      <div class="contrib-tag">Algorithm 1 · Lemma 2</div>
+    </div>
+
+    <div class="contrib-card reveal">
+      
+      <div class="contrib-title">Stability &amp; Provably Positive Advantage</div>
+      <p class="contrib-desc">
+        Theorem 1: asymptotic stability with explicit exponential rate.
+        Corollary 1: closed-form excess-cost bound — classical MPC's
+        penalty is strictly positive at all finite $T$ and diverges
+        as $T \to 0^+$.
+      </p>
+      <div class="contrib-tag">Theorem 1 · Corollary 1</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= THEORY ============= -->
+<section id="theory">
+  
+  <h2 class="section-title">
+    Two results, anchored by physics.
+  </h2>
+
+  <div class="theory-grid">
+    <div class="theory-card reveal">
+      <div class="theory-label">Theorem 1 · Closed-Loop Stability</div>
+      <div class="theory-heading">
+        Asymptotic stability with explicit exponential rate.
+      </div>
+      <p class="theory-statement">
+        Under Assumptions (A1)–(A3), the closed-loop system satisfies
+        recursive feasibility, monotone Lyapunov decrease, and
+        $\hat{c}_k \to r$ with rate determined by the physical bounds
+        of $\Theta$.
+      </p>
+      <div class="theory-eq">
+        $|\hat{c}_k - r|^2 \le \dfrac{V_0^\star}{\lambda_{\min}(Q)}
+        \left(1 - \dfrac{\lambda_{\min}(Q)}{\lambda_{\max}(P)}\right)^k$
+      </div>
+    </div>
+
+    <div class="theory-card cor reveal">
+      <div class="theory-label">Corollary 1 · Performance Advantage</div>
+      <div class="theory-heading">
+        Closed-form lower bound on classical MPC's excess cost.
+      </div>
+      <p class="theory-statement">
+        Let $\delta_k \triangleq \mathbb{B}_q(T_k) - \mathbb{B}_c(T_k)$.
+        Then $J^{\mathrm{class}}_k - J^{\mathrm{quant}}_k \ge 0$
+        with strict inequality for all finite $T_k$. The relative
+        mismatch grows without bound as $T \to 0^+$.
+      </p>
+      <div class="theory-eq">
+        $\dfrac{\delta_k}{\mathbb{B}_c(T_k)}
+        = \exp\!\left(\dfrac{g_0}{R_g}\cdot\dfrac{e^{-T_k/\lambda}}{T_k}\right) - 1$
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= RESULTS ============= -->
+<section id="results">
+  
+  <h2 class="section-title">
+    Simulation Results
+  </h2>
+
+  <div class="results-wrap">
+    <div class="results-text reveal">
+      <p>
+        At $T = 120\,\mathrm{K}$ (deep cryogenic, $D_{\mathrm{ratio}}
+        = 4.23\times$), the quantum-informed controller produces
+        a faster transient than the classical Arrhenius-based MPC configuration used in the comparison.
+      </p>
+      <p>
+        Three controllers operate on the same true quantum plant:
+        classical MPC, the authors' prior <strong>LARC</strong>
+        (IEEE TIE&nbsp;2022), and the proposed quantum-informed MPC.
+        The zero-overshoot safety benefit holds across the full
+        operating range $(120$–$333\,\mathrm{K})$, not only the
+        cryogenic regime.
+      </p>
+      <p>
+        The advantage stems from the <strong>physics-consistent
+        diffusion model</strong>, not from the MPC architecture
+        alone — confirmed directly by Experiment&nbsp;7 (Corollary&nbsp;1
+        validation).
+      </p>
+    </div>
+
+    <div class="results-card reveal">
+      <span class="label">Closed-loop @ T ≈ 120 K</span>
+      <div class="metric-row">
+        <span class="metric-name">Settling time, classical MPC</span>
+        <span class="metric-val">5.7 <em>s</em></span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-name">Settling time, LARC&nbsp;[22]</span>
+        <span class="metric-val">3.4 <em>s</em></span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-name">Settling time, quantum (ours)</span>
+        <span class="metric-val">1.7 <em>s</em></span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-name">Overshoot reduction</span>
+        <span class="metric-val">100<em>%</em></span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-name">$t_s$ improvement vs. classical</span>
+        <span class="metric-val">70.2<em>%</em></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= EXPERIMENTS ============= -->
+<section id="experiments">
+  
+  <h2 class="section-title">
+    Eight experiments, mapped to theory.
+  </h2>
+
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-num">EXP · 01</div>
+      <div class="exp-name">Baseline WLS</div>
+      <div class="exp-validates">Lemma 2</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-num">EXP · 02</div>
+      <div class="exp-name">Outlier Robustness</div>
+      <div class="exp-validates">Huber–WLS</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-num">EXP · 03</div>
+      <div class="exp-name">Data Sparsity</div>
+      <div class="exp-validates">$\mathcal{O}(N^{-1/2})$ CI</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-num">EXP · 04</div>
+      <div class="exp-name">Quantum Diffusion</div>
+      <div class="exp-validates">Lemma 1</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-num">EXP · 05</div>
+      <div class="exp-name">Model Fidelity</div>
+      <div class="exp-validates">Multi-fidelity DT</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-num">EXP · 06</div>
+      <div class="exp-name">Closed-Loop Sweep</div>
+      <div class="exp-validates">Theorem 1</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-num">EXP · 07</div>
+      <div class="exp-name">Cost Gap</div>
+      <div class="exp-validates">Corollary 1</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-num">EXP · 08</div>
+      <div class="exp-name">Time-Varying T</div>
+      <div class="exp-validates">Online robustness</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PLATFORM / TIMELINE ============= -->
+<section id="platform">
+  
+  <h2 class="section-title">
+    A decade on the same LaNi$_5$ platform.
+  </h2>
+
+  <div>
+    <p>
+      This work is the third in a series advancing control methodology
+      for the authors' LaNi$_5$-H$_2$ experimental platform. The
+      hardware-in-the-loop campaign currently in preparation will deploy
+      the proposed framework on the same hardware that already validated
+      our prior controllers.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2013 / 2014</div>
+        <div class="timeline-title">Fuzzy adaptive PID control</div>
+        <div class="timeline-desc">
+          MH reactor coupled with thermoelectric module
+          (J. Bionic Eng.; IEEE/ASME AIM).
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-title">LARC — Learning-based Adaptive Robust Control</div>
+        <div class="timeline-desc">
+          Sliding-mode adaptation on the same platform
+          (IEEE Trans.&nbsp;Industrial Electronics).
+        </div>
+      </div>
+      <div class="timeline-item current">
+        <div class="timeline-year">2026 · This work</div>
+        <div class="timeline-title">Quantum-Transport-Informed Digital-Twin MPC</div>
+        <div class="timeline-desc">
+          Physics-grounded multiscale framework with formal stability and
+          performance guarantees (submitted IEEE TCST).
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Next</div>
+        <div class="timeline-title">Hardware-in-the-loop deployment</div>
+        <div class="timeline-desc">
+          INS / DFT identification of $g_0, \lambda$ for LaNi$_5$;
+          transient performance validation against simulation.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PAPER ============= -->
+<section id="paper">
+  
+  <h2 class="section-title">
+    Read, cite, reproduce.
+  </h2>
+
+  <div>
+    <div class="resource"><h3>Preprint</h3><p>The supplied page describes a preprint on Preprints.org; a direct URL has not yet been provided.</p></div>
+
+    <div class="contrib-card">
+      
+      <div class="contrib-title">Code</div>
+      <p class="contrib-desc">
+        Implementation in <strong>Julia 1.12</strong> with OSQP
+        and JuMP.jl. Repository release accompanies the
+        camera-ready paper.
+      </p>
+      <div class="contrib-tag">Julia · OSQP · JuMP</div>
+    </div>
+
+    <div class="contrib-card">
+      
+      <div class="contrib-title">Cite</div>
+      <p class="contrib-desc">
+        Nuchkrua, T., Boonto, S., Liu, X.<br>
+        "Quantum-Transport-Informed Digital-Twin MPC for
+        Metal-Hydride Hydrogen Storage."<br>
+        Submitted, IEEE TCST, 2026.
+      </p>
+      <div class="contrib-tag">BibTeX coming soon</div>
+    </div>
+  </div>
+</section>
+
+<div id="footer"><div id="footer-text">Copyright 2026 Thanana Nuchkrua | Control &amp; Robotics Research Group</div></div></td></tr></table></body></html>
