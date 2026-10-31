@@ -99,8 +99,10 @@ MathJax.Hub.Config({
   max-width: 1100px;
   height: auto;
 }
-.rv-caption { margin-top: 0.8em; }
-
+.rv-caption {
+  margin-top: 0.8em;
+  line-height: 1.6;
+}
 @media (max-width:640px) {
   .rv-q { margin-left: 0; }
   .rv-stage { display: block; }
@@ -130,7 +132,6 @@ MathJax.Hub.Config({
 <div class="menu-item">
   <a href="https://thanana.github.io/Cyber.html">Human-robot&#160;Interaction</a>
 </div>
-
 
 <div class="menu-category">Teaching</div>
 <div class="menu-item">
@@ -162,46 +163,38 @@ How can intelligent systems estimate hidden states, adapt their
 internal models, and make reliable control decisions under
 uncertainty? My research connects probabilistic state estimation,
 cognitive flexibility, learned world models, and controller-aware
-predictive control. These complementary directions study how
-uncertain information can support prediction and decisions in
-dynamical and robotic systems.
+predictive control. Together, these directions investigate
+how uncertainty-aware inference and prediction can inform
+decisions in dynamical and robotic systems.
 </p>
 
 <!-- Research overview figure -->
 <div class="rv-figure">
 
 <img src="world-models-control-compact.png"
-     alt="Four connected research themes: Bayesian state inference,
-          cognitive-flexible latent structure adaptation,
-          stochastic world-model prediction and physical assessment,
+     alt="Research overview connecting state inference,
+          latent structure adaptation, predictive assessment,
           and controller-aware belief corrections." />
 
 <div class="rv-caption">
 <div class="infoblock">
 <div class="blockcontent">
 
-<p style="color: #444; line-height: 1.6;">
-<b>Estimation and Control: World Models and Belief-Space Methods.</b>
-<b>(a)</b> Infer hidden states from incomplete observations
-and represent uncertainty through
-<a href="DeepSSSM.html">Bayesian beliefs</a>.
-<b>(b)</b> Use predictive evidence to
-<a href="AutomaticaCF.html">adapt latent structure</a>,
-with <a href="RobustCF.html">robustness to noisy scores</a>.
-<b>(c)</b> Predict possible futures and assess when decoded
-beliefs support
-<a href="SafeCF-SSM.html">physical certificates</a>
-under stated assumptions.
-<b>(d)</b> Relate allowable belief corrections to
-<a href="NeuralBeliefMPC.html">controller input tolerances</a>.
-The bottom loop connects observations, internal models,
-control, and physical feedback; the reverse arrow shows
-how controller requirements inform inference.
+<p>
+<b>Figure: World Models and Control.</b>
+Panels (a)&#8211;(d) illustrate belief-based state inference,
+latent-structure adaptation, stochastic prediction with physical
+assessment, and controller-aware belief corrections, respectively.
+The lower loop represents feedback between observations,
+internal models, control, and the physical system; the reverse
+connection indicates how controller requirements can inform
+inference.
 </p>
 
 <p>
-<i>Conceptual connections across related studies;
-guarantees depend on each study's assumptions.</i>
+<i>The panels connect distinct studies rather than a single
+validated architecture. Their theoretical guarantees are
+subject to the assumptions of the respective studies.</i>
 </p>
 
 </div>
@@ -212,12 +205,8 @@ guarantees depend on each study's assumptions.</i>
 <h2>Research Themes and Selected Work</h2>
 
 <p>
-The four themes connect complementary research questions:
-how to estimate hidden states, adapt latent structure when models
-are inadequate, quantify uncertainty in predictions and physical
-assessments, and align belief corrections with the requirements
-of predictive controllers. The figure summarizes conceptual links
-across distinct studies, not a single experimentally validated system.
+The following themes summarize the underlying research
+questions, methodological contributions, and selected studies.
 </p>
 
 <!-- Theme A -->
@@ -408,21 +397,6 @@ Related work on compliant actuation</a> |
 <a href="https://thanana.github.io/Publication.html">
 All publications</a>
 </p>
-
-<div class="infoblock">
-<div class="blockcontent">
-
-<p>
-<b>Reading the figure.</b> Panels (a)&#8211;(d) summarize
-connections across related studies rather than a single
-validated architecture. Predictive fit, physical
-certifiability, and controller-plan consistency address
-different questions. Each study establishes its own
-assumptions, evidence, and limits.
-</p>
-
-</div>
-</div>
 
 <p>Thanana Nuchkrua | Control &amp; Robotics Research</p>
 
