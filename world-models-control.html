@@ -323,34 +323,60 @@ Deep SSSM: stochastic latent prediction</a><br />
 SafeCF-SSM: physical-latent certification</a>
 </p>
 
+
 <!-- Theme D -->
-<h3>(d) Controller-Aware Estimation and Predictive Control</h3>
+<h3>(d) Estimation-Informed Predictive Control</h3>
 
 <p>
-<b>How far may an observer move its belief before the
-controller's plan changes too much?</b>
+<b>How do estimation uncertainty and model fidelity
+affect predictive control?</b>
 </p>
 
 <p>
-<b>Neural Belief MPC</b> derives separate budgets for belief
-corrections and same-context adaptation from prescribed input
-tolerances within a known affine MPC cell. This connects
-the observer's allowable changes directly to the
-controller's requirements.
+This theme examines two complementary interfaces
+between estimation, modeling, and control:
+controller-aware belief correction and
+physics-consistent predictive modeling.
 </p>
 
 <p>
-The study distinguishes constraints on the currently
-applied input from requirements covering the full predicted
-input plan. Corrections that have little effect on the current
-input may still be amplified later in the horizon.
-</p>
-
-<p>
-The resulting certificates bound belief and input changes
-under stated assumptions. Plan consistency alone does not
-establish true-state accuracy, nonlinear safety, or
+<b>Neural Belief MPC</b> establishes controller-aware
+budgets for belief corrections and same-context
+adaptation within a known affine MPC cell.
+The analysis distinguishes tolerances on the
+currently applied input from those imposed on
+the full predicted input sequence, revealing
+how belief changes may propagate differently
+across the prediction horizon.
+The resulting certificates establish plan-consistency
+bounds under stated assumptions, without implying
+true-state accuracy, nonlinear safety, or
 recursive feasibility.
+</p>
+
+<p>
+<b>Quantum-Transport-Informed Digital-Twin MPC</b>
+investigates how physical model fidelity influences
+predictive control of metal-hydride hydrogen storage.
+It integrates quantum-corrected transport dynamics
+and physics-consistent parameter estimation into
+a multi-fidelity digital twin for MPC.
+The study analyzes conditional closed-loop stability
+and the performance consequences of transport-model
+mismatch, linking physical fidelity to control
+performance.
+</p>
+
+<p>
+<b>Selected work:</b><br />
+
+<a href="https://thanana.github.io/NeuralBeliefMPC.html">
+Neural Belief MPC: Controller-Aware Belief Corrections
+and Plan Consistency</a><br />
+
+<a href="https://thanana.github.io/QuantumMH.html">
+Quantum-Transport-Informed Digital-Twin MPC:
+Physics-Consistent Estimation and Control</a>
 </p>
 
 <p>
