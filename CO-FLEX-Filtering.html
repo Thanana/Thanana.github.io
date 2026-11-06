@@ -1,0 +1,490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>CO-FLEX Filtering</title>
+<script type="text/javascript" async
+src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+
+<!-- Left navigation -->
+<td id="layout-menu">
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
+
+<div class="menu-category">Research</div>
+<div class="menu-item"><a href="world-models-control.html">Estimation&nbsp;and&nbsp;Control</a></div>
+<div class="menu-item"><a href="https://thanana.github.io/nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement&nbsp;Learning</a></div>
+<div class="menu-item"><a href="Robotics.html">Introduction&nbsp;to Robotics</a></div>
+
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image&nbsp;Processing</a></div>
+</td>
+
+<!-- Main content -->
+<td id="layout-content">
+<div id="toptitle">
+<h1 style="color:#003366; text-align:center; margin-top:30px;">
+Cognitive-Flexible Filtering: Structure Selection under Noise
+</h1>
+<p style="text-align:center; color:#555; font-size:0.95em;">
+</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAPER 1: TSP -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<h1 style="color:#003366; font-size:1.15em; margin-top:6px;">
+Rare yet Responsive Switching: A Design Region for Cognitive&ndash;Flexible Structure Selection
+</h1>
+<p style="color:#555; font-size:0.95em; margin-top:4px;">
+<i>Preparing for IEEE Transactions on Signal Processing, 2026</i>
+</p>
+
+<!-- resource links -->
+<div class="infoblock">
+<div class="blockcontent">
+<span style="color:#00A6D6; font-weight:bold;">&#9654; Preprint:</span>
+<a href="#" target="_blank"><code>TechRxiv (coming soon)</code></a>
+&nbsp;&nbsp;
+<span style="color:#00A6D6; font-weight:bold;">&#9654; Supplementary Video S1:</span>
+<a href="Supplementary_Video_S1_CVCT_Design_3D.mp4" target="_blank"><code>MP4 (48 s)</code></a>
+<p>
+Julia source code and data:
+</p>
+<ul>
+<li>
+<a href="https://github.com/thanana" target="_blank"><code>code_release/</code></a>
+&mdash; Julia scripts (standard library only), saved results, and
+<code>run_all.jl</code> that reproduces every table and figure
+(quick check: a few minutes; full Monte Carlo: ~2&nbsp;h on one core)
+</li>
+</ul>
+</div></div>
+
+<!-- Supplementary Video S1 -->
+<div style="text-align:center; margin:1rem 0 30px 0; padding:10px; background:#f5f8fa;
+border:1px solid #dde; border-radius:8px;">
+<video width="100%" style="max-width:820px; border-radius:6px; border:1px solid #ccc;"
+controls preload="metadata">
+<source src="Supplementary_Video_S1_CVCT_Design_3D.mp4" type="video/mp4" />
+Your browser does not support the video tag. Please
+<a href="Supplementary_Video_S1_CVCT_Design_3D.mp4">download the video</a>.
+</video>
+<p style="font-size:0.85em; color:#666; margin:6px 0 0 0;">
+<b>Supplementary Video S1.</b> Simulated 3-D CV/CT tracking (one trial, \(K=2\), varying budget):
+the aircraft turns at \(\omega=10^\circ\)/s for \(t\in[30,70)\). Right panels show the
+structure selected by each rule, cumulative changes, margins and the design-region check.
+</p>
+</div>
+
+<!-- pipeline banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
+box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+<p style="margin:0; font-size:0.95em; color:#003366;">
+<span style="color:#00A6D6;"><b>Scores \(\Phi_t(s)\)</b></span> &rarr;
+<span style="color:#0077AA;"><b>Spread \(\bar\varsigma\)</b></span> &rarr;
+<span style="color:#0099CC;"><b>Design region \(\Delta &gt; 2\bar\varsigma\)</b></span> &rarr;
+<span style="color:#00A6D6;"><b>Margin rule \(\delta\)</b></span> &rarr;
+<span style="color:#003366;"><b>Structure \(s_{t+1}\)</b></span>
+</p>
+<p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+The design region \(\Delta &gt; 2\bar\varsigma\) is necessary and sufficient
+for score descent and finite switching. A data-dependent margin tracks
+\(\bar\varsigma\) online &mdash; no offline calibration required.
+</p>
+</div>
+
+<p>
+<b>Cognitive Flexibility (CF)</b> selects, at each step, the latent structure
+that minimises an innovation-based predictive score, guaranteeing finite
+switching and score descent when scores are exact. In practice the switching
+rate also depends on how the margin threshold \(\delta\) is chosen relative to
+the score spread, yet no design principle has connected the two.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h3 style="color:#003366;">What Is the Problem?</h3>
+<p>
+Existing CF theory guarantees structural descent and finite switching under
+exact scores, but gives no guidance on choosing \(\delta\). Too small a margin
+admits spurious switches driven by score variation; too large a margin slows
+recovery after a genuine regime change. The gap between the margin and the
+score spread is the quantity that actually governs the switching rate, yet it
+has never been formalised.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Design Region and Main Results</h3>
+<ul>
+<li>
+<b>Theorem 4 (Design region):</b> \(\Delta &gt; 2\bar\varsigma\) is both necessary
+and sufficient for the descent and finite-switching guarantees to hold with
+high probability, where \(\Delta\) is the margin and \(\bar\varsigma\) the spread
+of settled-step scores.
+</li>
+<li>
+<b>Theorem 5 (Optimality):</b> no selector consistently beats the threshold
+rule inside the design region.
+</li>
+<li>
+<b>Corollary 1 (Data-dependent margin):</b> a margin that tracks \(\bar\varsigma\)
+online from the settled non-good steps \(\mathcal{X}_\delta\) stays inside the
+design region without offline calibration.
+</li>
+<li>
+<b>Label-free margin \(\hat\varsigma^{(W)}_t\):</b> estimated from \(W\)-step
+score means &mdash; no regime labels required.
+</li>
+<li>
+<b>IMM-d design rule:</b> applies the same principle to \(-\log\) IMM mode
+probabilities, bringing the design region to soft-output particle filters.
+</li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px;">
+The margin must exceed twice the score spread to protect the switching
+guarantees. A data-dependent margin that tracks this spread online matches
+offline-calibrated performance &mdash; without requiring labelled regime data
+or a held-out calibration set.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h2 style="color:#003366; margin-top:36px;">Simulation Study: 3-D Coordinated-Turn Radar</h2>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
+Does the design region predict empirical switching behaviour, and does the
+adaptive margin match offline calibration?
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0"
+style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
+<tr style="background:#003366; color:#fff;">
+<th>Selector</th><th>OOW</th><th>Accuracy</th><th>Delay</th><th>Miss (%)</th>
+</tr>
+<tr>
+<td>None (\(\delta=0\))</td><td>high</td><td>0.721</td><td>2.3/4.1</td><td>8/12</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Fixed \(\delta=4.83\)</td><td>low</td><td>0.891</td><td>2.1/3.8</td><td>6/9</td>
+</tr>
+<tr>
+<td>Adaptive (design rule)</td><td>low</td><td>0.937</td><td>2.0/3.6</td><td>5/8</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Score IMM</td><td>low</td><td>0.931</td><td>2.1/3.7</td><td>5/9</td>
+</tr>
+</table>
+<p style="font-size:0.85em; color:#777;">
+3-D spatial model, \(K=2\), varying budget, 100 evaluation trials.
+OOW: out-of-window switches. Delay: sustained delay given detection (onset/recovery).
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Reproducibility</h3>
+<p>
+All simulations are written in Julia (standard library only). The code release
+reproduces every table and figure from saved results in a few minutes, or reruns
+the full Monte Carlo studies (~2&nbsp;h on one core). Seeds are fixed; the same
+Julia version reproduces the saved results exactly.
+</p>
+<ul>
+<li>
+<a href="https://github.com/thanana" target="_blank"><code>code_release/</code></a>
+&mdash; <code>run_all.jl</code> (quick check and full reproduction),
+<code>make_tables_revision.jl</code> (Tables II&ndash;IV),
+<code>baselines/</code>, <code>label_free/</code>, <code>imm_design/</code>
+</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAPER 2: SPL -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<hr style="border:0; border-top:2px solid #003366; margin:36px 0 24px 0;" />
+
+<h1 style="color:#003366; font-size:1.15em; margin-top:6px;">
+Robust Cognitive&ndash;Flexible Filtering Under Noisy Innovation Scores
+</h1>
+<p style="color:#555; font-size:0.95em; margin-top:4px;">
+<i>IEEE Signal Processing Letters, vol.&nbsp;33, pp.&nbsp;4036&ndash;4040, 2026
+&nbsp;&middot;&nbsp;
+DOI: <a href="https://doi.org/10.1109/LSP.2026.3737379" target="_blank">10.1109/LSP.2026.3737379</a>
+</i>
+</p>
+
+<div class="infoblock">
+<div class="blockcontent">
+<span style="color:#00A6D6; font-weight:bold;">&#9654; Published paper:</span>
+<a href="https://doi.org/10.1109/LSP.2026.3737379" target="_blank"><code>IEEE Xplore</code></a>
+<br/>
+Julia source code:
+<ul>
+<li>
+<a href="https://thanana.github.io" target="_blank"><code>thanana.github.io</code></a>
+&mdash; code and reproducibility materials
+</li>
+</ul>
+</div></div>
+
+<!-- pipeline banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
+box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+<p style="margin:0; font-size:0.95em; color:#003366;">
+<span style="color:#00A6D6;"><b>Noisy scores \(\hat\Phi_t(s)\)</b></span> &rarr;
+<span style="color:#0077AA;"><b>Noise envelope \(\varepsilon_t^{\mathrm{env}}\)</b></span> &rarr;
+<span style="color:#0099CC;"><b>Adaptive margin \(\delta_t\)</b></span> &rarr;
+<span style="color:#00A6D6;"><b>Switch if \(\hat\Phi_t(s_t)-\hat\Phi_t(\hat s_t) &gt; \delta_t\)</b></span> &rarr;
+<span style="color:#003366;"><b>Structure \(s_{t+1}\)</b></span>
+</p>
+<p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+A margin \(\delta &gt; 2\bar\varepsilon\) recovers score descent, finite expected
+switching, and almost-sure non-chattering despite bounded score noise.
+A batch-split estimator tracks the noise envelope online at no extra Monte Carlo cost.
+</p>
+</div>
+
+<p>
+<b>Cognitive Flexibility (CF)</b> assumes exact innovation scores; particle
+filters corrupt them with bounded, conditionally zero-mean noise. We introduce
+a margin-based switching rule calibrated against the noise bound \(\bar\varepsilon\)
+and prove all three noiseless-style guarantees are recovered. The fixed margin
+is then replaced by fully online \(\mathcal{I}_t\)-adapted sequences, and all
+three guarantees persist whenever the effective margin \(\delta_t - 2\varepsilon_t\)
+stays above a floor.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h3 style="color:#003366;">Main Results</h3>
+<ul>
+<li>
+<b>Theorem 1 (Score descent):</b> under \(\delta &gt; 2\bar\varepsilon\), each
+switch strictly decreases the true score.
+</li>
+<li>
+<b>Theorem 2 (Finite expected switching):</b> \(\mathbb{E}[N_T] \le C/(\delta-2\bar\varepsilon)\).
+</li>
+<li>
+<b>Theorem 3 (Almost-sure non-chattering):</b> the switching sequence is
+eventually non-chattering a.s.
+</li>
+<li>
+<b>Theorem 4 (Adaptive margin):</b> all three guarantees survive time-varying
+\(\varepsilon_t,\,\delta_t\) provided \(\delta_t - 2\varepsilon_t \ge m &gt; 0\).
+</li>
+<li>
+<b>Batch-split estimator:</b> reuses the existing particle budget; needs no
+stationary validation window.
+</li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px;">
+A margin that exceeds twice the noise bound is both necessary and sufficient
+to recover the noiseless CF guarantees under particle-filter score corruption.
+Adapting the margin online to a running noise-envelope estimate closes the loop
+without offline calibration.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h2 style="color:#003366; margin-top:36px;">Simulation Study: Coordinated-Turn Radar</h2>
+
+<table border="1" cellpadding="8" cellspacing="0"
+style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
+<tr style="background:#003366; color:#fff;">
+<th>Selector</th><th>False alarms</th><th>Accuracy</th><th>Delay</th>
+</tr>
+<tr>
+<td>No margin (\(\delta=0\))</td><td>high</td><td>baseline</td><td>&mdash;</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Fixed margin \(\delta &gt; 2\bar\varepsilon\)</td><td><b>&times;10 reduction</b></td><td>+0.36 over no-margin</td><td>minimal</td>
+</tr>
+<tr>
+<td>Adaptive margin</td><td><b>&times;10 reduction</b></td><td>matches offline</td><td>minimal</td>
+</tr>
+</table>
+<p style="font-size:0.85em; color:#777;">
+Results for both \(K=2\) and \(K=4\) model dictionaries, 100 evaluation trials.
+</p>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAPER 3: LCSS -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<hr style="border:0; border-top:2px solid #003366; margin:36px 0 24px 0;" />
+
+<h1 style="color:#003366; font-size:1.15em; margin-top:6px;">
+Switching Budgets for Cognitive&ndash;Flexible Filters: When Does a Finite Budget Suffice?
+</h1>
+<p style="color:#555; font-size:0.95em; margin-top:4px;">
+<i>Preparing for IEEE Control Systems Letters (LCSS), 2026</i>
+</p>
+
+<!-- resource links -->
+<div class="infoblock">
+<div class="blockcontent">
+<span style="color:#00A6D6; font-weight:bold;">&#9654; Preprint:</span>
+<a href="#" target="_blank"><code>coming soon</code></a>
+<p>
+Julia source code and data:
+</p>
+<ul>
+<li>
+<a href="https://thanana.github.io" target="_blank"><code>thanana.github.io</code></a>
+&mdash; Julia scripts (standard library only), saved results, and
+<code>run_all.jl</code> that reproduces every table and figure
+</li>
+</ul>
+</div></div>
+
+<!-- pipeline banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
+box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+<p style="margin:0; font-size:0.95em; color:#003366;">
+<span style="color:#00A6D6;"><b>Score gap \(\Phi_t(s_t)-\Phi_t(\hat s_t)\)</b></span> &rarr;
+<span style="color:#0077AA;"><b>Budget \(B\)</b></span> &rarr;
+<span style="color:#0099CC;"><b>Remaining switches \(B - N_t\)</b></span> &rarr;
+<span style="color:#00A6D6;"><b>Budget-aware margin \(\delta_t(B)\)</b></span> &rarr;
+<span style="color:#003366;"><b>Structure \(s_{t+1}\)</b></span>
+</p>
+<p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+A finite switching budget \(B\) is sufficient when it exceeds the
+worst-case switching count implied by the design region.
+A budget-aware margin depletes the budget only on genuine regime changes.
+</p>
+</div>
+
+<p>
+<b>Cognitive Flexibility (CF)</b> provides a score-descent guarantee and finite
+expected switching, but practioners must often impose a hard switching budget
+(power-limited sensors, latency-constrained systems). This paper asks: when is
+a finite budget \(B\) provably sufficient to track all regime changes in a
+horizon \(T\), and how should the switching rule adapt its margin as the budget
+depletes?
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h3 style="color:#003366;">What Is the Problem?</h3>
+<p>
+The design region \(\Delta &gt; 2\bar\varsigma\) guarantees finite expected
+switching, but gives no bound on the worst-case count &mdash; and practioners
+need to allocate a hard budget before deployment. If the budget is set too low,
+the filter is forced to stay on a wrong structure; too high, and resources are
+wasted. The question is how to characterise the minimum sufficient budget and
+how to spend it optimally.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Main Results</h3>
+<ul>
+<li>
+<b>Theorem 1 (Minimum sufficient budget):</b> a budget \(B \ge B^\star(\Delta,\bar\varsigma,T)\)
+is necessary and sufficient to guarantee no forced miss over horizon \(T\)
+with high probability, where \(B^\star\) is explicit in the design parameters.
+</li>
+<li>
+<b>Theorem 2 (Budget-aware margin):</b> inflating the margin as the budget
+depletes &mdash; \(\delta_t = \delta_0 + \alpha/(B - N_t + 1)\) &mdash; keeps
+the expected remaining switches below the remaining budget for all \(t\).
+</li>
+<li>
+<b>Corollary 1 (Budget allocation rule):</b> given a regime-change rate
+estimate \(\hat\lambda\), the rule \(B = \lceil 2\hat\lambda T \rceil + c_\alpha\)
+yields a budget that is sufficient with probability \(1-\alpha\).
+</li>
+<li>
+<b>Online budget estimator:</b> estimates \(\hat\lambda\) from settled non-good
+steps; no offline regime-change data required.
+</li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px;">
+A finite budget is sufficient when it covers twice the expected number of
+genuine regime changes. Spending the budget on genuine changes only &mdash;
+by inflating the margin as it depletes &mdash; keeps the filter tracking
+through the whole horizon without over-committing resources.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h2 style="color:#003366; margin-top:36px;">Simulation Study: Budget-Constrained Radar Tracking</h2>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
+Does the minimum sufficient budget predict empirical miss rates,
+and does the budget-aware margin outperform a fixed margin at equal budget?
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0"
+style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
+<tr style="background:#003366; color:#fff;">
+<th>Method</th><th>Budget \(B\)</th><th>Miss rate</th><th>Unused budget</th>
+</tr>
+<tr>
+<td>Fixed margin, \(B=B^\star\)</td><td>\(B^\star\)</td><td>baseline</td><td>moderate</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Fixed margin, \(B &lt; B^\star\)</td><td>\(B^\star - 2\)</td><td>high</td><td>low</td>
+</tr>
+<tr>
+<td>Budget-aware margin, \(B=B^\star\)</td><td>\(B^\star\)</td><td><b>lowest</b></td><td>low</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>No budget (unconstrained)</td><td>&infin;</td><td>reference</td><td>&mdash;</td>
+</tr>
+</table>
+<p style="font-size:0.85em; color:#777;">
+3-D coordinated-turn model, \(K=2\), 100 evaluation trials, horizon \(T=500\).
+Miss rate: fraction of regime changes not detected within window.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Reproducibility</h3>
+<p>
+All simulations are written in Julia (standard library only). The code release
+reproduces every table and figure from saved results in a few minutes, or reruns
+the full Monte Carlo studies on one core.
+</p>
+<ul>
+<li>
+<a href="https://thanana.github.io" target="_blank"><code>thanana.github.io</code></a>
+&mdash; <code>run_all.jl</code>, <code>budget_study/</code>, <code>aware_margin/</code>
+</li>
+</ul>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
+background-color:#f9f9f9; border-top:1px solid #ddd;">
+<div id="footer-text"
+style="font-size:0.85em; color:#555; letter-spacing:0.2px;">
+&copy; 2026 <b>Thanana Nuchkrua</b> &nbsp;|&nbsp;
+Control &amp; Signal Processing Research Group
+</div>
+</footer>
+</td>
+</tr>
+</table>
+</body>
+</html>
