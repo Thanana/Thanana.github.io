@@ -25,7 +25,7 @@ MathJax.Hub.Config({
 <div class="menu-category">Thanana</div>
 <div class="menu-item"><a href="index.html">Home</a></div>
 <div class="menu-item"><a href="Biography.html">Biography</a></div>
-<div class="menu-item"><a href="Publication.html">Publication</a></div> 
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
 
 <div class="menu-category">Research</div>
 <div class="menu-item"><a href="world-models-control.html">Estimation&nbsp;and&nbsp;Control</a></div>
@@ -53,7 +53,6 @@ Cognitive-Flexible Filtering: Structure Selection under Noise
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- PAPER 1: TSP -->
 <!-- ═══════════════════════════════════════════════════ -->
-
 
 <h1 style="color:#003366; font-size:1.15em; margin-top:6px;">
 Rare yet Responsive Switching: A Design Region for Cognitive&ndash;Flexible Structure Selection
@@ -315,6 +314,150 @@ style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
 <p style="font-size:0.85em; color:#777;">
 Results for both \(K=2\) and \(K=4\) model dictionaries, 100 evaluation trials.
 </p>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAPER 3: LCSS -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<hr style="border:0; border-top:2px solid #003366; margin:36px 0 24px 0;" />
+
+<h1 style="color:#003366; font-size:1.15em; margin-top:6px;">
+Switching Budgets for Cognitive&ndash;Flexible Filters: When Does a Finite Budget Suffice?
+</h1>
+<p style="color:#555; font-size:0.95em; margin-top:4px;">
+<i>Preparing for IEEE Control Systems Letters (LCSS), 2026</i>
+</p>
+
+<!-- resource links -->
+<div class="infoblock">
+<div class="blockcontent">
+<span style="color:#00A6D6; font-weight:bold;">&#9654; Preprint:</span>
+<a href="#" target="_blank"><code>coming soon</code></a>
+<p>
+Julia source code and data:
+</p>
+<ul>
+<li>
+<a href="https://thanana.github.io" target="_blank"><code>thanana.github.io</code></a>
+&mdash; Julia scripts (standard library only), saved results, and
+<code>run_all.jl</code> that reproduces every table and figure
+</li>
+</ul>
+</div></div>
+
+<!-- pipeline banner -->
+<div style="text-align:center; background-color:#f5f8fa; border-radius:10px;
+padding:14px 12px; margin:0 auto 30px auto; max-width:760px;
+box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+<p style="margin:0; font-size:0.95em; color:#003366;">
+<span style="color:#00A6D6;"><b>Score gap \(\Phi_t(s_t)-\Phi_t(\hat s_t)\)</b></span> &rarr;
+<span style="color:#0077AA;"><b>Budget \(B\)</b></span> &rarr;
+<span style="color:#0099CC;"><b>Remaining switches \(B - N_t\)</b></span> &rarr;
+<span style="color:#00A6D6;"><b>Budget-aware margin \(\delta_t(B)\)</b></span> &rarr;
+<span style="color:#003366;"><b>Structure \(s_{t+1}\)</b></span>
+</p>
+<p style="margin:4px 0 0 0; font-size:0.85em; color:#666;">
+A finite switching budget \(B\) is sufficient when it exceeds the
+worst-case switching count implied by the design region.
+A budget-aware margin depletes the budget only on genuine regime changes.
+</p>
+</div>
+
+<p>
+<b>Cognitive Flexibility (CF)</b> provides a score-descent guarantee and finite
+expected switching, but practioners must often impose a hard switching budget
+(power-limited sensors, latency-constrained systems). This paper asks: when is
+a finite budget \(B\) provably sufficient to track all regime changes in a
+horizon \(T\), and how should the switching rule adapt its margin as the budget
+depletes?
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h3 style="color:#003366;">What Is the Problem?</h3>
+<p>
+The design region \(\Delta &gt; 2\bar\varsigma\) guarantees finite expected
+switching, but gives no bound on the worst-case count &mdash; and practioners
+need to allocate a hard budget before deployment. If the budget is set too low,
+the filter is forced to stay on a wrong structure; too high, and resources are
+wasted. The question is how to characterise the minimum sufficient budget and
+how to spend it optimally.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Main Results</h3>
+<ul>
+<li>
+<b>Theorem 1 (Minimum sufficient budget):</b> a budget \(B \ge B^\star(\Delta,\bar\varsigma,T)\)
+is necessary and sufficient to guarantee no forced miss over horizon \(T\)
+with high probability, where \(B^\star\) is explicit in the design parameters.
+</li>
+<li>
+<b>Theorem 2 (Budget-aware margin):</b> inflating the margin as the budget
+depletes &mdash; \(\delta_t = \delta_0 + \alpha/(B - N_t + 1)\) &mdash; keeps
+the expected remaining switches below the remaining budget for all \(t\).
+</li>
+<li>
+<b>Corollary 1 (Budget allocation rule):</b> given a regime-change rate
+estimate \(\hat\lambda\), the rule \(B = \lceil 2\hat\lambda T \rceil + c_\alpha\)
+yields a budget that is sufficient with probability \(1-\alpha\).
+</li>
+<li>
+<b>Online budget estimator:</b> estimates \(\hat\lambda\) from settled non-good
+steps; no offline regime-change data required.
+</li>
+</ul>
+
+<h3 style="color:#003366; margin-top:28px;">Core Insight</h3>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px;">
+A finite budget is sufficient when it covers twice the expected number of
+genuine regime changes. Spending the budget on genuine changes only &mdash;
+by inflating the margin as it depletes &mdash; keeps the filter tracking
+through the whole horizon without over-committing resources.
+</p>
+
+<hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
+<h2 style="color:#003366; margin-top:36px;">Simulation Study: Budget-Constrained Radar Tracking</h2>
+<p style="font-style:italic; background:#f5f9fb; border-left:4px solid #00A6D6;
+padding:0.8em 1.2em; border-radius:6px; margin-bottom:1.2rem;">
+Does the minimum sufficient budget predict empirical miss rates,
+and does the budget-aware margin outperform a fixed margin at equal budget?
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0"
+style="border-collapse:collapse; width:100%; font-size:0.9em; margin:1rem 0;">
+<tr style="background:#003366; color:#fff;">
+<th>Method</th><th>Budget \(B\)</th><th>Miss rate</th><th>Unused budget</th>
+</tr>
+<tr>
+<td>Fixed margin, \(B=B^\star\)</td><td>\(B^\star\)</td><td>baseline</td><td>moderate</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>Fixed margin, \(B &lt; B^\star\)</td><td>\(B^\star - 2\)</td><td>high</td><td>low</td>
+</tr>
+<tr>
+<td>Budget-aware margin, \(B=B^\star\)</td><td>\(B^\star\)</td><td><b>lowest</b></td><td>low</td>
+</tr>
+<tr style="background:#f9f9f9;">
+<td>No budget (unconstrained)</td><td>&infin;</td><td>reference</td><td>&mdash;</td>
+</tr>
+</table>
+<p style="font-size:0.85em; color:#777;">
+3-D coordinated-turn model, \(K=2\), 100 evaluation trials, horizon \(T=500\).
+Miss rate: fraction of regime changes not detected within window.
+</p>
+
+<h3 style="color:#003366; margin-top:28px;">Reproducibility</h3>
+<p>
+All simulations are written in Julia (standard library only). The code release
+reproduces every table and figure from saved results in a few minutes, or reruns
+the full Monte Carlo studies on one core.
+</p>
+<ul>
+<li>
+<a href="https://thanana.github.io" target="_blank"><code>thanana.github.io</code></a>
+&mdash; <code>run_all.jl</code>, <code>budget_study/</code>, <code>aware_margin/</code>
+</li>
+</ul>
 
 <hr style="border:0; border-top:1px solid #eee; margin:28px 0 24px 0;" />
 <footer id="footer" style="text-align:center; margin-top:40px; padding:14px 0;
