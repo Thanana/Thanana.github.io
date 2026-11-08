@@ -7,68 +7,42 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="jemdoc.css" rel="stylesheet" type="text/css"/>
 <title>Metal Hydride Energy Management | Thanana Nuchkrua</title>
-<style type="text/css">
-/* MH Energy Management: style only page-specific content.
-   Site typography, headings, navigation and content width
-   are inherited from the existing jemdoc.css. */
-.em-lead {
-  line-height: 1.7;
-  text-align: justify;
-  margin: 6px 0 14px;
+<style type="text/css">/* Content styling only: inherit fonts, headings, navigation, and page geometry from jemdoc.css. */
+.em-lead {line-height:1.7;text-align:justify;margin:6px 0 14px}
+.em-subtitle {color:#003366;font-size:1.12em;font-weight:bold;line-height:1.5;margin:8px 0 16px}
+.em-axis {text-align:center;color:#003366;font-size:.95em;letter-spacing:.3px;background:#f5f8fa;border-radius:8px;padding:9px 10px;margin:10px 0 16px}
+.em-section {display:grid;grid-template-columns:minmax(210px,310px) minmax(0,1fr);gap:20px;align-items:start;margin:20px 0;padding:14px;background:#fafcfc;border:1px solid #dceae6;border-radius:8px}
+.em-section img {display:block;width:100%;height:auto;border:1px solid #d7e5e0;border-radius:7px;background:#fff}
+.em-section h3 {margin:0 0 8px;font-size:1.1em;color:#003366}
+.em-section p {margin:6px 0 9px}
+.em-small {color:#566b6d;font-size:.9em}
+.em-tag {font-size:.72em;font-weight:bold;letter-spacing:.35px;border-radius:4px;padding:3px 7px;white-space:nowrap;margin-left:6px;vertical-align:1px}
+.em-published {background:#e2f2e8;color:#14763c}
+.em-pending {background:#e8eef8;color:#275c9c}
+.em-prep {background:#fff0db;color:#985908}
+.em-prior {background:#eee;color:#555}
+.em-future {background:#eee7f5;color:#654b8f}
+.em-question {font-style:italic;color:#456075}
+.em-note {background:#f5f8fa;border-left:3px solid #9eb6c1;padding:12px 15px;border-radius:4px;margin:16px 0}
+.em-linklist a {display:inline-block;margin-right:12px;margin-bottom:5px}
+.em-footer {border-top:1px solid #d6e6f0;padding-top:15px;margin-top:28px;color:#59706b;font-size:.9em}
+@media (max-width:650px) {.em-section {grid-template-columns:1fr}.em-section img {max-width:420px}}
+
+/* Reactor geometry shown in the rightmost panel of the existing QuantumMH figure. */
+.mh-reactor-panel { min-width: 0; }
+.em-section .mh-source-reactor {
+  box-sizing: border-box;
+  width: 100%;
+  height: 275px;
+  max-height: none;
+  object-fit: cover;
+  object-position: 98% 44%;
+  display: block;
+  background-color: #fff;
 }
-.em-subtitle {
-  color: #003366;
-  font-size: 1.12em;
-  font-weight: bold;
-  line-height: 1.5;
-  margin: 8px 0 16px;
+@media (max-width: 650px) {
+  .em-section .mh-source-reactor { height: auto; object-fit: contain; }
 }
-.em-axis {
-  text-align: center;
-  color: #003366;
-  font-size: 0.95em;
-  letter-spacing: 0.3px;
-  background: #f5f8fa;
-  border-radius: 8px;
-  padding: 9px 10px;
-  margin: 10px 0 16px;
-}
-.em-section {
-  padding: 12px 0;
-  margin: 0;
-  border-bottom: 1px dashed #d6e6f0;
-}
-.em-section:last-of-type { border-bottom: none; }
-.em-section h3 {
-  margin: 6px 0 8px;
-  font-size: 1.05em;
-}
-.em-section p { margin: 6px 0 10px; }
-.em-small { color: #566b6d; font-size: 0.93em; }
-.em-tag {
-  display: inline-block;
-  font-size: 0.72em;
-  font-weight: bold;
-  letter-spacing: 0.3px;
-  border-radius: 3px;
-  padding: 2px 6px;
-  margin-left: 6px;
-  vertical-align: 1px;
-}
-.em-published { background: #e3f4ea; color: #1d6b3a; }
-.em-pending { background: #e6f0fa; color: #1f4e8c; }
-.em-prep { background: #fff3e0; color: #9a5a00; }
-.em-prior { background: #f0f0f0; color: #666; }
-.em-future { background: #eee7f5; color: #654b8f; }
-.em-question { font-style: italic; color: #444; }
-.em-note {
-  padding: 10px 14px;
-  background: #f5f8fa;
-  border-left: 3px solid #9eb6c1;
-  margin: 16px 0;
-}
-.em-linklist a { display: inline-block; margin: 0 12px 5px 0; }
-.em-footer { border-top: 1px solid #d6e6f0; padding-top: 12px; margin-top: 24px; }
 </style>
 </head>
 <body>
@@ -95,22 +69,21 @@
 <p class="em-subtitle">Physics-Informed Transport Modeling, Parameter Estimation, and Predictive Control</p>
 <p class="em-lead">How does the fidelity of a physical model influence predictive-control decisions in a hydrogen energy system? My research on metal-hydride (MH) systems develops from experimental reactor and hydrogen-pressure actuation studies to learning-based robust control and quantum-transport-informed model predictive control (MPC). This track investigates how physical transport knowledge can inform estimation, prediction, performance analysis, and ultimately energy-system operation.</p>
 <div class="em-axis">Physical systems → Learning &amp; robustness → Physics-informed MPC → Sensitivity &amp; guarantees → Energy integration</div>
-
 <h2>Research Themes and Selected Work</h2>
 <p>The research is organized around five related questions, connecting physical understanding to control-oriented models and energy applications.</p>
-<section class="em-section"><div>
+<section class="em-section"><div class="mh-reactor-panel"><img alt="Schematic of the LaNi5–H2 metal-hydride reactor and thermoelectric heating/cooling system, based on the QuantumMH research page." class="mh-source-reactor" loading="lazy" src="https://thanana.github.io/quantum-hydride-heatflow-corrected.jpg"/><p class="em-small">MH reactor and thermoelectric module (schematic from <a href="https://thanana.github.io/QuantumMH.html">QuantumMH research overview</a>; the reactor is shown at the right of the original four-panel figure).</p></div><div>
 <h3>(a) MH Physical Systems and Control <span class="em-tag em-prior">PRIOR WORK · 2013–2015</span></h3>
 <p class="em-question"><b>How do hydrogen absorption/desorption and thermal actuation shape the behavior of a controllable MH reactor?</b></p>
 <p>Earlier research investigated LaNi<sub>5</sub>–H<sub>2</sub> reactors, thermoelectric temperature management, and hydrogen-pressure actuation. These studies established a physical-system basis for later questions about model uncertainty and predictive control.</p>
 <p class="em-small">Selected prior studies include thermoelectric-module control of MH reactors and MH-driven pneumatic actuation.</p>
 </div></section>
-<section class="em-section"><div>
+<section class="em-section"><div><img alt="Metal-hydride-driven pneumatic artificial muscle and adaptive robust tracking curves." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjgwIiBoZWlnaHQ9IjIzMCIgdmlld0JveD0iMCAwIDY4MCAyMzAiIHJvbGU9ImltZyI+IDxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ib2NlYW4iIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZTdmOGYyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZWVmNGZiIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InN0ZWVsIj48c3RvcCBzdG9wLWNvbG9yPSIjOTJhYWIwIi8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNmNmZjZmYiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjYjJjN2NjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODA5OGEzIi8+PC9saW5lYXJHcmFkaWVudD48bWFya2VyIGlkPSJhcnIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMzE1NThhIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYXJyZ3JlZW4iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMTc4MDVmIi8+PC9tYXJrZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHJ4PSIxNiIgZmlsbD0idXJsKCNvY2VhbikiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NSA3MikiPjxyZWN0IHg9IjYiIHk9IjI1IiB3aWR0aD0iMjgiIGhlaWdodD0iNzIiIHJ4PSI3IiBmaWxsPSJ1cmwoI3N0ZWVsKSIgc3Ryb2tlPSIjNTY2ZjgwIiBzdHJva2Utd2lkdGg9IjIiLz48cmVjdCB4PSIzMCIgeT0iMzQiIHdpZHRoPSIyNDAiIGhlaWdodD0iNTQiIHJ4PSIxNyIgZmlsbD0iIzMwM2Y0ZiIgc3Ryb2tlPSIjMWIzMTQxIiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNMzkgMzcgTDY0IDg0IEw4OCAzNyBMMTEzIDg0IEwxMzcgMzcgTDE2MSA4NCBMMTg2IDM3IEwyMTEgODQgTDIzNSAzNyBMMjU5IDg0IE0zOSA4NCBMNjQgMzcgTDg4IDg0IEwxMTMgMzcgTDEzNyA4NCBMMTYxIDM3IEwxODYgODQgTDIxMSAzNyBMMjM1IDg0IEwyNTkgMzciIHN0cm9rZT0iI2I1YzhjOCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIuNzYiLz48cmVjdCB4PSIyNzAiIHk9IjI1IiB3aWR0aD0iMjgiIGhlaWdodD0iNzIiIHJ4PSI3IiBmaWxsPSJ1cmwoI3N0ZWVsKSIgc3Ryb2tlPSIjNTY2ZjgwIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMjk1IDU5SDMyNyIgc3Ryb2tlPSIjNTM2ODc5IiBzdHJva2Utd2lkdGg9IjEyIi8+PC9nPjx0ZXh0IHg9IjE5MSIgeT0iMjA0IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSJub3JtYWwiIGZpbGw9IiMxNzMzNGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1ILWRyaXZlbiBwbmV1bWF0aWMgYXJ0aWZpY2lhbCBtdXNjbGU8L3RleHQ+PHBhdGggZD0iTTM5OCAxMDAgSDQ0NSIgc3Ryb2tlPSIjMzE1NThhIiBzdHJva2Utd2lkdGg9IjMiIG1hcmtlci1lbmQ9InVybCgjYXJyKSIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ2NiA0OSkiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMTAyIiByeD0iMTEiIGZpbGw9IndoaXRlIiBzdHJva2U9IiNhZmM4ZDYiLz48cGF0aCBkPSJNMjEgNzdIMTM4IE0yMSA3N1YxOSIgc3Ryb2tlPSIjNmY4Nzk4IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMjMgNjMgQzQ1IDMwIDU3IDMzIDc2IDU3IFMxMDYgODggMTM3IDM5IiBzdHJva2U9IiMxNmExN2QiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0yMyA3MCBDNDUgNDMgNTcgMjMgNzYgNDcgUzExMCA5MSAxMzcgNDgiIHN0cm9rZT0iIzg5OWNhZCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSI1IDQiIGZpbGw9Im5vbmUiLz48L2c+PHRleHQgeD0iNTQ0IiB5PSIxNzYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9Im5vcm1hbCIgZmlsbD0iIzE3MzM0ZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QWRhcHRpdmUgLyByb2J1c3QgdHJhY2tpbmc8L3RleHQ+PC9zdmc+"/></div><div>
 <h3>(b) Learning-Based Adaptive Robust Control <span class="em-tag em-published">PUBLISHED · IEEE TIE 2022</span></h3>
 <p class="em-question"><b>Can safe, compliant actuation be maintained despite nonlinear dynamics and changing environments?</b></p>
 <p>The IEEE Transactions on Industrial Electronics study developed learning-based adaptive robust control (LARC) for an MH-driven pneumatic artificial muscle. Sparse Bayesian learning supports model identification and adaptation, while robust feedback addresses tracking under varying loads. The study reports physical implementation and tracking experiments.</p>
 <p><a href="https://doi.org/10.1109/TIE.2021.3102486">Novel Compliant Control of a Pneumatic Artificial Muscle Driven by Hydrogen Pressure Under a Varying Environment</a> — <i>IEEE Transactions on Industrial Electronics</i>, 69(7), 7120–7129 (2022).</p>
 </div></section>
-<section class="em-section"><div>
+<section class="em-section"><div><img alt="Classical and corrected effective activation barriers feeding physics-informed MPC." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjgwIiBoZWlnaHQ9IjIzMCIgdmlld0JveD0iMCAwIDY4MCAyMzAiIHJvbGU9ImltZyI+IDxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ib2NlYW4iIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZTdmOGYyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZWVmNGZiIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InN0ZWVsIj48c3RvcCBzdG9wLWNvbG9yPSIjOTJhYWIwIi8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNmNmZjZmYiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjYjJjN2NjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODA5OGEzIi8+PC9saW5lYXJHcmFkaWVudD48bWFya2VyIGlkPSJhcnIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMzE1NThhIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYXJyZ3JlZW4iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMTc4MDVmIi8+PC9tYXJrZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHJ4PSIxNiIgZmlsbD0idXJsKCNvY2VhbikiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCAxNikiPjxwYXRoIGQ9Ik0zMSAxNzZWMjIgTTMxIDE3NkgyODAiIHN0cm9rZT0iIzQxNTc2ZSIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTQyIDQ4IEM4NiA0NyA5OCAxNTggMTQ4IDE1OCBTMjA1IDQwIDI2NSA0MiIgc3Ryb2tlPSIjOTg2MWM2IiBzdHJva2Utd2lkdGg9IjUiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNNDQgNTEgQzk1IDU0IDExMSAxNTcgMTQ1IDE1NiBTMjA2IDg1IDI2NSA5MCIgc3Ryb2tlPSIjMTU4Yzg2IiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWRhc2hhcnJheT0iOSA1IiBmaWxsPSJub25lIi8+PC9nPjx0ZXh0IHg9IjMyMiIgeT0iNTQiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM3YjRlYTYiPkXigpA6IGNsYXNzaWNhbDwvdGV4dD48dGV4dCB4PSIzMjAiIHk9IjExMyIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzA4N2I3NSI+RWVmZjogY29ycmVjdGVkPC90ZXh0PjxwYXRoIGQ9Ik00MDcgMTE5IEg0NTUiIHN0cm9rZT0iIzMxNTU4YSIgc3Ryb2tlLXdpZHRoPSIzIiBtYXJrZXItZW5kPSJ1cmwoI2FycikiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NzUgNTUpIj48cmVjdCB4PSIwIiB5PSIwIiByeD0iMTEiIHdpZHRoPSIxNTYiIGhlaWdodD0iNjIiIGZpbGw9IndoaXRlIiBzdHJva2U9IiNiNmQzYzgiLz48dGV4dCB4PSI3OCIgeT0iMjUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyNDQxNWEiPlBoeXNpY3MtaW5mb3JtZWQ8L3RleHQ+PHRleHQgeD0iNzgiIHk9IjQ2IiBmb250LWZhbWlseT0iQXJpYWwiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjQ0MTVhIj5NUEM8L3RleHQ+PC9nPjx0ZXh0IHg9IjU1MyIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSJub3JtYWwiIGZpbGw9IiMxNzMzNGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9uZSBjb25zdHJhaW5lZCBjb250cm9sIHBsYW48L3RleHQ+PHRleHQgeD0iNTUzIiB5PSIxNzMiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9Im5vcm1hbCIgZmlsbD0iIzE3MzM0ZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Zm9yIHRoZSBNSCBwbGFudDwvdGV4dD48L3N2Zz4="/></div><div>
 <h3>(c) Quantum-Transport-Informed Prediction and MPC <span class="em-tag em-pending">DECISION PENDING · IEEE TCST</span></h3>
 <p class="em-question"><b>When does microscopic transport physics become important for macroscopic control decisions?</b></p>
 <p>The revised IEEE TCST manuscript integrates a temperature-dependent effective-barrier correction with physics-constrained Huber weighted least-squares estimation and MPC. It examines estimator consistency, local feasibility and stability results, local stability of a nonlinear kinetic plant, and model-mismatch consequences through simulation.</p>
@@ -118,13 +91,13 @@
 <p><b>Manuscript:</b> <i>Quantum-Transport-Informed Model Predictive Control for Metal-Hydride Hydrogen Storage with Physics-Constrained Parameter Estimation</i> — IEEE TCST, submission 26-1360 (decision pending, 3 November 2026).</p>
 <p class="em-linklist"><a href="https://thanana.github.io/QuantumMH.html">Related MH research overview</a></p>
 </div></section>
-<section class="em-section"><div>
+<section class="em-section"><div><img alt="Control-cost sensitivity curve and mismatch reference point." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjgwIiBoZWlnaHQ9IjIzMCIgdmlld0JveD0iMCAwIDY4MCAyMzAiIHJvbGU9ImltZyI+IDxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ib2NlYW4iIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZTdmOGYyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZWVmNGZiIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InN0ZWVsIj48c3RvcCBzdG9wLWNvbG9yPSIjOTJhYWIwIi8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNmNmZjZmYiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjYjJjN2NjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODA5OGEzIi8+PC9saW5lYXJHcmFkaWVudD48bWFya2VyIGlkPSJhcnIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMzE1NThhIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYXJyZ3JlZW4iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMTc4MDVmIi8+PC9tYXJrZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHJ4PSIxNiIgZmlsbD0idXJsKCNvY2VhbikiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0OCAyNSkiPjxwYXRoIGQ9Ik0zMCAxNTVWMjUgTTMwIDE1NUgyNjUiIHN0cm9rZT0iIzQxNTc2ZSIgc3Ryb2tlLXdpZHRoPSIyLjUiLz48cGF0aCBkPSJNMzUgNTAgUTEzNCAxODggMjU1IDU1IiBmaWxsPSJub25lIiBzdHJva2U9IiMxNzhkNzUiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Ik0zNSA5NiBRMTM0IDE4MSAyNTUgOTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzk4NjZhYSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI2IDUiLz48cGF0aCBkPSJNMTM5IDE1MyBWMzAiIHN0cm9rZT0iIzlhYjhjOSIgc3Ryb2tlLWRhc2hhcnJheT0iNSA0Ii8+PGNpcmNsZSBjeD0iMTM5IiBjeT0iMTI2IiByPSI2IiBmaWxsPSIjMTc4ZDc1Ii8+PC9nPjx0ZXh0IHg9IjE4MyIgeT0iMjA3IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJub3JtYWwiIGZpbGw9IiMxNzMzNGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNvdXBsaW5nIG1pc21hdGNoIM+BPC90ZXh0Pjx0ZXh0IHg9IjM0MyIgeT0iNjMiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxNzMzNGYiPlBoeXNpY3MtYmxpbmQgTVBDPC90ZXh0Pjx0ZXh0IHg9IjM0MyIgeT0iMTAzIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSJub3JtYWwiIGZpbGw9IiMxNzMzNGYiPkV4YWN0IFJpY2NhdGktc2Vuc2l0aXZpdHkgYW5hbHlzaXM8L3RleHQ+PHRleHQgeD0iMzQzIiB5PSIxNDUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9Im5vcm1hbCIgZmlsbD0iIzE3MzM0ZiI+UXVhbnRpZnlpbmcgdGhlIGNvbnRyb2wtY29zdCBnYXA8L3RleHQ+PHRleHQgeD0iMzQzIiB5PSIxODMiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9Im5vcm1hbCIgZmlsbD0iIzE3MzM0ZiI+dW5kZXIgYSBtaXNzcGVjaWZpZWQgcGxhbnQgbW9kZWw8L3RleHQ+PC9zdmc+"/></div><div>
 <h3>(d) Control Optimality and Riccati Sensitivity <span class="em-tag em-prep">IN PREPARATION · IEEE TAC</span></h3>
 <p class="em-question"><b>How suboptimal is physics-blind MPC when the physical plant differs from the prediction model?</b></p>
 <p>A complementary theoretical manuscript studies the performance consequences of model mismatch through Riccati-sensitivity analysis. Its focus is a local control-cost expansion and conditions under which mismatch leads to a quantifiable performance gap. This work develops a control-theoretic question motivated by transport-model fidelity; its results should be interpreted under the assumptions of that study.</p>
 <p><b>Working title:</b> <i>How Suboptimal Is Physics-Blind MPC? An Exact Riccati-Sensitivity Analysis.</i> This is a prepared research manuscript, not a published or accepted result.</p>
 </div></section>
-<section class="em-section"><div>
+<section class="em-section"><div><img alt="Metal-hydride storage feeding an energy interface and system-level scheduling." src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjgwIiBoZWlnaHQ9IjIzMCIgdmlld0JveD0iMCAwIDY4MCAyMzAiIHJvbGU9ImltZyI+IDxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ib2NlYW4iIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZTdmOGYyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZWVmNGZiIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9InN0ZWVsIj48c3RvcCBzdG9wLWNvbG9yPSIjOTJhYWIwIi8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNmNmZjZmYiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjYjJjN2NjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODA5OGEzIi8+PC9saW5lYXJHcmFkaWVudD48bWFya2VyIGlkPSJhcnIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMzE1NThhIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0iYXJyZ3JlZW4iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjgiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMCBMOSA0IEwwIDhaIiBmaWxsPSIjMTc4MDVmIi8+PC9tYXJrZXI+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHJ4PSIxNiIgZmlsbD0idXJsKCNvY2VhbikiLz48cmVjdCB4PSI1MCIgeT0iNTUiIHdpZHRoPSIxMzUiIGhlaWdodD0iMTE2IiByeD0iMTciIGZpbGw9InVybCgjc3RlZWwpIiBzdHJva2U9IiM0ODYzNzUiIHN0cm9rZS13aWR0aD0iMyIvPjxlbGxpcHNlIGN4PSIxMTciIGN5PSI1NSIgcng9IjY3IiByeT0iMTMiIGZpbGw9IiNkMWUzZTUiIHN0cm9rZT0iIzQ4NjM3NSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMTE3IiB5PSIxMTMiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxNzMzNGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1IPC90ZXh0Pjx0ZXh0IHg9IjExNyIgeT0iMTQzIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSJub3JtYWwiIGZpbGw9IiMxNzMzNGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlN0b3JhZ2U8L3RleHQ+PHBhdGggZD0iTTIwOCA5MUgyODcgTTI4NyAxMzBIMjA4IiBzdHJva2U9IiMzMTU1OGEiIHN0cm9rZS13aWR0aD0iNCIgbWFya2VyLWVuZD0idXJsKCNhcnIpIi8+PHJlY3QgeD0iMzA3IiB5PSI2OSIgd2lkdGg9IjExMiIgaGVpZ2h0PSI5NiIgcng9IjE1IiBmaWxsPSIjZTZmYmYzIiBzdHJva2U9IiMyMjk0NzciIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0zMzcgODFWNTggSDM4OVY4MSIgc3Ryb2tlPSIjMjI5NDc3IiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMzY4IDg1IEwzNDMgMTIyIEgzNjUgTDM1MyAxNDggTDM4OSAxMTEgSDM2NyBaIiBmaWxsPSIjZWJhZDQwIiBzdHJva2U9IiNjMzg5MjUiLz48dGV4dCB4PSIzNjUiIHk9IjE4NyIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0ibm9ybWFsIiBmaWxsPSIjMTczMzRmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5FbmVyZ3kgaW50ZXJmYWNlPC90ZXh0PjxwYXRoIGQ9Ik00NDAgMTE2SDQ3NiIgc3Ryb2tlPSIjMzE1NThhIiBzdHJva2Utd2lkdGg9IjMiIG1hcmtlci1lbmQ9InVybCgjYXJyKSIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ5MSA1MikiPjxyZWN0IHdpZHRoPSIxNDUiIGhlaWdodD0iMTEwIiByeD0iMTEiIGZpbGw9IndoaXRlIiBzdHJva2U9IiNhZGNlY2EiLz48cGF0aCBkPSJNMTUgODBIMTMwIiBzdHJva2U9IiM3YzhmYTIiIHN0cm9rZS13aWR0aD0iMyIvPjxyZWN0IHg9IjI2IiB5PSI0OCIgd2lkdGg9IjIzIiBoZWlnaHQ9IjMyIiBmaWxsPSIjYTFjMWQwIi8+PHJlY3QgeD0iNTYiIHk9IjI1IiB3aWR0aD0iMjMiIGhlaWdodD0iNTUiIGZpbGw9IiM5ZmM3YmEiLz48cmVjdCB4PSI4NiIgeT0iMzciIHdpZHRoPSIyMyIgaGVpZ2h0PSI0MyIgZmlsbD0iI2I4YjVkNCIvPjxwYXRoIGQ9Ik0yMCA4M0w0NSA2MEw2OSA2OUwxMDAgMzBMMTI0IDQ1IiBzdHJva2U9IiMxNjdjNjQiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjwvZz48dGV4dCB4PSI1NjEiIHk9IjE4NSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0ibm9ybWFsIiBmaWxsPSIjMTczMzRmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TeXN0ZW0tbGV2ZWwgc2NoZWR1bGluZzwvdGV4dD48L3N2Zz4="/></div><div>
 <h3>(e) Toward Advanced MH Energy Management <span class="em-tag em-future">FUTURE RESEARCH</span></h3>
 <p class="em-question"><b>How can physically faithful models and reliable controllers support safe and efficient hydrogen-energy operation?</b></p>
 <p>The longer-term direction connects transport-aware modeling, identification, predictive control and systems integration. Open research topics include coupled thermal–hydrogen dynamics, partial-state estimation, hysteresis and degradation, multivariable modeling, online adaptation with time-varying temperature, and hardware-in-the-loop validation.</p>
