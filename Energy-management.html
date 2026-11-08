@@ -83,17 +83,71 @@
 </section>
 
   
+
 <!-- (b) Learning-Based Adaptive Robust Control -->
-<img src="mh-pam-larc.svg" alt="MH-driven pneumatic artificial muscle" />
+<section class="em-section">
+  <h3>(b) Learning-Based Adaptive Robust Control
+    <span class="em-tag em-published">PUBLISHED · IEEE TIE 2022</span>
+  </h3>
 
-<!-- (c) Quantum-Transport-Informed MPC -->
-<img src="mh-transport-mpc.svg" alt="Physics-informed MPC" />
+  <div class="em-visual">
+    <img src="mh-pam-larc.svg"
+         alt="Metal-hydride-driven pneumatic artificial muscle and adaptive robust tracking curves." />
+  </div>
 
-<!-- (d) Riccati Sensitivity -->
-<img src="mh-sensitivity.svg" alt="Control-cost sensitivity" />
+  <p class="em-question"><b>Can safe, compliant actuation be maintained despite nonlinear dynamics and changing environments?</b></p>
+  <p>We develop learning-based adaptive robust control (LARC) for an MH-driven pneumatic artificial muscle. Sparse Bayesian learning supports model identification and adaptation, while robust feedback addresses tracking under varying loads. The study reports physical implementation and tracking experiments.</p>
+  <p><a href="https://doi.org/10.1109/TIE.2021.3102486">Novel Compliant Control of a Pneumatic Artificial Muscle Driven by Hydrogen Pressure Under a Varying Environment</a>.</p>
+</section>
 
-<!-- (e) Advanced MH Energy Management -->
-<img src="mh-integration.svg" alt="MH energy integration" />
+<!-- (c) Quantum-Transport-Informed Prediction and MPC -->
+<section class="em-section">
+  <h3>(c) Quantum-Transport-Informed Prediction and MPC
+    <span class="em-tag em-pending">Under review · IEEE TCST</span>
+  </h3>
+
+  <div class="em-visual">
+    <img src="mh-transport-mpc.svg"
+         alt="Classical and corrected effective activation barriers feeding physics-informed MPC." />
+  </div>
+
+  <p class="em-question"><b>When does microscopic transport physics become important for macroscopic control decisions?</b></p>
+  <p>We integrate a temperature-dependent effective-barrier correction with physics-constrained Huber weighted least-squares estimation and MPC. It examines estimator consistency, local feasibility and stability results, local stability of a nonlinear kinetic plant, and model-mismatch consequences through simulation.</p>
+  <p>Under the current platform's 298–333 K operating range and 1–8 bar pressure limits, the reported closed-loop cost reduction is at most 0.3%. At a projected 120 K, the simulated reduction is 27–93%, depending on the normalized input bound. The latter regime is beyond current hardware capabilities and is <b>not</b> a validated hardware result.</p>
+  <p class="em-linklist"><a href="https://thanana.github.io/QuantumMH.html">Related MH research overview</a></p>
+</section>
+
+<!-- (d) Control Optimality and Riccati Sensitivity -->
+<section class="em-section">
+  <h3>(d) Control Optimality and Riccati Sensitivity
+    <span class="em-tag em-prep">IN PREPARATION · IEEE TAC</span>
+  </h3>
+
+  <div class="em-visual">
+    <img src="mh-sensitivity.svg"
+         alt="Control-cost sensitivity curve and mismatch reference point." />
+  </div>
+
+  <p class="em-question"><b>How suboptimal is physics-blind MPC when the physical plant differs from the prediction model?</b></p>
+  <p>A complementary theoretical manuscript studies the performance consequences of model mismatch through Riccati-sensitivity analysis. Its focus is a local control-cost expansion and conditions under which mismatch leads to a quantifiable performance gap. This work develops a control-theoretic question motivated by transport-model fidelity; its results should be interpreted under the assumptions of that study.</p>
+  <p><b>Working title:</b> <i>How Suboptimal Is Physics-Blind MPC? An Exact Riccati-Sensitivity Analysis.</i> This is a prepared research manuscript, not a published or accepted result.</p>
+</section>
+
+<!-- (e) Toward Advanced MH Energy Management -->
+<section class="em-section">
+  <h3>(e) Toward Advanced MH Energy Management
+    <span class="em-tag em-future">FUTURE RESEARCH</span>
+  </h3>
+
+  <div class="em-visual">
+    <img src="mh-integration.svg"
+         alt="Metal-hydride storage feeding an energy interface and system-level scheduling." />
+  </div>
+
+  <p class="em-question"><b>How can physically faithful models and reliable controllers support safe and efficient hydrogen-energy operation?</b></p>
+  <p>The longer-term direction connects transport-aware modeling, identification, predictive control and systems integration. Open research topics include coupled thermal–hydrogen dynamics, partial-state estimation, hysteresis and degradation, multivariable modeling, online adaptation with time-varying temperature, and hardware-in-the-loop validation.</p>
+  <p>These directions are future research objectives; the current TCST simulations do not yet establish system-level energy-management performance or hardware deployment in cryogenic regimes.</p>
+</section>
 
   
   
