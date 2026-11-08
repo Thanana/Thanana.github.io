@@ -1,88 +1,235 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-<meta content="jemdoc-style research page" name="generator"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<link href="jemdoc.css" rel="stylesheet" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="jemdoc-style research page" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
 <title>Metal Hydride Energy Management | Thanana Nuchkrua</title>
-<style type="text/css">/* Page typography and site menu are inherited from jemdoc.css. */
-.em-lead {line-height:1.7;text-align:justify;margin:6px 0 14px}
-.em-subtitle {color:#003366;font-size:1.12em;font-weight:bold;line-height:1.5;margin:8px 0 16px}
-.em-axis {text-align:center;color:#003366;font-size:.95em;letter-spacing:.3px;background:#f5f8fa;border-radius:8px;padding:9px 10px;margin:10px 0 16px}
-/* FLOAT, not a grid: body text wraps beside the figure and continues BELOW it. */
-.em-section {display:flow-root;margin:0;padding:17px 0 19px;border:0;border-bottom:1px solid #dce6eb;background:transparent;min-width:0}
+
+<style type="text/css">
+/* Page typography and menu inherited from jemdoc.css */
+.em-lead {
+  line-height:1.7;
+  text-align:justify;
+  margin:6px 0 14px;
+}
+.em-subtitle {
+  color:#003366;
+  font-size:1.12em;
+  font-weight:bold;
+  line-height:1.5;
+  margin:8px 0 16px;
+}
+.em-axis {
+  text-align:center;
+  color:#003366;
+  font-size:.95em;
+  letter-spacing:.3px;
+  background:#f5f8fa;
+  border-radius:8px;
+  padding:9px 10px;
+  margin:10px 0 16px;
+}
+
+/* Text wrapping: figures float left, text flows around them */
+.em-section {
+  display:flow-root;
+  margin:0;
+  padding:17px 0 19px;
+  border:0;
+  border-bottom:1px solid #dce6eb;
+  background:transparent;
+  min-width:0;
+}
 .em-section:last-of-type {border-bottom:0}
-.em-section h3 {margin:0 0 9px;color:#003366;font-size:1.07em;line-height:1.35}
-.em-section p {margin:6px 0 10px;line-height:1.58}
-.em-visual {float:left;width:255px;max-width:40%;margin:1px 14px 5px 0;padding:0;border:0;background:none;line-height:0}
-.em-visual img {display:block;width:100%;height:auto;border:0;background:none;box-shadow:none;border-radius:0;object-fit:contain}
-.em-visual.mh-reactor-panel {width:205px;max-width:34%}
-.em-visual.mh-reactor-panel img{width:100%;height:auto;max-height:none;object-fit:contain}
+
+.em-section h3 {
+  margin:0 0 9px;
+  color:#003366;
+  font-size:1.07em;
+  line-height:1.35;
+}
+.em-section p {
+  margin:6px 0 10px;
+  line-height:1.58;
+}
+.em-visual {
+  float:left;
+  width:255px;
+  max-width:40%;
+  margin:1px 14px 5px 0;
+  padding:0;
+  border:0;
+  background:transparent;
+  line-height:0;
+}
+.em-visual img,
+.em-visual svg {
+  display:block;
+  width:100%;
+  height:auto;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  border-radius:0;
+}
+.em-visual.mh-reactor-panel {
+  width:205px;
+  max-width:34%;
+}
+.em-visual.mh-reactor-panel img {
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+}
 .em-copy {display:contents}
 .em-small {color:#566b6d;font-size:.9em}
-.em-tag {font-size:.72em;font-weight:bold;letter-spacing:.35px;border-radius:4px;padding:3px 7px;white-space:normal;margin-left:6px;vertical-align:1px}
+.em-tag {
+  font-size:.72em;
+  font-weight:bold;
+  letter-spacing:.35px;
+  border-radius:4px;
+  padding:3px 7px;
+  white-space:normal;
+  margin-left:6px;
+  vertical-align:1px;
+}
 .em-published {background:#e2f2e8;color:#14763c}
 .em-pending {background:#e8eef8;color:#275c9c}
 .em-prep {background:#fff0db;color:#985908}
 .em-prior {background:#eee;color:#555}
 .em-future {background:#eee7f5;color:#654b8f}
 .em-question {font-style:italic;color:#456075}
-.em-note {background:#f5f8fa;border-left:3px solid #9eb6c1;padding:12px 15px;border-radius:4px;margin:16px 0}
-.em-linklist a {display:inline-block;margin-right:12px;margin-bottom:5px}
-.em-footer {border-top:1px solid #d6e6f0;padding-top:15px;margin-top:28px;color:#59706b;font-size:.9em}
-@media(max-width:650px){.em-visual{width:180px;max-width:43%;margin-right:11px}.em-visual.mh-reactor-panel{width:155px;max-width:38%}}
-@media(max-width:430px){.em-visual{width:42%;max-width:42%;margin-right:10px}.em-visual.mh-reactor-panel{width:35%;max-width:35%}}
+.em-note {
+  background:#f5f8fa;
+  border-left:3px solid #9eb6c1;
+  padding:12px 15px;
+  border-radius:4px;
+  margin:16px 0;
+}
+.em-linklist a {
+  display:inline-block;
+  margin-right:12px;
+  margin-bottom:5px;
+}
+.em-footer {
+  border-top:1px solid #d6e6f0;
+  padding-top:15px;
+  margin-top:28px;
+  color:#59706b;
+  font-size:.9em;
+}
+@media(max-width:650px) {
+  .em-visual {
+    width:180px;
+    max-width:43%;
+    margin-right:11px;
+  }
+  .em-visual.mh-reactor-panel {
+    width:155px;
+    max-width:38%;
+  }
+}
+@media(max-width:430px) {
+  .em-visual {
+    width:42%;
+    max-width:42%;
+    margin-right:10px;
+  }
+  .em-visual.mh-reactor-panel {
+    width:35%;
+    max-width:35%;
+  }
+}
 </style>
 </head>
+
 <body>
-<table id="tlayout" summary="Table for page layout."><tr valign="top">
+<table id="tlayout" summary="Table for page layout.">
+<tr valign="top">
+
 <td id="layout-menu">
 <div class="menu-category">Thanana</div>
 <div class="menu-item"><a href="index.html">Home</a></div>
 <div class="menu-item"><a href="Biography.html">Biography</a></div>
 <div class="menu-item"><a href="Publication.html">Publication</a></div>
-  
+
 <div class="menu-category">
   Research
   <span style="
-    display: block;
-    font-size: 0.68em;
-    font-weight: 400;
-    font-style: italic;
-    color: #777;
-    line-height: 1.25;
-    margin-top: 3px;
-    letter-spacing: 0.2px;">
+    display:block;
+    font-size:0.68em;
+    font-weight:400;
+    font-style:italic;
+    color:#777;
+    line-height:1.25;
+    margin-top:3px;
+    letter-spacing:0.2px;">
     Estimation and Control
   </span>
 </div>
-<div class="menu-item"><a href="world-models-control.html">World Models and Control</a></div>
-<div class="menu-item"><a class="current" href="Energy-management.html">Energy Management</a></div>
-  
+
+<div class="menu-item">
+  <a href="world-models-control.html">World Models and Control</a>
+</div>
+<div class="menu-item">
+  <a class="current" href="Energy-management.html">Energy Management</a>
+</div>
+
 <div class="menu-category">Teaching</div>
-<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement Learning</a></div>
-<div class="menu-item"><a href="Robotics.html">Introduction to Robotics</a></div>
+<div class="menu-item">
+  <a href="reinforcement_learning.html">Reinforcement Learning</a>
+</div>
+<div class="menu-item">
+  <a href="Robotics.html">Introduction to Robotics</a>
+</div>
+
 <div class="menu-category">Software</div>
 <div class="menu-item"><a href="robotics.html">Robotics</a></div>
 <div class="menu-item"><a href="image.html">Image Processing</a></div>
 </td>
+
 <td id="layout-content">
-<div id="toptitle"><h1>Metal Hydride (MH) Energy Management</h1></div>
-<p class="em-subtitle">Physics-Informed Transport Modeling, Parameter Estimation, and Predictive Control</p>
+
+<div id="toptitle">
+  <h1>Metal Hydride (MH) Energy Management</h1>
+</div>
+
+<p class="em-subtitle">
+Physics-Informed Transport Modeling, Parameter Estimation, and Predictive Control
+</p>
+
 <p class="em-lead">How does the fidelity of a physical model influence predictive-control decisions in a hydrogen energy system? My research on metal-hydride (MH) systems develops from experimental reactor and hydrogen-pressure actuation studies to learning-based robust control and quantum-transport-informed model predictive control (MPC). This track investigates how physical transport knowledge can inform estimation, prediction, performance analysis, and ultimately energy-system operation.</p>
-<div class="em-axis">Physical systems → Learning &amp; robustness → Physics-informed MPC → Sensitivity &amp; guarantees → Energy integration</div>
+
+<div class="em-axis">
+Physical systems → Learning &amp; robustness → Physics-informed MPC → Sensitivity &amp; guarantees → Energy integration
+</div>
+
 <h2>Research Themes and Selected Work</h2>
 <p>The research is organized around five related questions, connecting physical understanding to control-oriented models and energy applications.</p>
-<section class="em-section"><h3>(a) MH Physical Systems and Control <span class="em-tag em-prior">PRIOR WORK · 2013–2015</span></h3><div class="em-visual mh-reactor-panel"><img alt="MH reactor schematic with thermoelectric modules and hydrogen flow" class="mh-source-reactor" loading="lazy" src="quantum-hydride-heatflow-corrected.jpg"/></div>
 
-<p class="em-question"><b>How do hydrogen absorption/desorption and thermal actuation shape the behavior of a controllable MH reactor?</b></p>
-<p>Earlier research investigated LaNi<sub>5</sub>–H<sub>2</sub> reactors, thermoelectric temperature management, and hydrogen-pressure actuation. These studies established a physical-system basis for later questions about model uncertainty and predictive control.</p>
-<p class="em-small">Selected prior studies include thermoelectric-module control of MH reactors and MH-driven pneumatic actuation.</p>
+<!-- (a) MH Physical Systems and Control -->
+<section class="em-section">
+  <h3>(a) MH Physical Systems and Control
+    <span class="em-tag em-prior">PRIOR WORK · 2013–2015</span>
+  </h3>
+
+  <div class="em-visual mh-reactor-panel">
+    <img src="quantum-hydride-heatflow-corrected.jpg"
+         class="mh-source-reactor"
+         alt="MH reactor schematic with thermoelectric modules and hydrogen flow"
+         loading="lazy" />
+  </div>
+
+  <p class="em-question"><b>How do hydrogen absorption/desorption and thermal actuation shape the behavior of a controllable MH reactor?</b></p>
+  <p>Earlier research investigated LaNi<sub>5</sub>–H<sub>2</sub> reactors, thermoelectric temperature management, and hydrogen-pressure actuation. These studies established a physical-system basis for later questions about model uncertainty and predictive control.</p>
+  <p class="em-small">Selected prior studies include thermoelectric-module control of MH reactors and MH-driven pneumatic actuation.</p>
 </section>
-
-  
 
 <!-- (b) Learning-Based Adaptive Robust Control -->
 <section class="em-section">
@@ -91,8 +238,61 @@
   </h3>
 
   <div class="em-visual">
-    <img src="mh-pam-larc.svg"
-         alt="Metal-hydride-driven pneumatic artificial muscle and adaptive robust tracking curves." />
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 680 230"
+         role="img"
+         aria-label="MH-driven pneumatic artificial muscle and adaptive robust tracking">
+      <defs>
+        <linearGradient id="b-steel">
+          <stop stop-color="#92aab0"/>
+          <stop offset=".35" stop-color="#f6fcff"/>
+          <stop offset=".7" stop-color="#b2c7cc"/>
+          <stop offset="1" stop-color="#8098a3"/>
+        </linearGradient>
+        <marker id="b-arr" markerWidth="9" markerHeight="8"
+                refX="8" refY="4" orient="auto">
+          <path d="M0 0 L9 4 L0 8Z" fill="#31558a"/>
+        </marker>
+      </defs>
+
+      <g transform="translate(45 72)">
+        <rect x="6" y="25" width="28" height="72" rx="7"
+              fill="url(#b-steel)" stroke="#566f80" stroke-width="2"/>
+        <rect x="30" y="34" width="240" height="54" rx="17"
+              fill="#303f4f" stroke="#1b3141" stroke-width="3"/>
+        <path d="M39 37 L64 84 L88 37 L113 84 L137 37 L161 84 L186 37 L211 84 L235 37 L259 84
+                 M39 84 L64 37 L88 84 L113 37 L137 84 L161 37 L186 84 L211 37 L235 84 L259 37"
+              stroke="#b5c8c8" stroke-width="2" opacity=".76"/>
+        <rect x="270" y="25" width="28" height="72" rx="7"
+              fill="url(#b-steel)" stroke="#566f80" stroke-width="2"/>
+        <path d="M295 59H327" stroke="#536879" stroke-width="12"/>
+      </g>
+
+      <text x="191" y="204" font-family="Arial,Helvetica,sans-serif"
+            font-size="17" fill="#17334f" text-anchor="middle">
+        MH-driven pneumatic artificial muscle
+      </text>
+
+      <path d="M398 100 H445" stroke="#31558a"
+            stroke-width="3" marker-end="url(#b-arr)"/>
+
+      <g transform="translate(466 49)">
+        <rect width="160" height="102" rx="11"
+              fill="none" stroke="#afc8d6"/>
+        <path d="M21 77H138 M21 77V19"
+              stroke="#6f8798" stroke-width="2"/>
+        <path d="M23 63 C45 30 57 33 76 57 S106 88 137 39"
+              stroke="#16a17d" stroke-width="4" fill="none"/>
+        <path d="M23 70 C45 43 57 23 76 47 S110 91 137 48"
+              stroke="#899cad" stroke-width="2"
+              stroke-dasharray="5 4" fill="none"/>
+      </g>
+
+      <text x="544" y="176" font-family="Arial,Helvetica,sans-serif"
+            font-size="15" fill="#17334f" text-anchor="middle">
+        Adaptive / robust tracking
+      </text>
+    </svg>
   </div>
 
   <p class="em-question"><b>Can safe, compliant actuation be maintained despite nonlinear dynamics and changing environments?</b></p>
@@ -107,8 +307,63 @@
   </h3>
 
   <div class="em-visual">
-    <img src="mh-transport-mpc.svg"
-         alt="Classical and corrected effective activation barriers feeding physics-informed MPC." />
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 680 230"
+         role="img"
+         aria-label="Classical and corrected effective activation barriers feeding physics-informed MPC">
+      <defs>
+        <marker id="c-arr" markerWidth="9" markerHeight="8"
+                refX="8" refY="4" orient="auto">
+          <path d="M0 0 L9 4 L0 8Z" fill="#31558a"/>
+        </marker>
+      </defs>
+
+      <g transform="translate(50 16)">
+        <path d="M31 176V22 M31 176H280"
+              stroke="#41576e" stroke-width="3"/>
+        <path d="M42 48 C86 47 98 158 148 158 S205 40 265 42"
+              stroke="#9861c6" stroke-width="5" fill="none"/>
+        <path d="M44 51 C95 54 111 157 145 156 S206 85 265 90"
+              stroke="#158c86" stroke-width="3.5"
+              stroke-dasharray="9 5" fill="none"/>
+      </g>
+
+      <text x="322" y="54" font-family="Arial,Helvetica,sans-serif"
+            font-size="18" font-weight="bold" fill="#7b4ea6">
+        Eₐ: classical
+      </text>
+      <text x="320" y="113" font-family="Arial,Helvetica,sans-serif"
+            font-size="18" font-weight="bold" fill="#087b75">
+        Eeff: corrected
+      </text>
+
+      <path d="M407 119 H455" stroke="#31558a"
+            stroke-width="3" marker-end="url(#c-arr)"/>
+
+      <g transform="translate(475 55)">
+        <rect x="0" y="0" rx="11" width="156" height="62"
+              fill="none" stroke="#b6d3c8"/>
+        <text x="78" y="25" font-family="Arial"
+              text-anchor="middle" font-size="18"
+              font-weight="bold" fill="#24415a">
+          Physics-informed
+        </text>
+        <text x="78" y="46" font-family="Arial"
+              text-anchor="middle" font-size="18"
+              font-weight="bold" fill="#24415a">
+          MPC
+        </text>
+      </g>
+
+      <text x="553" y="150" font-family="Arial,Helvetica,sans-serif"
+            font-size="15" fill="#17334f" text-anchor="middle">
+        One constrained control plan
+      </text>
+      <text x="553" y="173" font-family="Arial,Helvetica,sans-serif"
+            font-size="15" fill="#17334f" text-anchor="middle">
+        for the MH plant
+      </text>
+    </svg>
   </div>
 
   <p class="em-question"><b>When does microscopic transport physics become important for macroscopic control decisions?</b></p>
@@ -124,8 +379,45 @@
   </h3>
 
   <div class="em-visual">
-    <img src="mh-sensitivity.svg"
-         alt="Control-cost sensitivity curve and mismatch reference point." />
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 680 230"
+         role="img"
+         aria-label="Control-cost sensitivity curve and mismatch reference point">
+
+      <g transform="translate(48 25)">
+        <path d="M30 155V25 M30 155H265"
+              stroke="#41576e" stroke-width="2.5"/>
+        <path d="M35 50 Q134 188 255 55"
+              fill="none" stroke="#178d75" stroke-width="5"/>
+        <path d="M35 96 Q134 181 255 95"
+              fill="none" stroke="#9866aa" stroke-width="3"
+              stroke-dasharray="6 5"/>
+        <path d="M139 153 V30" stroke="#9ab8c9"
+              stroke-dasharray="5 4"/>
+        <circle cx="139" cy="126" r="6" fill="#178d75"/>
+      </g>
+
+      <text x="183" y="207" font-family="Arial,Helvetica,sans-serif"
+            font-size="16" fill="#17334f" text-anchor="middle">
+        Coupling mismatch ρ
+      </text>
+      <text x="343" y="63" font-family="Arial,Helvetica,sans-serif"
+            font-size="19" font-weight="bold" fill="#17334f">
+        Physics-blind MPC
+      </text>
+      <text x="343" y="103" font-family="Arial,Helvetica,sans-serif"
+            font-size="17" fill="#17334f">
+        Exact Riccati-sensitivity analysis
+      </text>
+      <text x="343" y="145" font-family="Arial,Helvetica,sans-serif"
+            font-size="17" fill="#17334f">
+        Quantifying the control-cost gap
+      </text>
+      <text x="343" y="183" font-family="Arial,Helvetica,sans-serif"
+            font-size="17" fill="#17334f">
+        under a misspecified plant model
+      </text>
+    </svg>
   </div>
 
   <p class="em-question"><b>How suboptimal is physics-blind MPC when the physical plant differs from the prediction model?</b></p>
@@ -140,8 +432,78 @@
   </h3>
 
   <div class="em-visual">
-    <img src="mh-integration.svg"
-         alt="Metal-hydride storage feeding an energy interface and system-level scheduling." />
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 680 230"
+         role="img"
+         aria-label="Metal-hydride storage feeding an energy interface and system-level scheduling">
+      <defs>
+        <linearGradient id="e-steel">
+          <stop stop-color="#92aab0"/>
+          <stop offset=".35" stop-color="#f6fcff"/>
+          <stop offset=".7" stop-color="#b2c7cc"/>
+          <stop offset="1" stop-color="#8098a3"/>
+        </linearGradient>
+        <marker id="e-arr" markerWidth="9" markerHeight="8"
+                refX="8" refY="4" orient="auto">
+          <path d="M0 0 L9 4 L0 8Z" fill="#31558a"/>
+        </marker>
+      </defs>
+
+      <rect x="50" y="55" width="135" height="116" rx="17"
+            fill="url(#e-steel)" stroke="#486375" stroke-width="3"/>
+      <ellipse cx="117" cy="55" rx="67" ry="13"
+               fill="#d1e3e5" stroke="#486375" stroke-width="2"/>
+
+      <text x="117" y="113" font-family="Arial,Helvetica,sans-serif"
+            font-size="25" font-weight="bold"
+            fill="#17334f" text-anchor="middle">
+        MH
+      </text>
+      <text x="117" y="143" font-family="Arial,Helvetica,sans-serif"
+            font-size="21" fill="#17334f" text-anchor="middle">
+        Storage
+      </text>
+
+      <path d="M208 91H287 M287 130H208"
+            stroke="#31558a" stroke-width="4"
+            marker-end="url(#e-arr)"/>
+
+      <rect x="307" y="69" width="112" height="96" rx="15"
+            fill="none" stroke="#229477" stroke-width="3"/>
+      <path d="M337 81V58 H389V81"
+            stroke="#229477" stroke-width="4" fill="none"/>
+      <path d="M368 85 L343 122 H365 L353 148 L389 111 H367 Z"
+            fill="#ebad40" stroke="#c38925"/>
+
+      <text x="365" y="187" font-family="Arial,Helvetica,sans-serif"
+            font-size="15" fill="#17334f" text-anchor="middle">
+        Energy interface
+      </text>
+
+      <path d="M440 116H476"
+            stroke="#31558a" stroke-width="3"
+            marker-end="url(#e-arr)"/>
+
+      <g transform="translate(491 52)">
+        <rect width="145" height="110" rx="11"
+              fill="none" stroke="#adceca"/>
+        <path d="M15 80H130"
+              stroke="#7c8fa2" stroke-width="3"/>
+        <rect x="26" y="48" width="23" height="32"
+              fill="#a1c1d0"/>
+        <rect x="56" y="25" width="23" height="55"
+              fill="#9fc7ba"/>
+        <rect x="86" y="37" width="23" height="43"
+              fill="#b8b5d4"/>
+        <path d="M20 83L45 60L69 69L100 30L124 45"
+              stroke="#167c64" stroke-width="3" fill="none"/>
+      </g>
+
+      <text x="561" y="185" font-family="Arial,Helvetica,sans-serif"
+            font-size="15" fill="#17334f" text-anchor="middle">
+        System-level scheduling
+      </text>
+    </svg>
   </div>
 
   <p class="em-question"><b>How can physically faithful models and reliable controllers support safe and efficient hydrogen-energy operation?</b></p>
@@ -149,14 +511,35 @@
   <p>These directions are future research objectives; the current TCST simulations do not yet establish system-level energy-management performance or hardware deployment in cryogenic regimes.</p>
 </section>
 
-  
-  
-  
-  <h2>Research Perspective</h2>
+<h2>Research Perspective</h2>
 <p>At the center of this track is a control-oriented scientific question: <b>When is improved physical-model fidelity worth incorporating into the decision process?</b> The answer need not always favor a more complex model. In some operating regimes, classical descriptions may be sufficient; in others, omitted transport physics can alter the control input and closed-loop behavior.</p>
-<div class="em-note"><b>Scope and relationship to other work.</b> This MH energy-management track is distinct from the parallel research track on <a href="world-models-control.html">World Models and Compliant Intelligence</a>. The two share interests in estimation, uncertainty, and control, but address different physical systems and scientific questions. The MH track uses <i>physics-informed, control-oriented models</i>; it does not claim the same learned latent-world-model architecture as Deep SSSM.</div>
+
+<div class="em-note">
+<b>Scope and relationship to other work.</b>
+This MH energy-management track is distinct from the parallel research track on
+<a href="world-models-control.html">World Models and Compliant Intelligence</a>.
+The two share interests in estimation, uncertainty, and control, but address
+different physical systems and scientific questions. The MH track uses
+<i>physics-informed, control-oriented models</i>; it does not claim the
+same learned latent-world-model architecture as Deep SSSM.
+</div>
+
 <h2>Selected Links</h2>
-<p class="em-linklist"><a href="https://doi.org/10.1109/TIE.2021.3102486">IEEE TIE (2022)</a><a href="https://thanana.github.io/QuantumMH.html">Quantum-MH overview</a><a href="Publication.html">Complete publications</a><a href="world-models-control.html">Parallel research track</a></p>
-<p class="em-footer">Thanana Nuchkrua | Control &amp; Robotics Research<br/>Suggested public page: <code>https://thanana.github.io/Energy-management.html</code></p>
-</td></tr></table>
-</body></html>
+<p class="em-linklist">
+  <a href="https://doi.org/10.1109/TIE.2021.3102486">IEEE TIE (2022)</a>
+  <a href="https://thanana.github.io/QuantumMH.html">Quantum-MH overview</a>
+  <a href="Publication.html">Complete publications</a>
+  <a href="world-models-control.html">Parallel research track</a>
+</p>
+
+<p class="em-footer">
+Thanana Nuchkrua | Control &amp; Robotics Research<br/>
+Suggested public page:
+<code>https://thanana.github.io/Energy-management.html</code>
+</p>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
