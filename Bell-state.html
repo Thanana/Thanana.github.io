@@ -68,7 +68,7 @@ Journal extension of our <a href="BMPCQuantum.html">IFAC World Congress 2026 pap
 </ul>
 
 <div class="fig">
-<img src="Bell-state/architecture.png" alt="Closed-loop Bayesian MPC: coupling posterior, weighted scenarios, BMPC optimizer, first input, Lindblad plant, projective readout and Bayes update" />
+<img src="architecture.png" alt="Closed-loop Bayesian MPC: coupling posterior, weighted scenarios, BMPC optimizer, first input, Lindblad plant, projective readout and Bayes update" />
 <div class="cap">Closed-loop Bayesian MPC. Weighted posterior scenarios define one common control sequence whose first input is applied; scheduled computational-basis shots update the coupling posterior.</div>
 </div>
 
@@ -77,7 +77,7 @@ Journal extension of our <a href="BMPCQuantum.html">IFAC World Congress 2026 pap
 
 <h2>Problem</h2>
 <div class="fig">
-<img src="Bell-state/model.png" alt="Two coupled qubits with local drives, local decoherence channels and computational-basis readout" style="max-width:520px" />
+<img src="model.png" alt="Two coupled qubits with local drives, local decoherence channels and computational-basis readout" style="max-width:520px" />
 <div class="cap">Two qubits with local drives <i>u</i><sub>1</sub>, <i>u</i><sub>2</sub>, uncertain XY exchange coupling <i>J</i>, local amplitude damping and dephasing, and computational-basis readout. The task is |00&rang; &rarr; |&Phi;<sup>+</sup>&rang; at the deadline <i>T</i><sub>f</sub>.</div>
 </div>
 
@@ -100,12 +100,12 @@ Journal extension of our <a href="BMPCQuantum.html">IFAC World Congress 2026 pap
 <p>Recovery is the fraction of the oracle&ndash;nominal terminal-fidelity gap closed by the controller. BMPC beats nominal MPC in 49/50 and 50/50 trials. The coupling estimator&rsquo;s root-mean-square error (3.02&times;10<sup>&minus;3</sup>) matches the Cram&eacute;r&ndash;Rao bound of the readout protocol (3.21&times;10<sup>&minus;3</sup>).</p>
 
 <div class="grid3">
-<div class="cell"><img src="Bell-state/panel_a.png" alt="Histogram of standardized posterior-mean errors" />(a) Estimator calibration</div>
-<div class="cell"><img src="Bell-state/panel_b.png" alt="Bell-state fidelity over time for one run" />(b) Representative fidelity</div>
-<div class="cell"><img src="Bell-state/panel_c.png" alt="Posterior mean and 95% credible band of the coupling over time" />(c) Coupling posterior</div>
-<div class="cell"><img src="Bell-state/panel_d.png" alt="Terminal fidelity of nominal MPC, BMPC and oracle MPC at both mismatches" />(d) Terminal fidelity</div>
-<div class="cell"><img src="Bell-state/panel_e.png" alt="Per-trial fidelity gain of BMPC over nominal MPC" />(e) Gain over nominal MPC</div>
-<div class="cell"><img src="Bell-state/panel_f.png" alt="Log-log plot of control gap versus posterior RMS coupling error" />(f) Fixed-state control gap</div>
+<div class="cell"><img src="panel_a.png" alt="Histogram of standardized posterior-mean errors" />(a) Estimator calibration</div>
+<div class="cell"><img src="panel_b.png" alt="Bell-state fidelity over time for one run" />(b) Representative fidelity</div>
+<div class="cell"><img src="panel_c.png" alt="Posterior mean and 95% credible band of the coupling over time" />(c) Coupling posterior</div>
+<div class="cell"><img src="panel_d.png" alt="Terminal fidelity of nominal MPC, BMPC and oracle MPC at both mismatches" />(d) Terminal fidelity</div>
+<div class="cell"><img src="panel_e.png" alt="Per-trial fidelity gain of BMPC over nominal MPC" />(e) Gain over nominal MPC</div>
+<div class="cell"><img src="panel_f.png" alt="Log-log plot of control gap versus posterior RMS coupling error" />(f) Fixed-state control gap</div>
 </div>
 <p style="font-size:92%;color:#444">Blue: BMPC; grey: nominal MPC; orange: oracle; black: true values and targets.</p>
 
