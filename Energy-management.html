@@ -306,66 +306,68 @@ Physical systems → Learning &amp; robustness → Physics-informed MPC → Sens
             <span class="em-tag em-pending">WORKING: 2026</span>
   </h3>
 
-  <div class="em-visual">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         viewBox="0 0 680 230"
-         role="img"
-         aria-label="Classical and corrected effective activation barriers feeding physics-informed MPC">
-      <defs>
-        <marker id="c-arr" markerWidth="9" markerHeight="8"
-                refX="8" refY="4" orient="auto">
-          <path d="M0 0 L9 4 L0 8Z" fill="#31558a"/>
-        </marker>
-      </defs>
+ <div class="em-visual">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 680 230"
+       role="img"
+       aria-label="Classical and corrected effective activation barriers feeding physics-informed MPC">
+    <defs>
+      <marker id="c-arr" markerWidth="9" markerHeight="8"
+              refX="8" refY="4" orient="auto">
+        <path d="M0 0 L9 4 L0 8Z" fill="#31558a"/>
+      </marker>
+    </defs>
 
-      <g transform="translate(50 16)">
-        <path d="M31 176V22 M31 176H280"
-              stroke="#41576e" stroke-width="3"/>
-        <path d="M42 48 C86 47 98 158 148 158 S205 40 265 42"
-              stroke="#9861c6" stroke-width="5" fill="none"/>
-        <path d="M44 51 C95 54 111 157 145 156 S206 85 265 90"
-              stroke="#158c86" stroke-width="3.5"
-              stroke-dasharray="9 5" fill="none"/>
-      </g>
+    <g transform="translate(45 20)">
+      <rect x="0" y="0" width="300" height="160" rx="11"
+            fill="none" stroke="#afc8d6"/>
+      <path d="M34 134V26 M34 134H276"
+            stroke="#6f8798" stroke-width="2"/>
+      <path d="M44 56 C85 55 96 118 143 118 S198 54 256 56"
+            stroke="#9861c6" stroke-width="4" fill="none"
+            stroke-linecap="round"/>
+      <path d="M46 59 C92 61 107 117 142 116 S200 90 256 94"
+            stroke="#16a17d" stroke-width="3"
+            stroke-dasharray="7 5" fill="none" stroke-linecap="round"/>
 
-      <text x="322" y="54" font-family="Arial,Helvetica,sans-serif"
-            font-size="18" font-weight="bold" fill="#7b4ea6">
-        Eₐ: classical
+      <circle cx="46" cy="24" r="4" fill="#9861c6"/>
+      <text x="56" y="28" font-family="Arial,Helvetica,sans-serif"
+            font-size="13" fill="#4a2e66">E<tspan baseline-shift="sub" font-size="10">a</tspan>: classical</text>
+      <circle cx="46" cy="42" r="4" fill="#16a17d"/>
+      <text x="56" y="46" font-family="Arial,Helvetica,sans-serif"
+            font-size="13" fill="#0a5f57">E<tspan baseline-shift="sub" font-size="10">eff</tspan>: corrected</text>
+    </g>
+
+    <path d="M365 100 H413" stroke="#31558a"
+          stroke-width="3" marker-end="url(#c-arr)"/>
+
+    <g transform="translate(433 69)">
+      <rect x="0" y="0" rx="11" width="160" height="62"
+            fill="none" stroke="#b6d3c8"/>
+      <text x="80" y="25" font-family="Arial,Helvetica,sans-serif"
+            text-anchor="middle" font-size="16"
+            font-weight="bold" fill="#24415a">
+        Physics-informed
       </text>
-      <text x="320" y="113" font-family="Arial,Helvetica,sans-serif"
-            font-size="18" font-weight="bold" fill="#087b75">
-        Eeff: corrected
+      <text x="80" y="46" font-family="Arial,Helvetica,sans-serif"
+            text-anchor="middle" font-size="16"
+            font-weight="bold" fill="#24415a">
+        MPC
       </text>
+    </g>
 
-      <path d="M407 119 H455" stroke="#31558a"
-            stroke-width="3" marker-end="url(#c-arr)"/>
+    <text x="513" y="169" font-family="Arial,Helvetica,sans-serif"
+          font-size="15" fill="#17334f" text-anchor="middle">
+      One constrained control plan
+    </text>
+    <text x="513" y="192" font-family="Arial,Helvetica,sans-serif"
+          font-size="15" fill="#17334f" text-anchor="middle">
+      for the MH plant
+    </text>
+  </svg>
+</div>
 
-      <g transform="translate(475 55)">
-        <rect x="0" y="0" rx="11" width="156" height="62"
-              fill="none" stroke="#b6d3c8"/>
-        <text x="78" y="25" font-family="Arial"
-              text-anchor="middle" font-size="18"
-              font-weight="bold" fill="#24415a">
-          Physics-informed
-        </text>
-        <text x="78" y="46" font-family="Arial"
-              text-anchor="middle" font-size="18"
-              font-weight="bold" fill="#24415a">
-          MPC
-        </text>
-      </g>
-
-      <text x="553" y="150" font-family="Arial,Helvetica,sans-serif"
-            font-size="15" fill="#17334f" text-anchor="middle">
-        One constrained control plan
-      </text>
-      <text x="553" y="173" font-family="Arial,Helvetica,sans-serif"
-            font-size="15" fill="#17334f" text-anchor="middle">
-        for the MH plant
-      </text>
-    </svg>
-  </div>
-
+  
   <p class="em-question"><b>When does microscopic transport physics become important for macroscopic control decisions?</b></p>
   <p>We integrate a temperature-dependent effective-barrier correction with physics-constrained Huber weighted least-squares estimation and MPC. It examines estimator consistency, local feasibility and stability results, local stability of a nonlinear kinetic plant, and model-mismatch consequences through simulation.</p>
   <p>Under the current platform's 298–333 K operating range and 1–8 bar pressure limits, the reported closed-loop cost reduction is at most 0.3%. At a projected 120 K, the simulated reduction is 27–93%, depending on the normalized input bound. The latter regime is beyond current hardware capabilities and is <b>not</b> a validated hardware result.</p>
@@ -379,47 +381,66 @@ Physical systems → Learning &amp; robustness → Physics-informed MPC → Sens
 
   </h3>
 
-  <div class="em-visual">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         viewBox="0 0 680 230"
-         role="img"
-         aria-label="Control-cost sensitivity curve and mismatch reference point">
+ <div class="em-visual">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 680 230"
+       role="img"
+       aria-label="Control-cost sensitivity curve and mismatch reference point">
 
-      <g transform="translate(48 25)">
-        <path d="M30 155V25 M30 155H265"
-              stroke="#41576e" stroke-width="2.5"/>
-        <path d="M35 50 Q134 188 255 55"
-              fill="none" stroke="#178d75" stroke-width="5"/>
-        <path d="M35 96 Q134 181 255 95"
-              fill="none" stroke="#9866aa" stroke-width="3"
-              stroke-dasharray="6 5"/>
-        <path d="M139 153 V30" stroke="#9ab8c9"
-              stroke-dasharray="5 4"/>
-        <circle cx="139" cy="126" r="6" fill="#178d75"/>
-      </g>
+    <g transform="translate(45 20)">
+      <rect x="0" y="0" width="300" height="160" rx="11"
+            fill="none" stroke="#afc8d6"/>
+      <path d="M34 134V26 M34 134H276"
+            stroke="#6f8798" stroke-width="2"/>
 
-      <text x="183" y="207" font-family="Arial,Helvetica,sans-serif"
-            font-size="16" fill="#17334f" text-anchor="middle">
-        Coupling mismatch ρ
-      </text>
-      <text x="343" y="63" font-family="Arial,Helvetica,sans-serif"
-            font-size="19" font-weight="bold" fill="#17334f">
-        Physics-blind MPC
-      </text>
-      <text x="343" y="103" font-family="Arial,Helvetica,sans-serif"
-            font-size="17" fill="#17334f">
-        Exact Riccati-sensitivity analysis
-      </text>
-      <text x="343" y="145" font-family="Arial,Helvetica,sans-serif"
-            font-size="17" fill="#17334f">
-        Quantifying the control-cost gap
-      </text>
-      <text x="343" y="183" font-family="Arial,Helvetica,sans-serif"
-            font-size="17" fill="#17334f">
-        under a misspecified plant model
-      </text>
-    </svg>
-  </div>
+      <path d="M44 55 Q144 168 246 58"
+            fill="none" stroke="#9861c6" stroke-width="3"
+            stroke-dasharray="7 5" stroke-linecap="round"/>
+      <path d="M44 42 Q144 178 246 44"
+            fill="none" stroke="#16a17d" stroke-width="4"
+            stroke-linecap="round"/>
+
+      <path d="M145 134 V34" stroke="#9ab8c9" stroke-width="1.5"
+            stroke-dasharray="4 3"/>
+      <circle cx="145" cy="113" r="5" fill="#16a17d"/>
+
+      <circle cx="46" cy="24" r="4" fill="#9861c6"/>
+      <text x="56" y="28" font-family="Arial,Helvetica,sans-serif"
+            font-size="13" fill="#4a2e66">physics-blind cost</text>
+      <circle cx="46" cy="42" r="4" fill="#16a17d"/>
+      <text x="56" y="46" font-family="Arial,Helvetica,sans-serif"
+            font-size="13" fill="#0a5f57">exact cost</text>
+    </g>
+
+    <text x="195" y="196" font-family="Arial,Helvetica,sans-serif"
+          font-size="15" fill="#17334f" text-anchor="middle">
+      Coupling mismatch ρ
+    </text>
+
+    <text x="365" y="46" font-family="Arial,Helvetica,sans-serif"
+          font-size="17" font-weight="bold" fill="#17334f">
+      Physics-blind MPC
+    </text>
+
+    <circle cx="368" cy="74" r="3" fill="#41576e"/>
+    <text x="378" y="78" font-family="Arial,Helvetica,sans-serif"
+          font-size="14" fill="#2c4258">
+      Exact Riccati-sensitivity analysis
+    </text>
+    <circle cx="368" cy="98" r="3" fill="#41576e"/>
+    <text x="378" y="102" font-family="Arial,Helvetica,sans-serif"
+          font-size="14" fill="#2c4258">
+      Quantifies the control-cost gap
+    </text>
+    <circle cx="368" cy="122" r="3" fill="#41576e"/>
+    <text x="378" y="126" font-family="Arial,Helvetica,sans-serif"
+          font-size="14" fill="#2c4258">
+      under a misspecified plant model
+    </text>
+  </svg>
+</div>
+
+  
 
   <p class="em-question"><b>How suboptimal is physics-blind MPC when the physical plant differs from the prediction model?</b></p>
   <p>A complementary theoretical manuscript studies the performance consequences of model mismatch through Riccati-sensitivity analysis. Its focus is a local control-cost expansion and conditions under which mismatch leads to a quantifiable performance gap. This work develops a control-theoretic question motivated by transport-model fidelity; its results should be interpreted under the assumptions of that study.</p>
@@ -432,81 +453,87 @@ Physical systems → Learning &amp; robustness → Physics-informed MPC → Sens
     <span class="em-tag em-future">FUTURE RESEARCH</span>
   </h3>
 
-  <div class="em-visual">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         viewBox="0 0 680 230"
-         role="img"
-         aria-label="Metal-hydride storage feeding an energy interface and system-level scheduling">
-      <defs>
-        <linearGradient id="e-steel">
-          <stop stop-color="#92aab0"/>
-          <stop offset=".35" stop-color="#f6fcff"/>
-          <stop offset=".7" stop-color="#b2c7cc"/>
-          <stop offset="1" stop-color="#8098a3"/>
-        </linearGradient>
-        <marker id="e-arr" markerWidth="9" markerHeight="8"
-                refX="8" refY="4" orient="auto">
-          <path d="M0 0 L9 4 L0 8Z" fill="#31558a"/>
-        </marker>
-      </defs>
+<div class="em-visual">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 680 230"
+       role="img"
+       aria-label="Metal-hydride storage feeding an energy interface and system-level scheduling">
+    <defs>
+      <linearGradient id="e-steel">
+        <stop stop-color="#92aab0"/>
+        <stop offset=".35" stop-color="#f6fcff"/>
+        <stop offset=".7" stop-color="#b2c7cc"/>
+        <stop offset="1" stop-color="#8098a3"/>
+      </linearGradient>
+      <marker id="e-arr" markerWidth="9" markerHeight="8"
+              refX="8" refY="4" orient="auto">
+        <path d="M0 0 L9 4 L0 8Z" fill="#31558a"/>
+      </marker>
+    </defs>
 
-      <rect x="50" y="55" width="135" height="116" rx="17"
-            fill="url(#e-steel)" stroke="#486375" stroke-width="3"/>
-      <ellipse cx="117" cy="55" rx="67" ry="13"
-               fill="#d1e3e5" stroke="#486375" stroke-width="2"/>
+    <rect x="50" y="55" width="135" height="116" rx="17"
+          fill="url(#e-steel)" stroke="#486375" stroke-width="3"/>
+    <ellipse cx="117" cy="55" rx="67" ry="13"
+             fill="#d1e3e5" stroke="#486375" stroke-width="2"/>
 
-      <text x="117" y="113" font-family="Arial,Helvetica,sans-serif"
-            font-size="25" font-weight="bold"
-            fill="#17334f" text-anchor="middle">
-        MH
-      </text>
-      <text x="117" y="143" font-family="Arial,Helvetica,sans-serif"
-            font-size="21" fill="#17334f" text-anchor="middle">
-        Storage
-      </text>
+    <text x="117" y="113" font-family="Arial,Helvetica,sans-serif"
+          font-size="25" font-weight="bold"
+          fill="#17334f" text-anchor="middle">
+      MH
+    </text>
+    <text x="117" y="143" font-family="Arial,Helvetica,sans-serif"
+          font-size="21" fill="#17334f" text-anchor="middle">
+      Storage
+    </text>
 
-      <path d="M208 91H287 M287 130H208"
-            stroke="#31558a" stroke-width="4"
-            marker-end="url(#e-arr)"/>
+    <path d="M208 91H287" stroke="#31558a" stroke-width="3.5"
+          marker-end="url(#e-arr)"/>
+    <path d="M287 130H208" stroke="#31558a" stroke-width="3.5"
+          marker-end="url(#e-arr)"/>
+    <text x="247" y="82" font-family="Arial,Helvetica,sans-serif"
+          font-size="11" fill="#5a7083" text-anchor="middle">charge</text>
+    <text x="247" y="149" font-family="Arial,Helvetica,sans-serif"
+          font-size="11" fill="#5a7083" text-anchor="middle">discharge</text>
 
-      <rect x="307" y="69" width="112" height="96" rx="15"
-            fill="none" stroke="#229477" stroke-width="3"/>
-      <path d="M337 81V58 H389V81"
-            stroke="#229477" stroke-width="4" fill="none"/>
-      <path d="M368 85 L343 122 H365 L353 148 L389 111 H367 Z"
-            fill="#ebad40" stroke="#c38925"/>
+    <rect x="307" y="69" width="112" height="96" rx="15"
+          fill="none" stroke="#229477" stroke-width="3"/>
+    <path d="M337 81V58 H389V81"
+          stroke="#229477" stroke-width="4" fill="none"/>
+    <path d="M368 85 L343 122 H365 L353 148 L389 111 H367 Z"
+          fill="#ebad40" stroke="#c38925"/>
 
-      <text x="365" y="187" font-family="Arial,Helvetica,sans-serif"
-            font-size="15" fill="#17334f" text-anchor="middle">
-        Energy interface
-      </text>
+    <text x="365" y="187" font-family="Arial,Helvetica,sans-serif"
+          font-size="15" fill="#17334f" text-anchor="middle">
+      Energy interface
+    </text>
 
-      <path d="M440 116H476"
-            stroke="#31558a" stroke-width="3"
-            marker-end="url(#e-arr)"/>
+    <path d="M440 116H476"
+          stroke="#31558a" stroke-width="3"
+          marker-end="url(#e-arr)"/>
 
-      <g transform="translate(491 52)">
-        <rect width="145" height="110" rx="11"
-              fill="none" stroke="#adceca"/>
-        <path d="M15 80H130"
-              stroke="#7c8fa2" stroke-width="3"/>
-        <rect x="26" y="48" width="23" height="32"
-              fill="#a1c1d0"/>
-        <rect x="56" y="25" width="23" height="55"
-              fill="#9fc7ba"/>
-        <rect x="86" y="37" width="23" height="43"
-              fill="#b8b5d4"/>
-        <path d="M20 83L45 60L69 69L100 30L124 45"
-              stroke="#167c64" stroke-width="3" fill="none"/>
-      </g>
+    <g transform="translate(491 52)">
+      <rect width="145" height="110" rx="11"
+            fill="none" stroke="#adceca"/>
+      <path d="M15 80H130"
+            stroke="#7c8fa2" stroke-width="3"/>
+      <rect x="26" y="48" width="23" height="32"
+            fill="#a1c1d0"/>
+      <rect x="56" y="25" width="23" height="55"
+            fill="#9fc7ba"/>
+      <rect x="86" y="37" width="23" height="43"
+            fill="#b8b5d4"/>
+      <path d="M20 83L45 60L69 69L100 30L124 45"
+            stroke="#167c64" stroke-width="3" fill="none"/>
+    </g>
 
-      <text x="561" y="185" font-family="Arial,Helvetica,sans-serif"
-            font-size="15" fill="#17334f" text-anchor="middle">
-        System-level scheduling
-      </text>
-    </svg>
-  </div>
+    <text x="561" y="185" font-family="Arial,Helvetica,sans-serif"
+          font-size="15" fill="#17334f" text-anchor="middle">
+      System-level scheduling
+    </text>
+  </svg>
+</div>
 
+  
   <p class="em-question"><b>How can physically faithful models and reliable controllers support safe and efficient hydrogen-energy operation?</b></p>
   <p>The longer-term direction connects transport-aware modeling, identification, predictive control and systems integration. Open research topics include coupled thermal–hydrogen dynamics, partial-state estimation, hysteresis and degradation, multivariable modeling, online adaptation with time-varying temperature, and hardware-in-the-loop validation.</p>
   <p>These directions are future research objectives.</p>
