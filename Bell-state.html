@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc-style research page" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Bayesian MPC for Two-Qubit Bell-State Preparation | Thanana Nuchkrua</title>
+<style type="text/css">
+/* Page-local additions; the site-wide look comes from jemdoc.css */
+.fig { margin: 1em 0 1.4em 0; }
+.fig img { max-width: 100%; height: auto; }
+.fig .cap { font-size: 92%; color: #444; margin-top: 0.35em; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 14px; }
+.grid3 .cell { text-align: center; font-size: 90%; color: #333; }
+.grid3 img { width: 100%; height: auto; }
+@media (max-width: 760px) { .grid3 { grid-template-columns: 1fr; } }
+.links a { margin-right: 0.4em; }
+table.res { border-collapse: collapse; margin: 0.6em 0 1em 0; }
+table.res td, table.res th { border-bottom: 1px solid #ddd; padding: 3px 10px; text-align: right; }
+table.res th:first-child, table.res td:first-child { text-align: left; }
+pre.bib { white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">Thanana</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="Biography.html">Biography</a></div>
+<div class="menu-item"><a href="Publication.html">Publication</a></div>
+
+<div class="menu-category">
+  Research
+  <span style="display:block; font-size:0.68em; font-weight:400; font-style:italic; color:#777; line-height:1.25; margin-top:3px; letter-spacing:0.2px;">
+    Estimation and Control
+  </span>
+</div>
+<div class="menu-item"><a href="world-models-control.html">World&nbsp;Models&nbsp;and&nbsp;Control</a></div>
+<div class="menu-item"><a href="nonholonomic.html">Holonomic&nbsp;Systems</a></div>
+<div class="menu-item"><a href="QuantumMH.html">Energy Management</a></div>
+
+<div class="menu-category">Teaching</div>
+<div class="menu-item"><a href="reinforcement_learning.html">Reinforcement Learning</a></div>
+<div class="menu-item"><a href="Robotics.html">Introduction to Robotics</a></div>
+
+<div class="menu-category">Software</div>
+<div class="menu-item"><a href="robotics.html">Robotics</a></div>
+<div class="menu-item"><a href="image.html">Image Processing</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Bayesian MPC for Two-Qubit Bell-State Preparation under Decoherence and Exchange-Coupling Uncertainty</h1>
+</div>
+<p><b>Thanana Nuchkrua</b>, Sudchai Boonto, Xiaoqi Liu, Woraphrut Kornmaneesang<br />
+<i>Submitted to IFAC Journal of Systems and Control, 2026</i><br />
+Journal extension of our <a href="BMPCQuantum.html">IFAC World Congress 2026 paper</a> on Bayesian MPC for quantum state regulation.</p>
+<p class="links"><a href="Bell-state/BMPC_BellState_code_data.zip">Code and data (Julia, .zip)</a> |
+<a href="#bibtex">BibTeX</a></p>
+
+<h2>Highlights</h2>
+<ul>
+<li><p>Bayesian MPC prepares the Bell state |&Phi;<sup>+</sup>&rang; by a fixed deadline while learning an uncertain XY exchange coupling <i>J</i> from finite-shot computational-basis readout.</p></li>
+<li><p>An exact Lindblad sensitivity bound links the posterior error about the true coupling to the excess cost of the Bayesian plan, with an explicit, horizon-linear constant.</p></li>
+<li><p>In simulation, posterior updating drives the improvement over nominal MPC; certainty-equivalent MPC at the posterior mean performs comparably at less than half the runtime.</p></li>
+</ul>
+
+<div class="fig">
+<img src="Bell-state/architecture.png" alt="Closed-loop Bayesian MPC: coupling posterior, weighted scenarios, BMPC optimizer, first input, Lindblad plant, projective readout and Bayes update" />
+<div class="cap">Closed-loop Bayesian MPC. Weighted posterior scenarios define one common control sequence whose first input is applied; scheduled computational-basis shots update the coupling posterior.</div>
+</div>
+
+<h2>Abstract</h2>
+<p>We formulate Bayesian model predictive control (BMPC) for two-qubit Bell-state preparation by a fixed deadline under Lindblad decoherence and uncertain exchange coupling. Multinomial shot batches update the coupling posterior, and exact interval propagation predicts the response to one bounded control sequence. A trace-distance sensitivity bound limits the excess regularized cost of a globally optimal Bayesian plan relative to a globally optimal known-coupling plan at the same decision instant and state. Under local regularity assumptions, we bound the sequence gap to a local oracle solution, accounting for scenario compression and solver stationarity error. In 50 simulated trials at each of the &minus;30% and +30% coupling mismatches, where terminal fidelities are about 0.88 and 0.78, the mean terminal fidelity gains over nominal MPC are 9.1&times;10<sup>&minus;4</sup> and 1.14&times;10<sup>&minus;2</sup>, or 27.8% and 45.1% of the gaps to a numerical oracle. Fixed-prior ensemble MPC recovers &minus;7.0% and 3.9%, while certainty-equivalent MPC at the posterior mean recovers 32.7% and 42.8%. BMPC recovery is higher at a subsequent iteration cap of 16 than at 4 at both mismatches. In a separate fixed-state test, narrower constructed posteriors give smaller computed control gaps.</p>
+
+<h2>Problem</h2>
+<div class="fig">
+<img src="Bell-state/model.png" alt="Two coupled qubits with local drives, local decoherence channels and computational-basis readout" style="max-width:520px" />
+<div class="cap">Two qubits with local drives <i>u</i><sub>1</sub>, <i>u</i><sub>2</sub>, uncertain XY exchange coupling <i>J</i>, local amplitude damping and dephasing, and computational-basis readout. The task is |00&rang; &rarr; |&Phi;<sup>+</sup>&rang; at the deadline <i>T</i><sub>f</sub>.</div>
+</div>
+
+<h2>Theoretical contributions</h2>
+<ul>
+<li><p><b>Exact finite-time sensitivity.</b> For any admissible control sequence, the terminal trace distance between couplings <i>J</i> and <i>J</i>&prime; is at most &tau;<sub><i>k</i></sub>&Vert;<i>H<sub>J</sub></i>&Vert;<sub>&infin;</sub>|<i>J</i> &minus; <i>J</i>&prime;|, with &Vert;<i>H<sub>J</sub></i>&Vert;<sub>&infin;</sub> = 1 (Duhamel identity and trace-norm contractivity of CPTP maps).</p></li>
+<li><p><b>Oracle-regret bound for globally optimal plans.</b> The oracle cost of the Bayesian plan exceeds the oracle optimum by at most 2&tau;<sub><i>k</i></sub>&radic;&epsilon;<sub><i>k</i></sub>, where &epsilon;<sub><i>k</i></sub> is the posterior mean-square error about the true coupling. No convexity or uniqueness is needed, and posterior contraction is not assumed.</p></li>
+<li><p><b>Local optimizer gap.</b> Under local strong convexity, the distance between local Bayesian and oracle sequences is at most (<i>L<sub>g</sub></i>/&sigma;<sub><i>k</i></sub>)&radic;&epsilon;<sub><i>k</i></sub>.</p></li>
+<li><p><b>Scenario compression and solver residual.</b> Equal-mass conditional-mean scenarios satisfy an exact orthogonality decomposition, so the bounds hold with a sharper error term; a further term accounts for the stationarity residual of the computed sequence.</p></li>
+</ul>
+
+<h2>Key results</h2>
+<table class="res">
+<tr><th>Controller (50 trials per mismatch)</th><th>Recovery, &minus;30%</th><th>Recovery, +30%</th></tr>
+<tr><td>BMPC (3 posterior scenarios)</td><td>27.8%</td><td>45.1%</td></tr>
+<tr><td>Fixed-prior ensemble MPC</td><td>&minus;7.0%</td><td>3.9%</td></tr>
+<tr><td>Certainty-equivalent MPC (posterior mean)</td><td>32.7%</td><td>42.8%</td></tr>
+<tr><td>BMPC, 16 iterations per solve</td><td>43.4%</td><td>53.1%</td></tr>
+</table>
+<p>Recovery is the fraction of the oracle&ndash;nominal terminal-fidelity gap closed by the controller. BMPC beats nominal MPC in 49/50 and 50/50 trials. The coupling estimator&rsquo;s root-mean-square error (3.02&times;10<sup>&minus;3</sup>) matches the Cram&eacute;r&ndash;Rao bound of the readout protocol (3.21&times;10<sup>&minus;3</sup>).</p>
+
+<div class="grid3">
+<div class="cell"><img src="Bell-state/panel_a.png" alt="Histogram of standardized posterior-mean errors" />(a) Estimator calibration</div>
+<div class="cell"><img src="Bell-state/panel_b.png" alt="Bell-state fidelity over time for one run" />(b) Representative fidelity</div>
+<div class="cell"><img src="Bell-state/panel_c.png" alt="Posterior mean and 95% credible band of the coupling over time" />(c) Coupling posterior</div>
+<div class="cell"><img src="Bell-state/panel_d.png" alt="Terminal fidelity of nominal MPC, BMPC and oracle MPC at both mismatches" />(d) Terminal fidelity</div>
+<div class="cell"><img src="Bell-state/panel_e.png" alt="Per-trial fidelity gain of BMPC over nominal MPC" />(e) Gain over nominal MPC</div>
+<div class="cell"><img src="Bell-state/panel_f.png" alt="Log-log plot of control gap versus posterior RMS coupling error" />(f) Fixed-state control gap</div>
+</div>
+<p style="font-size:92%;color:#444">Blue: BMPC; grey: nominal MPC; orange: oracle; black: true values and targets.</p>
+
+<h2>Code and data</h2>
+<p>The <a href="Bell-state/BMPC_BellState_code_data.zip">archive</a> contains the complete Julia pipeline, the saved outputs behind every table and figure, and the script that draws the figures. One command reruns all experiments:</p>
+<pre>cd julia
+julia --project=&lt;environment&gt; run_all_audit.jl ground</pre>
+<p>Random seeds: production benchmark 20260920, calibration 20260916, bootstrap 20260921. The included README maps each file to the paper.</p>
+
+<h2 id="bibtex">BibTeX</h2>
+<pre class="bib">@unpublished{Nuchkrua2026BellBMPC,
+  author = {Nuchkrua, Thanana and Boonto, Sudchai and Liu, Xiaoqi and Kornmaneesang, Woraphrut},
+  title  = {Bayesian {MPC} for Two-Qubit {Bell}-State Preparation under Decoherence and Exchange-Coupling Uncertainty},
+  note   = {Submitted to IFAC Journal of Systems and Control},
+  year   = {2026}
+}
+
+@inproceedings{Nuchkrua2026IFAC,
+  author    = {Nuchkrua, Thanana and Boonto, Sudchai and Liu, Xiaoqi and Kornmaneesang, Woraphrut},
+  title     = {Bayesian Model Predictive Control for Quantum State Regulation under Decoherence},
+  booktitle = {Preprints of the 23rd IFAC World Congress},
+  address   = {Busan, Republic of Korea},
+  pages     = {3355--3360},
+  year      = {2026}
+}</pre>
+
+<div id="footer">
+<div id="footer-text">
+&copy; 2026 <b>Thanana Nuchkrua</b> | Control &amp; Robotics Research Group, KMUTT
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
