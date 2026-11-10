@@ -10,7 +10,9 @@
 <style type="text/css">
 /* Page-local additions; the site-wide look comes from jemdoc.css */
 .fig { margin: 1em 0 1.4em 0; }
-.fig img { max-width: 100%; height: auto; }
+.fig img { display: block; width: 100%; max-width: 100%; height: auto; }
+.fig img.fig-model { width: 70%; margin: 0 auto; }
+@media (max-width: 760px) { .fig img.fig-model { width: 100%; } }
 .fig .cap { font-size: 92%; color: #444; margin-top: 0.35em; }
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 14px; }
 .grid3 .cell { text-align: center; font-size: 90%; color: #333; }
@@ -20,7 +22,6 @@
 table.res { border-collapse: collapse; margin: 0.6em 0 1em 0; }
 table.res td, table.res th { border-bottom: 1px solid #ddd; padding: 3px 10px; text-align: right; }
 table.res th:first-child, table.res td:first-child { text-align: left; }
-pre.bib { white-space: pre-wrap; }
 </style>
 </head>
 <body>
@@ -54,11 +55,9 @@ pre.bib { white-space: pre-wrap; }
 <div id="toptitle">
 <h1>Bayesian MPC for Two-Qubit Bell-State Preparation under Decoherence and Exchange-Coupling Uncertainty</h1>
 </div>
-<p><br />
-<i>Preparing for IFAC Journal of Systems and Control, 2026</i><br />
+<p><i>Preparing for IFAC Journal of Systems and Control, 2026</i><br />
 Journal extension of our <a href="BMPCQuantum.html">IFAC World Congress 2026 paper</a> on Bayesian MPC for quantum state regulation.</p>
-<p class="links"><a href="Bell-state/BMPC_BellState_code_data.zip">Code and data (Julia, .zip)</a> |
-<a href="#bibtex">BibTeX</a></p>
+<p class="links"><a href="Bell-state/BMPC_BellState_code_data.zip">Code and data (Julia, .zip)</a></p>
 
 <h2>Highlights</h2>
 <ul>
@@ -77,7 +76,7 @@ Journal extension of our <a href="BMPCQuantum.html">IFAC World Congress 2026 pap
 
 <h2>Problem</h2>
 <div class="fig">
-<img src="model.png" alt="Two coupled qubits with local drives, local decoherence channels and computational-basis readout" style="max-width:520px" />
+<img class="fig-model" src="model.png" alt="Two coupled qubits with local drives, local decoherence channels and computational-basis readout" />
 <div class="cap">Two qubits with local drives <i>u</i><sub>1</sub>, <i>u</i><sub>2</sub>, uncertain XY exchange coupling <i>J</i>, local amplitude damping and dephasing, and computational-basis readout. The task is |00&rang; &rarr; |&Phi;<sup>+</sup>&rang; at the deadline <i>T</i><sub>f</sub>.</div>
 </div>
 
@@ -114,23 +113,6 @@ Journal extension of our <a href="BMPCQuantum.html">IFAC World Congress 2026 pap
 <pre>cd julia
 julia --project=&lt;environment&gt; run_all_audit.jl ground</pre>
 <p>Random seeds: production benchmark 20260920, calibration 20260916, bootstrap 20260921. The included README maps each file to the paper.</p>
-
-<h2 id="bibtex">BibTeX</h2>
-<pre class="bib">@unpublished{Nuchkrua2026BellBMPC,
-  author = {Nuchkrua, Thanana and Boonto, Sudchai and Liu, Xiaoqi and Kornmaneesang, Woraphrut},
-  title  = {Bayesian {MPC} for Two-Qubit {Bell}-State Preparation under Decoherence and Exchange-Coupling Uncertainty},
-  note   = {Submitted to IFAC Journal of Systems and Control},
-  year   = {2026}
-}
-
-@inproceedings{Nuchkrua2026IFAC,
-  author    = {Nuchkrua, Thanana and Boonto, Sudchai and Liu, Xiaoqi and Kornmaneesang, Woraphrut},
-  title     = {Bayesian Model Predictive Control for Quantum State Regulation under Decoherence},
-  booktitle = {Preprints of the 23rd IFAC World Congress},
-  address   = {Busan, Republic of Korea},
-  pages     = {3355--3360},
-  year      = {2026}
-}</pre>
 
 <div id="footer">
 <div id="footer-text">
